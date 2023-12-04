@@ -14,31 +14,45 @@ Boot from the USB drive, then setup internet for the installation:
 $ wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
 ```
 
-#
-# sudo rm /etc/nixos
-# sudo ln -s /home/pholi/nixos /etc/nixos
-#
-# To launch this script:
-# bash <(curl -sL raw.githubusercontent.com/PhilippeOlivier/nixos/main/nixos.sh)
+With `lsblk` validate that the value of `DEVICE` in `installation/pre.sh` is the correct one.
 
+Fetch the Bash script to partition and format the disk:
 
-With `lsblk` validate that the value of `DEVICE` is the correct one.
+```bash
+$ curl -sLo pre.sh raw.githubusercontent.com/PhilippeOlivier/nixos/main/installation/pre.sh
+```
 
-# TODO: The below steps will be manual
+Launch the script. You will be prompted for the LUKS password at some point:
 
-# Generate `hardware-configuration.nix`
-sudo nixos-generate-config --root /mnt
+```bash
+$ bash pre.sh
+```
 
-backup hardware-configuration.nix
+Generate a basic configuration in order to get `hardware-configuration.nix`:
 
-# Overwrite `configuration.nix` with my personal config file
-curl -LOo main.zip https://github.com/PhilippeOlivier/nixos-config/archive/main.zip
-unzip main.zip
-sudo mv nixos-config-main/* /mnt/etc/nixos
-# rm nixos-config.zip
-# sudo curl -sLo /mnt/etc/nixos/configuration.nix pedtsr.ca/homelab/configuration.nix
+```bash
+$ sudo nixos-generate-config --root /mnt
+```
 
-# Install NixOS
-sudo nixos-install --root /mnt --no-root-password
+Fetch the complete configuration:
 
-sudo ln -s /home/pholi/nixos /etc/nixos
+```bash
+$ curl -LO https://github.com/PhilippeOlivier/nixos/archive/main.zip
+$ unzip main.zip
+# sudo mv nixos-main/* /mnt/etc/nixos
+```
+
+Install NixOS:
+
+```bash
+$ sudo nixos-install --root /mnt --no-root-password
+```
+
+Reboot. Now replace `/etc/nixos` by a symlink, making sure to keep the previously-generated `hardware-configuration.nix` in the process:
+
+```bash
+$ git clone https://github.com/PhilippeOlivier/nixos.git
+$ sudo mv /etc/nixos/hardware-configuration.nix nixos
+$ sudo rm -rf /etc/nixos
+$ sudo ln -s /home/pholi/nixos /etc/nixos
+```

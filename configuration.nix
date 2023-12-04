@@ -1,15 +1,15 @@
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball {
-    url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  };
+# let
+#   home-manager = builtins.fetchTarball {
+#     url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+#   };
   
 in {
   imports =
     [
       ./hardware-configuration.nix
-      "${home-manager}/nixos"
+      # "${home-manager}/nixos"
     ];
 
   # systemd-boot
@@ -45,11 +45,11 @@ in {
     # hashedPassword = "$y$j9T$G0Y8DMYeCovADHuKDb73a1$KqGTktIZlpdjEH4yubPnVTpZywk2Zf6fbk979YvKPk3";
   };
 
-  # Home manager configuration for user jane.
-  home-manager.users.pholi = { pkgs, ... }: {
-    programs.home-manager.enable = true;
-    home.stateVersion = "23.05";
-  };
+  # # Home manager configuration for user jane.
+  # home-manager.users.pholi = { pkgs, ... }: {
+  #   programs.home-manager.enable = true;
+  #   home.stateVersion = "23.05";
+  # };
   
   users.users.pholi = {
     isNormalUser = true;

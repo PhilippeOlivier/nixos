@@ -11,7 +11,7 @@ set -e
 # wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
 #
 # To launch this script:
-# bash <(curl -sL URL_OF_THIS_SCRIPT)
+# bash <(curl -sL raw.githubusercontent.com/PhilippeOlivier/nixos-config/main/nixos.sh)
 
 DEVICE="/dev/nvme0n1"
 RAM="$(free -m | sed -n '2p' | sed 's/[^0-9]*//' | cut -d' ' -f1)"
@@ -59,7 +59,10 @@ sudo mount $BOOT_PARTITION /mnt/boot
 sudo nixos-generate-config --root /mnt
 
 # Overwrite `configuration.nix` with my personal config file
-sudo curl -sLo /mnt/etc/nixos/configuration.nix pedtsr.ca/homelab/configuration.nix
+curl -LOo nixos-config.zip https://github.com/PhilippeOlivier/nixos-config/archive/main.zip
+sudo unzip nixos-config.zip /mnt/etc/nixos
+rm nixos-config.zip
+# sudo curl -sLo /mnt/etc/nixos/configuration.nix pedtsr.ca/homelab/configuration.nix
 
 # Install NixOS
 sudo nixos-install --root /mnt --no-root-password

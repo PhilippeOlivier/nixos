@@ -2,17 +2,6 @@
 
 set -e
 
-# To create the bootable USB image, download the latest unstable ISO here:
-# https://releases.nixos.org/nixos/unstable/nixos-24.05pre554114.e92039b55bcd
-# Then:
-# sudo dd if=nixos-minimal-....-x86_64-linux.iso of=/dev/sdX bs=4M status=progress conv=fdatasync
-#
-# To setup internet during installation:
-# wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
-#
-# To launch this script:
-# bash <(curl -sL raw.githubusercontent.com/PhilippeOlivier/nixos-config/main/nixos.sh)
-
 DEVICE="/dev/nvme0n1"
 RAM="$(free -m | sed -n '2p' | sed 's/[^0-9]*//' | cut -d' ' -f1)"
 BOOT_LABEL="BOOT"
@@ -54,18 +43,3 @@ sudo mkfs.ext4 -L $LUKS_MAPPING $CRYPTROOT
 sudo mount $CRYPTROOT /mnt
 sudo mkdir -p /mnt/boot
 sudo mount $BOOT_PARTITION /mnt/boot
-
-# TODO: The below steps will be manual
-
-# Generate `hardware-configuration.nix`
-sudo nixos-generate-config --root /mnt
-
-# Overwrite `configuration.nix` with my personal config file
-curl -LOo main.zip https://github.com/PhilippeOlivier/nixos-config/archive/main.zip
-unzip main.zip
-sudo mv nixos-config-main/* /mnt/etc/nixos
-# rm nixos-config.zip
-# sudo curl -sLo /mnt/etc/nixos/configuration.nix pedtsr.ca/homelab/configuration.nix
-
-# Install NixOS
-sudo nixos-install --root /mnt --no-root-password

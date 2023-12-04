@@ -6,13 +6,11 @@
   };
 
   outputs = { self, nixpkgs }: {
-    nixosConfigurations = {
-      pholi-nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ 
-          ./configuration.nix
-        ];
-      };
+    nixosConfigurations.pholi-nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [ 
+        ./configuration.nix
+      ];
     };
   };
 }

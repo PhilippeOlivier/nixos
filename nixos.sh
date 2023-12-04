@@ -55,13 +55,16 @@ sudo mount $CRYPTROOT /mnt
 sudo mkdir -p /mnt/boot
 sudo mount $BOOT_PARTITION /mnt/boot
 
+# TODO: The below steps will be manual
+
 # Generate `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt
 
 # Overwrite `configuration.nix` with my personal config file
-curl -LOo nixos-config.zip https://github.com/PhilippeOlivier/nixos-config/archive/main.zip
-sudo unzip nixos-config.zip /mnt/etc/nixos
-rm nixos-config.zip
+curl -LOo main.zip https://github.com/PhilippeOlivier/nixos-config/archive/main.zip
+unzip main.zip
+sudo mv nixos-config-main/* /mnt/etc/nixos
+# rm nixos-config.zip
 # sudo curl -sLo /mnt/etc/nixos/configuration.nix pedtsr.ca/homelab/configuration.nix
 
 # Install NixOS

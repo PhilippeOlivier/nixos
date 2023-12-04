@@ -39,7 +39,7 @@ Fetch the complete configuration:
 ```bash
 $ curl -LO https://github.com/PhilippeOlivier/nixos/archive/main.zip
 $ unzip main.zip
-# sudo mv nixos-main/* /mnt/etc/nixos
+$ sudo mv nixos-main/* /mnt/etc/nixos
 ```
 
 Install NixOS:

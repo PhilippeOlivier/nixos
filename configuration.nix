@@ -1,22 +1,12 @@
 { config, pkgs, ... }:
 
-# let
-#   home-manager = builtins.fetchTarball {
-#     url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-#   };
-  
-#in
 {
-  imports =
-    [
-      ./modules/boot.nix
-      ./modules/time-locale.nix
-      ./modules/network.nix
-      ./hardware-configuration.nix
-      # "${home-manager}/nixos"
-    ];
-
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    ./modules/boot.nix
+    ./modules/time-locale.nix
+    ./modules/network.nix
+    ./hardware-configuration.nix
+  ];
   
   # Users
   users.mutableUsers = false;
@@ -26,41 +16,25 @@
     hashedPassword = "$y$j9T$x96MzdskuJld7.MGfXLpE1$cOerhhSRfrLWEgyOI6vNmcRDnHshQ0e1QVDL3CMEFy3"; # asdf
     # hashedPassword = "$y$j9T$G0Y8DMYeCovADHuKDb73a1$KqGTktIZlpdjEH4yubPnVTpZywk2Zf6fbk979YvKPk3";
   };
-
-  # # Home manager configuration for user jane.
-  # home-manager.users.pholi = { pkgs, ... }: {
-  #   programs.home-manager.enable = true;
-  #   home.stateVersion = "23.05";
-  # };
   
   users.users.pholi = {
     isNormalUser = true;
-    home = "/home/pholi";
     hashedPassword = "$y$j9T$x96MzdskuJld7.MGfXLpE1$cOerhhSRfrLWEgyOI6vNmcRDnHshQ0e1QVDL3CMEFy3"; # asdf
     # hashedPassword = "$y$j9T$/agu8wY6h/PB20gbxj6aC.$JEuBPcl7F5crecpUFQ3SH.cEsNjMYD.8JnHArimSAt/";
     description = "Philippe Olivier";
+    home = "/home/pholi";
     extraGroups = [ "wheel" "docker" ];
-    packages = with pkgs; [
-      # Desktop environment
-      alacritty
-      sway
-
-      # Misc
-      git
-      emacs
-      firefox
-    ];
   };
 
-  programs.sway = {
-    enable = true;
-    # wrapperFeatures.gtk = true;
-  };
-  # environment.systemPackages = with pkgs; [
-  #   pkgs.powertop
-  #   pkgs.acpi
-  #   pkgs.upower
-  # ];
+  # programs.sway = {
+  #   enable = true;
+  #   # wrapperFeatures.gtk = true;
+  # };
+  # # environment.systemPackages = with pkgs; [
+  # #   pkgs.powertop
+  # #   pkgs.acpi
+  # #   pkgs.upower
+  # # ];
   
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -128,5 +102,7 @@
   #   '';
   # };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nixpkgs.config.allowUnfree = true;
 }
 

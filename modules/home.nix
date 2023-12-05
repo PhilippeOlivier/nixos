@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  # TODO please change the username & home direcotry to your own
-  # home.username = "ryan";
-  # home.homeDirectory = "/home/ryan";
+  home.username = "pholi";
+  home.homeDirectory = "/home/pholi";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -26,10 +25,16 @@
     # feel free to add your own or remove some of them
 
     neofetch
+    alacritty
+    sway
+    
+    # Misc
+    git
+    emacs
+    firefox
 
   ];
 
-  # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05";

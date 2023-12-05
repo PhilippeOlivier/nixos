@@ -32,5 +32,5 @@
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }

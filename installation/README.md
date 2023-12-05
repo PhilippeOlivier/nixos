@@ -34,7 +34,7 @@ Generate a basic configuration in order to get `hardware-configuration.nix`:
 $ sudo nixos-generate-config --root /mnt
 ```
 
-Fetch the complete configuration:
+Fetch my personal configuration:
 
 ```bash
 $ curl -LO https://github.com/PhilippeOlivier/nixos/archive/main.zip

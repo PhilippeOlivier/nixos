@@ -9,14 +9,10 @@
 {
   imports =
     [
+      ./modules/boot.nix
       ./hardware-configuration.nix
       # "${home-manager}/nixos"
     ];
-
-  # systemd-boot
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 20;
   
   # Hostname
   networking.hostName = "pholi-nixos";

@@ -2,9 +2,9 @@
 
 {
   imports = [
-#    ./home/emacs.nix
+    ./home/emacs.nix
     ./home/git.nix
-    # ./home/sway.nix
+    ./home/sway.nix
   ];
   home.username = "pholi";
   home.homeDirectory = "/home/pholi";
@@ -30,12 +30,12 @@
     # feel free to add your own or remove some of them
 
     neofetch
-    alacritty
-    sway
+    #alacritty
+    #sway
     
     # Misc
 #    git
-    firefox
+    #firefox
 
   ];
 

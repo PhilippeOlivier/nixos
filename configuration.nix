@@ -10,28 +10,11 @@
   imports =
     [
       ./modules/boot.nix
+      ./modules/time-locale.nix
+      ./modules/network.nix
       ./hardware-configuration.nix
       # "${home-manager}/nixos"
     ];
-  
-  # Hostname
-  networking.hostName = "pholi-nixos";
-
-  # wpa_supplicant
-  networking.wireless.enable = true;
-
-  # DHCP
-  networking.useDHCP = false;  # Set to false because it is deprecated
-  # We must set all interfaces individually
-  networking.interfaces.wlp4s0.useDHCP = true;
-  # Do the same for the ethernet
-  
-  # WiFi networks
-  networking.wireless.networks.AwesomenautsEXT.pskRaw = "6521e88582fdc0fda473fa548375627950a87185610768bed19eb41005409161";
-
-  # Date, time, locale
-  time.timeZone = "Canada/Eastern";
-  i18n.defaultLocale = "en_CA.UTF-8";
 
   # Users
   users.mutableUsers = false;

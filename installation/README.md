@@ -28,7 +28,7 @@ Launch the script. You will be prompted for the LUKS password at some point:
 $ bash pre.sh
 ```
 
-Generate a basic configuration in order to get `hardware-configuration.nix`:
+Optional: If this is a new computer, generate a basic configuration in order to get `hardware-configuration.nix` (and replace the `hardware-configuration.nix` from the git repo):
 
 ```bash
 $ sudo nixos-generate-config --root /mnt
@@ -48,11 +48,10 @@ Install NixOS:
 $ sudo nixos-install --root /mnt --no-root-password
 ```
 
-Reboot. Clone my personal configuration, include `hardware-configuration.nix` in it, and get rid of `/etc/nixos`:
+Reboot. Clone my personal configuration (optionally, replace `hardware-configuration.nix` in it with the new one) and get rid of `/etc/nixos`:
 
 ```bash
 $ git clone https://github.com/PhilippeOlivier/nixos.git
-$ sudo mv /etc/nixos/hardware-configuration.nix nixos
 $ sudo rm -rf /etc/nixos
 ```
 

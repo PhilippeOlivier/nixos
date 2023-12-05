@@ -16,6 +16,8 @@
       # "${home-manager}/nixos"
     ];
 
+  nixpkgs.config.allowUnfree = true;
+  
   # Users
   users.mutableUsers = false;
 

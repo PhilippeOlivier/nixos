@@ -3,6 +3,8 @@
 {
   imports = [
     ./home/emacs.nix
+    ./home/git.nix
+    # ./home/sway.nix
   ];
   home.username = "pholi";
   home.homeDirectory = "/home/pholi";
@@ -32,7 +34,7 @@
     sway
     
     # Misc
-    git
+#    git
     firefox
 
   ];

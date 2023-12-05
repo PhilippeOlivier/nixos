@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./home/emacs.nix
+  ];
   home.username = "pholi";
   home.homeDirectory = "/home/pholi";
 
@@ -30,7 +33,6 @@
     
     # Misc
     git
-    emacs
     firefox
 
   ];

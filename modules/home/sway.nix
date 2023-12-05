@@ -4,7 +4,7 @@
 
     config = {
       window = {
-        default_border = "pixel";
+        titlebar = false;
       };
     };
     # config = rec {

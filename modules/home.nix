@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./home/emacs.nix
+#    ./home/emacs.nix
     ./home/git.nix
     # ./home/sway.nix
   ];

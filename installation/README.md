@@ -48,11 +48,16 @@ Install NixOS:
 $ sudo nixos-install --root /mnt --no-root-password
 ```
 
-Reboot. Now replace `/etc/nixos` by a symlink, making sure to keep the previously-generated `hardware-configuration.nix` in the process:
+Reboot. Clone my personal configuration, include `hardware-configuration.nix` in it, and get rid of `/etc/nixos`:
 
 ```bash
 $ git clone https://github.com/PhilippeOlivier/nixos.git
 $ sudo mv /etc/nixos/hardware-configuration.nix nixos
 $ sudo rm -rf /etc/nixos
-$ sudo ln -s /home/pholi/nixos /etc/nixos
+```
+
+Rebuild:
+
+```bash
+$ sudo nixos-rebuild switch --flake /home/pholi/nixos
 ```

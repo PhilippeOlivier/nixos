@@ -14,7 +14,6 @@
         pkgs.intel-compute-runtime
         pkgs.libvdpau-va-gl
         pkgs.libva-utils
-        pkgs.libva-vdpau-driver
       ];
     };
   };
@@ -27,7 +26,7 @@
 
   # hardware accel
   # X intel-media-driver   
-  # X libva-vdpau-driver
+  # - libva-vdpau-driver ??
   # X libvdpau-va-gl
   # X libva-utils
   

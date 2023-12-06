@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.intel-media-driver
-  ];
+  # environment.systemPackages = [
+  #   pkgs.intel-media-driver
+  # ];
   
   hardware = {
     cpu.intel.updateMicrocode = true;
@@ -11,7 +11,7 @@
       enable = true;
       driSupport = true;
       extraPackages = [
-        intel-media-driver
+        pkgs.intel-media-driver
       ];
     };
   };

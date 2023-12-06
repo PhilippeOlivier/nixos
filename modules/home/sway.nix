@@ -5,8 +5,8 @@
     config = {
       window = {
         titlebar = false;
-        terminal = "alacritty";
       };
+      terminal = "alacritty";
     };
     # config = rec {
     #   modifier = "Mod4";

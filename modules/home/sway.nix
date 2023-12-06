@@ -5,6 +5,7 @@
     config = {
       window = {
         titlebar = false;
+        terminal = "alacritty";
       };
     };
     # config = rec {
@@ -16,5 +17,9 @@
     #     {command = "firefox";}
     #   ];
     # };
+  };
+
+  programs.alacritty = {
+    enable = true;
   };
 }

@@ -79,13 +79,14 @@
 
   ### /framework/13-inch/common/intel.nix
 
-  boot.kernelParams = [
-    # Fixes a regression in s2idle, making it more power efficient than deep sleep
-    "acpi_osi=\"!Windows 2020\""
-    # For Power consumption
-    # https://community.frame.work/t/linux-battery-life-tuning/6665/156
-    "nvme.noacpi=1"
-  ];
+  # temporary commented out because already declared above
+  # boot.kernelParams = [
+  #   # Fixes a regression in s2idle, making it more power efficient than deep sleep
+  #   "acpi_osi=\"!Windows 2020\""
+  #   # For Power consumption
+  #   # https://community.frame.work/t/linux-battery-life-tuning/6665/156
+  #   "nvme.noacpi=1"
+  # ];
 
   # Requires at least 5.16 for working wi-fi and bluetooth. (Philippe: this is not needed as we run unstable which is using kernel 6.*)
 

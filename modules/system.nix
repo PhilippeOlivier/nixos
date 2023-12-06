@@ -12,21 +12,24 @@
         pkgs.intel-vaapi-driver
         pkgs.mesa
         pkgs.intel-compute-runtime
+        pkgs.libvdpau-va-gl
+        pkgs.libva-utils
+        pkgs.libva-vdpau-driver
       ];
     };
   };
   
   # from arch:
   # - xdg-desktop-portal-wlr: screen sharing
-  # - mesa
-  # - vulkan-icd-loader
-  # - vulkan-intel
+  # X mesa
+  # X vulkan-icd-loader (already included)
+  # X vulkan-intel (already included)
 
   # hardware accel
   # X intel-media-driver   
-  # - libva-vdpau-driver
-  # - libvdpau-va-gl
-  # - libva-utils
+  # X libva-vdpau-driver
+  # X libvdpau-va-gl
+  # X libva-utils
   
   
   # Driver for 12th Gen (Alder Lake)

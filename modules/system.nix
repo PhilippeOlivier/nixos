@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # environment.systemPackages = [
-  #   pkgs.intel-media-driver
-  # ];
-  
   hardware = {
     cpu.intel.updateMicrocode = true;
     opengl = {
@@ -12,6 +8,10 @@
       driSupport = true;
       extraPackages = [
         pkgs.intel-media-driver
+        pkgs.intel-ocl
+        pkgs.intel-vaapi-driver
+        pkgs.mesa
+        pkgs.intel-compute-runtime
       ];
     };
   };
@@ -23,7 +23,7 @@
   # - vulkan-intel
 
   # hardware accel
-  # - intel-media-driver   
+  # X intel-media-driver   
   # - libva-vdpau-driver
   # - libvdpau-va-gl
   # - libva-utils
@@ -47,8 +47,6 @@
   #   pkgs.intel-media-driver  # For Intel newer GPUs
   #   etc? see arch
   # ];
-  # hardware.opengl.enable = true;
-  # hardware.opengl.driSupport = true;
 }
 
 

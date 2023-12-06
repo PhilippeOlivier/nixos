@@ -89,9 +89,10 @@
   # ];
 
   # Requires at least 5.16 for working wi-fi and bluetooth. (Philippe: this is not needed as we run unstable which is using kernel 6.*)
-
-  # Module is not used for Framework EC but causes boot time error log.
-  boot.blacklistedKernelModules = [ "cros-usbpd-charger" ];
+  
+  # temporary commented out because already declared above
+  # # Module is not used for Framework EC but causes boot time error log.
+  # boot.blacklistedKernelModules = [ "cros-usbpd-charger" ];
 
   # Custom udev rules
   services.udev.extraRules = ''

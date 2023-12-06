@@ -43,8 +43,8 @@
   #   pkgs.intel-media-driver  # For Intel newer GPUs
   #   etc? see arch
   # ];
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
+  # hardware.opengl.enable = true;
+  # hardware.opengl.driSupport = true;
 }
 
 

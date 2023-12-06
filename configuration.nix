@@ -5,6 +5,7 @@
     ./modules/boot.nix
     ./modules/time-locale.nix
     ./modules/network.nix
+    ./modules/system.nix
     ./modules/users.nix
     ./hardware-configuration.nix
   ];

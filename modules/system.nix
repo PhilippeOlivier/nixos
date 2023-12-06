@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = [
+    pkgs.intel-media-driver
+  ];
+  
   hardware = {
     cpu.intel.updateMicrocode = true;
     opengl = {

@@ -94,12 +94,13 @@
   # # Module is not used for Framework EC but causes boot time error log.
   # boot.blacklistedKernelModules = [ "cros-usbpd-charger" ];
 
+  # temporary commented out because already declared above
   # Custom udev rules
-  services.udev.extraRules = ''
-    # Fix headphone noise when on powersave
-    # https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55
-    SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
-  '';
+  # services.udev.extraRules = ''
+  #   # Fix headphone noise when on powersave
+  #   # https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55
+  #   SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
+  # '';
 
   # Mis-detected by nixos-generate-config
   # https://github.com/NixOS/nixpkgs/issues/171093

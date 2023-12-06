@@ -1,8 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  hardware.cpu.intel.updateMicrocode = true;
-
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      extraPackages = [
+        intel-media-driver
+      ];
+    };
+  };
+  
   # from arch:
   # - xdg-desktop-portal-wlr: screen sharing
   # - mesa
@@ -34,7 +43,7 @@
   #   pkgs.intel-media-driver  # For Intel newer GPUs
   #   etc? see arch
   # ];
-  hardware.opengl.enable = true;  #needed for sway?
+  hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
 }
 

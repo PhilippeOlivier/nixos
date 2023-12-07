@@ -30,6 +30,7 @@
       "i915.enable_guc=3"
       "acpi_osi=\"!Windows 2020\""  # Power saving
       "nvme.noacpi=1"  # Power saving
+      "i915.force_probe=46a6"  # Driver for 12th Gen (Alder Lake): Run `lspci -nn | grep VGA` and replace `46a6` with the 4 characters after `8606:`
     ];
   };
 

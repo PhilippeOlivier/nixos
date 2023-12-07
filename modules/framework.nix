@@ -12,24 +12,40 @@
   #
   # Last reviewed: 2023-12-06
 
-  hardware.cpu.intel.updateMicrocode = true;
+  boot = {
+    blacklistedKernelModules = [ 
+      "hid-sensor-hub"  # Fix to make the brightness and airplane mode keys work
+      "cros_ec_lpcs"  # Fixes some crashes during sleep
+      "cros-usbpd-charger"  # Causes boot time error log
+    ];
+    extraModprobeConfig = ''
+      # Fix TRRS headphones missing a mic
+      options snd-hda-intel model=dell-headset-multi
+    '';
+    initrd.kernelModules = [ "i915" ];
+    kernelParams = [
+      "mem_sleep_default=deep"  # Power saving
+      "i915.enable_fbc=1"
+      "i915.enable_psr=1"
+      "i915.enable_guc=3"
+      "acpi_osi=\"!Windows 2020\""  # Power saving
+      "nvme.noacpi=1"  # Power saving
+    ];
+  };
 
-  boot.initrd.kernelModules = [ "i915" ];
+  environment.variables = {
+    VDPAU_DRIVER = "va_gl";
+  };
 
-  boot.kernelParams = [
-    "mem_sleep_default=deep"  # Power saving
-    "i915.enable_fbc=1"
-    "i915.enable_psr=1"
-    "i915.enable_guc=3"
-    "acpi_osi=\"!Windows 2020\""  # Power saving
-    "nvme.noacpi=1"  # Power saving
-  ];
-
-  boot.blacklistedKernelModules = [ 
-    "hid-sensor-hub"  # Fix to make the brightness and airplane mode keys work
-    "cros_ec_lpcs"  # Fixes some crashes during sleep
-    "cros-usbpd-charger"  # Causes boot time error log
-  ];
+  hardware = {
+    acpilight.enable = true;
+    cpu.intel.updateMicrocode = true;
+    opengl.extraPackages = [
+      pkgs.intel-vaapi-driver
+      pkgs.libvdpau-va-gl
+      pkgs.intel-media-driver
+    ];
+  };
 
   # Additional fix to make the brightness and airplane mode keys work
   systemd.services.bind-keys-driver = {
@@ -41,17 +57,12 @@
       User = "root";
     };
     script = ''
-      # Only apply the fix if it is needed
+      # Only apply this fix if it is needed
       if [ -e /sys/bus/i2c/devices/i2c-FRMW0001:00 -a ! -e /sys/bus/i2c/drivers/i2c_hid_acpi/i2c-FRMW0001:00 ]; then
         echo i2c-FRMW0001:00 > /sys/bus/i2c/drivers/i2c_hid_acpi/bind
       fi
     '';
   };
-
-  boot.extraModprobeConfig = ''
-    # Fix TRRS headphones missing a mic
-    options snd-hda-intel model=dell-headset-multi
-  '';
 
   services.udev.extraRules = ''
     # Ethernet expansion card support
@@ -60,20 +71,4 @@
     # Fix headphone noise when on power save
     SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
   '';
-
-
-  # Mis-detected by nixos-generate-config
-  # https://github.com/NixOS/nixpkgs/issues/171093
-  # https://wiki.archlinux.org/title/Framework_Laptop#Changing_the_brightness_of_the_monitor_does_not_work
-  hardware.acpilight.enable = true;
-
-  environment.variables = {
-    VDPAU_DRIVER = "va_gl";
-  };
-
-  hardware.opengl.extraPackages = [
-    pkgs.intel-vaapi-driver
-    pkgs.libvdpau-va-gl
-    pkgs.intel-media-driver
-  ];
 }

@@ -31,6 +31,7 @@
       TLP_DEFAULT_MODE = "BAT";
       TLP_PERSISTENT_DEFAULT = 1;
       USB_AUTOSUSPEND = 0;
+      RUNTIME_PM_ON_AC = "auto";
     };
   };
   

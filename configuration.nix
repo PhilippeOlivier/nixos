@@ -3,9 +3,10 @@
 {
   imports = [
     ./modules/boot.nix
-    ./modules/time-locale.nix
+    ./modules/framework.nix
     ./modules/network.nix
     ./modules/system.nix
+    ./modules/time-locale.nix
     ./modules/users.nix
     ./hardware-configuration.nix
   ];

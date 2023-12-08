@@ -8,6 +8,9 @@
       };
       terminal = "alacritty";
       modifier = "Mod4";
+      keybindings = {
+        "${modifier}+Enter" = "exec ${terminal}";
+      };
     };
   };
 

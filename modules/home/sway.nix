@@ -15,15 +15,15 @@
         "${modifier}+Shift+e" = "exec swaymsg exit";  # Exit sway
         "${modifier}+f" = "fullscreen";  # Make the current focus fullscreen
         "${modifier}+r" = "mode resize";  # Resize window
+      };
       modes.resize = {
         Escape = "mode default";
         Return = "mode default";
         "${modifier}+r" = "mode default";
-        Left = "resize shrink width 10 px or 5 ppt";
-        Right = "resize grow width 10 px or 5 ppt";
-        Up = "resize shrink height 10 px or 5 ppt";
-        Down = "resize grow height 10 px or 5 ppt";
-      };
+        # Left = "resize shrink width 10 px or 5 ppt";
+        # Right = "resize grow width 10 px or 5 ppt";
+        # Up = "resize shrink height 10 px or 5 ppt";
+        # Down = "resize grow height 10 px or 5 ppt";
       };
     };
   };

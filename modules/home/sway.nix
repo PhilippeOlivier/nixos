@@ -20,10 +20,10 @@
         Escape = "mode default";
         Return = "mode default";
         "${modifier}+r" = "mode default";
-        # Left = "resize shrink width 10 px or 5 ppt";
-        # Right = "resize grow width 10 px or 5 ppt";
-        # Up = "resize shrink height 10 px or 5 ppt";
-        # Down = "resize grow height 10 px or 5 ppt";
+        Left = "resize shrink width 10 px or 5 ppt";
+        Right = "resize grow width 10 px or 5 ppt";
+        Up = "resize shrink height 10 px or 5 ppt";
+        Down = "resize grow height 10 px or 5 ppt";
       };
     };
   };

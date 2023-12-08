@@ -34,6 +34,12 @@
       RUNTIME_PM_ON_AC = "auto";
     };
   };
+
+  # Video
+  opengl = {
+    enable = true;
+    driSupport = true;
+  };
 }
 
 

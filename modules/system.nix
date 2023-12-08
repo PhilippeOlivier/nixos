@@ -36,7 +36,7 @@
   };
 
   # Video
-  opengl = {
+  hardware.opengl = {
     enable = true;
     driSupport = true;
   };

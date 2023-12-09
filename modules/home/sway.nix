@@ -84,7 +84,7 @@
   };
 
   # Desktop notifications
-  programs.mako = {
+  services.mako = {
     enable = true;
   };
 }

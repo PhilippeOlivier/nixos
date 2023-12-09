@@ -17,7 +17,7 @@
     ];
     sessionVariables = {
       EDITOR = "emacs";
-      ASDF = "asdf";
+      PS1 = "[\u@\h \W]\$ "
     };
   };
 

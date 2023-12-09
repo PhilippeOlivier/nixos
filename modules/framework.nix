@@ -41,10 +41,10 @@
   hardware = {
     acpilight.enable = true;
     cpu.intel.updateMicrocode = true;
-    opengl.extraPackages = [
-      pkgs.intel-vaapi-driver
-      pkgs.libvdpau-va-gl
-      pkgs.intel-media-driver
+    opengl.extraPackages = with pkgs; [
+      intel-vaapi-driver
+      libvdpau-va-gl
+      intel-media-driver
     ];
   };
 

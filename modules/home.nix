@@ -18,7 +18,11 @@
     sessionVariables = {
       EDITOR = "emacs";
       PS1 = ''[\u@\h \W]\$ '';
+      MOZ_ENABLE_WAYLAND = "1";  # Run Firefox in Wayland mode
     };
+    shellAliases = {
+      ls = "ls --color=auto"  # Colorize the `ls` command
+    }
   };
 
 

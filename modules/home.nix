@@ -17,7 +17,7 @@
     ];
     sessionVariables = {
       EDITOR = "emacs";
-      PS1 = "[\u@\h \W]\$ "
+      PS1 = "[\u@\h \W]\$ ";
     };
   };
 

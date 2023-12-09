@@ -69,7 +69,12 @@
     };
   };
 
-  # programs.alacritty = {
-  #   enable = true;
-  # };
+  programs.alacritty = {
+    enable = true;
+  };
+
+  # Desktop notifications
+  programs.mako = {
+    enable = true;
+  };
 }

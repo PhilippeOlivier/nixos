@@ -4,10 +4,23 @@
   imports = [
     ./home/emacs.nix
     ./home/git.nix
+    ./home/shell.nix
     ./home/sway.nix
   ];
-  home.username = "pholi";
-  home.homeDirectory = "/home/pholi";
+  
+  home = {
+    stateVersion = "24.05";
+    username = "pholi";
+    homeDirectory = "/home/pholi";
+    packages = with pkgs; [
+      neofetch
+    ];
+    sessionVariables = {
+      EDITOR = "emacs";
+      ASDF = "asdf";
+    };
+  };
+
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -40,6 +53,4 @@
   ];
 
   programs.home-manager.enable = true;
-
-  home.stateVersion = "24.05";
 }

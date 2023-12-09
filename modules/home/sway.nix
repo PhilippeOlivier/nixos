@@ -56,6 +56,9 @@
         # Move workspaces between monitors
         "${modifier}+Control+Shift+Left" = "move workspace to output left";
         "${modifier}+Control+Shift+Right" = "move workspace to output right";
+
+        # script test (set env variable for the rtmin signal)
+        "XF86AudioLowerVolume" = "";
       };
       modes.resize = {
         Escape = "mode default";
@@ -72,6 +75,12 @@
   # Terminal
   programs.alacritty = {
     enable = true;
+    settings = {
+      env.TERM = "alacritty";
+      font = {
+        size = 20.0;
+      };
+    };
   };
 
   # Desktop notifications

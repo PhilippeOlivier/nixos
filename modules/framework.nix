@@ -14,7 +14,7 @@
 
   boot = {
     blacklistedKernelModules = [ 
-      "hid-sensor-hub"  # Fix to make the brightness and airplane mode keys work
+      "hid-sensor-hub"  # Fix to make the brightness and airplane mode keys work (also disables ambient light sensor)
       "cros_ec_lpcs"  # Fixes some crashes during sleep
       "cros-usbpd-charger"  # Causes boot time error log
     ];

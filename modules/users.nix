@@ -15,6 +15,7 @@
     # hashedPassword = "$y$j9T$/agu8wY6h/PB20gbxj6aC.$JEuBPcl7F5crecpUFQ3SH.cEsNjMYD.8JnHArimSAt/";
     description = "Philippe Olivier";
     home = "/home/pholi";
+    # shell = pkgs.bash;
     extraGroups = [ "wheel" "docker" ];
   };
 }

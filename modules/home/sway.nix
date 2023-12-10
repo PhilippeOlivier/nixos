@@ -58,7 +58,7 @@
         "${modifier}+Control+Shift+Right" = "move workspace to output right";
 
         # script test (set env variable for the rtmin signal)
-        "XF86AudioLowerVolume" = "";
+        # "XF86AudioLowerVolume" = "";
       };
       modes.resize = {
         Escape = "mode default";
@@ -68,6 +68,8 @@
         Right = "resize grow width 10 px or 5 ppt";
         Up = "resize shrink height 10 px or 5 ppt";
         Down = "resize grow height 10 px or 5 ppt";
+      };
+      bars = {
       };
     };
   };

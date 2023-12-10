@@ -69,8 +69,8 @@
         Up = "resize shrink height 10 px or 5 ppt";
         Down = "resize grow height 10 px or 5 ppt";
       };
-      bars = {
-      };
+      bars = [
+      ];
     };
   };
 

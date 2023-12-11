@@ -76,29 +76,23 @@
           mode = "dock";
           position = "bottom";
           workspaceButtons = true;
-          workspaceNumbers = false;
-          statusCommand = "~/asdf.sh";
-          # separator = "|";
-        }
-        {
-          mode = "dock";
-          position = "bottom";
-          workspaceButtons = true;
-          workspaceNumbers = false;
-          statusCommand = "~/asdf.sh";
-          # separator = "|";
+          workspaceNumbers = true;
+          statusCommand = "${pkgs.waybar}/bin/waybar";
         }
       ];
     };
   };
 
-  # Waybar NO, switch to i3status-rust: https://github.com/greshake/i3status-rust
-  # programs.waybar = {
-  #   enable = true;
-  #   settings = [
+  # Status bar
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    systemd.target = "sway-session.target";
+    # style =''''
+    # settings = [
       
-  #   ];
-  # };
+    # ];
+  };
 
   # Terminal
   programs.alacritty = {

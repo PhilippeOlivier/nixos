@@ -89,9 +89,9 @@
     systemd.enable = true;
     systemd.target = "sway-session.target";
     # style =''''
-    # settings = [
+    settings = [
       
-    # ];
+    ];
   };
 
   # Terminal

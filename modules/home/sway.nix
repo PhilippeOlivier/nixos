@@ -75,6 +75,7 @@
           position = "bottom";
           workspaceButtons = true;
           workspaceNumbers = false;
+          separatorSymbol = "|";
         }
       ];
     };

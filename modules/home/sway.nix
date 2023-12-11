@@ -69,10 +69,21 @@
         Up = "resize shrink height 10 px or 5 ppt";
         Down = "resize grow height 10 px or 5 ppt";
       };
-      # bars = [
-      # ];
+      bars = [
+        {
+          mode = "dock";
+        };
+      ];
     };
   };
+
+  # Waybar NO, switch to i3status-rust: https://github.com/greshake/i3status-rust
+  # programs.waybar = {
+  #   enable = true;
+  #   settings = [
+      
+  #   ];
+  # };
 
   # Terminal
   programs.alacritty = {

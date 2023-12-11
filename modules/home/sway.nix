@@ -75,7 +75,7 @@
           position = "bottom";
           workspaceButtons = true;
           workspaceNumbers = false;
-          statusCommand = "echo asdf";
+          statusCommand = "~/asdf.sh";
           # separator = "|";
         }
       ];

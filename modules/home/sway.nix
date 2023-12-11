@@ -80,6 +80,14 @@
           statusCommand = "~/asdf.sh";
           # separator = "|";
         }
+        {
+          mode = "dock";
+          position = "bottom";
+          workspaceButtons = true;
+          workspaceNumbers = false;
+          statusCommand = "~/asdf.sh";
+          # separator = "|";
+        }
       ];
     };
   };

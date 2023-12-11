@@ -75,7 +75,8 @@
           position = "bottom";
           workspaceButtons = true;
           workspaceNumbers = false;
-          separator = "|";
+          statusCommand = "echo asdf";
+          # separator = "|";
         }
       ];
     };

@@ -70,7 +70,12 @@
         Down = "resize grow height 10 px or 5 ppt";
       };
       bars = [
-        mode = "dock";
+        {
+          mode = "dock";
+          position = "bottom";
+          workspaceButtons = true;
+          workspaceNumbers = false;
+        }
       ];
     };
   };

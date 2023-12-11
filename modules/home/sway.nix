@@ -77,7 +77,7 @@
           position = "bottom";
           workspaceButtons = true;
           workspaceNumbers = false;
-          statusCommand = "${pkgs.i3status}/bin/i3status";
+          statusCommand = "/home/pholi/asdf.sh";
           # separator = "|";
         }
       ];

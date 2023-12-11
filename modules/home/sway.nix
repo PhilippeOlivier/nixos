@@ -77,7 +77,7 @@
           position = "bottom";
           workspaceButtons = true;
           workspaceNumbers = false;
-          statusCommand = "while date; do sleep 1; done";
+          statusCommand = "~/asdf.sh";
           # separator = "|";
         }
       ];

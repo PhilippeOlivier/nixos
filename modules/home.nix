@@ -12,10 +12,14 @@
     stateVersion = "24.05";
     username = "pholi";
     homeDirectory = "/home/pholi";
+    fonts.fontconfig.enable = true;
     packages = with pkgs; [
       brightnessctl  # Backlight
       neofetch
       htop
+
+      # Fonts
+      hack-font
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

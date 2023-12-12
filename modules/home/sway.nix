@@ -153,6 +153,7 @@
         };
         "custom/test" = {
           format = "ASDF {}";
+          max-length = 100;
           interval = "once";
           exec = "$HOME/nixos/modules/home/test.sh";
         };

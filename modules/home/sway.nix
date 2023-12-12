@@ -71,25 +71,61 @@
         Up = "resize shrink height 10 px or 5 ppt";
         Down = "resize grow height 10 px or 5 ppt";
       };
-      bars = [
-        # {
-        #   # mode = "dock";
-        #   # position = "bottom";
-        #   # workspaceButtons = true;
-        #   # workspaceNumbers = true;
-        #   statusCommand = "${pkgs.waybar}/bin/waybar";
-        # }
+      bars = [];
+      startup = [
+        {
+          command = "waybar";
+        }
       ];
-      startup = [{command = "waybar";}];
     };
   };
 
   # Status bar
   programs.waybar = {
     enable = true;
-    # systemd.enable = true;
-    # systemd.target = "sway-session.target";
-    # style =''''
+    style =''
+      * {
+          border: none;
+          font-family: "Hack";
+          font-size: 20px;
+      	margin: 1px 0px -1px 0px;
+      	/* color: #FFFFFF; */
+      }
+      
+      #waybar {
+          background: #000000;
+          color: #FFFFFF;
+      }
+      
+      #workspaces button {
+          padding: 2px 5px;
+          background: black;
+          color: white;
+          border-bottom: 3px solid transparent;
+      }
+      
+      #workspaces button:hover {
+      	color: #000000;
+          background: #DCDCDC;
+      	text-shadow: none;
+      	box-shadow: none;
+      }
+      
+      #workspaces button.focused {
+      	color: #000000;
+          background: #DCDCDC;
+      }
+      
+      #battery.warning, #pulseaudio.warning {
+          background: #FFFF00;
+          color: #000000;
+      }
+      
+      #battery.critical, #pulseaudio.critical {
+          background: #FF0000;
+          color: #000000;
+      }
+      ''
     settings = {
       mainBar = {
         layer = "top";

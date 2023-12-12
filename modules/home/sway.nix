@@ -138,10 +138,10 @@
         modules-left = [ "sway/workspaces" "sway/mode" ];
         # modules-center = [ "sway/window" "custom/hello-from-waybar" ];
         modules-right = [ "custom/hello-from-waybar" ];
-
+        spacing = 8;
         "sway/workspaces" = {
           disable-scroll = true;
-          all-outputs = true;
+          # all-outputs = true;
         };
         "custom/hello-from-waybar" = {
           format = "hello {}";

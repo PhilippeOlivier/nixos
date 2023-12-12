@@ -154,7 +154,7 @@
         "custom/test" = {
           format = "{}";
           interval = "once";
-          exec = "test.sh";
+          exec = "$HOME/nixos/modules/home/test.sh";
         };
       };
     };

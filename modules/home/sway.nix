@@ -85,7 +85,7 @@
 
   # Status bar
   programs.waybar = {
-    enable = true;
+    # enable = true;
     # systemd.enable = true;
     # systemd.target = "sway-session.target";
     # style =''''

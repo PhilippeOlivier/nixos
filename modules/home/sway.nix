@@ -141,15 +141,14 @@
           "sway/mode"
         ];
         modules-right = [
-          "custom/hello-from-waybar"
-          "custom/test"
+          "custom/clock"
         ];
         "sway/workspaces" = {
           disable-scroll = true;
           # all-outputs = true;
         };
         "custom/clock": {
-          "exec": pkgs.writeShellScript "custom-clock" ''
+          exec: pkgs.writeShellScript "custom-clock" ''
             date +'%a %-d %b %-H:%M'
           '';
 	        # "on-click": "gsimplecal",

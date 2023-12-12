@@ -125,7 +125,7 @@
           background: #FF0000;
           color: #000000;
       }
-      ''
+      '';
     settings = {
       mainBar = {
         layer = "top";

@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/boot.nix
+    ./modules/fonts.nix
     ./modules/framework.nix
     ./modules/network.nix
     ./modules/system.nix

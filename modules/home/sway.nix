@@ -9,9 +9,7 @@
       window = {
         titlebar = false;  # Hide window title bars
         commands = [
-          for_window = {
-            [app_id="gsimplecal"] move position 100 100 #2034 1272
-          };
+          for_window [app_id="gsimplecal"] move position 100 100;
         ];
       };
       terminal = "alacritty";

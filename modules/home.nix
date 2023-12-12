@@ -12,7 +12,6 @@
     stateVersion = "24.05";
     username = "pholi";
     homeDirectory = "/home/pholi";
-    fonts.fontconfig.enable = true;
     packages = with pkgs; [
       brightnessctl  # Backlight
       neofetch
@@ -36,6 +35,7 @@
     };
   };
 
+  fonts.fontconfig.enable = true;
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;

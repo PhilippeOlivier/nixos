@@ -148,7 +148,7 @@
           # all-outputs = true;
         };
         "custom/clock" = {
-          exec: pkgs.writeShellScript "custom-clock" ''
+          exec = pkgs.writeShellScript "custom-clock" ''
             date +'%a %-d %b %-H:%M'
           '';
 	        # "on-click": "gsimplecal",

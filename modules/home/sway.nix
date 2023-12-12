@@ -137,7 +137,7 @@
         # ];
         modules-left = [ "sway/workspaces" "sway/mode" ];
         # modules-center = [ "sway/window" "custom/hello-from-waybar" ];
-        modules-right = [ "custom/hello-from-waybar" ];
+        modules-right = [ "custom/hello-from-waybar" "custom/test" ];
         spacing = 8;
         "sway/workspaces" = {
           disable-scroll = true;

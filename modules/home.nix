@@ -15,6 +15,7 @@
     packages = with pkgs; [
       brightnessctl  # Backlight
       neofetch
+      htop
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

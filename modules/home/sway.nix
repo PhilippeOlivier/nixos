@@ -125,23 +125,35 @@
           background: #FF0000;
           color: #000000;
       }
-      '';
+    '';
     settings = {
       mainBar = {
         layer = "top";
         position = "bottom";
+        spacing = 8;
         # height = 30;
         # output = [
         #   "eDP-1"
         #   "HDMI-A-1"
         # ];
-        modules-left = [ "sway/workspaces" "sway/mode" ];
-        # modules-center = [ "sway/window" "custom/hello-from-waybar" ];
-        modules-right = [ "custom/hello-from-waybar" "custom/test" ];
-        spacing = 8;
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
+        modules-right = [
+          "custom/hello-from-waybar"
+          "custom/test"
+        ];
         "sway/workspaces" = {
           disable-scroll = true;
           # all-outputs = true;
+        };
+        "custom/clock": {
+          "exec": pkgs.writeShellScript "custom-clock" ''
+            date +'%a %-d %b %-H:%M'
+          '';
+	        # "on-click": "gsimplecal",
+    	    interval = 5;
         };
       #   "custom/hello-from-waybar" = {
       #     format = "hello {}";
@@ -153,7 +165,6 @@
       #   };
         "custom/test" = {
           format = "ASDF {}";
-          max-length = 100;
           interval = "once";
           exec = "$HOME/nixos/modules/home/test.sh";
         };

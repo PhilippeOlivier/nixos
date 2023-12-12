@@ -72,20 +72,21 @@
         Down = "resize grow height 10 px or 5 ppt";
       };
       bars = [
-        {
-          # mode = "dock";
-          # position = "bottom";
-          # workspaceButtons = true;
-          # workspaceNumbers = true;
-          statusCommand = "${pkgs.waybar}/bin/waybar";
-        }
+        # {
+        #   # mode = "dock";
+        #   # position = "bottom";
+        #   # workspaceButtons = true;
+        #   # workspaceNumbers = true;
+        #   statusCommand = "${pkgs.waybar}/bin/waybar";
+        # }
       ];
+      startup = [{command = "waybar";}];
     };
   };
 
   # Status bar
   programs.waybar = {
-    # enable = true;
+    enable = true;
     # systemd.enable = true;
     # systemd.target = "sway-session.target";
     # style =''''

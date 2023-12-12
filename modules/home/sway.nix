@@ -147,7 +147,7 @@
           disable-scroll = true;
           # all-outputs = true;
         };
-        "custom/clock": {
+        "custom/clock" = {
           exec: pkgs.writeShellScript "custom-clock" ''
             date +'%a %-d %b %-H:%M'
           '';

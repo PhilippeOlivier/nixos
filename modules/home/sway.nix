@@ -153,7 +153,7 @@
           exec = pkgs.writeShellScript "custom-clock" ''
             date +'%a %-d %b %-H:%M'
           '';
-	        "on-click": "gsimplecal",
+	        on-click = "gsimplecal",
     	    interval = 5;
         };
       #   "custom/hello-from-waybar" = {

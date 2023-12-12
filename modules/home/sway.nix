@@ -151,6 +151,11 @@
         echo "from within waybar"
       '';
         };
+        "custom/test" = {
+          format = "{}";
+          interval = "once";
+          exec = "test.sh";
+        };
       };
     };
   };

@@ -17,8 +17,8 @@
       neofetch
       htop
 
-      # Fonts
-      hack-font
+      # # Fonts
+      # hack-font
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?
@@ -34,8 +34,6 @@
       reboot = "emacsclient -e '(save-some-buffers t)' && reboot";  # Save all Emacs buffers before rebooting
     };
   };
-
-  fonts.fontconfig.enable = true;
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;

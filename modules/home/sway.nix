@@ -8,6 +8,11 @@
     config = rec {
       window = {
         titlebar = false;  # Hide window title bars
+        commands = [
+          for_window = {
+            [app_id="gsimplecal"] move position 100 100 #2034 1272
+          };
+        ];
       };
       terminal = "alacritty";
       modifier = "Mod4";  # The modifier key is the Super/Windows key

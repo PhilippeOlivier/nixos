@@ -17,8 +17,8 @@
       neofetch
       htop
 
-      # # Fonts
-      # hack-font
+      # For Waybar
+      gsimplecal
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

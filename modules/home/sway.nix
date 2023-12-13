@@ -5,7 +5,6 @@
     enable = true;
     xwayland = true;
     wrapperFeatures.gtk = true;
-    #2362:628:PIXA3854:00_093A:0274_Touchpad
     extraConfig = ''
       # TrackPad configuration (the command `swaymsg -t get_inputs` will list the names of the inputs)
       input "2:7:SynPS/2_Synaptics_TouchPad" {
@@ -161,6 +160,7 @@
           "sway/mode"
         ];
         modules-right = [
+          "custom/brightness"
           "custom/separator"
           "custom/clock"
         ];
@@ -170,12 +170,21 @@
           # all-outputs = true;
         };
 
+        "custom/brightness" = {
+          exec = pkgs.writeShellScript "custom-brightness" ''
+            echo Br $(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()')
+          '';
+    	    interval = "once";
+          tooltip = false;
+        };
+
         "custom/clock" = {
           exec = pkgs.writeShellScript "custom-clock" ''
             date +'%a %-d %b %-H:%M'
           '';
 	        on-click = "gsimplecal";
     	    interval = 5;
+          tooltip = false;
         };
 
         "custom/separator" = {
@@ -183,6 +192,7 @@
             echo "|"
           '';
     	    interval = "once";
+          tooltip = false;
         };
       #   "custom/hello-from-waybar" = {
       #     format = "hello {}";

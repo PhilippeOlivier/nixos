@@ -169,7 +169,7 @@
 
         "custom/separator" = {
           exec = pkgs.writeShellScript "custom-separator" ''
-            echo asdf
+            echo "|"
           '';
     	    interval = "once";
         };

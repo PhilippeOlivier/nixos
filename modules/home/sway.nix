@@ -5,7 +5,18 @@
     enable = true;
     xwayland = true;
     wrapperFeatures.gtk = true;
+    #2362:628:PIXA3854:00_093A:0274_Touchpad
     extraConfig = ''
+      # TrackPad configuration (the command `swaymsg -t get_inputs` will list the names of the inputs)
+      input "2:7:SynPS/2_Synaptics_TouchPad" {
+        tap enabled
+        natural_scroll disabled
+        dwt enabled
+        accel_profile "flat"
+        pointer_accel 0.5
+        scroll_method two_finger
+      }
+
       # Position gsimplecal in the bottom right corner
       for_window [app_id="gsimplecal"] move position 2034 1272
 

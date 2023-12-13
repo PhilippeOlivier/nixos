@@ -207,6 +207,7 @@
           format = "Vol {volume}%";
 		      format-muted = "Vol {volume}% (M)";
           max-volume = 200.0;
+          scroll-step = 0;
 		      tooltip = false;
           states = {
             warning = 101;

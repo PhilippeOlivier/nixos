@@ -35,6 +35,23 @@
     };
   };
 
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
+
+  # Bluetooth
+  hardware = {
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+  };
+
   # Video
   hardware.opengl = {
     enable = true;

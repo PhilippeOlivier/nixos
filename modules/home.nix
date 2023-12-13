@@ -16,12 +16,17 @@
       brightnessctl
       htop
 
-      # Sway-specifig
+      # Sway-specific
       swayidle
       swaylock
 
-      # Waybar-specifig
+      # Waybar-specific
       gsimplecal
+
+      # Audio
+      bluez
+      pipewire
+      wireplumber
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

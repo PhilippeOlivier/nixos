@@ -38,9 +38,12 @@
         "${modifier}+f" = "fullscreen";  # Make the current focus fullscreen
         "${modifier}+r" = "mode resize";  # Resize window
         "${modifier}+l" = "exec swaylock -Ffkl -c 000000"; # Lock manually
-        "XF86MonBrightnessUp" = "exec brightnessctl set +5% && pkill -RTMIN+11 waybar";
-        "XF86MonBrightnessDown" = "exec brightnessctl set 5%- && pkill -RTMIN+11 waybar";
-        
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5% && pkill -RTMIN+11 waybar";  # Brightness up
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%- && pkill -RTMIN+11 waybar";  # Brightness down
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 2.0 @DEFAULT_AUDIO_SINK@ 5%+";  # Volume up
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";  # Volume down
+        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";  # Mute/unmute volume
+
         # Change focus in workspace
         "${modifier}+Left" = "focus left";
         "${modifier}+Right" = "focus right";
@@ -164,6 +167,8 @@
         modules-right = [
           "custom/brightness"
           "custom/separator"
+          "wireplumber"
+          "custom/separator"
           "custom/clock"
         ];
 
@@ -197,6 +202,21 @@
     	    interval = "once";
           tooltip = false;
         };
+
+        "wireplumber" = {
+          format = "Vol {volume}%";
+		      format-muted = "Vol {volume}% (M)";
+          max-volume = 200.0;
+		      tooltip = false;
+          states = {
+            warning = 101;
+            critical = 151;
+		      };
+        };
+        
+
+
+    }
       #   "custom/hello-from-waybar" = {
       #     format = "hello {}";
       #     max-length = 40;

@@ -210,7 +210,7 @@
           scroll-step = 0;
 		      tooltip = false;
           states = {
-            warning = 101;
+            warning = 0;
             critical = 151;
 		      };
         };

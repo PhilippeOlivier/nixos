@@ -140,12 +140,12 @@
         background: #DCDCDC;
       }
       
-      #battery.warning, #pulseaudio.warning {
+      #battery.warning, #wireplumber.warning {
           background: #FFFF00;
           color: #000000;
       }
       
-      #battery.critical, #pulseaudio.critical {
+      #battery.critical, #wireplumber.critical {
           background: #FF0000;
           color: #000000;
       }
@@ -210,7 +210,7 @@
           scroll-step = 0;
 		      tooltip = false;
           states = {
-            warning = 0;
+            warning = 101;
             critical = 151;
 		      };
         };

@@ -214,9 +214,6 @@
 		      };
         };
         
-
-
-    }
       #   "custom/hello-from-waybar" = {
       #     format = "hello {}";
       #     max-length = 40;

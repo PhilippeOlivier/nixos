@@ -6,7 +6,13 @@
     xwayland = true;
     wrapperFeatures.gtk = true;
     extraConfig = ''
-      for_window [app_id="gsimplecal"] move position 100 100
+      # Position gsimplecal in the bottom right corner
+      for_window [app_id="gsimplecal"] move position 2034 1272
+
+      # If any program is full screen, do not suspend
+      # Source: https://stackoverflow.com/a/68787102/1725856
+      for_window [class=".*"] inhibit_idle fullscreen
+      for_window [app_id=".*"] inhibit_idle fullscreen
     '';
     config = rec {
       window = {
@@ -21,6 +27,7 @@
         "${modifier}+Shift+e" = "exec swaymsg exit";  # Exit sway
         "${modifier}+f" = "fullscreen";  # Make the current focus fullscreen
         "${modifier}+r" = "mode resize";  # Resize window
+        "${modifier}+l" = "exec swaylock -Ffkl -c 000000"; # Lock manually
 
         # Change focus in workspace
         "${modifier}+Left" = "focus left";
@@ -91,8 +98,7 @@
           border: none;
           font-family: "Hack";
           font-size: 20px;
-      	margin: 1px 0px -1px 0px;
-      	/* color: #FFFFFF; */
+          margin: 1px 0px -1px 0px;
       }
       
       #waybar {
@@ -109,14 +115,14 @@
       
       #workspaces button:hover {
       	color: #000000;
-          background: #DCDCDC;
+        background: #DCDCDC;
       	text-shadow: none;
       	box-shadow: none;
       }
       
       #workspaces button.focused {
       	color: #000000;
-          background: #DCDCDC;
+        background: #DCDCDC;
       }
       
       #battery.warning, #pulseaudio.warning {
@@ -144,6 +150,7 @@
           "sway/mode"
         ];
         modules-right = [
+          "custom/separator"
           "custom/clock"
         ];
 
@@ -158,6 +165,13 @@
           '';
 	        on-click = "gsimplecal";
     	    interval = 5;
+        };
+
+        "custom/separator" = {
+          exec = pkgs.writeShellScript "custom-separator" ''
+            echo |
+          '';
+    	    interval = "once";
         };
       #   "custom/hello-from-waybar" = {
       #     format = "hello {}";

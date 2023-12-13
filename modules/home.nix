@@ -13,11 +13,14 @@
     username = "pholi";
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
-      brightnessctl  # Backlight
-      neofetch
+      brightnessctl
       htop
 
-      # For Waybar
+      # Sway-specifig
+      swayidle
+      swaylock
+
+      # Waybar-specifig
       gsimplecal
     ];
     sessionVariables = {

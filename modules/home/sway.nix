@@ -206,12 +206,12 @@
         "wireplumber" = {
           format = "Vol {volume}%";
 		      format-muted = "Vol {volume}% (M)";
-          # max-volume = 200.0;
-		      # tooltip = false;
-          # states = {
-          #   warning = 101;
-          #   critical = 151;
-		      # };
+          max-volume = 200.0;
+		      tooltip = false;
+          states = {
+            warning = 101;
+            critical = 151;
+		      };
         };
         
       #   "custom/hello-from-waybar" = {

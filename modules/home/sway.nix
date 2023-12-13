@@ -38,7 +38,9 @@
         "${modifier}+f" = "fullscreen";  # Make the current focus fullscreen
         "${modifier}+r" = "mode resize";  # Resize window
         "${modifier}+l" = "exec swaylock -Ffkl -c 000000"; # Lock manually
-
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5% && pkill -RTMIN+11 waybar";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%- && pkill -RTMIN+11 waybar";
+        
         # Change focus in workspace
         "${modifier}+Left" = "focus left";
         "${modifier}+Right" = "focus right";
@@ -176,6 +178,7 @@
           '';
     	    interval = "once";
           tooltip = false;
+          signal = 11;
         };
 
         "custom/clock" = {

@@ -179,7 +179,8 @@
 
         "custom/brightness" = {
           exec = pkgs.writeShellScript "custom-brightness" ''
-            echo Br $(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()')
+            BR="$(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()')" && \
+            echo "Br $BR"
           '';
     	    interval = "once";
           tooltip = false;

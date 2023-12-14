@@ -186,20 +186,19 @@ BATTERY="BAT1"
 
 # If the battery does not exist, show an error.
 if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
-    echo asdf
-    #echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
+    echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
 
 # Otherwise, show the battery information
 else
     PERCENTAGE="$(acpi -b | cut -d ',' -f 2 | tr -d '[:blank:]')"
 
     # Show a desktop notification when the battery is low.
-    if [[ \$\{PERCENTAGE%?^^\} -le 10 ]]; then
+    if [[ \$\{PERCENTAGE%?\} -le 10 ]]; then
         notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
     fi
 
     STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-    # STATUS=\$\{STATUS:1^^\}  # Remove leading space
+    # STATUS=\$\{STATUS:1\}  # Remove leading space
 
     REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
     REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time
@@ -216,9 +215,9 @@ else
     OUTPUT="$PERCENTAGE $STATUS ($REMAINING)"
 
     # Colorize the output
-    if [[ \$\{PERCENTAGE%?^^\} -le 10 ]]; then
+    if [[ \$\{PERCENTAGE%?\} -le 10 ]]; then
         OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
-    elif [[ \$\{PERCENTAGE%?^^\} -le 15 ]]; then
+    elif [[ \$\{PERCENTAGE%?\} -le 15 ]]; then
         OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
     fi
     

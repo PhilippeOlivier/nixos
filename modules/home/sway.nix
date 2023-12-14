@@ -230,11 +230,23 @@
         };
 
         "custom/battery-daemon" = {
-          exec = pkgs.writeShellScript "custom-battery" ''
-          while true; do
+          exec = pkgs.writeShellScript "custom-battery-daemon" ''
+            BATTERY="BAT1"
+
+            # If the battery does not exit, exit
+            if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
+                exit
+            fi
+
+            # An update is triggered when the battery status changes (`inotifywait`), or every 30 seconds
+            # (--timeout 25 + sleep 5). An update cannot be triggered more than once every 5 seconds (sleep 5).
+            while true; do
+                # Monitor the status of the battery.
+                if ! inotifywait --quiet --timeout 25 --event access /sys/class/power_supply/$BATTERY/status &> /dev/null; then
+                    sleep 5
+                fi
                 pkill -RTMIN+12 waybar
-                sleep 2
-          done
+            done
           '';
     	    interval = "once";
           tooltip = false;

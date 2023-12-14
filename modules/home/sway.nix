@@ -216,15 +216,7 @@
             critical = 151;
 		      };
         };
-        
-      #   "custom/hello-from-waybar" = {
-      #     format = "hello {}";
-      #     max-length = 40;
-      #     interval = "once";
-      #     exec = pkgs.writeShellScript "hello-from-waybar" ''
-      #   echo "from within waybar"
-      # '';
-      #   };
+
         "custom/test" = {
           format = "ASDF {}";
           interval = "once";

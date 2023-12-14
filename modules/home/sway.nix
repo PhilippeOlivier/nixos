@@ -290,7 +290,7 @@
                 COLOR="#FFFF00"
             fi
 
-            echo "<span color=$COLOR><b>Vol $OUTPUT</b></span>"
+            echo "<span color="$COLOR"><b>Vol $OUTPUT</b></span>"
 
             notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "<span color=$COLOR font='50px'><b>$OUTPUT</b></span>"
           '';

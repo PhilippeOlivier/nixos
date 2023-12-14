@@ -181,7 +181,7 @@
           exec = pkgs.writeShellScript "custom-brightness" ''
             BR="$(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()')" && \
             echo "Br $BR" && \
-            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "BRIGHTNESS" "<span color='#FFFFFF' font='50px'><b>$BR</b></span>"
+            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "''${BRIGHTNESS}" "<span color='#FFFFFF' font='50px'><b>$BR</b></span>"
           '';
     	    interval = "once";
           tooltip = false;

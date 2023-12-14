@@ -166,6 +166,7 @@
         ];
         modules-right = [
           "custom/battery"
+          "custom/battery-daemon"
           "custom/separator"
           "custom/brightness"
           "custom/separator"
@@ -182,7 +183,18 @@
         "custom/battery" = {
           exec = pkgs.writeShellScript "custom-battery" ''
           date
-          sleep 1
+          '';
+    	    interval = "once";
+          tooltip = false;
+          signal = 12;
+        };
+
+        "custom/battery-daemon" = {
+          exec = pkgs.writeShellScript "custom-battery" ''
+          while true; do
+                pkill -RTMIN+12 waybar
+                sleep 2
+          done
           '';
     	    interval = "once";
           tooltip = false;

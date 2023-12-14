@@ -217,12 +217,12 @@ else
 
     # Colorize the output
     if [[ $PERCENTAGE_INT -le 10 ]]; then
-        OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
+        OUTPUT2="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
     elif [[ $PERCENTAGE_INT -le 15 ]]; then
-        OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
+        OUTPUT2="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
     fi
     
-    echo "$OUTPUT"
+    echo "$OUTPUT2"
 fi
           '';
     	    interval = "once";

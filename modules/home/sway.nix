@@ -284,13 +284,16 @@
             OUTPUT="$VOLUME$MUTE"
 
             COLOR="#FFFFFF"
+            FOREGROUND="#000000"
             if [[ $VOLUME -gt 150 ]]; then
                 COLOR="#FF0000"
+                FOREGROUND="#FFFFFF"
             elif [[ $VOLUME -gt 100 ]]; then
                 COLOR="#FFFF00"
+                FOREGROUND="#FFFFFF"
             fi
 
-            echo "<span background=\"$COLOR\" foreground=\"#000000\">Vol $OUTPUT</span>"
+            echo "<span background=\"$COLOR\" foreground=\"$FOREGROUND\">Vol $OUTPUT</span>"
 
             notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "<span color=\"$COLOR\" font='50px'><b>$OUTPUT</b></span>"
           '';

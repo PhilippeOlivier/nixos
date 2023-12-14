@@ -198,7 +198,7 @@ else
     fi
 
     STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-    # STATUS=${STATUS:1}  # Remove leading space
+    # STATUS=\$\{STATUS:1^^\}  # Remove leading space
 
     REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
     REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time
@@ -214,12 +214,12 @@ else
 
     OUTPUT="$PERCENTAGE $STATUS ($REMAINING)"
 
-    # # Colorize the output
-    # if [[ ${PERCENTAGE%?} -le 10 ]]; then
-    #     OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
-    # elif [[ ${PERCENTAGE%?} -le 15 ]]; then
-    #     OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
-    # fi
+    # Colorize the output
+    if [[ \$\{PERCENTAGE%?^^\} -le 10 ]]; then
+        OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
+    elif [[ \$\{PERCENTAGE%?^^\} -le 15 ]]; then
+        OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
+    fi
     
     echo "$OUTPUT"
 fi

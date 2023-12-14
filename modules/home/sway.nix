@@ -245,8 +245,10 @@
                 exit
             fi
 
-            # An update is triggered when the battery status changes (`inotifywait`), or every 30 seconds
-            # (--timeout 25 + sleep 5). An update cannot be triggered more than once every 5 seconds (sleep 5).
+            # An update is triggered when:
+            #   1. The battery status changes (`inotifywait`).
+            #   2. The last update was 30 seconds ago (--timeout 25 + sleep 5).
+            # An update cannot be triggered more than once every 5 seconds (sleep 5).
             while true; do
                 # Monitor the status of the battery.
                 if ! inotifywait --quiet --timeout 25 --event access /sys/class/power_supply/$BATTERY/status &> /dev/null; then
@@ -281,21 +283,37 @@
 
         "custom/keyboard" = {
           exec = pkgs.writeShellScript "custom-keyboard" ''
-            CAPS_LOCK=$(cat "/sys/class/leds/input2::capslock/brightness")
-            
+            CAPS_LOCK=$(cat "/sys/class/leds/input1::capslock/brightness")
+
             if swaymsg -pt get_inputs | grep -q "Canadian (CSA)"; then
                 LAYOUT="FR"
             else
                 LAYOUT="EN"
             fi
-            
+
             if [[ $CAPS_LOCK -eq 1 ]]; then
                 echo "<span background=\"#FFFFFF\" foreground=\"#000000\">$LAYOUT</span>"
             else
                 echo "$LAYOUT"
             fi
           '';
-    	    interval = 1;
+    	    interval = "once";
+          tooltip = false;
+          signal = 14;
+        };
+
+        "custom/keyboard-daemon" = {
+          exec = pkgs.writeShellScript "custom-keyboard-daemon" ''
+            # This daemon triggers updates for the `custom/keyboard` module.
+            # An update is triggered when the keyboard layout changes or when the caps lock key is pressed.
+            while true; do
+                if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
+                    pkill -RTMIN+14 waybar
+                    echo ASDF
+                fi
+            done
+          '';
+    	    interval = "once";
           tooltip = false;
         };
 

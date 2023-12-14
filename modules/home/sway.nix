@@ -182,48 +182,48 @@
 
         "custom/battery" = {
           exec = pkgs.writeShellScript "custom-battery" ''
-BATTERY="BAT1"
+            BATTERY="BAT1"
 
-# If the battery does not exist, show an error.
-if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
-    echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
+            # If the battery does not exist, show an error.
+            if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
+                echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
 
-# Otherwise, show the battery information
-else
-    PERCENTAGE="$(acpi -b | cut -d ',' -f 2 | tr -d '[:blank:]')"
-    PERCENTAGE_INT="$(echo $PERCENTAGE | tr -d '%')"
+            # Otherwise, show the battery information
+            else
+                PERCENTAGE="$(acpi -b | cut -d ',' -f 2 | tr -d '[:blank:]')"
+                PERCENTAGE_INT="$(echo $PERCENTAGE | tr -d '%')"
 
-    # Show a desktop notification when the battery is low.
-    if [[ $PERCENTAGE_INT -le 10 ]]; then
-        notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
-    fi
+                # Show a desktop notification when the battery is low.
+                if [[ $PERCENTAGE_INT -le 10 ]]; then
+                    notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
+                fi
 
-    STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-    # STATUS=\$\{STATUS:1\}  # Remove leading space
+                STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
+                #STATUS=\$\{STATUS:1\}  # Remove leading space
 
-    REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
-    REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time
+                REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
+                REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time
 
-    # Format the status
-    if [[ $STATUS = "Not charging" ]]; then
-        STATUS="AC"
-    elif [[ $STATUS = "Discharging" ]]; then
-        STATUS="Di"
-    elif [[ $STATUS = "Charging" ]]; then
-        STATUS="Ch"
-    fi
+                # Format the status
+                if [[ $STATUS = "Not charging" ]]; then
+                    STATUS="AC"
+                elif [[ $STATUS = "Discharging" ]]; then
+                    STATUS="Di"
+                elif [[ $STATUS = "Charging" ]]; then
+                    STATUS="Ch"
+                fi
 
-    OUTPUT="$PERCENTAGE $STATUS ($REMAINING)"
+                OUTPUT="$PERCENTAGE $STATUS ($REMAINING)"
 
-    # Colorize the output
-    if [[ $PERCENTAGE_INT -le 10 ]]; then
-        OUTPUT2="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
-    elif [[ $PERCENTAGE_INT -le 15 ]]; then
-        OUTPUT2="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
-    fi
-    
-    echo "$OUTPUT2"
-fi
+                # Colorize the output
+                if [[ $PERCENTAGE_INT -le 10 ]]; then
+                    OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
+                elif [[ $PERCENTAGE_INT -le 15 ]]; then
+                    OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
+                fi
+
+                echo "$OUTPUT"
+            fi
           '';
     	    interval = "once";
           tooltip = false;

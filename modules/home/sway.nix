@@ -283,15 +283,16 @@
 
             OUTPUT="$VOLUME$MUTE"
 
+            COLOR="#FFFFFF"
             if [[ $VOLUME -gt 150 ]]; then
-                OUTPUT="<span color='#FF0000' font='50px'><b>Vol $OUTPUT</b></span>"
+                COLOR="#FF0000"
             elif [[ $VOLUME -gt 100 ]]; then
-                OUTPUT="<span color='#FFFF00' font='50px'><b>Vol $OUTPUT</b></span>"
+                COLOR="#FFFF00"
             fi
 
-            echo "Vol $OUTPUT"
+            echo "<span color=$COLOR><b>Vol $OUTPUT</b></span>"
 
-            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "$OUTPUT"
+            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "<span color=$COLOR font='50px'><b>$OUTPUT</b></span>"
           '';
     	    interval = "once";
           tooltip = false;

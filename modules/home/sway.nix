@@ -199,7 +199,7 @@
                 fi
 
                 STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-                STATUS=\$\{STATUS:1\}  # Remove leading space
+                STATUS=\$\{STATUS:1^^\}  # Remove leading space
 
                 REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
                 REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time

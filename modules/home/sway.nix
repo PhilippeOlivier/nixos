@@ -198,8 +198,7 @@
                     notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
                 fi
 
-                STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-                STATUS=\$\{STATUS:1^^\}  # Remove leading space
+                STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2 | tr -d ' ')"
 
                 REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
                 REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time

@@ -283,13 +283,13 @@
 
             OUTPUT="$VOLUME$MUTE"
 
-            FG="#000000"
-            BG="#FFFFFF"
+            FG="#FFFFFF"
+            BG="#000000"
             if [[ $VOLUME -gt 150 ]]; then
-                FG="#FFFFFF"
+                FG="#000000"
                 BG="#FF0000"
             elif [[ $VOLUME -gt 100 ]]; then
-                FG="#FFFFFF"
+                FG="#000000"
                 BG="#FFFF00"
             fi
 

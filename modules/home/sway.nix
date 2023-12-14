@@ -186,7 +186,8 @@ BATTERY="BAT1"
 
 # If the battery does not exist, show an error.
 if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
-    echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
+    echo asdf
+    #echo "<span background=\"#FFFF00\" foreground=\"#000000\">$BATTERY ERROR</span>"
 
 # Otherwise, show the battery information
 else

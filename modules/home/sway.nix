@@ -170,6 +170,7 @@
           "custom/battery-daemon"
           "custom/separator"
           "custom/keyboard"
+          "custom/keyboard-daemon"
           "custom/separator"
           "custom/storage"
           "custom/separator"

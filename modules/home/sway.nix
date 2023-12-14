@@ -272,11 +272,43 @@
           tooltip = false;
         };
 
+        "custom/keyboard" = {
+          exec = pkgs.writeShellScript "custom-keyboard" ''
+            echo keyboard
+          '';
+    	    interval = 1;
+          tooltip = false;
+        };
+
+        "custom/mail" = {
+          exec = pkgs.writeShellScript "custom-mail" ''
+            echo mail
+          '';
+    	    interval = 30;
+          tooltip = false;
+        };
+
+        "custom/network" = {
+          exec = pkgs.writeShellScript "custom-network" ''
+            echo network
+          '';
+    	    interval = 5;
+          tooltip = false;
+        };
+
         "custom/separator" = {
           exec = pkgs.writeShellScript "custom-separator" ''
             echo "|"
           '';
     	    interval = "once";
+          tooltip = false;
+        };
+
+        "custom/storage" = {
+          exec = pkgs.writeShellScript "custom-storage" ''
+            echo storage
+          '';
+    	    interval = 30;
           tooltip = false;
         };
 

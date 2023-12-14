@@ -281,7 +281,19 @@
 
         "custom/keyboard" = {
           exec = pkgs.writeShellScript "custom-keyboard" ''
-            echo keyboard
+            CAPS_LOCK=$(cat "/sys/class/leds/input2::capslock/brightness")
+            
+            if swaymsg -pt get_inputs | grep -q "Canadian (CSA)"; then
+                LAYOUT="FR"
+            else
+                LAYOUT="EN"
+            fi
+            
+            if [[ $CAPS_LOCK -eq 1 ]]; then
+                echo "<span background=\"#FFFFFF\" foreground=\"#000000\">$LAYOUT</span>"
+            else
+                echo "$LAYOUT"
+            fi
           '';
     	    interval = 1;
           tooltip = false;
@@ -332,17 +344,20 @@
 
             FG="#FFFFFF"
             BG="#000000"
+            NOTIFIER="#FFFFFF"
             if [[ $VOLUME -gt 150 ]]; then
                 FG="#000000"
                 BG="#FF0000"
+                NOTIFIER="#FF0000"
             elif [[ $VOLUME -gt 100 ]]; then
                 FG="#000000"
                 BG="#FFFF00"
+                NOTIFIER="#FF0000"
             fi
 
             echo "<span background=\"$BG\" foreground=\"$FG\">Vol $OUTPUT</span>"
 
-            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "<span color=\"$BG\" font='50px'><b>$OUTPUT</b></span>"
+            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "<span color=\"$NOTIFIER\" font='50px'><b>$OUTPUT</b></span>"
           '';
     	    interval = "once";
           tooltip = false;

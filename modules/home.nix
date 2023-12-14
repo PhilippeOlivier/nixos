@@ -22,6 +22,7 @@
       swaylock
 
       # Waybar-specific
+      acpi
       gsimplecal
 
       # Audio

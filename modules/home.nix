@@ -23,6 +23,7 @@
 
       # Waybar-specific
       acpi
+      bc
       gsimplecal
 
       # Audio

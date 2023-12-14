@@ -40,9 +40,9 @@
         "${modifier}+l" = "exec swaylock -Ffkl -c 000000"; # Lock manually
         "XF86MonBrightnessUp" = "exec brightnessctl set +5% && pkill -RTMIN+11 waybar";  # Brightness up
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%- && pkill -RTMIN+11 waybar";  # Brightness down
-        "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 2.0 @DEFAULT_AUDIO_SINK@ 5%+";  # Volume up
-        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";  # Volume down
-        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";  # Mute/unmute volume
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 2.0 @DEFAULT_AUDIO_SINK@ 5%+ && pkill -RTMIN+13 waybar";  # Volume up
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && pkill -RTMIN+13 waybar";  # Volume down
+        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -RTMIN+13 waybar";  # Mute/unmute volume
 
         # Change focus in workspace
         "${modifier}+Left" = "focus left";
@@ -139,16 +139,6 @@
       	color: #000000;
         background: #DCDCDC;
       }
-      
-      #battery.warning, #wireplumber.warning {
-          background: #FFFF00;
-          color: #000000;
-      }
-      
-      #battery.critical, #wireplumber.critical {
-          background: #FF0000;
-          color: #000000;
-      }
     '';
     settings = {
       mainBar = {
@@ -170,7 +160,7 @@
           "custom/separator"
           "custom/brightness"
           "custom/separator"
-          "wireplumber"
+          "custom/volume"
           "custom/separator"
           "custom/clock"
         ];
@@ -231,9 +221,11 @@
 
         "custom/battery-daemon" = {
           exec = pkgs.writeShellScript "custom-battery-daemon" ''
+            # This daemon triggers updates for the `custom/battery` module.
+
             BATTERY="BAT1"
 
-            # If the battery does not exit, exit
+            # If the battery does not exist, exit
             if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
                 exit
             fi
@@ -280,16 +272,30 @@
           tooltip = false;
         };
 
-        "wireplumber" = {
-          format = "Vol {volume}%";
-		      format-muted = "Vol {volume}% (M)";
-          max-volume = 200.0;
-          scroll-step = 0;
-		      tooltip = false;
-          states = {
-            warning = 101;
-            critical = 151;
-		      };
+        "custom/volume" = {
+          exec = pkgs.writeShellScript "custom-volume" ''
+            VOLUME="$(echo "100 * $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2)" | bc | cut -d '.' -f 1)"
+
+            MUTE=""
+            if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
+            	MUTE=" (M)"
+            fi
+
+            OUTPUT="$VOLUME$MUTE"
+
+            if [[ $VOLUME -gt 150 ]]; then
+                OUTPUT="<span color='#FF0000' font='50px'><b>Vol $OUTPUT</b></span>"
+            elif [[ $VOLUME -gt 100 ]]; then
+                OUTPUT="<span color='#FFFF00' font='50px'><b>Vol $OUTPUT</b></span>"
+            fi
+
+            echo "Vol $OUTPUT"
+
+            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "VOLUME" "$OUTPUT"
+          '';
+    	    interval = "once";
+          tooltip = false;
+          signal=13;
         };
 
         "custom/test" = {

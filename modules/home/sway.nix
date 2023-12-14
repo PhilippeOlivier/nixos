@@ -181,47 +181,8 @@
 
         "custom/battery" = {
           exec = pkgs.writeShellScript "custom-battery" ''
-            # BATTERY="BAT1"
-            echo asdf
-            
-            # # An update is triggered when the battery status changes (`inotifywait`), or every 30 seconds
-            # # (--timeout 25 + sleep 5). An update cannot be triggered more than once every 5 seconds (sleep 5).
-            # while true; do
-            #     echo "Battery loading"
-            #     # Monitor the status of the battery (Not charging, Charging, Discharging).
-            #     # if ! inotifywait --quiet --timeout 25 --event access /sys/class/power_supply/$BATTERY/status &> /dev/null; then
-            #     #     # If the battery does not exist, show an error.
-            #     #     echo "Battery Error"
-            #     #     sleep 5
-            #     #     continue
-            #     # fi
-            
-            #     # PERCENTAGE="$(acpi -b | cut -d ',' -f 2 | tr -d '[:blank:]')"
-            
-            #     # # Show a desktop notification when the battery is low.
-            #     # if [[ $PERCENTAGE -le 10 ]]; then
-            #     #     notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
-            #     # fi
-            
-            #     # STATUS="$(acpi -b | cut -d ',' -f 1 | cut -d ':' -f 2)"
-            #     # STATUS=\$\{STATUS:1^^\}  # Remove leading space
-            
-            #     # REMAINING="$(acpi -b | cut -d ',' -f 3 | cut -d ' ' -f 2)"
-            #     # REMAINING="$(date -d $REMAINING '+%-H:%M' 2> /dev/null)"  # Format the time
-            
-            #     # # Format the status
-            #     # if [[ $STATUS = "Not charging" ]]; then
-            #     #     STATUS="AC"
-            #     # elif [[ $STATUS = "Discharging" ]]; then
-            #     #     STATUS="Di"
-            #     # elif [[ $STATUS = "Charging" ]]; then
-            #     #     STATUS="Ch"
-            #     # fi
-            
-            #     # echo "$PERCENTAGE $STATUS ($REMAINING)"
-            
-            #     sleep 5
-            # done
+          date
+          sleep 1
           '';
     	    interval = "once";
           tooltip = false;

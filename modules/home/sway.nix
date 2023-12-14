@@ -191,9 +191,10 @@ if [[ ! -d /sys/class/power_supply/$BATTERY ]]; then
 # Otherwise, show the battery information
 else
     PERCENTAGE="$(acpi -b | cut -d ',' -f 2 | tr -d '[:blank:]')"
+    PERCENTAGE_INT="$(echo $PERCENTAGE | tr -d '%')"
 
     # Show a desktop notification when the battery is low.
-    if [[ \$\{PERCENTAGE%?\} -le 10 ]]; then
+    if [[ $PERCENTAGE_INT -le 10 ]]; then
         notify-send -h string:x-canonical-private-synchronous:anything -t 0 "BATTERY" "<span color='#FF0000' font='40px'><b>LOW BATTERY</b></span>"
     fi
 
@@ -215,9 +216,9 @@ else
     OUTPUT="$PERCENTAGE $STATUS ($REMAINING)"
 
     # Colorize the output
-    if [[ \$\{PERCENTAGE%?\} -le 10 ]]; then
+    if [[ $PERCENTAGE_INT -le 10 ]]; then
         OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$OUTPUT</span>"
-    elif [[ \$\{PERCENTAGE%?\} -le 15 ]]; then
+    elif [[ $PERCENTAGE_INT -le 15 ]]; then
         OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$OUTPUT</span>"
     fi
     

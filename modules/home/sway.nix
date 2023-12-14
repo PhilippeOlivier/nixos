@@ -16,6 +16,13 @@
         scroll_method two_finger
       }
 
+      # Keyboard layout (the command `swaymsg -t get_inputs` will list the names of the inputs)
+      input "1:1:AT_Translated_Set_2_keyboard" {
+          xkb_layout us,ca
+          xkb_variant ,multix
+          xkb_options grp:lalt_lshift_toggle
+      }
+
       # Position gsimplecal in the bottom right corner
       for_window [app_id="gsimplecal"] move position 2034 1272
 

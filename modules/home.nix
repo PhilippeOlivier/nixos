@@ -17,6 +17,7 @@
       htop
 
       # Sway-specific
+      libnotify
       swayidle
       swaylock
 

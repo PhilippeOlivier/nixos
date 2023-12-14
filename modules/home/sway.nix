@@ -186,6 +186,7 @@
             # An update is triggered when the battery status changes (`inotifywait`), or every 30 seconds
             # (--timeout 25 + sleep 5). An update cannot be triggered more than once every 5 seconds (sleep 5).
             while true; do
+                echo "Battery loading"
                 # Monitor the status of the battery (Not charging, Charging, Discharging).
                 if ! inotifywait --quiet --timeout 25 --event access /sys/class/power_supply/$BATTERY/status &> /dev/null; then
                     # If the battery does not exist, show an error.

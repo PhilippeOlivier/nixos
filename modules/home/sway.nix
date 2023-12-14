@@ -308,10 +308,11 @@
             # This daemon triggers updates for the `custom/keyboard` module.
             # An update is triggered when the keyboard layout changes or when the caps lock key is pressed.
             while true; do
-                if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
-                    pkill -RTMIN+14 waybar
-                    echo ASDF
-                fi
+                pkill -RTMIN+14 waybar
+                sleep 1
+                # if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
+                #     pkill -RTMIN+14 waybar
+                # fi
             done
           '';
     	    interval = "once";

@@ -12,8 +12,6 @@
     ./hardware-configuration.nix
   ];
 
-  security.polkit.enable = true;  # Required for sway with HM
-
   system.stateVersion = "24.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

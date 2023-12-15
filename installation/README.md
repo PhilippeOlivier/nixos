@@ -8,6 +8,11 @@ https://releases.nixos.org/nixos/unstable/nixos-24.05pre554114.e92039b55bcd
 $ sudo dd if=nixos-minimal-....-x86_64-linux.iso of=/dev/sdX bs=4M status=progress conv=fdatasync
 ```
 
+BIOS:
+- Make sure it is updated.
+- Disable secure boot.
+- Enable virtualization.
+
 Boot from the USB drive, then setup internet for the installation:
 
 ```bash

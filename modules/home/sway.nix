@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  security.polkit.enable = true;  # Required for sway with HM
-
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;

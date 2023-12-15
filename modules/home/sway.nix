@@ -403,7 +403,7 @@ if [[ $TRANSMISSION -eq 1 ]]; then
     TRANS_OUTPUT=" <span background=\"#FFFF00\" foreground=\"#000000\">T</span>"
 fi
 
-echo "$CON_OUTPUT$TRANS_OUTPUT$MULLVAD_OUTPUT"
+echo "$CON_OUTPUT$TRANS_OUTPUT$MULLVAD_OUTPUT$ETH_STATE$WIFI_STATE"
           '';
     	    interval = 5;
           tooltip = false;

@@ -6,6 +6,6 @@
       "ignoredups"
       "ignorespace"
     ];
-    promptInit = '''';
+    initExtra = ''PS1="[\u@\h \W]\$ "''
   };
 }

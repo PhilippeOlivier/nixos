@@ -6,6 +6,6 @@
       "ignoredups"
       "ignorespace"
     ];
-    initExtra = ''PS1="[\u@\h \W]\$ "''
+    initExtra = ''PS1="[\u@\h \W]\$ "'';
   };
 }

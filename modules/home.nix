@@ -25,6 +25,7 @@
       acpi
       bc
       gsimplecal
+      jq
 
       # Audio
       bluez

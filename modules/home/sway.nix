@@ -334,18 +334,75 @@
 
         "custom/mail" = {
           exec = pkgs.writeShellScript "custom-mail" ''
-            echo mail
+          # replace with exec = "$HOME/nixos/secrets/scripts/mail/waybar.sh";
           '';
-    	    interval = 30;
+    	    interval = "once";
           tooltip = false;
         };
 
         "custom/network" = {
           exec = pkgs.writeShellScript "custom-network" ''
-            echo network
+# These interfaces can be found using `ip link show`.
+WIFI_INTERFACE="wlp4s0"
+ETH_INTERFACE="enp0s31f6"
+
+# Check for internet connectivity.
+if wget -timeout=1 -q --spider http://www.google.com; then
+    CONNECTIVITY=1
+else
+    CONNECTIVITY=0
+fi
+
+# Check for wired and wifi connectivity.
+WIFI_STATE=$(cat "/sys/class/net/$WIFI_INTERFACE/carrier" 2> /dev/null)
+ETH_STATE=$(cat "/sys/class/net/$ETH_INTERFACE/carrier" 2> /dev/null)
+
+# Check if Transmission is running.
+[[ -z $(pgrep transmission) ]] && TRANSMISSION=0 || TRANSMISSION=1
+
+# Check if Mullvad VPN is running.
+if curl --connect-timeout 1 https://am.i.mullvad.net/connected 2> /dev/null | grep -q "You are connected to Mullvad"; then
+    MULLVAD_VPN=1
+else
+    MULLVAD_VPN=0
+fi
+
+# Construct connectivity output.
+
+# A cable is connected.
+if [[ $ETH_STATE -eq 1 ]]; then
+    CON_OUTPUT="Wired"
+# Neither a cable nor WiFi is connected.
+elif [[ $WIFI_STATE -eq 0 ]]; then
+    CON_OUTPUT="N/C"
+# Wifi is connected.
+else
+    QUALITY=$(grep "$WIFI_INTERFACE" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+    CON_OUTPUT="WiFi $QUALITY%"
+fi
+
+# Colorize connectivity output.
+if [[ $CONNECTIVITY -eq 0 ]]; then
+    CON_OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$CON_OUTPUT</span>"
+elif [[ $ETH_STATE -eq 0 ]] && [[ $QUALITY -lt 50 ]]; then
+    CON_OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$CON_OUTPUT</span>"
+fi
+
+# Construct Mullvad VPN output.
+if [[ $MULLVAD_VPN -eq 1 ]]; then
+    MULLVAD_OUTPUT=" <span background=\"#FFFFFF\" foreground=\"#000000\">MullvadVPN</span>"
+fi
+
+# Construct Transmission output.
+if [[ $TRANSMISSION -eq 1 ]]; then
+    TRANS_OUTPUT=" <span background=\"#FFFF00\" foreground=\"#000000\">T</span>"
+fi
+
+echo "$CON_OUTPUT$TRANS_OUTPUT$MULLVAD_OUTPUT"
           '';
     	    interval = 5;
           tooltip = false;
+          signal = 15;
         };
 
         "custom/separator" = {
@@ -358,6 +415,8 @@
 
         "custom/storage" = {
           exec = pkgs.writeShellScript "custom-storage" ''
+            # TODO: once ZFS is setup, simply get the AVAIL value from `zfs list`
+            # TODO: maybe change the interval to 5s?
             echo storage
           '';
     	    interval = 30;

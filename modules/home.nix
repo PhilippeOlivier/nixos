@@ -26,6 +26,7 @@
       bc
       gsimplecal
       jq
+      wget
 
       # Audio
       bluez

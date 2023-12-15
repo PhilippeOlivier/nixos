@@ -6,6 +6,6 @@
       "ignoredups"
       "ignorespace"
     ];
-    promptInit = "";
+    promptInit = '''';
   };
 }

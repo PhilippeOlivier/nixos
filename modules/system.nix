@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  security.polkit.enable = true;  # Required for sway with HM
+  # Required for sway with HM
+  security.polkit.enable = true;
 
   # Allow updating the firmware
   # Run `fwupdmgr update` to update

@@ -37,7 +37,7 @@
       BROWSER = "firefox";  # TODO: abs path?
       EDITOR = "emacs";  # TODO: abs path?
       MOZ_ENABLE_WAYLAND = "1";  # Run Firefox in Wayland mode
-      PS1 = "[\u@\h \W]\$ ";
+      # PS1 = "[\u@\h \W]\$ ";
       VISUAL = "emacs";  # TODO: abs path?
     };
     shellAliases = {

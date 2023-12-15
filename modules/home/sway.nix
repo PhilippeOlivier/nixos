@@ -170,7 +170,8 @@
           "custom/battery-daemon"
           "custom/separator"
           "custom/keyboard"
-          "custom/keyboard-daemon"
+          "custom/keyboard-capslock-daemon"
+          "custom/keyboard-layout-daemon"
           "custom/separator"
           "custom/storage"
           "custom/separator"
@@ -303,16 +304,28 @@
           signal = 14;
         };
 
-        "custom/keyboard-daemon" = {
+        "custom/keyboard-capslock-daemon" = {
           exec = pkgs.writeShellScript "custom-keyboard-daemon" ''
             # This daemon triggers updates for the `custom/keyboard` module.
-            # An update is triggered when the keyboard layout changes or when the caps lock key is pressed.
+            # An update is triggered when the caps lock key is pressed.
             while true; do
-                pkill -RTMIN+14 waybar
-                sleep 1
-                # if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
-                #     pkill -RTMIN+14 waybar
-                # fi
+                if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
+                    pkill -RTMIN+14 waybar
+                fi
+            done
+          '';
+    	    interval = "once";
+          tooltip = false;
+        };
+
+        "custom/keyboard-layout-daemon" = {
+          exec = pkgs.writeShellScript "custom-keyboard-daemon" ''
+            # This daemon triggers updates for the `custom/keyboard` module.
+            # An update is triggered when the keyboard layout changes.
+            swaymsg -m -t subscribe '["input"]' | while read event; do
+                if [[ $(echo $event | jq ".change") = "\"xkb_layout\"" ]]; then
+                    pkill -RTMIN+14 waybar
+                fi
             done
           '';
     	    interval = "once";

@@ -8,8 +8,6 @@
     ./home/sway.nix
   ];
 
-  security.polkit.enable = true;  # Required for sway with HM
-
   home = {
     stateVersion = "24.05";
     username = "pholi";

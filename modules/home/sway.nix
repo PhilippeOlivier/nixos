@@ -357,6 +357,11 @@ fi
 WIFI_STATE=$(cat "/sys/class/net/$WIFI_INTERFACE/carrier" 2> /dev/null)
 ETH_STATE=$(cat "/sys/class/net/$ETH_INTERFACE/carrier" 2> /dev/null)
 
+# Make sure that ETH_STATE has a value.
+if [[ -z $ETH_STATE ]]; then
+    ETH_STATE="0"
+fi
+
 # Check if Transmission is running.
 [[ -z $(pgrep transmission) ]] && TRANSMISSION=0 || TRANSMISSION=1
 

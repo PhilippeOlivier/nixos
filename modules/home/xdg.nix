@@ -2,8 +2,8 @@
   xdg = {
     enable = true;
     cacheHome = "/home/pholi/.cache";
-    configHome = "~/.config";
-    dataHome = "~/.local/share";
+    configHome = "/home/pholi/.config";
+    dataHome = "/home/pholi/.local/share";
     mimeApps = {
       enable = true;
       defaultApplications = {
@@ -29,6 +29,6 @@
         "text/x-tex" = "emacs.desktop";
       };
     };
-    stateHome = "~/.local/state";
+    stateHome = "/home/pholi/.local/state";
   };
 }

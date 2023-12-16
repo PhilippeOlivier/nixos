@@ -3,7 +3,7 @@
 {
   home = {
     packages = with pkgs; [
-      transmission
+      transmission-gtk
     ];
     file.".config/transmission/settings.json".text = ''
       {

@@ -1,9 +1,9 @@
 {
   xdg = {
     enable = true;
-    cacheHome = "$HOME/.cache";
-    configHome = "$HOME/.config";
-    dataHome = "$HOME/.local/share";
+    cacheHome = "~/.cache";
+    configHome = "~/.config";
+    dataHome = "~/.local/share";
     mimeApps = {
       defaultApplications = {
         "application/json" = "emacs.desktop";
@@ -28,6 +28,6 @@
         "text/x-tex" = "emacs.desktop";
       };
     };
-    stateHome = "$HOME/.local/state";
+    stateHome = "~/.local/state";
   };
 }

@@ -1,10 +1,11 @@
 {
   xdg = {
     enable = true;
-    cacheHome = "~/.cache";
+    cacheHome = "/home/pholi/.cache";
     configHome = "~/.config";
     dataHome = "~/.local/share";
     mimeApps = {
+      enable = true;
       defaultApplications = {
         "application/json" = "emacs.desktop";
         "application/pdf" = [ "zathura.desktop" "com.github.xournalpp.xournalpp.desktop" ];

@@ -1,0 +1,33 @@
+{
+  xdg = {
+    enable = true;
+    cacheHome = "$HOME/.cache";
+    configHome = "$HOME/.config";
+    dataHome = "$HOME/.local/share";
+    mimeApps = {
+      defaultApplications = {
+        "application/json" = "emacs.desktop";
+        "application/pdf" = [ "zathura.desktop" "com.github.xournalpp.xournalpp.desktop" ];
+        "application/postscript" = "zathura.desktop";
+        "application/x-shellscript" = "emacs.desktop";
+        "image/bmp" = "zathura.desktop";
+        "image/gif" = "zathura.desktop";
+        "image/jpeg" = "zathura.desktop";
+        "image/jpg" = "zathura.desktop";
+        "image/png" = "zathura.desktop";
+        "image/svg+xml" = "org.inkscape.Inkscape.desktop";
+        "image/tiff" = "zathura.desktop";
+        "text/csv" = [ "emacs.desktop" "libreoffice-calc.desktop" ];
+        "text/html" = [ "firefox.desktop" "emacs.desktop" ];
+        "text/markdown" = "emacs.desktop";
+        "text/plain" = "emacs.desktop";
+        "text/tab-separated-values" = "emacs.desktop";
+        "text/x-bibtex" = "emacs.desktop";
+        "text/x-c++src" = "emacs.desktop";
+        "text/x-makefile" = "emacs.desktop";
+        "text/x-tex" = "emacs.desktop";
+      };
+      stateHome = "$HOME/.local/state";
+    };
+  };
+}

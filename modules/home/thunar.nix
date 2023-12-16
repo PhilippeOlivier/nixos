@@ -16,6 +16,6 @@
     file.".config/xfce4/help.rc".text = ''
       auto-online=false
     '';
-    file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = "nixos/thunar.xml";
+    file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = "/home/pholi/nixos/thunar.xml";
   };
 }

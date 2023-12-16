@@ -12,7 +12,7 @@
 
   # We must set all interfaces individually
   networking.interfaces.wlp4s0.useDHCP = true;
-  # TODO: Ethernet
+  networking.interfaces.enp0s31f6.useDHCP = true;
   
   # WiFi networks
   networking.wireless.networks.AwesomenautsEXT.pskRaw = "6521e88582fdc0fda473fa548375627950a87185610768bed19eb41005409161";

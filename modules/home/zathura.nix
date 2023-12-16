@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    zathura
-  ];
-  home.file.".config/zathura/zathurarc".text = ''
-    set guioptions none
-  '';
+  home = {
+    packages = with pkgs; [
+      zathura
+    ];
+    file.".config/zathura/zathurarc".text = ''
+      set guioptions none
+    '';
+  };
 }

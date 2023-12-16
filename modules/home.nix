@@ -6,6 +6,8 @@
     ./home/git.nix
     ./home/shell.nix
     ./home/sway.nix
+    ./home/thunar.nix
+    ./home/transmission.nix
     ./home/xdg.nix
     ./home/zathura.nix
   ];
@@ -34,7 +36,6 @@
       wireplumber
 
       # Programs
-      # zathura
 
       # Utilities
       htop

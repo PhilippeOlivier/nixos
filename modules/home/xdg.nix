@@ -30,5 +30,17 @@
       };
     };
     stateHome = "/home/pholi/.local/state";
+    userDirs = {
+      enable = true;
+      desktop = "/home/pholi/temp/xdg/desktop";
+      documents = "/home/pholi/documents";
+      download = "/home/pholi/downloads";
+      extraConfig = "/home/pholi/temp/xdg/misc";
+      music = "/home/pholi/music";
+      pictures = "/home/pholi/pictures";
+      publicShare = "/home/pholi/temp/xdg/public";
+      templates = "/home/pholi/temp/xdg/templates";
+      videos = "/home/pholi/temp/xdg/videos";
+    };
   };
 }

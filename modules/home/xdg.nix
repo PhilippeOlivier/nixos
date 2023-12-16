@@ -27,7 +27,7 @@
         "text/x-makefile" = "emacs.desktop";
         "text/x-tex" = "emacs.desktop";
       };
-      stateHome = "$HOME/.local/state";
     };
+    stateHome = "$HOME/.local/state";
   };
 }

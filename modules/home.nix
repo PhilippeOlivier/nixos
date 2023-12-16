@@ -7,7 +7,7 @@
     ./home/shell.nix
     ./home/sway.nix
     ./home/xdg.nix
-    # ./home/zathura.nix
+    ./home/zathura.nix
   ];
 
   home = {

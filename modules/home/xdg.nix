@@ -32,6 +32,7 @@
     stateHome = "/home/pholi/.local/state";
     userDirs = {
       enable = true;
+      createDirectories = true;
       desktop = "/home/pholi/temp/xdg/desktop";
       documents = "/home/pholi/documents";
       download = "/home/pholi/downloads";

@@ -6,6 +6,7 @@
     ./home/git.nix
     ./home/shell.nix
     ./home/sway.nix
+    ./home/xdg.nix
   ];
 
   home = {

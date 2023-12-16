@@ -8,8 +8,8 @@
     ./home/sway.nix
     # ./home/thunar.nix
     # ./home/transmission.nix
-    ./home/xdg.nix
-    ./home/zathura.nix
+    # ./home/xdg.nix
+    # ./home/zathura.nix
   ];
 
   home = {

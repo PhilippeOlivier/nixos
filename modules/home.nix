@@ -7,6 +7,7 @@
     ./home/shell.nix
     ./home/sway.nix
     ./home/xdg.nix
+    ./home/zathura.nix
   ];
 
   home = {
@@ -14,10 +15,8 @@
     username = "pholi";
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
-      brightnessctl
-      htop
-
       # Sway-specific
+      brightnessctl
       libnotify
       swayidle
       swaylock
@@ -33,6 +32,12 @@
       bluez
       pipewire
       wireplumber
+
+      # Programs
+      zathura
+
+      # Utilities
+      htop
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

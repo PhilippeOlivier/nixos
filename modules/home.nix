@@ -5,6 +5,7 @@
     ./home/emacs.nix
     ./home/git.nix
     ./home/shell.nix
+    ./home/secrets.nix
     ./home/sway.nix
     ./home/thunar.nix
     ./home/transmission.nix

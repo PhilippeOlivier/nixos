@@ -8,9 +8,9 @@
     homedir = "/home/pholi/nixos/secrets/gnupg";
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  # };
   
   services.gpg-agent = {
     enable = true;

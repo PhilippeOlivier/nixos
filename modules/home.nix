@@ -36,6 +36,7 @@
       wireplumber
 
       # Programs
+      imv
 
       # Utilities
       htop

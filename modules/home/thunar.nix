@@ -7,7 +7,6 @@
       gnome.gvfs
       lrzip
       p7zip
-      zip
       xfce.thunar
       xfce.thunar-archive-plugin
       xfce.thunar-media-tags-plugin

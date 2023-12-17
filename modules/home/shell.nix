@@ -1,4 +1,12 @@
+{ config, pkgs, ... }:
+
 {
+  home = {
+    packages = with pkgs; [
+      tree
+    ];
+  };
+  
   programs.bash = {
     enable = true;
     historyControl = [

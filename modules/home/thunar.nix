@@ -14,15 +14,14 @@
       xfce.tumbler
       xfce.xfconf  # https://github.com/NixOS/nixpkgs/issues/65771
     ];
-    # file.".config/gtk-3.0/bookmarks".text = ''
-    #   file:///home/pholi/pedtsr/ongoing/pganalyze
-    #   file:///home/pholi/pedtsr/ongoing/integrated-reasoning
-    #   file:///home/pholi/pedtsr/ongoing/kaster
-    # '';
+    file.".config/gtk-3.0/bookmarks".text = ''
+      file:///home/pholi/pedtsr/ongoing/pganalyze
+      file:///home/pholi/pedtsr/ongoing/integrated-reasoning
+      file:///home/pholi/pedtsr/ongoing/kaster
+    '';
     file.".config/xfce4/help.rc".text = ''
       auto-online=false
     '';
-    # file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".source = "/home/pholi/nixos/thunar.xml";
     file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".text = ''
       <?xml version="1.0" encoding="UTF-8"?>
       

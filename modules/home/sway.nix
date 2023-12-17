@@ -1,6 +1,23 @@
 { config, pkgs, ... }:
 
 {
+  home = {
+    packages = with pkgs; [
+      # Sway
+      brightnessctl
+      libnotify  # Desktop notifications
+      swayidle
+      swaylock
+
+      # Waybar
+      acpi
+      bc
+      gsimplecal
+      jq
+      wget
+    ];
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;
@@ -484,5 +501,6 @@
   # Desktop notifications
   services.mako = {
     enable = true;
+    layer = "overlay";
   };
 }

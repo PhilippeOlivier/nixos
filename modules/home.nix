@@ -17,19 +17,6 @@
     username = "pholi";
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
-      # Sway-specific
-      brightnessctl
-      libnotify
-      swayidle
-      swaylock
-
-      # Waybar-specific
-      acpi
-      bc
-      gsimplecal
-      jq
-      wget
-
       # Audio
       bluez
       pipewire

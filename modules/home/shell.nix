@@ -3,8 +3,13 @@
 {
   home = {
     packages = with pkgs; [
+      bc
+      jq
       tree
+      unrar
+      unzip
       wget
+      zip
     ];
   };
   

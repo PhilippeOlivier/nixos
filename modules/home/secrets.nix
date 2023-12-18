@@ -27,13 +27,13 @@
 
   services.ssh-agent.enable = true;
 
-  services.openssh = {
-    enable = true;
-    # require public key authentication for better security
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-    #settings.PermitRootLogin = "yes";
-  };
+  # services.openssh = {
+  #   enable = true;
+  #   # require public key authentication for better security
+  #   settings.PasswordAuthentication = false;
+  #   settings.KbdInteractiveAuthentication = false;
+  #   #settings.PermitRootLogin = "yes";
+  # };
 
   users.users.pholi.openssh.authorizedKeys.keyFiles = [
     /home/pholi/nixos/secrets/ssh/authorized_keys

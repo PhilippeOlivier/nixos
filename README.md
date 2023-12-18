@@ -45,3 +45,12 @@ The signals used for Sway and Waybar are the following:
 ### `/secrets`
 
 This includes all secret information such as SSH keys, WiFi networks and passwords, etc.
+
+
+## Commands
+
+
+### htop
+
+| htop -F NAME | Starts htop and filters for NAME |
+| Z            | Freezes the output inside htop   |

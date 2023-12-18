@@ -25,8 +25,10 @@
 
       # Programs
       imv
+      libreoffice
 
       # Utilities
+      docker-compose
       htop
     ];
     sessionVariables = {

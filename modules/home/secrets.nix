@@ -35,12 +35,13 @@
   #   #settings.PermitRootLogin = "yes";
   # };
 
-  users.users.pholi.openssh.authorizedKeys.keyFiles = [
-    /home/pholi/nixos/secrets/ssh/authorized_keys
-  ];
+  # users.users.pholi.openssh.authorizedKeys.keyFiles = [
+  #   /home/pholi/nixos/secrets/ssh/authorized_keys
+  # ];
 
   home = {
     packages = with pkgs; [
+      openssh
       sops
     ];
   };

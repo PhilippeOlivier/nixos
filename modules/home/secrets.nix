@@ -25,7 +25,24 @@
     extraConfig = "";
   };
 
+  services.ssh-agent.enable = true;
+
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+    #settings.PermitRootLogin = "yes";
+  };
+
+  users.users.pholi.openssh.authorizedKeys.keyFiles = [
+    /home/pholi/nixos/secrets/ssh/authorized_keys
+  ];
+
+  programs.sops.enable = true;
+
   # home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/config";
   # home.file.".ssh/id_25519".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519";
   # home.file.".ssh/id_25519.pub".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519.pub";
+  # another symlink for authorized keys
 }

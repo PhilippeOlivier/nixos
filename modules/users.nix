@@ -16,6 +16,9 @@
     description = "Philippe Olivier";
     home = "/home/pholi";
     # shell = pkgs.bash;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [
+      "docker"
+      "wheel"
+    ];
   };
 }

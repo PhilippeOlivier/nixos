@@ -26,4 +26,5 @@
   };
 
   home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/config";
+  home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh";
 }

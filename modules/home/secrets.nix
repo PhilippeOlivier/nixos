@@ -24,4 +24,6 @@
     enable = true;
     extraConfig = "";
   };
+
+  home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh";
 }

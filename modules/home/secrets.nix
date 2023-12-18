@@ -19,4 +19,9 @@
       PASSWORD_STORE_DIR = "/home/pholi/nixos/secrets/password-store";
     };
   };
+
+  programs.ssh = {
+    enable = true;
+    extraConfig = "";
+  };
 }

@@ -25,7 +25,7 @@
     extraConfig = "";
   };
 
-  home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/config";
-  home.file.".ssh/id_25519".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519";
-  home.file.".ssh/id_25519.pub".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519.pub";
+  # home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/config";
+  # home.file.".ssh/id_25519".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519";
+  # home.file.".ssh/id_25519.pub".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519.pub";
 }

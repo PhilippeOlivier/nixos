@@ -1,11 +1,7 @@
 { config, pkgs, ... }:
 
-let
-  my-python-packages = ps: with ps; [
-    matplotlib
-    pandas
+{
+  environment.systemPackages = with pkgs; [
+    (python38.withPackages(ps: with ps; [ pandas requests]))
   ];
-in
-environment.systemPackages = [
-  (pkgs.python3.withPackages my-python-packages)
-];
+}

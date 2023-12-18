@@ -3,16 +3,16 @@
 {
   home = {
     packages = with pkgs; [
-      gnome.file-roller
-      gnome.gvfs
+      file-roller
+      gvfs
       lrzip
       p7zip
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
-      xfce.xfconf  # https://github.com/NixOS/nixpkgs/issues/65771
+      thunar
+      thunar-archive-plugin
+      thunar-media-tags-plugin
+      thunar-volman
+      tumbler
+      xfconf  # https://github.com/NixOS/nixpkgs/issues/65771
     ];
     file.".config/gtk-3.0/bookmarks".text = ''
       file:///home/pholi/pedtsr/ongoing/pganalyze

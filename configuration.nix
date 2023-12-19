@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ./modules/boot.nix
     ./modules/fonts.nix
     ./modules/framework.nix
@@ -9,7 +10,7 @@
     ./modules/python.nix
     ./modules/system.nix
     ./modules/users.nix
-    ./hardware-configuration.nix
+    ./modules/secret/wifi-networks.nix
   ];
 
   system.stateVersion = "24.05";

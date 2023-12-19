@@ -63,6 +63,12 @@
 
   # Docker
   virtualisation.docker.enable = true;
+
+  # Time
+  time.timeZone = "Canada/Eastern";
+
+  # Locale
+  i18n.defaultLocale = "en_CA.UTF-8";
 }
 
 

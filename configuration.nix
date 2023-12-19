@@ -8,7 +8,6 @@
     ./modules/network.nix
     ./modules/python.nix
     ./modules/system.nix
-    ./modules/time-locale.nix
     ./modules/users.nix
     ./hardware-configuration.nix
   ];

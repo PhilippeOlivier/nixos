@@ -60,6 +60,9 @@
     enable = true;
     driSupport = true;
   };
+
+  # Docker
+  virtualisation.docker.enable = true;
 }
 
 

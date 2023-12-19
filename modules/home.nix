@@ -30,6 +30,13 @@
       # Utilities
       docker-compose
       htop
+
+      # WiFi tools
+      aircrack-ng
+      hashcat
+      hashcat-utils
+      macchanger
+      reaverwps
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

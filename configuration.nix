@@ -10,7 +10,7 @@
     ./modules/python.nix
     ./modules/system.nix
     ./modules/users.nix
-    ./secrets/wifi-networks.nix
+    # ./secrets/wifi-networks.nix
   ];
 
   system.stateVersion = "24.05";

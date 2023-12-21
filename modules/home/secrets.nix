@@ -10,7 +10,7 @@
     enable = true;
     defaultCacheTtl = 8640000;
     maxCacheTtl = 8640000;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "curses"; # gtk2?
   };
 
   programs.password-store = {

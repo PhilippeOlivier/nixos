@@ -11,6 +11,7 @@
     ./modules/system.nix
     ./modules/users.nix
     # ./secrets/wifi-networks.nix
+    <sops-nix/modules/sops>
   ];
 
   system.stateVersion = "24.05";
@@ -18,8 +19,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
-
-  imports = [ <sops-nix/modules/sops> ];
   
   sops.defaultSopsFile = ./secrets/test.yaml;
   # # YAML is the default 

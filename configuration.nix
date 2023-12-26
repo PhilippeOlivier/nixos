@@ -8,6 +8,7 @@
     ./modules/framework.nix
     ./modules/network.nix
     ./modules/python.nix
+    ./modules/secrets.nix
     ./modules/system.nix
     ./modules/users.nix
     # ./secrets/wifi-networks.nix

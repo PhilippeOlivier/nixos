@@ -11,7 +11,6 @@
     ./modules/system.nix
     ./modules/users.nix
     # ./secrets/wifi-networks.nix
-    <sops-nix/modules/sops>
   ];
 
   system.stateVersion = "24.05";

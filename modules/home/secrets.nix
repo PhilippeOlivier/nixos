@@ -51,9 +51,9 @@
   # home.file.".ssh/id_25519.pub".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/nixos/secrets/ssh/id_25519.pub";
   # another symlink for authorized keys
 
-  # sops.defaultSopsFile = ./secrets/test.yaml;
+  sops.defaultSopsFile = ./secrets/test.yaml;
   # # YAML is the default 
-  # #sops.defaultSopsFormat = "yaml";
+  sops.defaultSopsFormat = "yaml";
   # sops.secrets.ssh_key = {
   #   format = "yaml";
   #   # can be also set per secret

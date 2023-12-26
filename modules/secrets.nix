@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  sops.defaultSopsFile = ./secrets/test.yaml;
+  sops.defaultSopsFile = ../secrets/test.yaml;
   # # YAML is the default 
   sops.defaultSopsFormat = "yaml";
 

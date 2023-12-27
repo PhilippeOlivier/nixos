@@ -1,7 +1,7 @@
 keys:
   - &pholi 8BA973665D50A93C3B204E16E1834488946473D7
 creation_rules:
-  - path_regex: secrets2/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - pgp:
       - *pholi

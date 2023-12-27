@@ -37,6 +37,8 @@
       # hashcat-utils
       # macchanger
       # reaverwps
+
+      pinentry-curses
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

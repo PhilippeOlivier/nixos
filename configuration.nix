@@ -19,10 +19,10 @@
 
   nixpkgs.config.allowUnfree = true;
   
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  # # YAML is the default 
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/pholi/.config/sops/age/keyz.txt";
+  # sops.defaultSopsFile = ./secrets/secrets.yaml;
+  # # # YAML is the default 
+  # sops.defaultSopsFormat = "yaml";
+  # sops.age.keyFile = "/home/pholi/.config/sops/age/keyz.txt";
 
   # sops.secrets."ssh_key".mode = "0400";
   # sops.secrets.ssh_key = {

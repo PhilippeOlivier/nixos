@@ -43,7 +43,8 @@
   home = {
     packages = with pkgs; [
       openssh
-      sops
+      age
+      # sops
     ];
   };
 

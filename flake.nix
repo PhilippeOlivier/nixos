@@ -8,7 +8,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = inputs @ { self, home, nixpkgs, home-manager, sops-nix, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, sops-nix, ... }: {
     nixosConfigurations.pholi-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -18,10 +18,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.pholi = import ./modules/home.nix;
         }
-        # A
-        #sops-nix.nixosModules.sops
-        # B
-        sops-nix.homeManagerModules.sops
+        sops-nix.nixosModules.sops
       ];
     };
   };

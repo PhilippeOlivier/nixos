@@ -19,7 +19,7 @@
 
   nixpkgs.config.allowUnfree = true;
   
-  sops.defaultSopsFile = ./secrets2/secrets.yaml;
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
   # # YAML is the default 
   sops.defaultSopsFormat = "yaml";
 

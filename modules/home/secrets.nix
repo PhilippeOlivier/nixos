@@ -4,7 +4,7 @@
   programs.gpg = {
     enable = true;
     #homedir = "/home/pholi/nixos/secrets/gnupg";
-    homedir = "/home/pholi/.gnupg";
+    homedir = "/home/pholi/backup/gnupg";
   };
 
   services.gpg-agent = {

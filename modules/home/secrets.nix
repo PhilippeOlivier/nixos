@@ -44,7 +44,7 @@
     packages = with pkgs; [
       openssh
       age
-      # sops
+      sops
     ];
   };
 

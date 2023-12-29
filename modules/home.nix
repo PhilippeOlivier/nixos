@@ -11,10 +11,12 @@
     ./home/transmission.nix
     ./home/xdg.nix
     ./home/zathura.nix
-    <sops-nix/modules/home-manager/sops.nix>
   ];
 
   home = {
+    imports = [
+      <sops-nix.homeManagerModules.sops>
+    ];
     stateVersion = "24.05";
     username = "pholi";
     homeDirectory = "/home/pholi";

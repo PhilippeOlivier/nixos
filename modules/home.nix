@@ -11,7 +11,7 @@
     ./home/transmission.nix
     ./home/xdg.nix
     ./home/zathura.nix
-    sops-nix.homeManagerModules.sops
+    <sops-nix/modules/home-manager/sops.nix>
   ];
 
   home = {

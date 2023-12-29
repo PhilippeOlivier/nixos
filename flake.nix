@@ -17,7 +17,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.pholi = import ./modules/home.nix;
-        }
+        };
         sops-nix.homeManagerModules.sops
         #sops-nix.nixosModules.sops
         # sops-nix/modules/home-manager/sops.nix

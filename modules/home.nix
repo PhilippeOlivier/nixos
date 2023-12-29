@@ -18,10 +18,10 @@
   };
 
   sops = {
-    age.keyFile = "/home/user/.age-key.txt"; # must have no password!
+    #age.keyFile = "/home/user/.age-key.txt"; # must have no password!
     # It's also possible to use a ssh key, but only when it has no password:
     #age.sshKeyPaths = [ "/home/user/path-to-ssh-key" ];
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = /home/pholi/nixos/secrets.yaml;
     secrets.test = {
       # sopsFile = ./secrets.yml.enc; # optionally define per-secret files
 

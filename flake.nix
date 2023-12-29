@@ -17,14 +17,15 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.pholi = import ./modules/home.nix;
+          home-manager.sharedModules = [
+            <sops-nix/modules/home-manager/sops.nix>
+          ];
         }
         #sops-nix.homeManagerModules.sops
         #sops-nix.nixosModules.sops
         # sops-nix/modules/home-manager/sops.nix
       ];
-      home-manager.sharedModules = [
-        <sops-nix/modules/home-manager/sops.nix>
-      ];
+      
     };
   };
 }

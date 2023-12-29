@@ -14,9 +14,9 @@
   ];
 
   home = {
-    imports = [
-      <sops-nix.homeManagerModules.sops>
-    ];
+    # imports = [
+    #   <sops-nix.homeManagerModules.sops>
+    # ];
     stateVersion = "24.05";
     username = "pholi";
     homeDirectory = "/home/pholi";

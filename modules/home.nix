@@ -2,15 +2,10 @@
 
 {
   imports = [
-    ./home/emacs.nix
     ./home/git.nix
     ./home/shell.nix
     ./home/secrets.nix
-    ./home/sway.nix
-    ./home/thunar.nix
-    ./home/transmission.nix
     ./home/xdg.nix
-    ./home/zathura.nix
   ];
 
   home = {
@@ -21,26 +16,6 @@
     username = "pholi";
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
-      # Audio
-      bluez
-      pipewire
-      wireplumber
-
-      # Programs
-      imv
-      # libreoffice
-
-      # Utilities
-      docker-compose
-      htop
-
-      # WiFi tools
-      # aircrack-ng
-      # hashcat
-      # hashcat-utils
-      # macchanger
-      # reaverwps
-
       pinentry-curses
     ];
     sessionVariables = {

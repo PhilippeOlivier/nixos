@@ -18,7 +18,8 @@
           home-manager.useUserPackages = true;
           home-manager.users.pholi = import ./modules/home.nix;
           home-manager.sharedModules = [
-            <sops-nix/modules/home-manager/sops.nix>
+            #<sops-nix/modules/home-manager/sops.nix>
+            inputs.sops-nix.homeManagerModule
           ];
         }
         #sops-nix.homeManagerModules.sops

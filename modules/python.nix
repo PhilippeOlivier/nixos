@@ -16,13 +16,6 @@
       # Optimization
       ortools
 
-      # Youtube download script
-      eyeD3
-      levenshtein
-      lz4
-      pyacoustid
-      youtube-dl
-
       # Misc
       grip
     ]))

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+# { config, pkgs, ... }:
 
 {
   # Required for sway with HM

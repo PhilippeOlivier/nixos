@@ -39,7 +39,8 @@
       # reaverwps
 
       pinentry-curses
-      
+
+      # Python
       (python311.withPackages(ps: with ps; [
         # General
         pip

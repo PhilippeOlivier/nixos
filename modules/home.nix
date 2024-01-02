@@ -14,9 +14,6 @@
   ];
 
   home = {
-    # imports = [
-    #   <sops-nix.homeManagerModules.sops>
-    # ];
     stateVersion = "24.05";
     username = "pholi";
     homeDirectory = "/home/pholi";
@@ -42,6 +39,24 @@
       # reaverwps
 
       pinentry-curses
+      
+      (python311.withPackages(ps: with ps; [
+        # General
+        pip
+
+        # Science
+        matplotlib
+        networkx
+        numpy
+        pandas
+        scipy
+
+        # Optimization
+        ortools
+
+        # Misc
+        grip
+      ]))
     ];
     sessionVariables = {
       BROWSER = "firefox";  # TODO: abs path?

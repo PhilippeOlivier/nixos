@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./home/chromium.nix
     ./home/emacs.nix
     ./home/git.nix
     ./home/shell.nix

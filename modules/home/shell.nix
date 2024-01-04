@@ -4,6 +4,7 @@
   home = {
     packages = with pkgs; [
       bc
+      coreutils
       jq
       tree
       unrar

@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{
+
   pkgs.python311.withPackages (p: with p; [
     # General
     pip
@@ -18,7 +18,7 @@
     # Misc
     grip
   ]);
-}
+
 
 #   {
 #   home = {

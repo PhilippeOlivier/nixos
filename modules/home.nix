@@ -5,8 +5,8 @@
     ./home/chromium.nix
     ./home/emacs.nix
     ./home/git.nix
+    ./home/python.nix
     ./home/shell.nix
-    # ./home/secrets.nix
     ./home/sway.nix
     ./home/thunar.nix
     ./home/transmission.nix
@@ -40,25 +40,6 @@
       # reaverwps
 
       pinentry-curses
-
-      # Python
-      (python311.withPackages(ps: with ps; [
-        # General
-        pip
-
-        # Science
-        matplotlib
-        networkx
-        numpy
-        pandas
-        scipy
-
-        # Optimization
-        ortools
-
-        # Misc
-        grip
-      ]))
     ];
     sessionVariables = {
       BROWSER = "firefox";

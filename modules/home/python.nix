@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs }:
 
 
   pkgs.python311.withPackages (p: with p; [

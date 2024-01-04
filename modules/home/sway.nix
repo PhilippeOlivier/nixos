@@ -8,6 +8,7 @@
       libnotify  # Desktop notifications
       swayidle
       swaylock
+      wl-clipboard
 
       # Waybar
       acpi

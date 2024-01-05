@@ -5,13 +5,13 @@
     ./home/chromium.nix
     ./home/emacs.nix
     ./home/git.nix
+    ./home/pdf.nix
     ./home/python.nix
     ./home/shell.nix
     ./home/sway.nix
     ./home/thunar.nix
     ./home/transmission.nix
     ./home/xdg.nix
-    ./home/zathura.nix
   ];
 
   home = {

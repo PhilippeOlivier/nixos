@@ -5,6 +5,7 @@
     ./home/chromium.nix
     ./home/emacs.nix
     ./home/git.nix
+    ./home/latex.nix
     ./home/pdf.nix
     ./home/python.nix
     ./home/shell.nix

@@ -1,45 +1,25 @@
 { pkgs }:
 
+  {
+  home = {
+    packages = with pkgs; [
+      (python311.withPackages(ps: with ps; [
+        # General
+        pip
 
-  pkgs.python311.withPackages (p: with p; [
-    # General
-    pip
-    
-    # Science
-    matplotlib
-    networkx
-    numpy
-    pandas
-    scipy
-    
-    # Optimization
-    ortools
-    
-    # Misc
-    grip
-  ])
+        # Science
+        matplotlib
+        networkx
+        numpy
+        pandas
+        scipy
 
+        # Optimization
+        ortools
 
-#   {
-#   home = {
-#     packages = with pkgs; [
-#       (python311.withPackages(ps: with ps; [
-#         # General
-#         pip
-
-#         # Science
-#         matplotlib
-#         networkx
-#         numpy
-#         pandas
-#         scipy
-
-#         # Optimization
-#         ortools
-
-#         # Misc
-#         grip
-#       ]))
-#     ];
-#   };
-# }
+        # Misc
+        grip
+      ]))
+    ];
+  };
+}

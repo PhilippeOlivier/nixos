@@ -26,7 +26,8 @@
 
       # Programs
       imv
-      # libreoffice
+      inkscape
+      libreoffice
 
       # Utilities
       docker-compose

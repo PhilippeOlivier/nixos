@@ -4,7 +4,7 @@
 ## Layout
 
 
-### `/installation`
+### `installation/`
 
 Instructions on how to install the system.
 
@@ -16,7 +16,7 @@ Here is a list of machine-specific values that should be reviewed upon installat
 - The values of `WIFI_INTERFACE` and `ETH_INTERFACE` in `/modules/home/sway.nix` can be found with `ip link show`.
 
 
-### `/modules`
+### `modules/`
 
 Most of the configuration can be found in the various files here.
 
@@ -26,7 +26,7 @@ Most of the configuration can be found in the various files here.
 Note: If the default boot option is not the latest generation, press `d` to clear the default.
 
 
-#### `home.nix` and `/home/*.nix`
+#### `home.nix` and `home/*.nix`
 
 Everything related to Home Manager.
 
@@ -42,15 +42,21 @@ The signals used for Sway and Waybar are the following:
 - Mail: 16
 
 
-### `/secrets`
-
-This includes all secret information such as SSH keys, WiFi networks and passwords, etc.
-
-
-## Commands
+## Programs
 
 
 ### htop
 
+| Command      | Description                      |
+|--------------|----------------------------------|
 | htop -F NAME | Starts htop and filters for NAME |
 | Z            | Freezes the output inside htop   |
+
+
+### inkscape
+
+Creating SVG images for Beamer presentations:
+1. Make sure that the document size is 450x280 pixels (this might be an artefact of the technique I first used when I started using Inkscape).
+2. Create the SVG images and save them as SVG.
+3. To use them in LaTeX, save the SVG images as PDF.
+4. The PDFs should now all have the same width/height.

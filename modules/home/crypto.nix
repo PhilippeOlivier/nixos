@@ -5,7 +5,7 @@
     enable = true;
   };
   
-  home.file.".gnupg".source = /home/pholi/.nixos-extra/gnupg;
+  home.file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/gnupg";
 
   # services.gpg-agent = {
   #   enable = true;

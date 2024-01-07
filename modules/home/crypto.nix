@@ -7,7 +7,7 @@
   
   home.file.".gnupg" = {
     # source = config.lib.file.mkOutOfStoreSymlink ../../../.nixos-extra/gnupg;
-    source = ../../../.nixos-extra/gnupg;
+    source = /home/pholi/.nixos-extra/gnupg;
     recursive = true;
   };
 

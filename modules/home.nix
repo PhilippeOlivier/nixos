@@ -3,6 +3,7 @@
 {
   imports = [
     ./home/chromium.nix
+    ./home/crypto.nix
     ./home/emacs.nix
     ./home/git.nix
     ./home/latex.nix

@@ -8,7 +8,7 @@
   home.file.".gnupg" = {
     source = /home/pholi/.nixos-extra/gnupg;  #config.lib.file.mkOutOfStoreSymlink "~/.nixos-extra/gnupg";
     recursive = true;
-  }
+  };
 
   # services.gpg-agent = {
   #   enable = true;

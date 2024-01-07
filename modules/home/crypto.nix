@@ -5,7 +5,10 @@
     enable = true;
   };
   
-  home.file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "~/.nixos-extra/gnupg";
+  home.file.".gnupg" = {
+    source = /home/pholi/.nixos-extra/gnupg;  #config.lib.file.mkOutOfStoreSymlink "~/.nixos-extra/gnupg";
+    recursive = true;
+  }
 
   # services.gpg-agent = {
   #   enable = true;

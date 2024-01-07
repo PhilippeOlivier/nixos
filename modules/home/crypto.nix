@@ -5,7 +5,7 @@
     enable = true;
   };
   
-  home.file.".gnupg".source = ~/.nixos-extra/gnupg;
+  home.file.".gnupg".source = /home/pholi/.nixos-extra/gnupg;
 
   # services.gpg-agent = {
   #   enable = true;

@@ -1,18 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  programs.gpg = {
-    enable = true;
-  };
+  # programs.gpg = {
+  #   enable = true;
+  # };
   
-  home.file.".gnupg" = {
-    # source = ./.nixos
-    source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/gnupg";
-    # source = ./../../../.nixos-extra/gnupg;  no because absolute path
-    # source = ./.nixos-extra/gnupg;  no because relative to crypto.nix
-    # source = /home/pholi/.nixos-extra/gnupg; forbidden in pure eval
-    recursive = true;
-  };
+  # home.file.".gnupg" = {
+  #   # source = ./.nixos
+  #   source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/gnupg";
+  #   # source = ./../../../.nixos-extra/gnupg;  no because absolute path
+  #   # source = ./.nixos-extra/gnupg;  no because relative to crypto.nix
+  #   # source = /home/pholi/.nixos-extra/gnupg; forbidden in pure eval
+  #   recursive = true;
+  # };
 
   # services.gpg-agent = {
   #   enable = true;
@@ -27,11 +27,11 @@
 
   # home.file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/password-store";
 
-  # programs.ssh = {
-  #   enable = true;
-  # };
+  programs.ssh = {
+    enable = true;
+  };
 
-  # home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
+  home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
   
   # services.ssh-agent.enable = true;
 }

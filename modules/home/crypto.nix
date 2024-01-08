@@ -7,7 +7,7 @@
   
   home.file.".gnupg" = {
     # source = ./.nixos
-    source = config.lib.file.mkOutOfStoreSymlink /home/pholi/.nixos-extra/gnupg;
+    source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/gnupg";
     # source = ./../../../.nixos-extra/gnupg;  no because absolute path
     # source = ./.nixos-extra/gnupg;  no because relative to crypto.nix
     # source = /home/pholi/.nixos-extra/gnupg; forbidden in pure eval

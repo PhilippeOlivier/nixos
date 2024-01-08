@@ -31,7 +31,7 @@
   #   enable = true;
   # };
   
-  # home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
+  home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
   
   # services.ssh-agent.enable = true;
 }

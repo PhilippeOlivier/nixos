@@ -43,6 +43,8 @@
       # reaverwps
 
       pinentry-curses
+
+      openssh
     ];
     sessionVariables = {
       BROWSER = "firefox";

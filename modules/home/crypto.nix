@@ -4,11 +4,9 @@
   home = {
     packages = with pkgs; [
       gnupg
-      gpg-agent
       openssh
       pass
       pinentry
-      ssh-agent
     ];
     file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/gnupg";
     file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";

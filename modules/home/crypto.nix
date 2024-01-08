@@ -27,10 +27,14 @@
 
   # home.file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/password-store";
 
-  programs.ssh = {
-    enable = true;
-  };
+  # programs.ssh = {
+  #   enable = true;
+  # };
 
+  environment.systemPackages = with pkgs; [
+    openssh
+  ];
+  
   home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
   
   # services.ssh-agent.enable = true;

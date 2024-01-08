@@ -30,10 +30,6 @@
   # programs.ssh = {
   #   enable = true;
   # };
-
-  environment.systemPackages = with pkgs; [
-    openssh
-  ];
   
   home.file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/ssh";
   

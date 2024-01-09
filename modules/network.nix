@@ -30,10 +30,10 @@
       };
     };
 
-    # Firewall
-    nftables.enable = true;  # Use the newer nftables instead of the older iptables
-    firewall = {
-      enable = true;
-    };
+    # # Firewall
+    # nftables.enable = true;  # Use the newer nftables instead of the older iptables
+    # firewall = {
+    #   enable = true;
+    # };
   };
 }

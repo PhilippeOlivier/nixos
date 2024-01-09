@@ -9,6 +9,7 @@
     ./modules/network.nix
     ./modules/system.nix
     ./modules/users.nix
+    ./modules/temp.nix
   ];
 
   system.stateVersion = "24.05";

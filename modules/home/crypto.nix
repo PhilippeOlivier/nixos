@@ -13,15 +13,13 @@
     file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/password-store";
   };
 
-  # services = {
-  #   gpg-agent = {
-  #     enable = true;
-  #     defaultCacheTtl = 8640000;
-  #     maxCacheTtl = 8640000;
-  #     pinentryFlavor = "curses";  # TODO: gtk2?
-  #   };
-  #   ssh-agent = {
-  #     enable = true;
-  #   };
-  # };
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      #PermitRootLogin = "yes";
+    };
+  };
 }

@@ -13,15 +13,19 @@
       wlp4s0 = {
         useDHCP = true;
         ipv4.addresses = [
-          address = "192.168.0.111";
-          prefixLength = 24;
+          {
+            address = "192.168.0.111";
+            prefixLength = 24;
+          }
         ];
       };
       enp0s31f6 = {
         useDHCP = true;
         ipv4.addresses = [
-          address = "192.168.0.111";
-          prefixLength = 24;
+          {
+            address = "192.168.0.111";
+            prefixLength = 24;
+          }
         ];
       };
     };

@@ -6,7 +6,7 @@
     # require public key authentication for better security
     settings = {
       PasswordAuthentication = true; # false;
-      KbdInteractiveAuthentication = false;
+      KbdInteractiveAuthentication = true; #false;
       #PermitRootLogin = "yes";
     };
   };

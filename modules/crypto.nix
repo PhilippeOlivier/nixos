@@ -8,6 +8,7 @@
       PasswordAuthentication = true; # false;
       KbdInteractiveAuthentication = true; #false;
       PermitRootLogin = "yes"; # "no"
+      AllowUsers = ["pholi"];
     };
   };
 }

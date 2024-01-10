@@ -3,7 +3,7 @@
 {
   home = {
     packages = with pkgs; [
-      # gnupg
+      gnupg
       openssh
       pass
     ];

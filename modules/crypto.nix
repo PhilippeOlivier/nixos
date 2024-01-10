@@ -6,7 +6,7 @@
     settings = {
       PasswordAuthentication = true;  # TODO: false
       KbdInteractiveAuthentication = true; # TODO: false
-      PermitRootLogin = false;
+      PermitRootLogin = "no";
       # AuthenticationMethods = "publickey";  <-- uncomment
       PrintMotd = false;
     };

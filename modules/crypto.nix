@@ -11,4 +11,10 @@
       PrintMotd = false;
     };
   };
+  environment.systemPackages = [
+    pkgs.pinentry
+  ];
+  programs.gnupg.agent.enable = true;
+  # programs.gpg.enable = true;
+  # programs.gpg-agent.enable = true;
 }

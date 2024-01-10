@@ -16,5 +16,11 @@
     pkgs.pinentry
   ];
 
-  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    settings = {
+      default-cache-ttl = 8640000;
+      max-cache-ttl = 8640000;
+    };
+  };
 }

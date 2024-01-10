@@ -3,12 +3,12 @@
 {
   services.openssh = {
     enable = true;
-    # require public key authentication for better security
     settings = {
-      PasswordAuthentication = true; # false;
-      KbdInteractiveAuthentication = true; #false;
-      PermitRootLogin = "yes"; # "no"
-      # AllowUsers = ["pholi"];
+      PasswordAuthentication = true;  # TODO: false
+      KbdInteractiveAuthentication = true; # TODO: false
+      PermitRootLogin = false;
+      # AuthenticationMethods = "publickey";  <-- uncomment
+      PrintMotd = false;
     };
   };
 }

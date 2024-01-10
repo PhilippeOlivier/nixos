@@ -11,8 +11,7 @@
   
   users.users.pholi = {
     isNormalUser = true;
-    # hashedPassword = "$y$j9T$x96MzdskuJld7.MGfXLpE1$cOerhhSRfrLWEgyOI6vNmcRDnHshQ0e1QVDL3CMEFy3"; # asdf
-    password = "asdf";
+    hashedPassword = "$y$j9T$x96MzdskuJld7.MGfXLpE1$cOerhhSRfrLWEgyOI6vNmcRDnHshQ0e1QVDL3CMEFy3"; # asdf
     # hashedPassword = "$y$j9T$/agu8wY6h/PB20gbxj6aC.$JEuBPcl7F5crecpUFQ3SH.cEsNjMYD.8JnHArimSAt/";
     description = "Philippe Olivier";
     home = "/home/pholi";

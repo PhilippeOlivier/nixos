@@ -14,7 +14,7 @@
 
   environment.systemPackages = [
     pkgs.pinentry
-    pkgs.gnupg
+    # pkgs.gnupg
   ];
 
   programs.gnupg.agent.enable = true;

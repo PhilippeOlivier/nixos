@@ -21,12 +21,12 @@
       };
       enp0s31f6 = {
         useDHCP = true;
-        ipv4.addresses = [
-          {
-            address = "192.168.0.81";
-            prefixLength = 24;
-          }
-        ];
+        # ipv4.addresses = [
+        #   {
+        #     address = "192.168.0.81";
+        #     prefixLength = 24;
+        #   }
+        # ];
       };
     };
 

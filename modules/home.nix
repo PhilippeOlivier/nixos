@@ -7,6 +7,7 @@
     ./home/emacs.nix
     ./home/git.nix
     ./home/latex.nix
+    ./home/mail.nix
     ./home/pdf.nix
     ./home/python.nix
     ./home/shell.nix

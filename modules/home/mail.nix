@@ -15,6 +15,7 @@
     certificatesFile = /etc/ssl/certs/ca-certificates.crt;
     accounts = {
       "pedtsr" = {
+        primary = true;
         address = "nixos@pedtsr.ca";
         userName = "nixos@pedtsr.ca";
         realName = "Philippe Olivier Nixos";

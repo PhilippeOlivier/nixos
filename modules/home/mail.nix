@@ -42,8 +42,9 @@
             "pedtsr" = {
               channels = {
                 "inbox" = {
-                  farPattern = "INBOX";
-                  nearPattern = "pedtsr/inbox";
+                  patterns = "INBOX";
+                  # farPattern = "INBOX";
+                  # nearPattern = "pedtsr/inbox";
                   # TODO: make the gpg pw file on the old laptop and transfer it here
                 };
                 "sent" = {

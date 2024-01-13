@@ -15,6 +15,9 @@
     certificatesFile = /etc/ssl/certs/ca-certificates.crt;
     accounts = {
       "pedtsr" = {
+        folders = {
+          inbox = "pedtsr/inbox";
+        };
         primary = true;
         address = "nixos@pedtsr.ca";
         userName = "nixos@pedtsr.ca";
@@ -37,9 +40,6 @@
           remove = "none";
           groups = {
             "pedtsr" = {
-              folders = {
-                inbox = "pedtsr/inbox";
-              };
               channels = {
                 "inbox" = {
                   farPattern = "INBOX";

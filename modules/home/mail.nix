@@ -17,6 +17,7 @@
       "pedtsr" = {
         folders = {
           inbox = "inbox";
+          sent = "sent";
         };
         primary = true;
         address = "nixos@pedtsr.ca";

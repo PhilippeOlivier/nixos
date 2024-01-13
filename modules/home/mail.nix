@@ -16,7 +16,7 @@
     accounts = {
       "pedtsr" = {
         folders = {
-          inbox = "pedtsr/inbox";
+          inbox = "inbox";
         };
         primary = true;
         address = "nixos@pedtsr.ca";

@@ -50,11 +50,11 @@
                 };
                 "sent" = {
                   farPattern = "Sent";
-                  nearPattern = "pedtsr/sent";
+                  nearPattern = "sent";
                 };
                 "spam" = {
                   farPattern = "spam";
-                  nearPattern = "pedtsr/spam";
+                  nearPattern = "spam";
                 };
               };
             };

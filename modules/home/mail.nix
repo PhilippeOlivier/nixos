@@ -22,7 +22,7 @@
         passwordCommand = "${pkgs.gnupg}/bin/gpg --quiet --for-your-eyes-only --no-tty --decrypt /home/pholi/.nixos-extra/mail/pedtsr.gpg";
         imap = {
           host = "ajax.canspace.ca";  # replace with mail.pedtsr.ca?
-          port = 993;
+          # port = 993;
           tls.useStartTls = true;
         };
         smtp = {
@@ -37,6 +37,9 @@
           remove = "none";
           groups = {
             "pedtsr" = {
+              folders = {
+                inbox = "pedtsr/inbox";
+              };
               channels = {
                 "inbox" = {
                   farPattern = "INBOX";

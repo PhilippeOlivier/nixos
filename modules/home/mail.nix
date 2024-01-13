@@ -49,14 +49,14 @@
                   # TODO: make the gpg pw file on the old laptop and transfer it here
                 };
                 "sent" = {
-                  patterns = ["Sent" "sent"];
-                  # farPattern = "Sent";
-                  # nearPattern = "sent";
+                  # patterns = ["Sent" "sent"];
+                  farPattern = "Sent";
+                  nearPattern = "sent";
                 };
-                "spam" = {
-                  farPattern = "spam";
-                  nearPattern = "spam";
-                };
+                # "spam" = {
+                #   farPattern = "spam"; # rename "Junk"?
+                #   nearPattern = "spam";
+                # };
               };
             };
           };

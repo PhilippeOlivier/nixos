@@ -26,7 +26,6 @@
         passwordCommand = "${pkgs.gnupg}/bin/gpg --quiet --for-your-eyes-only --no-tty --decrypt /home/pholi/.nixos-extra/mail/pedtsr.gpg";
         imap = {
           host = "ajax.canspace.ca";
-          port = 993;
           tls.useStartTls = true;
         };
         smtp = {

@@ -25,19 +25,16 @@
         realName = "Philippe Olivier Nixos";
         passwordCommand = "${pkgs.gnupg}/bin/gpg --quiet --for-your-eyes-only --no-tty --decrypt /home/pholi/.nixos-extra/mail/pedtsr.gpg";
         imap = {
-          host = "ajax.canspace.ca";  # replace with mail.pedtsr.ca?
-          # port = 993;
+          host = "ajax.canspace.ca";
+          port = 993;
           tls.useStartTls = true;
         };
         smtp = {
-          host = "ajax.canspace.ca";  # replace with mail.pedtsr.ca?
+          host = "ajax.canspace.ca";
           port = 465;
           tls.useStartTls = false;
         };
         mbsync = {
-          # extraConfig.account = {
-          #   SyncState = "*";
-          # };
           enable = true;
           create = "maildir";
           expunge = "none";
@@ -56,10 +53,10 @@
                   farPattern = "Sent";
                   nearPattern = "sent";
                 };
-                # "spam" = {
-                #   farPattern = "spam"; # rename "Junk"?
-                #   nearPattern = "spam";
-                # };
+                "spam" = {
+                  farPattern = "spam"; # rename "Junk"?
+                  nearPattern = "spam";
+                };
               };
             };
           };

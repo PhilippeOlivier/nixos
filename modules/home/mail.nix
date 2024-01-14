@@ -3,7 +3,7 @@
 {
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
-  # programs.notmuch.enable = true;
+  programs.notmuch.enable = true;
 
   services.mbsync = {
     enable = true;
@@ -16,6 +16,7 @@
     certificatesFile = /etc/ssl/certs/ca-certificates.crt;
     accounts = {
       "pedtsr" = {
+        notmuch.enable = true;
         folders = {
           inbox = "inbox";
           sent = "sent";

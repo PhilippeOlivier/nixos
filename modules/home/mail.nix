@@ -7,11 +7,12 @@
 
   services.mbsync = {
     enable = true;
-    frequency = "48hr";
+    frequency = "48hr";  # TODO: 5 min
+    postExec = "";  # TODO: update waybar block
   };
   
   accounts.email = {
-    maildirBasePath = ".nixos-extra/mail/mail";
+    maildirBasePath = ".nixos-extra/mail/maildirs";
     certificatesFile = /etc/ssl/certs/ca-certificates.crt;
     accounts = {
       "pedtsr" = {
@@ -23,7 +24,7 @@
         address = "nixos@pedtsr.ca";
         userName = "nixos@pedtsr.ca";
         realName = "Philippe Olivier Nixos";
-        passwordCommand = "${pkgs.gnupg}/bin/gpg --quiet --for-your-eyes-only --no-tty --decrypt /home/pholi/.nixos-extra/mail/pedtsr.gpg";
+        passwordCommand = "${pkgs.gnupg}/bin/gpg --quiet --for-your-eyes-only --no-tty --decrypt /home/pholi/.nixos-extra/mail/passwords/pedtsr.gpg";
         imap = {
           host = "ajax.canspace.ca";
           tls.useStartTls = true;

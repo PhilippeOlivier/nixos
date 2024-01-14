@@ -3,7 +3,6 @@
 {
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
-  programs.notmuch.enable = true;
 
   services.mbsync = {
     enable = true;

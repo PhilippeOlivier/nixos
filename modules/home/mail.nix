@@ -35,9 +35,9 @@
           tls.useStartTls = false;
         };
         mbsync = {
-          extraConfig.account = {
-            SyncState = "*";
-          };
+          # extraConfig.account = {
+          #   SyncState = "*";
+          # };
           enable = true;
           create = "maildir";
           expunge = "none";

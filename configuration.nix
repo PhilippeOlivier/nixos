@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../.nixos-extra/asdf.nix
     ./hardware-configuration.nix
     ./modules/boot.nix
     ./modules/crypto.nix

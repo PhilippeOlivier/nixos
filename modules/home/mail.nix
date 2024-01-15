@@ -7,7 +7,7 @@
 
   services.mbsync = {
     enable = true;
-    frequency = "48hr";  # TODO: 5 min
+    frequency = "48hr";  # TODO: replace with: frequency = "*:0/5";  # Every 5 minutes
     postExec = "";  # TODO: update waybar block, and notmuch routine
   };
   

@@ -351,11 +351,10 @@
         };
 
         "custom/mail" = {
-          exec = pkgs.writeShellScript "custom-mail" ''
-          # replace with exec = "$HOME/nixos/secrets/scripts/mail/waybar.sh";
-          '';
+          exec = "/home/pholi/.nixos-extra/scripts/mail/waybar.sh";
     	    interval = "once";
           tooltip = false;
+          signal = 16;
         };
 
         "custom/network" = {

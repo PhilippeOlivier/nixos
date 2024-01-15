@@ -48,6 +48,9 @@
       # Source: https://stackoverflow.com/a/68787102/1725856
       for_window [class=".*"] inhibit_idle fullscreen
       for_window [app_id=".*"] inhibit_idle fullscreen
+
+      # Mail script (check mail every 5 minutes)
+      exec swaymsg 'exec /home/pholi/.nixos-extra/scripts/mail/loop.sh &'
     '';
     config = rec {
       window = {

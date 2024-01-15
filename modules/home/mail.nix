@@ -7,8 +7,7 @@
 
   services.mbsync = {
     enable = true;
-    frequency = "48hr";  # TODO: replace with: frequency = "*:0/5";  # Every 5 minutes
-    postExec = "";  # TODO: update waybar block, and notmuch routine
+    frequency = "*-01-01 00:00:00";  # Once a year, i.e., never (because `.nixos-extra/scripts/mail/fetch.sh` can let us know if there is an error with a mailbox)
   };
   
   accounts.email = {
@@ -44,17 +43,13 @@
               channels = {
                 "inbox" = {
                   patterns = ["INBOX"];
-                  # farPattern = "INBOX";
-                  # nearPattern = "pedtsr/inbox";
-                  # TODO: make the gpg pw file on the old laptop and transfer it here
                 };
                 "sent" = {
-                  # patterns = ["Sent" "sent"];
                   farPattern = "Sent";
                   nearPattern = "sent";
                 };
                 "spam" = {
-                  farPattern = "spam"; # rename "Junk"?
+                  farPattern = "spam";
                   nearPattern = "spam";
                 };
               };

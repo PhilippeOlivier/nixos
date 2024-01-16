@@ -22,6 +22,6 @@
       default-cache-ttl = 8640000;
       max-cache-ttl = 8640000;
     };
-    #pinentryFlavor = "curses";
+    pinentryFlavor = "tty";
   };
 }

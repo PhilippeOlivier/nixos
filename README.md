@@ -1,9 +1,0 @@
-# NixOS Configuration
-
-
-
-
-
-## Programs
-
-

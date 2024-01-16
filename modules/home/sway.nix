@@ -355,6 +355,7 @@
 
         "custom/mail" = {
           exec = "/home/pholi/.nixos-extra/scripts/mail/waybar.sh";
+          on-click = "/home/pholi/.nixos-extra/scripts/mail/fetch.sh";
     	    interval = "once";
           tooltip = false;
           signal = 16;

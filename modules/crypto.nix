@@ -22,5 +22,6 @@
       default-cache-ttl = 8640000;
       max-cache-ttl = 8640000;
     };
+    pinentry-flavor = "gnome3";
   };
 }

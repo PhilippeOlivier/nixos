@@ -183,7 +183,7 @@
           "sway/mode"
         ];
         modules-right = [
-          "custom/mail"
+          # "custom/mail"
           "custom/separator"
           "custom/network"
           "custom/separator"

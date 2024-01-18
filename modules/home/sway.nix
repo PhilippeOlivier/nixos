@@ -14,6 +14,7 @@
       acpi
       bc
       gsimplecal
+      inotify-tools
       jq
       wget
     ];

@@ -192,7 +192,7 @@
           "custom/battery-daemon"
           "custom/separator"
           "custom/keyboard"
-          "custom/keyboard-capslock-daemon"
+          # "custom/keyboard-capslock-daemon"
           "custom/keyboard-layout-daemon"
           "custom/separator"
           "custom/storage"

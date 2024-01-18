@@ -189,7 +189,7 @@
           "custom/network"
           "custom/separator"
           "custom/battery"
-          "custom/battery-daemon"
+          # "custom/battery-daemon"
           "custom/separator"
           "custom/keyboard"
           # "custom/keyboard-capslock-daemon"

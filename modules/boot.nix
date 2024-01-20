@@ -6,5 +6,5 @@
   boot.loader.systemd-boot.configurationLimit = 20;
 
   # Choose custom kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_10;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1_63;
 }

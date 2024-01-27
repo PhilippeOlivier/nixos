@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/boot.nix
+    ./modules/cron.nix
     ./modules/crypto.nix
     ./modules/fonts.nix
     ./modules/framework.nix

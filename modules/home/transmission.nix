@@ -28,7 +28,7 @@
           "dht-enabled": true,
           "download-dir": "/home/pholi/torrents",
           "download-queue-enabled": true,
-          "download-queue-size": 5,
+          "download-queue-size": 20,
           "encryption": 1,
           "filter-mode": "show-all",
           "filter-trackers": "",

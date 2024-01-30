@@ -22,7 +22,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/cron/test.sh; #"${pkgs.python3}/bin/python /home/eog/Documents/osu-history/screen_maker.py";
+      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/cron/test.sh";
       User = "pholi";
       Group = "users";
     };

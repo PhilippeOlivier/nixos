@@ -33,7 +33,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-*-* 3:00:00";
-      Persistent = true; # to remove?
+      # Persistent = true; # to remove?
       Unit = "eyepatch-service.service";
     };
   };

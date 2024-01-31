@@ -31,7 +31,7 @@
     description = "Eyepatch timer";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 8:33:00"; #"*-*-* 3:00:00";
+      OnCalendar = "*-*-* 8:35:00"; #"*-*-* 3:00:00";
       Persistent = true;
       Unit = "eyepatch-service.service";
     };

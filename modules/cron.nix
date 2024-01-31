@@ -16,29 +16,29 @@
 #https://www.reddit.com/r/NixOS/comments/uc90q9/problems_with_crontab/
 
 {
-  systemd.services."eyepatch-service" = {
-    description = "Eyepatch";
-    path = [ pkgs.curl pkgs.jq pkgs.toybox ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
-      User = "pholi";
-      Group = "users";
-    };
-  };
+  # systemd.services."eyepatch-service" = {
+  #   description = "Eyepatch";
+  #   path = [ pkgs.curl pkgs.jq pkgs.toybox ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
+  #     User = "pholi";
+  #     Group = "users";
+  #   };
+  # };
 
-  systemd.timers."eyepatch-service" = {
-    description = "Eyepatch timer";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 3:00:00";
-      Unit = "eyepatch-service.service";
-    };
-  };
+  # systemd.timers."eyepatch-service" = {
+  #   description = "Eyepatch timer";
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnCalendar = "*-*-* 3:00:00";
+  #     Unit = "eyepatch-service.service";
+  #   };
+  # };
 
   systemd.services."hn-service" = {
     description = "HN jobs";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];  # DELETE
     path = [ pkgs.curl pkgs.jq pkgs.toybox ];
     serviceConfig = {
       Type = "oneshot";

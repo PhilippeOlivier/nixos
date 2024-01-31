@@ -19,7 +19,7 @@
   systemd.services."eyepatch-service" = {
     description = "Eyepatch";
     wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.curl pkgs.gnused pkgs.jq ];
+    path = [ pkgs.curl pkgs.gnused pkgs.toybox pkgs.jq ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";

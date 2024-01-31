@@ -16,27 +16,27 @@
 #https://www.reddit.com/r/NixOS/comments/uc90q9/problems_with_crontab/
 
 {
-  systemd.services."eyepatch-service" = {
-    description = "Eyepatch";
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.curl pkgs.jq ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
-      User = "pholi";
-      Group = "users";
-    };
-  };
+  # systemd.services."eyepatch-service" = {
+  #   description = "Eyepatch";
+  #   wantedBy = [ "multi-user.target" ];
+  #   path = [ pkgs.curl pkgs.jq ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
+  #     User = "pholi";
+  #     Group = "users";
+  #   };
+  # };
 
-  systemd.timers."eyepatch-service" = {
-    description = "Eyepatch timer";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 3:00:00";
-      # Persistent = true; # to remove?
-      Unit = "eyepatch-service.service";
-    };
-  };
+  # systemd.timers."eyepatch-service" = {
+  #   description = "Eyepatch timer";
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnCalendar = "*-*-* 3:00:00";
+  #     Persistent = true; # to remove?
+  #     Unit = "eyepatch-service.service";
+  #   };
+  # };
 
   # below works
   systemd.services."test-service" = {

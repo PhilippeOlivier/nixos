@@ -18,9 +18,7 @@
 {
   systemd.services."eyepatch-service" = {
     description = "Eyepatch";
-    # wantedBy = [ "multi-user.target" ];
     path = [ pkgs.curl pkgs.jq pkgs.toybox ];
-    # restartIfChanged = false;
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
@@ -33,10 +31,52 @@
     description = "Eyepatch timer";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 10:06:00"; # "*-*-* 3:00:00";
+      OnCalendar = "*-*-* 3:00:00";
       Unit = "eyepatch-service.service";
     };
   };
+
+  systemd.services."hn-service" = {
+    description = "HN jobs";
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.curl pkgs.jq pkgs.toybox ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/hn/hn.sh";
+      User = "pholi";
+      Group = "users";
+    };
+  };
+
+  systemd.timers."hn-service" = {
+    description = "HN jobs timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* *:00:00";
+      Unit = "hn-service.service";
+    };
+  };
+  
+  # systemd.services."eyepatch-service" = {
+  #   description = "Eyepatch";
+  #   # wantedBy = [ "multi-user.target" ];
+  #   path = [ pkgs.curl pkgs.jq pkgs.toybox ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
+  #     User = "pholi";
+  #     Group = "users";
+  #   };
+  # };
+
+  # systemd.timers."eyepatch-service" = {
+  #   description = "Eyepatch timer";
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnCalendar = "*-*-* 3:00:00";
+  #     Unit = "eyepatch-service.service";
+  #   };
+  # };
 }
 
   # scripts/hn

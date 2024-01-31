@@ -20,6 +20,7 @@
     description = "Eyepatch";
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.curl pkgs.jq pkgs.toybox ];
+    restartIfChanged = false;
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";

@@ -19,7 +19,7 @@
   systemd.services."eyepatch-service" = {
     description = "Eyepatch";
     wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.curl pkgs.toybox pkgs.jq ];
+    path = [ pkgs.curl pkgs.jq pkgs.toybox ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/eyepatch/eyepatch.sh";
@@ -33,7 +33,6 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-*-* 3:00:00";
-      Persistent = true;
       Unit = "eyepatch-service.service";
     };
   };

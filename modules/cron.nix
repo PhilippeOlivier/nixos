@@ -52,7 +52,7 @@
     description = "HN jobs timer";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* *:33:00";
+      OnCalendar = "*-*-* *:38:00";
       Unit = "hn-service.service";
     };
   };

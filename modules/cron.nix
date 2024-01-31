@@ -31,7 +31,8 @@
     description = "Eyepatch timer";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnUnitActiveSec = "5m";
+      OnCalendar = "*-*-* 8:30:00"; #"*-*-* 3:00:00";
+      Persistent = true;
       Unit = "eyepatch-service.service";
     };
   };

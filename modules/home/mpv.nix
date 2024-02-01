@@ -8,7 +8,7 @@
       # scale = "ewa_lanczossharp";
       # cscale = "ewa_lanczossharp";
       video-sync = "display-resample";
-      # interpolation;
+      interpolation = true;
       tscale = "oversample";
       hwdec = "auto";
     };

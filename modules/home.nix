@@ -28,6 +28,9 @@
       pipewire
       wireplumber
 
+      # Games
+      lutris
+
       # Programs
       imv
       inkscape

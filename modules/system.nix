@@ -59,6 +59,7 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    driSupport32Bit = true;  # Required for Steam?
   };
 
   # Docker

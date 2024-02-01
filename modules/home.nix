@@ -8,6 +8,7 @@
     ./home/git.nix
     ./home/latex.nix
     ./home/mail.nix
+    ./home/mpv.nix
     ./home/pdf.nix
     ./home/python.nix
     ./home/shell.nix

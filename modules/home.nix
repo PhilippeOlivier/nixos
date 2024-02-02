@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./home/chromium.nix
+    ./home/browsers.nix
     ./home/crypto.nix
     ./home/emacs.nix
     ./home/git.nix
@@ -30,7 +30,7 @@
 
       # Games
       lutris
-      steam
+      steam   # necessary?
 
       # Programs
       imv

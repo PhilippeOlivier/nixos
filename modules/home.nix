@@ -28,6 +28,10 @@
       pipewire
       wireplumber
 
+      # Communication
+      discord
+      signal-desktop
+
       # Games
       lutris
       steam   # necessary?
@@ -40,14 +44,14 @@
       # Utilities
       docker-compose
       htop
-
-      # WiFi tools
-      # aircrack-ng
-      # hashcat
-      # hashcat-utils
-      # macchanger
-      # reaverwps
+      macchanger
     ];
+    # Prevent Discord from checking for new versions by itself
+    file.".config/discord/settings.json".text = ''
+    {
+      "SKIP_HOST_UPDATE": true
+    }
+    '';
     sessionVariables = {
       BROWSER = "firefox";
       EDITOR = "emacs";

@@ -9,6 +9,7 @@
     ./modules/fonts.nix
     ./modules/framework.nix
     ./modules/network.nix
+    ./modules/printers.nix
     ./modules/system.nix
     ./modules/users.nix
     ./modules/temp.nix

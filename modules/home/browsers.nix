@@ -6,7 +6,7 @@
       firefox
     ];
     file.".mozilla".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/mozilla";
-  }
+  };
 
   programs.chromium = {
     enable = true;

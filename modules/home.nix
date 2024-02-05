@@ -33,7 +33,7 @@
       signal-desktop
 
       # Console
-      busybox
+      (lowPrio busybox)
       curl
       expect
       fzf

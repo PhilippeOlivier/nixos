@@ -7,10 +7,10 @@
       pkgs.brlaser
       pkgs.gutenprint
       pkgs.gutenprintBin
-      {
+      pkgs.linkFarm "Brother_HL-3170CDW_series" [{
         name = "share/cups/model/hl3170cdw.ppd";
-        path = "Brother_HL-3170CDW_series.ppd"
-      };
+        path = "Brother_HL-3170CDW_series.ppd";
+      }]
     ];
   };
 

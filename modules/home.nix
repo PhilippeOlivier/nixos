@@ -38,6 +38,7 @@
       expect
       fzf
       imagemagick
+      inotify-tools
       jq
       pdfgrep
       tmux
@@ -54,7 +55,7 @@
 
       # Games
       lutris
-      steam   # necessary?
+      steam
 
       # Programs
       imv
@@ -66,18 +67,21 @@
       htop
       macchanger
     ];
+
     # Prevent Discord from checking for new versions by itself
     file.".config/discord/settings.json".text = ''
     {
       "SKIP_HOST_UPDATE": true
     }
     '';
+
     sessionVariables = {
       BROWSER = "firefox";
       EDITOR = "emacs";
       MOZ_ENABLE_WAYLAND = "1";  # Run Firefox in Wayland mode
       VISUAL = "emacs";
     };
+
     shellAliases = {
       grip = ''grip --pass $(pass show github.com/token)'';  # Use my GitHub token to avoid the hourly rate limit
       ls = "ls --color=auto";  # Colorize the `ls` command

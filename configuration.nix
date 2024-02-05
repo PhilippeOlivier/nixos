@@ -10,6 +10,7 @@
     ./modules/framework.nix
     ./modules/network.nix
     ./modules/printers.nix
+    ./modules/syncthing.nix
     ./modules/system.nix
     ./modules/users.nix
     ./modules/temp.nix

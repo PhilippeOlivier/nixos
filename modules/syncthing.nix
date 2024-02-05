@@ -12,16 +12,20 @@
     overrideFolders = true;
     settings = {
       devices = {
-        # "device1" = { id = "DEVICE-ID-GOES-HERE"; };
-        # "device2" = { id = "DEVICE-ID-GOES-HERE"; };
+        "lineageos" = {
+          id = "V5EOWSR-I6QSLAN-2AM3Y4I-VUMXQJS-RUVFSI4-G43O6TM-Q3EMYXB-G5PEZQH";
+        };
+        "macbook" = {
+          id = "RWJ6FMQ-GCFFI7D-MZBBM5T-U6BQAWV-BJFTMP6-FE6DPMB-MRYLCVL-HM6J6AO";
+        };
       };
       folders = {
         "Two-Way" = {
           path = "/home/pholi/syncthing/twoway";
-          # devices = [ "device1" "device2" ];
-          type = "receiveonly";
-          label = "Two-Way label";
-          id = "twowayIDID";
+          devices = [ "lineageos" ];
+          type = "sendreceive";
+          label = "Two-Way";
+          id = "pholi-nixos_twoway";
         };
       };
     };

@@ -7,6 +7,10 @@
       pkgs.brlaser
       pkgs.gutenprint
       pkgs.gutenprintBin
+      {
+        name = "share/cups/model/hl3170cdw.ppd";
+        path = "Brother_HL-3170CDW_series.ppd"
+      }
     ];
   };
 
@@ -16,7 +20,9 @@
     openFirewall = true;
   };
 
-# cups?
+  # cups?
+  # do this: https://github.com/balsoft/nixos-config/blob/master/flake.nix
+# THIS:https://github.com/balsoft/nixos-config/blob/73cc2c3a8bb62a9c3980a16ae70b2e97af6e1abd/profiles/workspace/print-scan/default.nix#L4
   
   # hardware.printers = {
   #   ensurePrinters = [

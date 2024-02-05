@@ -28,6 +28,14 @@
     nftables.enable = true;  # Use the newer nftables instead of the older iptables
     firewall = {
       enable = true;
+      allowedTCPPorts = [
+        8384   # Syncthing
+        22000  # Syncthing
+      ];
+      allowedUDPPorts = [
+        22000  # Syncthing
+        21027  # Syncthing
+      ];
     };
   };
 }

@@ -33,8 +33,8 @@
       signal-desktop
 
       # Console
-      (lowPrio busybox)
       curl
+      dos2unix
       expect
       fzf
       imagemagick

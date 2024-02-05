@@ -20,6 +20,8 @@
           path = "/home/pholi/syncthing/twoway";
           # devices = [ "device1" "device2" ];
           type = "receiveonly";
+          label = "Two-Way label";
+          id = "twowayIDID";
         };
       };
     };

@@ -47,7 +47,6 @@
       yt-dlp
 
       # Filesystem
-      exfat
       exfatprogs
       hfsprogs
       ntfs3g

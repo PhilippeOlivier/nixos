@@ -25,7 +25,7 @@
           devices = [ "lineageos" ];
           type = "sendreceive";
           label = "Two-Way";
-          id = "pholi-nixos_twoway";
+          id = "xz98j-hf9mm";
         };
       };
     };

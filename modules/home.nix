@@ -32,6 +32,27 @@
       discord
       signal-desktop
 
+      # Console
+      busybox
+      curl
+      expect
+      fzf
+      imagemagick
+      jq
+      pdfgrep
+      tmux
+      udisks
+      vim
+      ydotool
+      yt-dlp
+
+      # Filesystem
+      exfat
+      exfatprogs
+      hfsprogs
+      ntfs3g
+      parted
+
       # Games
       lutris
       steam   # necessary?

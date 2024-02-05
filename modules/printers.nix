@@ -17,7 +17,7 @@
       pkgs.gutenprintBin
       # brother_printer
     ];
-    cups-pdf.enable = true;
+    # cups-pdf.enable = true;
   };
 
   services.avahi = {

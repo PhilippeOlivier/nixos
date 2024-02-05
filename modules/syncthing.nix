@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  # For my use case, Syncthing secrets can be in the open since no meaningful data is exchanged between devices.
+
   services.syncthing = {
     enable = true;
     dataDir = "/home/pholi/syncthing";
@@ -21,11 +23,16 @@
       };
       folders = {
         "Two-Way" = {
-          path = "/home/pholi/syncthing/twoway";
-          devices = [ "lineageos" ];
-          type = "sendreceive";
           label = "Two-Way";
           id = "xz98j-hf9mm";
+          path = "/home/pholi/syncthing/twoway";
+          devices = [
+            "lineageos"
+          ];
+          type = "sendreceive";
+          rescanIntervalS = 60;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
         };
       };
     };

@@ -10,7 +10,7 @@
       {
         name = "share/cups/model/hl3170cdw.ppd";
         path = "Brother_HL-3170CDW_series.ppd"
-      }
+      };
     ];
   };
 

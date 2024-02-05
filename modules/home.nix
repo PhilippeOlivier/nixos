@@ -41,6 +41,7 @@
       inotify-tools
       jq
       pdfgrep
+      rsync
       tmux
       udisks
       vim

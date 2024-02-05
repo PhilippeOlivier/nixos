@@ -4,7 +4,7 @@
   services.syncthing = {
     enable = true;
     dataDir = "/home/pholi/syncthing";
-    # configDir = "/home/pholi/testsyncconfig";
+    configDir = "/home/pholi/.nixos-extra/syncthing";
     openDefaultPorts = true;
     user = "pholi";
     group = "users";

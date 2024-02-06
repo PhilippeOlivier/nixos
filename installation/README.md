@@ -19,18 +19,18 @@ Boot from the USB drive, then setup internet for the installation:
 $ wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
 ```
 
-With `lsblk` validate that the value of `DEVICE` in `installation/pre.sh` is the correct one.
+With `lsblk` validate that the value of `DEVICE` in `installation/install.sh` is the correct one.
 
 Fetch the Bash script to partition and format the disk:
 
 ```bash
-$ curl -sLo pre.sh raw.githubusercontent.com/PhilippeOlivier/nixos/main/installation/pre.sh
+$ curl -sLo pre.sh raw.githubusercontent.com/PhilippeOlivier/nixos/main/installation/install.sh
 ```
 
 Launch the script. You will be prompted for the LUKS password at some point:
 
 ```bash
-$ bash pre.sh
+$ bash install.sh
 ```
 
 Optional: If this is a new computer, generate a basic configuration in order to get `hardware-configuration.nix` (and replace the `hardware-configuration.nix` from the git repo):
@@ -59,6 +59,8 @@ Reboot. Clone my personal configuration (optionally, replace `hardware-configura
 $ git clone https://github.com/PhilippeOlivier/nixos.git
 $ sudo rm -rf /etc/nixos
 ```
+
+Copy the backup `.nixos-extra` directory to `~/.nixos-extra`.
 
 Rebuild:
 

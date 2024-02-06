@@ -45,7 +45,6 @@
       intel-vaapi-driver
       libvdpau-va-gl
       intel-media-driver
-      intel-compute-runtime  # For WiFi tools
     ];
   };
 

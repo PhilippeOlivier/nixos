@@ -13,6 +13,7 @@
     # ./modules/syncthing.nix
     ./modules/system.nix
     ./modules/users.nix
+    ./modules/zfs.nix
     # ./modules/temp.nix
   ];
 

@@ -1,0 +1,9 @@
+{ config, pkgs, ... }:
+
+{
+  # Use the latest kernel compatible with ZFS
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+
+  # Disable hibernation
+  boot.kernelParams = [ "nohibernate" ];
+}

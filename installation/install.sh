@@ -50,8 +50,8 @@ sudo zpool create \
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/root
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/nix
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/var
-sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true ${POOL}/snap
-sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/nosnap
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true ${POOL}/zsnap
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/znosnap
 
 # Mount
 sudo mount -t zfs ${POOL}/root /mnt
@@ -65,9 +65,9 @@ sudo mount -t zfs ${POOL}/nix /mnt/nix
 sudo mkdir -p /mnt/var
 sudo mount -t zfs ${POOL}/var /mnt/var
 
-sudo mkdir -p /mnt/home/pholi/{.snap,.nosnap}
-sudo mount -t zfs ${POOL}/snap /mnt/home/pholi/.snap
-sudo mount -t zfs ${POOL}/nosnap /mnt/home/pholi/.nosnap
+sudo mkdir -p /mnt/home/pholi/{.zsnap,.znosnap}
+sudo mount -t zfs ${POOL}/snap /mnt/home/pholi/.zsnap
+sudo mount -t zfs ${POOL}/nosnap /mnt/home/pholi/.znosnap
 
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt

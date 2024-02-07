@@ -47,10 +47,10 @@ sudo zpool create \
      $POOL /dev/mapper/cryptroot
 
 # ZFS datasets
-sudo zfs create -o mountpoint=legacy ${POOL}/root
-sudo zfs create -o mountpoint=legacy ${POOL}/nix
-sudo zfs create -o mountpoint=legacy ${POOL}/var
-sudo zfs create -o mountpoint=legacy ${POOL}/home
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/root
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/nix
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/var
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true ${POOL}/home
 
 # Mount
 sudo mount -t zfs ${POOL}/root /mnt

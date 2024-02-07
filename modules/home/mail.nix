@@ -11,7 +11,7 @@
   };
   
   accounts.email = {
-    maildirBasePath = ".nixos-extra/mail/maildirs";
+    maildirBasePath = ".snap/.nixos-extra/mail/maildirs";
     certificatesFile = /etc/ssl/certs/ca-certificates.crt;
     accounts = {
       "pedtsr" = {

@@ -4,13 +4,13 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/boot.nix
-    # ./modules/cron.nix
-    # ./modules/crypto.nix
-    # ./modules/fonts.nix
+    ./modules/cron.nix
+    ./modules/crypto.nix
+    ./modules/fonts.nix
     ./modules/framework.nix
     ./modules/network.nix
-    # ./modules/printers.nix
-    # ./modules/syncthing.nix
+    ./modules/printers.nix
+    ./modules/syncthing.nix
     ./modules/system.nix
     ./modules/users.nix
     ./modules/zfs.nix

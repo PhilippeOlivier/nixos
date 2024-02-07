@@ -24,39 +24,22 @@ With `lsblk` validate that the value of `DEVICE` in `installation/install.sh` is
 Fetch the Bash script to partition and format the disk:
 
 ```bash
-$ curl -sLo pre.sh raw.githubusercontent.com/PhilippeOlivier/nixos/main/installation/install.sh
+$ curl -sLo install.sh raw.githubusercontent.com/PhilippeOlivier/nixos/main/installation/install.sh
 ```
 
-Launch the script. You will be prompted for the LUKS password at some point:
+Launch the script. You will be prompted for the LUKS password at some point. When the script finishes, reboot.
 
 ```bash
 $ bash install.sh
 ```
 
-Optional: If this is a new computer, generate a basic configuration in order to get `hardware-configuration.nix` (and replace the `hardware-configuration.nix` from the git repo):
+Login locally or using SSH (192.168.0.81).
 
-```bash
-$ sudo nixos-generate-config --root /mnt
-```
-
-Fetch my personal configuration:
-
-```bash
-$ curl -LO https://github.com/PhilippeOlivier/nixos/archive/main.zip
-$ unzip main.zip
-$ sudo mv nixos-main/* /mnt/etc/nixos
-```
-
-Install NixOS:
-
-```bash
-$ sudo nixos-install --root /mnt --no-root-password
-```
-
-Reboot. Clone my personal configuration (optionally, replace `hardware-configuration.nix` in it with the new one) and get rid of `/etc/nixos`:
+Clone my personal configuration (normally, replace `hardware-configuration.nix` in it with the new one) and get rid of `/etc/nixos`:
 
 ```bash
 $ git clone https://github.com/PhilippeOlivier/nixos.git
+$ sudo cp /etc/nixos/hardware-configuration nixos
 $ sudo rm -rf /etc/nixos
 ```
 

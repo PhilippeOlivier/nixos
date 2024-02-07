@@ -2,20 +2,20 @@
 
 {
   imports = [
-    # ./home/browsers.nix
-    # ./home/crypto.nix
-    # ./home/emacs.nix
+    ./home/browsers.nix
+    ./home/crypto.nix
+    ./home/emacs.nix
     ./home/git.nix
-    # ./home/latex.nix
-    # ./home/mail.nix
-    # ./home/mpv.nix
-    # ./home/pdf.nix
-    # ./home/python.nix
-    # ./home/shell.nix
-    # ./home/sway.nix
-    # ./home/thunar.nix
-    # ./home/transmission.nix
-    # ./home/xdg.nix
+    ./home/latex.nix
+    ./home/mail.nix
+    ./home/mpv.nix
+    ./home/pdf.nix
+    ./home/python.nix
+    ./home/shell.nix
+    ./home/sway.nix
+    ./home/thunar.nix
+    ./home/transmission.nix
+    ./home/xdg.nix
   ];
 
   home = {
@@ -23,50 +23,50 @@
     username = "pholi";
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
-      # # Audio
-      # bluez
-      # pipewire
-      # wireplumber
+      # Audio
+      bluez
+      pipewire
+      wireplumber
 
-      # # Communication
-      # discord
-      # signal-desktop
+      # Communication
+      discord
+      signal-desktop
 
-      # # Console
-      # curl
-      # dos2unix
-      # expect
-      # fzf
-      # imagemagick
-      # inotify-tools
-      # jq
-      # pdfgrep
-      # rsync
-      # tmux
-      # udisks
-      # vim
-      # ydotool
-      # yt-dlp
+      # Console
+      curl
+      dos2unix
+      expect
+      fzf
+      imagemagick
+      inotify-tools
+      jq
+      pdfgrep
+      rsync
+      tmux
+      udisks
+      vim
+      ydotool
+      yt-dlp
 
-      # # Filesystem
-      # exfatprogs
-      # hfsprogs
-      # ntfs3g
-      # parted
+      # Filesystem
+      exfatprogs
+      hfsprogs
+      ntfs3g
+      parted
 
-      # # Games
-      # lutris
-      # steam
+      # Games
+      lutris
+      steam
 
-      # # Programs
-      # imv
-      # inkscape
-      # libreoffice
+      # Programs
+      imv
+      inkscape
+      libreoffice
 
-      # # Utilities
-      # docker-compose
-      # htop
-      # macchanger
+      # Utilities
+      docker-compose
+      htop
+      macchanger
     ];
 
     # Prevent Discord from checking for new versions by itself

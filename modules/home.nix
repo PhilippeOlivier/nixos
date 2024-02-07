@@ -16,6 +16,7 @@
     ./home/thunar.nix
     ./home/transmission.nix
     ./home/xdg.nix
+    ./home/zfs.nix
   ];
 
   home = {

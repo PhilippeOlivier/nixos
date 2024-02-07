@@ -446,11 +446,19 @@
 
         "custom/storage" = {
           exec = pkgs.writeShellScript "custom-storage" ''
-            # TODO: once ZFS is setup, simply get the AVAIL value from `zfs list`
-            # TODO: maybe change the interval to 5s?
-            echo storage
+            AVAIL=$(zpool list | tail -n 1 | tr -s ' ' | cut -d ' ' -f 4)
+            PERC_USED=$(zpool list | tail -n 1 | tr -s ' ' | cut -d ' ' -f 8 | tr -d '%')
+
+            if [[ $PERC_USED -gt 90 ]]; then
+                OUTPUT="<span background=\"#FF0000\" foreground=\"#000000\">$AVAIL</span>"
+            elif [[ $PERC_USED -gt 80 ]] && [[ $QUALITY -lt 50 ]]; then
+                OUTPUT="<span background=\"#FFFF00\" foreground=\"#000000\">$AVAIL</span>"
+            else
+                OUTPUT="$AVAIL"
+            fi
+            echo "$OUTPUT"
           '';
-    	    interval = 30;
+    	    interval = 5;
           tooltip = false;
         };
 

@@ -6,4 +6,9 @@
 
   # Disable hibernation
   boot.kernelParams = [ "nohibernate" ];
+
+  services.zfs = {
+    autoScrub.enable = true;
+    trim.enable = true;
+  };
 }

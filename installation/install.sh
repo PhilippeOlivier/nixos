@@ -65,8 +65,10 @@ sudo mount -t zfs ${POOL}/nix /mnt/nix
 sudo mkdir -p /mnt/var
 sudo mount -t zfs ${POOL}/var /mnt/var
 
-sudo mkdir -p /mnt/home/pholi/.nosnap
+sudo mkdir -p /mnt/home
 sudo mount -t zfs ${POOL}/home /mnt/home
+sudo mkdir -p /mnt/home/pholi/.nosnap
+sudo chown pholi:users /mnt/home/pholi/.nosnap
 sudo mount -t zfs ${POOL}/home/nosnap /mnt/home/pholi/.nosnap
 
 # Generate basic configuration, including `hardware-configuration.nix`

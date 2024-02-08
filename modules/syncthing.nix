@@ -7,7 +7,7 @@
     enable = true;
     cert = "/home/pholi/.nixos-extra/syncthing/cert.pem";
     key = "/home/pholi/.nixos-extra/syncthing/key.pem";
-    dataDir = "/home/pholi/.nosnap/syncthing";
+    dataDir = "/home/pholi/asdfsyncthing";
     openDefaultPorts = true;
     user = "pholi";
     group = "users";

@@ -87,7 +87,7 @@
 
         "Two-Way" = {
           id = "xz98j-hf9mm";
-          path = "/home/pholi/syncthing/twoway";
+          path = "/home/pholi/.nosnap/syncthing/twoway";
           devices = [
             "lineageos"
           ];

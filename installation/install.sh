@@ -68,8 +68,8 @@ sudo mount -t zfs ${POOL}/var /mnt/var
 sudo mkdir -p /mnt/home
 sudo mount -t zfs ${POOL}/home /mnt/home
 sudo mkdir -p /mnt/home/pholi/.nosnap
-sudo chown pholi:users /mnt/home/pholi/.nosnap
 sudo mount -t zfs ${POOL}/home/nosnap /mnt/home/pholi/.nosnap
+sudo chown -R pholi:users /mnt/home/pholi
 
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt

@@ -18,6 +18,7 @@
     # shell = pkgs.bash;
     extraGroups = [
       "docker"
+      "syncthing"
       "wheel"
     ];
   };

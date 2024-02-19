@@ -11,17 +11,8 @@
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
-    # autoSnapshot = {
-    #   enable = true;
-    #   frequent = 4;
-    #   hourly = 24;
-    #   daily = 7;
-    #   weekly = 4;
-    #   monthly = 12;
-    # };
   };
 
-  # Sanoid/Syncoid
   services.sanoid = {
     enable = true;
     interval = "hourly";
@@ -36,4 +27,11 @@
       };
     };
   };
+
+  # Manage syncoid manually to check for hard drives on remote server
+  # services.syncoid = {
+  #   enable = true;
+  #   sshKey = "/home/pholi/.ssh/id_ed25519";
+  #   # interval = "hourly";
+  # };
 }

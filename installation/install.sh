@@ -44,7 +44,7 @@ sudo zpool create \
      -O compression=lz4 \
      -O mountpoint=none \
      -O xattr=sa \
-     $POOL /dev/mapper/cryptroot
+     $POOL $CRYPTROOT
 
 # ZFS datasets
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/root
@@ -69,7 +69,7 @@ sudo mkdir -p /mnt/home
 sudo mount -t zfs ${POOL}/home /mnt/home
 sudo mkdir -p /mnt/home/pholi/.nosnap
 sudo mount -t zfs ${POOL}/home/nosnap /mnt/home/pholi/.nosnap
-sudo chown -R pholi:users /mnt/home/pholi
+# sudo chown -R pholi:users /mnt/home/pholi
 
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt

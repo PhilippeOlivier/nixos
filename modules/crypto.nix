@@ -13,6 +13,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.cryptsetup
     pkgs.pinentry
   ];
 

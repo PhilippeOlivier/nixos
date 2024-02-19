@@ -19,7 +19,7 @@ Boot from the USB drive, then setup internet for the installation:
 $ wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
 ```
 
-With `lsblk` validate that the value of `DEVICE` in `installation/install.sh` is the correct one.
+With `lsblk` validate that the value of `DEVICE` in `installation/install.sh` is the correct one. Also, with `ifconfig` make sure that the network interface is correct in `installation/install.sh`.
 
 Fetch the Bash script to partition and format the disk:
 

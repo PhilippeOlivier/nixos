@@ -67,7 +67,7 @@
       # Utilities
       docker-compose
       htop
-      macchanger
+      sanoid
     ];
 
     # Prevent Discord from checking for new versions by itself

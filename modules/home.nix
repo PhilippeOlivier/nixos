@@ -68,7 +68,6 @@
       docker-compose
       htop
       macchanger
-      syncoid
     ];
 
     # Prevent Discord from checking for new versions by itself

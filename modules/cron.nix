@@ -8,25 +8,25 @@
 
 
 
-  # systemd.services."syncoid-service" = {
-  #   description = "Syncoid";
-  #   path = [ pkgs.curl pkgs.toybox ];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/backup/syncoid.sh";
-  #     User = "pholi";
-  #     Group = "users";
-  #   };
-  # };
+  systemd.services."syncoid-service" = {
+    description = "Syncoid";
+    path = [ pkgs.curl pkgs.sanoid pkgs.toybox ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/backup/syncoid.sh";
+      User = "pholi";
+      Group = "users";
+    };
+  };
 
-  # systemd.timers."syncoid-service" = {
-  #   description = "Syncoid timer";
-  #   wantedBy = [ "timers.target" ];
-  #   timerConfig = {
-  #     OnCalendar = "*:0/1";
-  #     Unit = "syncoid-service.service";
-  #   };
-  # };
+  systemd.timers."syncoid-service" = {
+    description = "Syncoid timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/1";
+      Unit = "syncoid-service.service";
+    };
+  };
 
   
   # systemd.services."eyepatch-service" = {

@@ -22,6 +22,6 @@
       "ignorespace"
     ];
     initExtra = ''PS1="[\u@\h \W]\$ "'';
-    bashrcExtra = "source /home/pholi/.nixos-extra/scripts/pholi/pholi.sh"
+    bashrcExtra = "source /home/pholi/.nixos-extra/scripts/pholi/pholi.sh";
   };
 }

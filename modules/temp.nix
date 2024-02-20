@@ -21,7 +21,11 @@
             options = [ "NOPASSWD" ];
           }
           {
-            command = "/run/wrappers/bin/mount";  # MUST STILL USER sudo but not pw should be asked
+            command = "/run/wrappers/bin/mount";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/cryptsetup";
             options = [ "NOPASSWD" ];
           }
         ];

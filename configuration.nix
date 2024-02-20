@@ -14,7 +14,7 @@
     ./modules/system.nix
     ./modules/users.nix
     ./modules/zfs.nix
-    # ./modules/temp.nix
+    ./modules/temp.nix
   ];
 
   system.stateVersion = "24.05";

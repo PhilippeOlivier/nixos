@@ -67,7 +67,7 @@
       # Utilities
       docker-compose
       htop
-      sanoid
+      sanoid  # Needed for syncoid
     ];
 
     # Prevent Discord from checking for new versions by itself

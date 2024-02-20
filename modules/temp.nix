@@ -1,23 +1,23 @@
 { config, pkgs, ... }:
 
 {
+  # This is required to run the backup scripts without entering a password
   security.sudo = {
     enable = true;
     extraRules = [
       {
         groups = [ "wheel" ];
-        # runAs = "root"; # <- ?
         commands = [
           {
-            command = "${pkgs.systemd}/bin/systemctl suspend";
+            command = "/run/current-system/sw/bin/cryptsetup";
             options = [ "NOPASSWD" ];
           }
           {
-            command = "${pkgs.systemd}/bin/reboot";
+            command = "/run/current-system/sw/bin/zpool";
             options = [ "NOPASSWD" ];
           }
           {
-            command = "${pkgs.systemd}/bin/poweroff";
+            command = "/etc/profiles/per-user/pholi/bin/mkdir";  # TODO: change to homelab
             options = [ "NOPASSWD" ];
           }
           {
@@ -25,7 +25,15 @@
             options = [ "NOPASSWD" ];
           }
           {
-            command = "/run/current-system/sw/bin/cryptsetup";
+            command = "/run/wrappers/bin/umount";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/etc/profiles/per-user/pholi/bin/rmdir";  # TODO: change to homelab
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/etc/profiles/per-user/pholi/bin/udisksctl";  # TODO: change to homelab
             options = [ "NOPASSWD" ];
           }
         ];

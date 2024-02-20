@@ -4,6 +4,7 @@
   security.sudo = {
     enable = true;
     extraRules = [{
+      users = [ "pholi" ];
       commands = [
         {
           command = "${pkgs.systemd}/bin/systemctl suspend";

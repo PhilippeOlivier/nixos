@@ -18,16 +18,11 @@
           options = [ "NOPASSWD" ];
         }
         {
-          command = "${pkgs.systemd}/bin/mount";
+          command = "/run/wrappers/bin/mount";
           options = [ "NOPASSWD" ];
         }
       ];
       groups = [ "wheel" ];
     }];
-    extraConfig = with pkgs; ''
-      Defaults:picloud secure_path="${lib.makeBinPath [
-      systemd
-      ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-    '';
   };
 }

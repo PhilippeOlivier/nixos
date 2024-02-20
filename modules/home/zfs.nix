@@ -11,6 +11,7 @@
     # Required for ZFS backups
     packages = with pkgs; [
       lz4
+      mbuffer
       sanoid
     ];
   };

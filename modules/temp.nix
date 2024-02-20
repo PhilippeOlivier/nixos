@@ -17,6 +17,10 @@
           command = "${pkgs.systemd}/bin/poweroff";
           options = [ "NOPASSWD" ];
         }
+        {
+          command = "${pkgs.systemd}/bin/mount";
+          options = [ "NOPASSWD" ];
+        }
       ];
       groups = [ "wheel" ];
     }];

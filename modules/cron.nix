@@ -10,12 +10,12 @@
 
   systemd.services."syncoid-service" = {
     description = "Syncoid";
-    path = [ pkgs.curl pkgs.sanoid pkgs.sudo pkgs.toybox ];
+    path = [ pkgs.curl pkgs.sanoid pkgs.toybox ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/backup/syncoid.sh";
-      User = "pholi";
-      Group = "users";
+      User = "root";
+      Group = "root";
     };
   };
 

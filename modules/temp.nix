@@ -17,7 +17,7 @@
             options = [ "NOPASSWD" ];
           }
           {
-            command = "/etc/profiles/per-user/pholi/bin/mkdir";  # TODO: change to homelab
+            command = "${pkgs.coreutils}/bin/mkdir";  # TODO: change to homelab
             options = [ "NOPASSWD" ];
           }
           {
@@ -29,11 +29,11 @@
             options = [ "NOPASSWD" ];
           }
           {
-            command = "/etc/profiles/per-user/pholi/bin/rmdir";  # TODO: change to homelab
+            command = "${pkgs.coreutils}/bin/rmdir";  # TODO: change to homelab
             options = [ "NOPASSWD" ];
           }
           {
-            command = "/etc/profiles/per-user/pholi/bin/udisksctl";  # TODO: change to homelab
+            command = "${pkgs.coreutils}/bin/udisksctl";  # TODO: change to homelab
             options = [ "NOPASSWD" ];
           }
         ];

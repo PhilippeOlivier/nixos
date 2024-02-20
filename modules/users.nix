@@ -21,4 +21,20 @@
       "wheel"
     ];
   };
+
+  # This is required to run many scripts correctly
+  security.sudo = {
+    enable = true;
+    extraRules = [
+      {
+        groups = [ "wheel" ];
+        commands = [
+          {
+            command = "ALL";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
+  };
 }

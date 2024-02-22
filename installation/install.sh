@@ -114,7 +114,7 @@ cat > configuration.nix <<EOF
     wireless.networks.AwesomenautsEXT.pskRaw = "6521e88582fdc0fda473fa548375627950a87185610768bed19eb41005409161";
     useDHCP = false;
     interfaces = {
-      wlp4s0 = {
+      wlan0 = {
         useDHCP = true;
         ipv4.addresses = [
           {

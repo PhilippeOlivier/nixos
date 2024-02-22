@@ -21,8 +21,8 @@
         autoprune = true;
         autosnap = true;
         hourly = 24;
-        daily = 30;
-        monthly = 6;
+        daily = 14;
+        monthly = 3;
         yearly = 0;
       };
     };

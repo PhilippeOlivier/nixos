@@ -10,7 +10,7 @@
 
     # Set all interfaces individually
     interfaces = {
-      wlp4s0 = {
+      wlan0 = {
         useDHCP = true;
         ipv4.addresses = [
           {
@@ -19,9 +19,9 @@
           }
         ];
       };
-      enp0s31f6 = {
-        useDHCP = true;
-      };
+      # enp0s31f6 = {
+      #   useDHCP = true;
+      # };
     };
 
     # Firewall

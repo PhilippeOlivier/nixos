@@ -30,7 +30,7 @@
     wrapperFeatures.gtk = true;
     extraConfig = ''
       # TrackPad configuration (the command `swaymsg -t get_inputs` will list the names of the inputs)
-      input "2:7:SynPS/2_Synaptics_TouchPad" {
+      input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
         tap enabled
         natural_scroll disabled
         dwt enabled
@@ -311,7 +311,7 @@
 
         "custom/keyboard" = {
           exec = pkgs.writeShellScript "custom-keyboard" ''
-            CAPS_LOCK=$(cat "/sys/class/leds/input1::capslock/brightness")
+            CAPS_LOCK=$(cat "/sys/class/leds/input2::capslock/brightness")
 
             if swaymsg -pt get_inputs | grep -q "Canadian (CSA)"; then
                 LAYOUT="FR"
@@ -335,7 +335,7 @@
             # This daemon triggers updates for the `custom/keyboard` module.
             # An update is triggered when the caps lock key is pressed.
             while true; do
-                if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
+                if ! inotifywait --quiet --event access /sys/class/leds/input2::capslock/brightness &> /dev/null; then
                     pkill -RTMIN+14 waybar
                 fi
             done
@@ -369,7 +369,7 @@
         "custom/network" = {
           exec = pkgs.writeShellScript "custom-network" ''
             # These interfaces can be found using `ip link show`.
-            WIFI_INTERFACE="wlp4s0"
+            WIFI_INTERFACE="wlan0"
             ETH_INTERFACE="enp0s31f6"
 
             # Check for internet connectivity.

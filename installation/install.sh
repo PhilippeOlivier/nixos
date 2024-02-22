@@ -52,6 +52,9 @@ sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/nix
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/var
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true ${POOL}/home
 sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/home/nosnap
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/home/cache
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/home/config
+sudo zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=false ${POOL}/home/local
 
 # Mount
 sudo mount -t zfs ${POOL}/root /mnt
@@ -69,6 +72,12 @@ sudo mkdir -p /mnt/home
 sudo mount -t zfs ${POOL}/home /mnt/home
 sudo mkdir -p /mnt/home/pholi/.nosnap
 sudo mount -t zfs ${POOL}/home/nosnap /mnt/home/pholi/.nosnap
+sudo mkdir -p /mnt/home/pholi/.cache
+sudo mount -t zfs ${POOL}/home/cache /mnt/home/pholi/.cache
+sudo mkdir -p /mnt/home/pholi/.config
+sudo mount -t zfs ${POOL}/home/config /mnt/home/pholi/.config
+sudo mkdir -p /mnt/home/pholi/.local
+sudo mount -t zfs ${POOL}/home/local /mnt/home/pholi/.local
 # sudo chown -R pholi:users /mnt/home/pholi
 
 # Generate basic configuration, including `hardware-configuration.nix`
@@ -148,6 +157,7 @@ cat > configuration.nix <<EOF
   # Misc
   system.stateVersion = "24.05";
   environment.systemPackages = [
+    pkgs.cryptsetup
     pkgs.git
   ];
 }

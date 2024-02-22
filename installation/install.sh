@@ -18,9 +18,9 @@ sudo wipefs -af $DEVICE
 sudo sgdisk -Zo $DEVICE
 
 # Partition the device
-sudo parted -s $DEVICE \
+sudo parted -s -a optimal $DEVICE \
      mklabel gpt \
-     mkpart $BOOT_LABEL fat32 1MiB 1GiB \
+     mkpart $BOOT_LABEL fat32 0% 1GiB \
      set 1 esp on \
      mkpart $ROOT_LABEL 1GiB 100%
 
@@ -28,8 +28,9 @@ sudo parted -s $DEVICE \
 sudo partprobe $DEVICE
 
 # Boot partition
-sudo mkfs.fat -F 32 -n $BOOT_LABEL $BOOT_PARTITION
-sudo mlabel -N 20240207 -i $BOOT_PARTITION ::
+sudo mkfs.vfat -i 20240207 $BOOT_PARTITION
+# sudo mkfs.fat -F 32 -n $BOOT_LABEL $BOOT_PARTITION
+# sudo mlabel -N 20240207 -i $BOOT_PARTITION ::
 
 # LUKS
 read -r -s -p "Enter a password for the LUKS container: " LUKS_PASSPHRASE

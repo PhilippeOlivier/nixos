@@ -38,7 +38,7 @@
       dos2unix
       expect
       fzf
-      imagemagick
+      # imagemagick
       inotify-tools
       jq
       pdfgrep

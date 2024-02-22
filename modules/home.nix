@@ -38,7 +38,7 @@
       dos2unix
       expect
       fzf
-      # imagemagick
+      imagemagick
       inotify-tools
       jq
       pdfgrep
@@ -60,7 +60,7 @@
       steam
 
       # Programs
-      imv
+      # imv
       inkscape
       libreoffice
 

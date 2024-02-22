@@ -79,7 +79,7 @@ sudo mkdir -p /mnt/home/pholi/.config
 sudo mount -t zfs ${POOL}/home/config /mnt/home/pholi/.config
 sudo mkdir -p /mnt/home/pholi/.local
 sudo mount -t zfs ${POOL}/home/local /mnt/home/pholi/.local
-# sudo chown -R pholi:users /mnt/home/pholi
+sudo chown -R pholi:users /mnt/home/pholi
 
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt

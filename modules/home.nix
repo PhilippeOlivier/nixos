@@ -38,7 +38,7 @@
       steam
       
       # Programs
-      # imv
+      imv
       inkscape
       libreoffice
 

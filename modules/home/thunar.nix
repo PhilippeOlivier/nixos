@@ -7,9 +7,11 @@
       file:///home/pholi/pedtsr/ongoing/integrated-reasoning
       file:///home/pholi/pedtsr/ongoing/kaster
     '';
+
     file.".config/xfce4/help.rc".text = ''
       auto-online=false
     '';
+
     file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".text = ''
       <?xml version="1.0" encoding="UTF-8"?>
       <channel name="thunar" version="1.0">
@@ -42,6 +44,7 @@
         <property name="last-show-hidden" type="bool" value="false"/>
       </channel>
     '';
+
     file.".config/Thunar/uca.xml".text = ''
     <?xml version="1.0" encoding="UTF-8"?>
     <actions>

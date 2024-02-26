@@ -33,28 +33,6 @@
       discord
       signal-desktop
 
-      # Console
-      curl
-      dos2unix
-      expect
-      fzf
-      imagemagick
-      inotify-tools
-      jq
-      pdfgrep
-      rsync
-      tmux
-      udisks
-      vim
-      ydotool
-      yt-dlp
-
-      # Filesystem
-      exfatprogs
-      hfsprogs
-      ntfs3g
-      parted
-
       # Games
       lutris
       steam
@@ -66,7 +44,6 @@
 
       # Utilities
       docker-compose
-      htop
     ];
 
     # Prevent Discord from checking for new versions by itself

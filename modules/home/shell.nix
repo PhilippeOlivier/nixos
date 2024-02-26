@@ -30,13 +30,26 @@
       parted
 
       # Compression
+      bzip2
+      bzip3
+      gzip
+      lrzip
+      lz4
+      lzip
+      lzop
+      p7zip
+      rar
       unrar
       unzip
+      xz
       zip
+      zstd
       
       # Utilities
       htop
     ];
+
+    file.".bash_history".source = config.lib.file.mkOutOfStoreSymlink "/home/pholi/.nixos-extra/shell/bash_history";
   };
   
   programs.bash = {

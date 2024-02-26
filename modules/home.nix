@@ -63,8 +63,8 @@
     shellAliases = {
       grip = ''grip --pass $(pass show github.com/token)'';  # Use my GitHub token to avoid the hourly rate limit
       ls = "ls --color=auto";  # Colorize the `ls` command
-      opto = "python ~/scripts/emma/opto/opto.py";  # Run the wife's opto script
-      # reboot = "emacsclient -e '(save-some-buffers t)' && reboot";  # Save all Emacs buffers before rebooting
+      # opto = "python ~/scripts/emma/opto/opto.py";  # Run the wife's opto script
+      reboot = "emacsclient -e '(save-some-buffers t)' && reboot";  # Save all Emacs buffers before rebooting
     };
   };
 

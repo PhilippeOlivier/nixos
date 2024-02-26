@@ -12,7 +12,6 @@
     '';
     file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml".text = ''
       <?xml version="1.0" encoding="UTF-8"?>
-
       <channel name="thunar" version="1.0">
         <property name="last-view" type="string" value="ThunarDetailsView"/>
         <property name="last-location-bar" type="string" value="ThunarLocationEntry"/>

@@ -12,6 +12,7 @@
     ./modules/printers.nix
     ./modules/syncthing.nix
     ./modules/system.nix
+    ./modules/thunar.nix
     ./modules/users.nix
     ./modules/zfs.nix
     ./modules/temp.nix

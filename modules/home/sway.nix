@@ -7,15 +7,13 @@
       brightnessctl
       libnotify  # Desktop notifications
       sway-contrib.grimshot  # To take screenshots
-      swayidle
-      swaylock
       trash-cli  # So that the backup script can empty the trash
       wdisplays  # External monitor GUI
       wl-clipboard
       wofi  # For the application launcher
 
       # Waybar
-      acpi
+      acpi  # TODO: remove?
       bc
       gsimplecal
       inotify-tools
@@ -24,28 +22,26 @@
     ];
   };
 
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "000000";
+      show-failed-attempts = true;
+      daemonize = true;
+      show-keyboard-layout = true;
+      indicator-caps-lock = true;
+    };
+  };
+
+  services.swayidle = {
+    enable = true;
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;
     wrapperFeatures.gtk = true;
     extraConfig = ''
-      # TrackPad configuration (the command `swaymsg -t get_inputs` will list the names of the inputs)
-      input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
-        tap enabled
-        natural_scroll disabled
-        dwt enabled
-        accel_profile "flat"
-        pointer_accel 0.5
-        scroll_method two_finger
-      }
-
-      # Keyboard layout (the command `swaymsg -t get_inputs` will list the names of the inputs)
-      input "1:1:AT_Translated_Set_2_keyboard" {
-          xkb_layout us,ca
-          xkb_variant ,multix
-          xkb_options grp:lalt_lshift_toggle
-      }
-
       # Position gsimplecal in the bottom right corner
       for_window [app_id="gsimplecal"] move position 2034 1272
 
@@ -53,9 +49,6 @@
       # Source: https://stackoverflow.com/a/68787102/1725856
       for_window [class=".*"] inhibit_idle fullscreen
       for_window [app_id=".*"] inhibit_idle fullscreen
-
-      # Mail script (check mail every 5 minutes)
-      exec swaymsg 'exec /home/pholi/.nixos-extra/scripts/mail/loop.sh &'
     '';
     config = rec {
       window = {
@@ -63,6 +56,27 @@
       };
       terminal = "alacritty";
       modifier = "Mod4";  # The modifier key is the Super/Windows key
+      input = {
+        "1:1:AT_Translated_Set_2_keyboard" = {
+          xkb_layout = "us,ca";
+          xkb_variant = ",multix";
+          xkb_options = "grp:lalt_lshift_toggle";
+        };
+        "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+          tap = "enabled";
+          natural_scroll = "disabled";
+          dwt = "enabled";
+          accel_profile = "flat";
+          pointer_accel = "0.5";
+          scroll_method = "two_finger";
+        };
+      };
+      output = {
+        "eDP-1" = {
+	        mode = "2256x1504@59.999Hz";
+          scale = "1";
+        };
+      };
       keybindings = {
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";  # Kill focused window
@@ -70,7 +84,8 @@
         "${modifier}+Shift+e" = "exec swaymsg exit";  # Exit sway
         "${modifier}+f" = "fullscreen";  # Make the current focus fullscreen
         "${modifier}+r" = "mode resize";  # Resize window
-        "${modifier}+l" = "exec swaylock -Ffkl -c 000000"; # Lock manually
+        "${modifier}+l" = "exec swaylock";  # Lock manually
+        "${modifier}+d" = "exec /home/pholi/.nixos-extra/scripts/system/launcher.sh";  # Application launcher
         "XF86MonBrightnessUp" = "exec brightnessctl set +5% && pkill -RTMIN+11 waybar";  # Brightness up
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%- && pkill -RTMIN+11 waybar";  # Brightness down
         "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 2.0 @DEFAULT_AUDIO_SINK@ 5%+ && pkill -RTMIN+13 waybar";  # Volume up
@@ -257,12 +272,13 @@
                 echo "$OUTPUT"
             fi
           '';
-    	    interval = "once";
+          interval = 5;  # Without custom/battery-daemon
+    	    # interval = "once";  # With custom/battery-daemon
           tooltip = false;
           signal = 12;
         };
 
-        "custom/battery-daemon" = {
+        "custom/battery-daemon" = {  # 2024-02-23: Currently not working because inotifywait doesn't work on `/sys` files
           exec = pkgs.writeShellScript "custom-battery-daemon" ''
             # This daemon triggers updates for the `custom/battery` module.
 
@@ -291,9 +307,9 @@
 
         "custom/brightness" = {
           exec = pkgs.writeShellScript "custom-brightness" ''
-            BR="$(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()')" && \
+            BR="$(brightnessctl | head -n 2 | tail -n 1 | cut -d ' ' -f 4 | tr -d '()%')" && \
             echo "Br $BR" && \
-            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "\$\{BRIGHTNESS^^\}" "<span color='#FFFFFF' font='50px'><b>$BR</b></span>"
+            notify-send -h string:x-canonical-private-synchronous:anything -t 500 "BRIGHTNESS" "<span color='#FFFFFF' font='50px'><b>$BR</b></span>"
           '';
     	    interval = "once";
           tooltip = false;
@@ -311,7 +327,7 @@
 
         "custom/keyboard" = {
           exec = pkgs.writeShellScript "custom-keyboard" ''
-            CAPS_LOCK=$(cat "/sys/class/leds/input2::capslock/brightness")
+            CAPS_LOCK=$(cat "/sys/class/leds/input1::capslock/brightness")
 
             if swaymsg -pt get_inputs | grep -q "Canadian (CSA)"; then
                 LAYOUT="FR"
@@ -330,12 +346,12 @@
           signal = 14;
         };
 
-        "custom/keyboard-capslock-daemon" = {
+        "custom/keyboard-capslock-daemon" = {  # 2024-02-23: Currently not working because inotifywait doesn't work on `/sys` files
           exec = pkgs.writeShellScript "custom-keyboard-daemon" ''
             # This daemon triggers updates for the `custom/keyboard` module.
             # An update is triggered when the caps lock key is pressed.
             while true; do
-                if ! inotifywait --quiet --event access /sys/class/leds/input2::capslock/brightness &> /dev/null; then
+                if ! inotifywait --quiet --event access /sys/class/leds/input1::capslock/brightness &> /dev/null; then
                     pkill -RTMIN+14 waybar
                 fi
             done
@@ -369,8 +385,8 @@
         "custom/network" = {
           exec = pkgs.writeShellScript "custom-network" ''
             # These interfaces can be found using `ip link show`.
-            WIFI_INTERFACE="wlan0"
-            ETH_INTERFACE="enp0s31f6"
+            WIFI_INTERFACE="wlp166s0"
+            ETH_INTERFACE="TODO"
 
             # Check for internet connectivity.
             if wget -timeout=1 -q --spider http://www.google.com; then

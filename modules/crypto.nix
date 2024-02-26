@@ -4,10 +4,10 @@
   services.openssh = {
     enable = true;
     settings = {
-      PasswordAuthentication = true;  # TODO: false
-      KbdInteractiveAuthentication = true; # TODO: false
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      # AuthenticationMethods = "publickey";  <-- uncomment
+      AuthenticationMethods = "publickey";
       PrintMotd = false;
     };
   };
@@ -25,4 +25,6 @@
     };
     pinentryFlavor = "qt";
   };
+
+  security.pam.services.swaylock = {};  # Required for swaylock to work
 }

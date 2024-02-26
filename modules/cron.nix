@@ -5,6 +5,28 @@
 
   # rename this file to services.nix
 
+  services.emacs.enable = true;
+  
+
+  systemd.services."mail-service" = {
+    description = "Mail";
+    path = [ pkgs.curl pkgs.isync pkgs.notmuch pkgs.toybox ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash /home/pholi/.nixos-extra/scripts/mail/fetch.sh";
+      User = "pholi";
+      Group = "users";
+    };
+  };
+
+  systemd.timers."mail-service" = {
+    description = "Mail timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/5";
+      Unit = "mail-service.service";
+    };
+  };
 
 
 

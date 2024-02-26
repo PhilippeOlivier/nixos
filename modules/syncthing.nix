@@ -23,72 +23,72 @@
         };
       };
       folders = {
-        # "Camera" = {
-        #   id = "pixel_4_xf7b-photos";
-        #   path = "/home/pholi/syncthing/camera";
-        #   devices = [
-        #     "lineageos"
-        #   ];
-        #   type = "receiveonly";
-        #   rescanIntervalS = 3600;
-        #   fsWatcherEnabled = true;
-        #   fsWatcherDelayS = 10;
-        #   ignoreDelete = true;
-        # };
+        "Camera" = {
+          id = "pixel_4_xf7b-photos";
+          path = "/home/pholi/syncthing/camera";
+          devices = [
+            "lineageos"
+          ];
+          type = "receiveonly";
+          rescanIntervalS = 3600;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
+          ignoreDelete = true;
+        };
 
-        # "Movies" = {
-        #   id = "wdlqu-1xs04";
-        #   path = "/home/pholi/syncthing/movies";
-        #   devices = [
-        #     "lineageos"
-        #   ];
-        #   type = "receiveonly";
-        #   rescanIntervalS = 3600;
-        #   fsWatcherEnabled = true;
-        #   fsWatcherDelayS = 10;
-        #   ignoreDelete = true;
-        # };
+        "Movies" = {
+          id = "wdlqu-1xs04";
+          path = "/home/pholi/syncthing/movies";
+          devices = [
+            "lineageos"
+          ];
+          type = "receiveonly";
+          rescanIntervalS = 3600;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
+          ignoreDelete = true;
+        };
 
-        # "Music" = {
-        #   id = "m7z9h-p931z";
-        #   path = "/home/pholi/music";
-        #   devices = [
-        #     "lineageos"
-        #   ];
-        #   type = "sendonly";
-        #   rescanIntervalS = 3600;
-        #   fsWatcherEnabled = true;
-        #   fsWatcherDelayS = 10;
-        # };
+        "Music" = {
+          id = "m7z9h-p931z";
+          path = "/home/pholi/music";
+          devices = [
+            "lineageos"
+          ];
+          type = "sendonly";
+          rescanIntervalS = 3600;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
+        };
 
-        # "Pictures" = {
-        #   id = "3zp56-qsdxy";
-        #   path = "/home/pholi/syncthing/pictures";
-        #   devices = [
-        #     "lineageos"
-        #   ];
-        #   type = "receiveonly";
-        #   rescanIntervalS = 3600;
-        #   fsWatcherEnabled = true;
-        #   fsWatcherDelayS = 10;
-        #   ignoreDelete = true;
-        # };
+        "Pictures" = {
+          id = "3zp56-qsdxy";
+          path = "/home/pholi/syncthing/pictures";
+          devices = [
+            "lineageos"
+          ];
+          type = "receiveonly";
+          rescanIntervalS = 3600;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
+          ignoreDelete = true;
+        };
 
-        # "Photos de Philippe" = {
-        #   id = "nfzdd-p9rem";
-        #   path = "/home/pholi/syncthing/philippe";
-        #   devices = [
-        #     "macbook"
-        #   ];
-        #   type = "sendreceive";
-        #   rescanIntervalS = 3600;
-        #   fsWatcherEnabled = true;
-        #   fsWatcherDelayS = 10;
-        # };
+        "Photos de Philippe" = {
+          id = "nfzdd-p9rem";
+          path = "/home/pholi/syncthing/philippe";
+          devices = [
+            "macbook"
+          ];
+          type = "sendreceive";
+          rescanIntervalS = 3600;
+          fsWatcherEnabled = true;
+          fsWatcherDelayS = 10;
+        };
 
         "Two-Way" = {
           id = "xz98j-hf9mm";
-          path = "/home/pholi/.nosnap/syncthing/twoway";
+          path = "/home/pholi/syncthing/twoway";
           devices = [
             "lineageos"
           ];

@@ -13,10 +13,10 @@ BIOS:
 - Disable secure boot.
 - Enable virtualization.
 
-Boot from the USB drive, then setup internet for the installation:
+Boot from the USB drive (press F12 during startup), then setup internet for the installation:
 
 ```bash
-$ wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i INTERFACE -c /dev/stdin
+$ wpa_passphrase SSID PASSWORD | sudo wpa_supplicant -B -i wlp166s0 -c /dev/stdin
 ```
 
 With `lsblk` validate that the value of `DEVICE` in `installation/install.sh` is the correct one. Also, with `ifconfig` make sure that the network interface is correct in `installation/install.sh`.
@@ -35,6 +35,12 @@ $ bash install.sh
 
 Login locally or using SSH (192.168.0.81).
 
+Change the ownership of `/home/pholi`:
+
+```bash
+$ sudo chown -R pholi:users /home/pholi
+```
+
 Clone my personal configuration (normally, replace `hardware-configuration.nix` in it with the new one) and get rid of `/etc/nixos`:
 
 ```bash
@@ -50,3 +56,12 @@ Rebuild:
 ```bash
 $ sudo nixos-rebuild switch --flake /home/pholi/nixos
 ```
+
+Set up Mullvad:
+
+```bash
+$ mullvad account login MY-MULLVAD-ACCOUNT-NUMBER
+$ mullvad relay set location ca mtr
+```
+
+Make sure that the permissions in `/home/pholi/.nosnap/syncthing` are `pholi:users`.

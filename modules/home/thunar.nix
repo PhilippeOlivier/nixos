@@ -2,18 +2,11 @@
 
 {
   home = {
-    packages = with pkgs; [
-      gnome.file-roller
-      gnome.gvfs
-      lrzip
-      p7zip
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
-      xfce.xfconf  # https://github.com/NixOS/nixpkgs/issues/65771
-    ];
+    # packages = with pkgs; [
+    #   lrzip
+    #   p7zip
+    #   xfce.xfconf  # https://github.com/NixOS/nixpkgs/issues/65771
+    # ];
     file.".config/gtk-3.0/bookmarks".text = ''
       file:///home/pholi/pedtsr/ongoing/pganalyze
       file:///home/pholi/pedtsr/ongoing/integrated-reasoning

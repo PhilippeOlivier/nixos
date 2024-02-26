@@ -29,8 +29,6 @@ sudo partprobe $DEVICE
 
 # Boot partition
 sudo mkfs.vfat -i 20240207 $BOOT_PARTITION
-# sudo mkfs.fat -F 32 -n $BOOT_LABEL $BOOT_PARTITION
-# sudo mlabel -N 20240207 -i $BOOT_PARTITION ::
 
 # LUKS
 read -r -s -p "Enter a password for the LUKS container: " LUKS_PASSPHRASE
@@ -79,7 +77,6 @@ sudo mkdir -p /mnt/home/pholi/.config
 sudo mount -t zfs ${POOL}/home/config /mnt/home/pholi/.config
 sudo mkdir -p /mnt/home/pholi/.local
 sudo mount -t zfs ${POOL}/home/local /mnt/home/pholi/.local
-sudo chown -R pholi:users /mnt/home/pholi
 
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt
@@ -114,7 +111,7 @@ cat > configuration.nix <<EOF
     wireless.networks.AwesomenautsEXT.pskRaw = "6521e88582fdc0fda473fa548375627950a87185610768bed19eb41005409161";
     useDHCP = false;
     interfaces = {
-      wlan0 = {
+      wlp166s0 = {
         useDHCP = true;
         ipv4.addresses = [
           {

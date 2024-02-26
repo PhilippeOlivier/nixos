@@ -38,6 +38,9 @@
     };
   };
 
+  # To monitor the battery module (replaces the old `acpi` package)
+  services.upower.enable = true;
+
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {

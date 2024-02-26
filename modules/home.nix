@@ -58,7 +58,7 @@
       # Games
       lutris
       steam
-
+      
       # Programs
       # imv
       inkscape

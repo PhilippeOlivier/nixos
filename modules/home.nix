@@ -12,8 +12,8 @@
     ./home/pdf.nix
     ./home/python.nix
     ./home/shell.nix
-    ./home/symlinks.nix
     ./home/sway.nix
+    ./home/thunar.nix
     ./home/transmission.nix
     ./home/xdg.nix
     ./home/zfs.nix

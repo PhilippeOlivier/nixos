@@ -25,7 +25,6 @@
     homeDirectory = "/home/pholi";
     packages = with pkgs; [
       # Audio
-      bluez
       pipewire
       wireplumber
 
@@ -43,6 +42,7 @@
       libreoffice
 
       # Utilities
+      blueman
       docker-compose
     ];
 

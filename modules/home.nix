@@ -27,7 +27,7 @@
       # Audio
       pipewire
       wireplumber
-
+      
       # Communication
       discord
       signal-desktop
@@ -42,7 +42,6 @@
       libreoffice
 
       # Utilities
-      blueman
       docker-compose
     ];
 

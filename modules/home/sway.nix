@@ -35,6 +35,27 @@
 
   services.swayidle = {
     enable = true;
+    # systemdTarget = "graphical-session.target";
+    # events = [
+    #   {
+    #     event = "before-sleep";
+    #     command = "swaymsg 'output * dpms off'";
+    #   }
+    #   {
+    #     event = "after-sleep";
+    #     command = "swaymsg 'output * dpms on'";
+    #   }
+    # ];
+    timeouts = [
+      {
+        timeout = 10;
+        command = "${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms on'";
+        # command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
+        # resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+        # resumeCommand = "swaymsg 'output * dpms on'";
+      }
+    ];
   };
 
   wayland.windowManager.sway = {
@@ -45,10 +66,10 @@
       # Position gsimplecal in the bottom right corner
       for_window [app_id="gsimplecal"] move position 2034 1272
 
-      # If any program is full screen, do not suspend
-      # Source: https://stackoverflow.com/a/68787102/1725856
-      for_window [class=".*"] inhibit_idle fullscreen
-      for_window [app_id=".*"] inhibit_idle fullscreen
+      # # If any program is full screen, do not suspend
+      # # Source: https://stackoverflow.com/a/68787102/1725856
+      # for_window [class=".*"] inhibit_idle fullscreen
+      # for_window [app_id=".*"] inhibit_idle fullscreen
     '';
     config = rec {
       window = {

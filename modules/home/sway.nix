@@ -21,6 +21,20 @@
     ];
   };
 
+  systemd.user.services.swaylock = {
+    Unit = {
+      Description = "Lock screen when suspend";
+      Before = [ "sleep.target" ];
+      WantedBy = [ "sleep.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      Restart = "on-failure";
+      ExecStart = "${config.programs.swaylock.package}/bin/swaylock";
+    };
+  };
+  
   # For screen sharing
   xdg.portal = {
     enable = true;

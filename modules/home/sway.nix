@@ -22,6 +22,16 @@
     ];
   };
 
+  # For screen sharing
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+     pkgs.xdg-desktop-portal-wlr
+     pkgs.xdg-desktop-portal-gtk
+    ];
+    config.sway.default = [ "wlr" "gtk" ];
+  };
+
   programs.swaylock = {
     enable = true;
     settings = {
@@ -35,25 +45,22 @@
 
   services.swayidle = {
     enable = true;
-    # systemdTarget = "graphical-session.target";
-    # events = [
-    #   {
-    #     event = "before-sleep";
-    #     command = "swaymsg 'output * dpms off'";
-    #   }
-    #   {
-    #     event = "after-sleep";
-    #     command = "swaymsg 'output * dpms on'";
-    #   }
-    # ];
+    systemdTarget = "graphical-session.target";
     timeouts = [
+      # {
+      #   timeout = 10;
+      #   command = "if ${pkgs.procps}/bin/pgrep -x swaylock; then ${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms off'; fi";
+      #   resumeCommand = "${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms off'";
+      # }
       {
-        timeout = 10;
-        command = "${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms off'";
+        timeout = 540;
+        command = "${pkgs.libnotify}/bin/notify-send -t 60000 -h string:x-canonical-private-synchronous:anything \"IDLE WARNING\" \"<span color='#FF0000' font='39px'><b>SUSPEND SOON</b></span>\"";
+        resumeCommand = "${pkgs.procps}/bin/pkill mako; ${pkgs.mako}/bin/mako &";
+      }
+      {
+        timeout = 600;
+        command = "${config.programs.swaylock.package}/bin/swaylock && ${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms off'";
         resumeCommand = "${config.wayland.windowManager.sway.package}/bin/swaymsg 'output * dpms on'";
-        # command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
-        # resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
-        # resumeCommand = "swaymsg 'output * dpms on'";
       }
     ];
   };
@@ -66,10 +73,10 @@
       # Position gsimplecal in the bottom right corner
       for_window [app_id="gsimplecal"] move position 2034 1272
 
-      # # If any program is full screen, do not suspend
-      # # Source: https://stackoverflow.com/a/68787102/1725856
-      # for_window [class=".*"] inhibit_idle fullscreen
-      # for_window [app_id=".*"] inhibit_idle fullscreen
+      # If any program is full screen, do not suspend
+      # Source: https://stackoverflow.com/a/68787102/1725856
+      for_window [class=".*"] inhibit_idle fullscreen
+      for_window [app_id=".*"] inhibit_idle fullscreen
     '';
     config = rec {
       window = {

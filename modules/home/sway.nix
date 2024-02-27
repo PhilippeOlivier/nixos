@@ -7,7 +7,6 @@
       brightnessctl
       libnotify  # Desktop notifications
       sway-contrib.grimshot  # To take screenshots
-      trash-cli  # So that the backup script can empty the trash
       wdisplays  # External monitor GUI
       wl-clipboard
       wofi  # For the application launcher

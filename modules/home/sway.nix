@@ -70,7 +70,7 @@
     wrapperFeatures.gtk = true;
     extraConfig = ''
       # Position gsimplecal in the bottom right corner
-      for_window [app_id="gsimplecal"] move position 2034 1272
+      for_window [app_id="gsimplecal"] move position 2020 1283
 
       # If any program is full screen, do not suspend
       # Source: https://stackoverflow.com/a/68787102/1725856

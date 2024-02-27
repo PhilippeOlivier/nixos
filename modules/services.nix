@@ -2,11 +2,7 @@
 
 
 {
-
-  # rename this file to services.nix
-
   services.emacs.enable = true;
-  
 
   systemd.services."mail-service" = {
     description = "Mail";
@@ -28,6 +24,16 @@
     };
   };
 
+  systemd.services."swaylock.unit" = {
+    enable = true;
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    description = "Lock screen when suspending";
+    script = "${config.programs.swaylock.package}/bin/swaylock";
+    serviceConfig = {
+      Type = "simple";
+    };
+  };
 
 
   # systemd.services."syncoid-service" = {

@@ -42,6 +42,7 @@
     acpilight.enable = true;
     cpu.intel.updateMicrocode = true;
     opengl.extraPackages = with pkgs; [
+      intel-compute-runtime
       intel-vaapi-driver
       libvdpau-va-gl
       intel-media-driver

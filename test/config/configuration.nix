@@ -33,7 +33,7 @@
   };
 
   # NETWORK
-    networking = {
+  networking = {
     hostName = hostName;
 
     # Use wpa_supplicant
@@ -51,7 +51,7 @@
 
     # systemd-resolved
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-
+  };
   services = {
     # systemd-resolved
     resolved = {
@@ -66,7 +66,7 @@
   };
 
   # USERS
-    users.mutableUsers = false;
+  users.mutableUsers = false;
 
   users.users.root = {
     isSystemUser = true;

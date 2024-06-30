@@ -137,14 +137,14 @@ EOF
 
 # Install NixOS
 sudo mkdir -p /mnt/etc/nixos
-sudo cp configuration.nix temp/framework/config/hardware-configuration.nix /mnt/etc/nixos
+sudo cp configuration.nix temp/test/config/hardware-configuration.nix /mnt/etc/nixos
 sudo nixos-install --root /mnt --no-root-password
 
-# Copy `framework` to the new home directory
+# Copy `test` to the new home directory
 mkdir /mnt/home/pholi/nixos
-cp -r temp/framework /mnt/home/pholi/nixos
+cp -r temp/test /mnt/home/pholi/nixos
 
-# Unmount the USB drive containing the `framework` directory
+# Unmount the USB drive containing the `test` directory
 sudo umount temp
 
 # Get rid of `/etc/nixos`:

@@ -104,5 +104,4 @@
       }
     ];
   };
-  TODO: put all /nixos/... stuff here (boot, network, etc)
 }

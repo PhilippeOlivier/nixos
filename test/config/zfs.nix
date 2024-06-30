@@ -20,7 +20,7 @@
   # Note: `syncoid` is managed manually by a separate script
   services.sanoid = {
     enable = true;
-    interval = "1m"; # <- temp (put "hourly")
+    interval = "hourly"; # <- temp (put "hourly")
     datasets = {
       "tank/snap" = {
         autoprune = true;

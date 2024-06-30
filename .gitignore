@@ -1,0 +1,6 @@
+archive/
+framework/extra/
+framework/install/ssid
+framework/install/password
+test/install/ssid
+test/install/password

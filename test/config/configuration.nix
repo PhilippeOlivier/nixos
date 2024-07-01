@@ -15,6 +15,10 @@
     ./impermanence.nix
     ./zfs.nix
   ];
+
+  environment.systemPackages = [
+    pkgs.git
+  ];
   
   system.stateVersion = stateVersion;
   

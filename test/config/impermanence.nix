@@ -32,14 +32,14 @@
         "/etc/asdf"
         "/etc/machine-id"
       ];
-    users.pholi = {
-      directories = [
-        "nixos"
-      ];
-      files = [
-        ".bash_history"
-      ];
-    };
+      # users.pholi = {
+      #   directories = [
+      #     "nixos"
+      #   ];
+      #   files = [
+      #     ".bash_history"
+      #   ];
+      # };
     };
   };
 }

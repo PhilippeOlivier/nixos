@@ -18,6 +18,7 @@
 
   environment.systemPackages = [
     pkgs.git
+    pkgs.tree
   ];
   
   system.stateVersion = stateVersion;

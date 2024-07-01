@@ -41,6 +41,9 @@
   fileSystems."/snap" = {
     device = "tank/snap";
     fsType = "zfs";
+    options = [
+      "bind"
+    ];
     neededForBoot = true;
   };
   

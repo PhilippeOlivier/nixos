@@ -36,4 +36,13 @@
       ".bash_history"  # TODO: put somewhere else
     ];
   };
+
+  xdg.desktopEntries.alacritty = {
+    name = "alacritty TEST";
+    genericName = "alacritty TEST";
+    exec = "alacritty";
+    settings = {
+      TryExec = "alacritty";
+    };
+  };
 }

@@ -36,13 +36,19 @@
       ".bash_history"  # TODO: put somewhere else
     ];
   };
-
-  xdg.desktopEntries.alacritty = {
-    name = "alacritty TEST";
-    genericName = "alacritty TEST";
-    exec = "alacritty";
-    settings = {
-      TryExec = "alacritty";
+  
+  xdg = {
+    enable = true;
+    cacheHome = "/home/pholi/.cache";
+    configHome = "/home/pholi/.config";
+    dataHome = "/home/pholi/.local/share";
+    desktopEntries.alacritty = {
+      name = "alacritty TEST";
+      genericName = "alacritty TEST";
+      exec = "alacritty";
+      settings = {
+        TryExec = "alacritty";
+      };
     };
   };
 }

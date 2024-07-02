@@ -13,6 +13,7 @@
     ./emacs.nix
     ./git.nix
     ./latex.nix
+    ./mpv.nix
     ./thunar.nix
   ];
 

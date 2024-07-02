@@ -24,7 +24,7 @@
   programs.home-manager.enable = true;
 
   home.persistence = {
-    "/snap/home/${username}" = {
+    "/snap/home/pholi" = {
       allowOther = true;
 
       directories = [
@@ -32,7 +32,7 @@
       ];
 
       files = [
-        ".bash_history"  # temp, put somewhere else
+        ".bash_history"  # TODO: put somewhere else
       ];
     };
   };

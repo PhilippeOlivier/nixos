@@ -25,17 +25,15 @@
 
   programs.home-manager.enable = true;
 
-  home.persistence = {
-    "/snap/home/${username}" = {
-      allowOther = true;
+  home.persistence."/snap/home/${username}" = {
+    allowOther = true;
 
-      directories = [
-        "nixos"
-      ];
+    directories = [
+      "nixos"  # all main personal directories here
+    ];
 
-      files = [
-        ".bash_history"  # TODO: put somewhere else
-      ];
-    };
+    files = [
+      ".bash_history"  # TODO: put somewhere else
+    ];
   };
 }

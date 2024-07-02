@@ -18,15 +18,15 @@
     };
   };
 
-  # home = {
-  #   packages = with pkgs; [
-  #     source-code-pro  # Font for Emacs
-  #   ];
+  home = {
+    packages = with pkgs; [
+      source-code-pro  # Font for Emacs
+    ];
 
-  #   persistence."/home/${username}" = {
-  #     directories = [
-  #       ".emacs.d"
-  #     ];
-  #   };
-  # };
+    persistence."/snap/home/${username}" = {
+      directories = [
+        ".emacs.d"
+      ];
+    };
+  };
 }

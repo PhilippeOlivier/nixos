@@ -73,7 +73,7 @@ in
 
 {
   home = {
-    # persistence."/home/${username}/.config" = {
+    # persistence."/snap/home/${username}/.config" = {
     #   directories = [
     #     "discord"
     #     "inkscape"

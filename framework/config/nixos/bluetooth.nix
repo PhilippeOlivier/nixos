@@ -5,9 +5,9 @@
   };
   services.blueman.enable = true;
   
-  # environment.persistence."/persist" = {
-  #   directories = [
-  #     "/var/lib/bluetooth"
-  #   ];
-  # };
+  environment.persistence."/snap" = {
+    directories = [
+      "/var/lib/bluetooth"
+    ];
+  };
 }

@@ -20,9 +20,9 @@ in
 {
   wayland.windowManager.sway.config.keybindings."Print" = "exec ${screenshotScript}";
 
-  # home.persistence."/home/${username}/.config" = {
-  #   directories = [
-  #     "pholi-screenshots"
-  #   ];
-  # };
+  home.persistence."/snap/home/${username}" = {
+    directories = [
+      ".config/pholi-screenshots"
+    ];
+  };
 }

@@ -12,8 +12,8 @@
   # Required in order to be able to set `allowOther = true`
   programs.fuse.userAllowOther = true;
   
-  # These should persist and be backed up
   environment.persistence = {
+    # This should persist and be backed up
     "/snap" = {
       hideMounts = true;
 
@@ -29,7 +29,8 @@
         "/etc/machine-id"
       ];
     };
-    
+
+    # This should persist but not be backed up
     "/nosnap" = {
       hideMounts = true;
 

@@ -1,9 +1,9 @@
 {
   services.mullvad-vpn.enable = true;
 
-  # environment.persistence."/persist" = {
-  #   directories = [
-  #     "/etc/mullvad-vpn"
-  #   ];
-  # };
+  environment.persistence."/snap" = {
+    directories = [
+      "/etc/mullvad-vpn"
+    ];
+  };
 }

@@ -13,12 +13,10 @@
     ];
   };
 
-  # home.persistence = {
-  #   "/home/${username}" = {
-  #     directories = [
-  #       ".cache/chromium"
-  #       ".config/chromium"
-  #     ];
-  #   };
-  # };
+  home.persistence."/snap/home/${username}" = {
+    directories = [
+      ".cache/chromium"
+      ".config/chromium"
+    ];
+  };
 }

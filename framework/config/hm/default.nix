@@ -12,6 +12,7 @@
     ./chromium.nix
     ./emacs.nix
     ./git.nix
+    ./latex.nix
     ./thunar.nix
   ];
 

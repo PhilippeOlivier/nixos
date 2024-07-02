@@ -14,10 +14,6 @@
   
   # These should persist and be backed up
   environment.persistence = {
-    # "/home" = {
-    #   hideMounts = true;
-    # };
-    
     "/snap" = {
       hideMounts = true;
 
@@ -31,6 +27,16 @@
       files = [
         "/etc/asdf"
         "/etc/machine-id"
+      ];
+    };
+    
+    "/nosnap" = {
+      hideMounts = true;
+
+      directories = [
+      ];
+
+      files = [
       ];
     };
   };

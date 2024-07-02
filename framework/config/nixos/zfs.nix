@@ -20,12 +20,11 @@
   # Note: `syncoid` is managed manually by a separate script
   services.sanoid = {
     enable = true;
-    interval = "minutely"; # <- temp (put "hourly")
+    interval = "hourly";
     datasets = {
       "tank/snap" = {
         autoprune = true;
         autosnap = true;
-        frequently = 4;  # <- temp (remove)
         hourly = 24;
         daily = 7;
         weekly = 4;
@@ -36,9 +35,8 @@
     };
   };
 
-  # Required for ZFS backups
+  # Required for ZFS backups (TODO: remove after scripts are done)
   environment.systemPackages = with pkgs; [
-    sanoid #temp
     cryptsetup
     lz4
     mbuffer

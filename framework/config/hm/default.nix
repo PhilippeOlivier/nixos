@@ -24,7 +24,7 @@
   programs.home-manager.enable = true;
 
   home.persistence = {
-    "/snap/home/pholi" = {
+    "/snap/home/${username}" = {
       allowOther = true;
 
       directories = [

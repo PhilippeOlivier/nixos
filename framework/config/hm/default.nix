@@ -24,7 +24,7 @@ in
     ./thunar.nix
   ];
 
-  home.file = (myFunction { a = "hello"; });
+  myFunction { a = "hello"; };
   
   home = {
     stateVersion = stateVersion;

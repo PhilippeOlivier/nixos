@@ -1,17 +1,18 @@
 {
   pkgs
 , homeDirectory
+, screenshotDirectory
 , username
 , ...
 }:
 
 let
   
-  screenshotDirectoryPath = "${homeDirectory}/.config/pholi-screenshots";
+  #screenshotDirectoryPath = "${homeDirectory}/.config/pholi-screenshots";
 
   screenshotScript = pkgs.writeShellScript "sway-screenshot.sh" ''
-    mkdir -p ${screenshotDirectoryPath}
-    filename="${screenshotDirectoryPath}/$(date '+%Y-%m-%d_%H%M%S.png')"
+    mkdir -p ${screenshotDirectory}
+    filename="${screenshotDirectory}/$(date '+%Y-%m-%d_%H%M%S.png')"
     ${pkgs.sway-contrib.grimshot}/bin/grimshot save area $filename
   '';
   
@@ -22,7 +23,8 @@ in
 
   home.persistence."/snap/home/${username}" = {
     directories = [
-      ".config/pholi-screenshots"
+      ${screenshotDirectory}
+      #".config/pholi-screenshots"
     ];
   };
 }

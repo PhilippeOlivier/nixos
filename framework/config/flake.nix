@@ -34,6 +34,7 @@
       outputHeightRight = "1080";  # `swaymsg -t get_outputs`
       outputScaleRight = "1.0";
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
+      screenshotDirectory = "${homeDirectory}/.config/pholi-screenshots";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";
@@ -84,6 +85,7 @@
                   outputHeightRight
                   outputScaleRight
                   outputWidthRight
+                  screenshotDirectory
                   signalBattery
                   signalBrightness
                   signalKeyboard

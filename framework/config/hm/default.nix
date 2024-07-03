@@ -60,11 +60,11 @@ in
     #     TryExec = "alacritty";
     #   };
     # };
-    dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
-[Desktop Entry]
-Name=alacritty
-Type=Application
-Exec=alacritty
-    '';
+#     dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
+# [Desktop Entry]
+# Name=alacritty
+# Type=Application
+# Exec=alacritty
+#     '';
   };
 }

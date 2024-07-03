@@ -4,9 +4,9 @@
 }:
 
 {
-   "/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
+  "/home/${username}/.config/desktop-test/applications/${a}.desktop".text = ''
 [Desktop Entry]
-Name=${a}
+Name=${a}2
 Type=Application
 Exec=${a}
 '';

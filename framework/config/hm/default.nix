@@ -52,7 +52,6 @@
     # };
     dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
 [Desktop Entry]
-Type=Application
 Name=alacritty
 Exec=alacritty
     '';

@@ -8,8 +8,6 @@
 
 let
   
-  #screenshotDirectoryPath = "${homeDirectory}/.config/pholi-screenshots";
-
   screenshotScript = pkgs.writeShellScript "sway-screenshot.sh" ''
     mkdir -p ${screenshotDirectory}
     filename="${screenshotDirectory}/$(date '+%Y-%m-%d_%H%M%S.png')"
@@ -24,7 +22,6 @@ in
   home.persistence."/snap/home/${username}" = {
     directories = [
       screenshotDirectory
-      #".config/pholi-screenshots"
     ];
   };
 }

@@ -1,10 +1,14 @@
 {
-  username
+  pkgs
+, username
 , ...
 }:
 
 {
   home = {
+    packages = with pkgs; [
+      discord
+    ];
     persistence."/nosnap/home/${username}" = {
       directories = [
         ".config/discord"

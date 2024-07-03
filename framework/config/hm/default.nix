@@ -15,7 +15,7 @@ in
     ./de
 
     ./chromium.nix
-    #./discord.nix
+    ./discord.nix
     ./emacs.nix
     ./git.nix
     ./latex.nix

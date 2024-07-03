@@ -42,7 +42,7 @@
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";
-    desktopEntries.alacritty = {
+    desktopEntries.alacrittyTEST = {
       name = "alacritty TEST";
       genericName = "alacritty TEST";
       exec = "alacritty";

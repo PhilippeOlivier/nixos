@@ -7,9 +7,8 @@
 }:
 
 let
-  #functest = import ./func.nix;
-  #functest = pkgs.callPackage ./func.nix;
-  myFunction = import ./func.nix;
+  myFunction =  (pkgs.callPackage ./func.nix {};).myFunction;
+  # myFunction = import ./func.nix;
 in
 
 {
@@ -23,8 +22,6 @@ in
     ./mpv.nix
     ./thunar.nix
   ];
-
-  #xdg = myFunction { a = "hello"; };
   
   home = {
     stateVersion = stateVersion;

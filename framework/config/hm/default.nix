@@ -7,9 +7,9 @@
 }:
 
 let
-  # myFunction = import ./func.nix;
+  myFunction = import ./func.nix;
   # myFunction =  (pkgs.callPackage ./func.nix {};).myFunction;
-  myFunction = pkgs.callPackage ./func.nix {}; 
+  #myFunction = pkgs.callPackage ./func.nix {}; 
 in
 
 {
@@ -46,7 +46,7 @@ in
   
   xdg = {
     enable = true;
-    dataFile = myFunction { a = "hello"; };
+    dataFile = myFunction { a = "hello"; username = username; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";

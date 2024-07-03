@@ -1,10 +1,10 @@
 {
   a,
-  desktopEntriesDirectory
+  dir
 }:
 
 {
-  "${desktopEntriesDirectory}/${a}.desktop".text = ''
+  "${dir}/${a}.desktop".text = ''
 [Desktop Entry]
 Name=${a}3
 Type=Application

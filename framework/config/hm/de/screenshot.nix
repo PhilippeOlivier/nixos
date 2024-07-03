@@ -23,7 +23,7 @@ in
 
   home.persistence."/snap/home/${username}" = {
     directories = [
-      ${screenshotDirectory}
+      screenshotDirectory
       #".config/pholi-screenshots"
     ];
   };

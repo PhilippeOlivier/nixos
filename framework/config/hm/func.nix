@@ -18,8 +18,7 @@
   username
 }:
 
-in
-
+{
 {
   a
 }:
@@ -31,4 +30,5 @@ Name=${a}
 Type=Application
 Exec=${a}
     '';
+}
 }

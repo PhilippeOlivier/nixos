@@ -7,8 +7,9 @@
 }:
 
 let
-  myFunction =  (pkgs.callPackage ./func.nix {};).myFunction;
   # myFunction = import ./func.nix;
+  # myFunction =  (pkgs.callPackage ./func.nix {};).myFunction;
+  myFunction = pkgs.callPackage ./func.nix {}; 
 in
 
 {

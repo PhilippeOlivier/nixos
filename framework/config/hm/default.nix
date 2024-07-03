@@ -42,13 +42,17 @@
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";
-    desktopEntries.alacrittyTEST = {
-      name = "alacritty TEST";
-      genericName = "alacritty TEST";
-      exec = "alacritty";
-      settings = {
-        TryExec = "alacritty";
-      };
-    };
+    # desktopEntries.alacrittyTEST = {
+    #   name = "alacritty TEST";
+    #   genericName = "alacritty TEST";
+    #   exec = "alacritty";
+    #   settings = {
+    #     TryExec = "alacritty";
+    #   };
+    # };
+    dataFile.".config/desktop-test/alacritty.desktop".text = ''
+[Desktop Entry]
+Exec=alacritty
+    '';
   };
 }

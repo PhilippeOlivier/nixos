@@ -1,4 +1,9 @@
 {
+  username
+, ...
+}:
+
+{
   home = {
     persistence."/nosnap/home/${username}" = {
       directories = [

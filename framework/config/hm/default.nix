@@ -6,7 +6,7 @@
 }:
 
 let
-  functest = import ./func.nix
+  functest = import ./func.nix;
 in
 
 {
@@ -61,4 +61,4 @@ Type=Application
 Exec=alacritty
     '';
   };
-};
+}

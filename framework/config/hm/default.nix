@@ -15,6 +15,7 @@ in
     ./de
 
     ./chromium.nix
+    ./discord.nix
     ./emacs.nix
     ./git.nix
     ./latex.nix
@@ -47,7 +48,7 @@ in
     dataFile = myFunction { a = "hello"; dir = desktopEntriesDirectory; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
-    dataHome = "/home/pholi/.local/share";
+    dataHome = "/home/pholi/.config/pholi-desktop-entries"; #"/home/pholi/.local/share";
     # desktopEntries.alacrittyTEST = {
     #   name = "alacritty TEST";
     #   genericName = "alacritty TEST";

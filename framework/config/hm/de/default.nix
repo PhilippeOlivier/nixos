@@ -7,7 +7,7 @@
 {
   imports = [
     ./kanshi.nix
-    ./launcher2.nix
+    ./launcher.nix
     ./screenshot.nix
     ./sway.nix
     ./swayidle-swaylock.nix

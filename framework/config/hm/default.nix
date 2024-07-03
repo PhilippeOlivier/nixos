@@ -21,7 +21,9 @@ in
     ./thunar.nix
   ];
 
-  #config = {(functest { a="hello";});};
+  asdf = functest {
+    a = "hello";
+  };
   
   home = {
     stateVersion = stateVersion;

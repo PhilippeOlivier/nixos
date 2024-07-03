@@ -10,7 +10,7 @@
       discord
     ];
     
-    persistence."/nosnap/home/${username}" = {
+    persistence."/snap/home/${username}" = {
       directories = [
         ".config/discord"
       ];

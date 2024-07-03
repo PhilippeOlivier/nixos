@@ -6,7 +6,8 @@
 }:
 
 let
-  functest = import ./func.nix;
+  #functest = import ./func.nix;
+  functest = (pkgs.callPackage ./func.nix {};).functest;
 in
 
 {
@@ -21,9 +22,11 @@ in
     ./thunar.nix
   ];
 
-  functest {
-    a = "hello";
-  };
+  # createScript =  
+  
+  # config = functest {
+  #   a = "hello";
+  # };
   
   home = {
     stateVersion = stateVersion;

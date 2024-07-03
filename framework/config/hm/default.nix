@@ -61,4 +61,4 @@ Type=Application
 Exec=alacritty
     '';
   };
-}
+};

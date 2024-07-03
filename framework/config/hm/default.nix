@@ -5,13 +5,16 @@
 , ...
 }:
 
+let
+  functest = import ./func.nix
+in
+
 {
   imports = [
     ./de
 
     ./chromium.nix
     ./emacs.nix
-    ./func.nix
     ./git.nix
     ./latex.nix
     ./mpv.nix

@@ -50,7 +50,7 @@
     #     TryExec = "alacritty";
     #   };
     # };
-    dataFile.".config/desktop-test/alacritty.desktop".text = ''
+    dataFile."/home/pholi/.config/desktop-test/alacritty.desktop".text = ''
 [Desktop Entry]
 Exec=alacritty
     '';

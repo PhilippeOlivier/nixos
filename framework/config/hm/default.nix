@@ -24,7 +24,7 @@ in
     ./thunar.nix
   ];
 
-  myFunction { a = "hello"; };
+  xdg = myFunction { a = "hello"; };
   
   home = {
     stateVersion = stateVersion;

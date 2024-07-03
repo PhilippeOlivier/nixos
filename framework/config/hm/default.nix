@@ -23,11 +23,7 @@ in
     ./thunar.nix
   ];
 
-  # createScript =  
-  
-  # config = functest {
-  #   a = "hello";
-  # };
+  functest { a = "hello"};
   
   home = {
     stateVersion = stateVersion;

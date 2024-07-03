@@ -1,12 +1,12 @@
 {
   a,
-  username
+  desktopEntriesDirectory
 }:
 
 {
-  "/home/${username}/.config/desktop-test/applications/${a}.desktop".text = ''
+  "${desktopEntriesDirectory}/${a}.desktop".text = ''
 [Desktop Entry]
-Name=${a}2
+Name=${a}3
 Type=Application
 Exec=${a}
 '';

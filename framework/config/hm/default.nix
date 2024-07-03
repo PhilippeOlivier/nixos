@@ -1,15 +1,13 @@
 {
-  pkgs # todo: remove
+  homeDirectory
 , stateVersion
-, homeDirectory
 , username
+, desktopEntriesDirectory # todo: temp
 , ...
 }:
 
 let
   myFunction = import ./func.nix;
-  # myFunction =  (pkgs.callPackage ./func.nix {};).myFunction;
-  #myFunction = pkgs.callPackage ./func.nix {}; 
 in
 
 {
@@ -46,7 +44,7 @@ in
   
   xdg = {
     enable = true;
-    dataFile = myFunction { a = "hello"; username = username; };
+    dataFile = myFunction { a = "hello"; dir = desktopEntriesDirectory; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";

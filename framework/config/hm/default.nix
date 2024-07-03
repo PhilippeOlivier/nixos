@@ -48,7 +48,7 @@ in
   
   xdg = {
     enable = true;
-    dataFile = myFunction { a = "hello"; username = username; };
+    dataFile = myFunction { a = "hello"; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";

@@ -11,6 +11,7 @@
 
     ./chromium.nix
     ./emacs.nix
+    ./func.nix
     ./git.nix
     ./latex.nix
     ./mpv.nix
@@ -53,6 +54,7 @@
     dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
 [Desktop Entry]
 Name=alacritty
+Type=Application
 Exec=alacritty
     '';
   };

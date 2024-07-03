@@ -1,9 +1,11 @@
 {}:
-functest = {
-  a
-}:
 
-  {
+{
+  functest = {
+    a
+  }:
+
+    
     {
       xdg.dataFile."/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
 [Desktop Entry]
@@ -12,4 +14,4 @@ Type=Application
 Exec=${a}
     '';
     };
-  }
+}

@@ -7,7 +7,7 @@
 
 let
   #functest = import ./func.nix;
-  functest = (pkgs.callPackage ./func.nix {};).functest;
+  functest = pkgs.callPackage ./func.nix;
 in
 
 {

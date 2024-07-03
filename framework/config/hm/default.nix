@@ -24,7 +24,7 @@ in
     ./thunar.nix
   ];
 
-  xdg = myFunction { a = "hello"; };
+  #xdg = myFunction { a = "hello"; };
   
   home = {
     stateVersion = stateVersion;
@@ -48,6 +48,7 @@ in
   
   xdg = {
     enable = true;
+    dataFile = myFunction { a = "hello"; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     dataHome = "/home/pholi/.local/share";

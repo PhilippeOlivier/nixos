@@ -29,5 +29,5 @@ Name=${a}
 Type=Application
 Exec=${a}
     '';
-  }
+  };
 }

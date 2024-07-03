@@ -31,16 +31,21 @@ in
 
   programs.home-manager.enable = true;
 
-  home.persistence."/snap/home/${username}" = {
-    allowOther = true;
+  home.persistence = {
+    "/snap/home/${username}" = {
+      allowOther = true;
 
-    directories = [
-      "nixos"  # all main personal directories here
-    ];
+      directories = [
+        "nixos"  # all main personal directories here
+      ];
 
-    files = [
-      ".bash_history"  # TODO: put somewhere else
-    ];
+      files = [
+        ".bash_history"  # TODO: put somewhere else
+      ];
+    };
+    "/nosnap" = {
+      allowOther = true;
+    };
   };
   
   xdg = {
@@ -57,11 +62,11 @@ in
     #     TryExec = "alacritty";
     #   };
     # };
-#     dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
-# [Desktop Entry]
-# Name=alacritty
-# Type=Application
-# Exec=alacritty
-#     '';
+    #     dataFile."/home/pholi/.config/desktop-test/applications/alacritty.desktop".text = ''
+    # [Desktop Entry]
+    # Name=alacritty
+    # Type=Application
+    # Exec=alacritty
+    #     '';
   };
 }

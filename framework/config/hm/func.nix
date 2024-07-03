@@ -1,33 +1,34 @@
+{
+  a,
+  ...
+}:
+
+{
+   "/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
+[Desktop Entry]
+Name=${a}
+# Type=Application
+Exec=${a}
+#     '';
+}
+
+
+
 # {
-#   a
+#   username
 # }:
 
 # {
-#    "/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
+#   myfunc = {
+#     a
+#   }:
+
+#     {
+#       "/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
 # [Desktop Entry]
 # Name=${a}
 # Type=Application
 # Exec=${a}
 #     '';
+#     };
 # }
-
-
-
-{
-  username
-}:
-
-{
-  myfunc = {
-    a
-  }:
-
-    {
-      "/home/pholi/.config/desktop-test/applications/${a}.desktop".text = ''
-[Desktop Entry]
-Name=${a}
-Type=Application
-Exec=${a}
-    '';
-    };
-}

@@ -14,7 +14,7 @@
 
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
-      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries/applications";
+      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries/applications";  # TODO: remove homedir like for screenshots?
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";
@@ -35,7 +35,7 @@
       outputHeightRight = "1080";  # `swaymsg -t get_outputs`
       outputScaleRight = "1.0";
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
-      screenshotDirectory = "${homeDirectory}/.config/pholi-screenshots";
+      screenshotDirectory = ".config/pholi-screenshots";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";

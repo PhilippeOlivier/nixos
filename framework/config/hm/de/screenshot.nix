@@ -9,7 +9,7 @@
 let
   
   screenshotScript = pkgs.writeShellScript "sway-screenshot.sh" ''
-    mkdir -p ${screenshotDirectory}
+    mkdir -p ${homeDirectory}/${screenshotDirectory}
     filename="${screenshotDirectory}/$(date '+%Y-%m-%d_%H%M%S.png')"
     ${pkgs.sway-contrib.grimshot}/bin/grimshot save area $filename
   '';

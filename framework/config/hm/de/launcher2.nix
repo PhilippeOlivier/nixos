@@ -7,7 +7,7 @@
 
 let
   
-  launcherScript = pkgs.writeShellScript "sway-launcher.sh" ''
+  launcherScript = pkgs.writeShellScript "sway-launcher2.sh" ''
   XDG_DATA_DIRS="/home/pholi/.config/pholi-desktop-entries" ${pkgs.wofi}/bin/wofi --show=drun
   '';
   

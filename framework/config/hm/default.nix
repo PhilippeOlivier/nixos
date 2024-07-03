@@ -43,7 +43,7 @@ in
         ".bash_history"  # TODO: put somewhere else
       ];
     };
-    "/nosnap" = {
+    "/nosnap/home/${username}" = {
       allowOther = true;
     };
   };

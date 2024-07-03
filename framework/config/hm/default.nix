@@ -8,7 +8,8 @@
 
 let
   #functest = import ./func.nix;
-  functest = pkgs.callPackage ./func.nix;
+  #functest = pkgs.callPackage ./func.nix;
+  myFunction = import ./func.nix;
 in
 
 {
@@ -23,7 +24,7 @@ in
     ./thunar.nix
   ];
 
-  asdf = functest { a = "hello";};
+  config = (myFunction { a = "hello"; });
   
   home = {
     stateVersion = stateVersion;

@@ -21,7 +21,7 @@ in
     ./thunar.nix
   ];
 
-  asdf = functest {
+  functest {
     a = "hello";
   };
   

@@ -21,6 +21,8 @@ in
     ./thunar.nix
   ];
 
+  functest "hello";
+  
   home = {
     stateVersion = stateVersion;
     username = username;

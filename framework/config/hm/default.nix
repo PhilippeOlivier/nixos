@@ -1,5 +1,6 @@
 {
-  stateVersion
+  pkgs # todo: remove
+, stateVersion
 , homeDirectory
 , username
 , ...

@@ -55,7 +55,7 @@ in
   
   xdg = {
     enable = true;
-    dataFile = myFunction { a = "hello"; dir = desktopEntriesDirectory; };
+    dataFile = myFunction { a = "hello"; };#dir = desktopEntriesDirectory; };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     #dataHome = "/home/pholi/.config/pholi-desktop-entries"; #"/home/pholi/.local/share";

@@ -1,3 +1,7 @@
+let
+  dir = "/home/pholi";
+in
+
 {
   a,
   dir

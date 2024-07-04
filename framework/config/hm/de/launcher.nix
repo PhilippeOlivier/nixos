@@ -8,7 +8,7 @@
 
 let
   
-  launcherScript = pkgs.writeShellScript "sway-launcher3.sh" ''
+  launcherScript = pkgs.writeShellScript "sway-launcher.sh" ''
     # 1. Remove `.desktop` from every file in the desktop entries directoy
     # 2. `wofi` shows these clean entries
     # 3. The complete path and `.desktop` extension are added to the selected entry

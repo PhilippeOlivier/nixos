@@ -20,7 +20,7 @@ in
 
   xdg.dataFile = desktopEntry {
     name = "Chromium";
-    exec = "chromium";
+    exec = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
   
   home.persistence."/snap/home/${username}" = {

@@ -57,7 +57,7 @@ in
     enable = true;
     dataFile = desktopEntry {
       name = "alacriTTY";
-      exec = "alacritty"
+      exec = "alacritty";
     };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";

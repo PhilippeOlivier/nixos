@@ -24,7 +24,7 @@ in
   #   exec = "alacritty";
   # };
 
-  xdg.dataFiles = desktopEntry {
+  xdg.dataFile = desktopEntry {
     entries = [
       { name = "Alacritty"; exec = "alacritty"; }
       { name = "AnotherApp"; exec = "anotherapp"; }

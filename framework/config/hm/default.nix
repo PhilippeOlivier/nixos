@@ -1,13 +1,13 @@
 {
   homeDirectory
+, desktopEntriesDirectory  # test
 , stateVersion
 , username
-, desktopEntriesDirectory # todo: temp
 , ...
 }:
 
 let
-  desktopEntry = import ./desktop-entry.nix;
+  desktopEntry = import ./desktop-entry.nix { dir = desktopEntriesDirectory; };
 in
 
 {

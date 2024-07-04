@@ -1,6 +1,8 @@
-let
-  desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries";
-in
+# let
+#   desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries";
+# in
+
+{dir}:
 
 {
   name
@@ -8,7 +10,8 @@ in
 }:
 
 {
-  "${desktopEntriesDirectory}/${name}.desktop".text = ''
+  #"${desktopEntriesDirectory}/${name}.desktop".text = ''
+  "${dir}/${name}.desktop".text = ''
 [Desktop Entry]
 Type=Application
 Name=${name}

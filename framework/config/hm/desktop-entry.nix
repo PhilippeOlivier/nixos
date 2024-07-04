@@ -21,8 +21,7 @@
 }:
 
 {
-  name
-, exec
+  entries
 }:
 
 let

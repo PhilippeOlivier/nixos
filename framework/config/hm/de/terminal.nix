@@ -19,23 +19,23 @@ in
     };
   };
 
-  # xdg.dataFile = desktopEntry {
-  #   name = "Alacritty";
-  #   exec = "alacritty";
-  # };
-
-  xdg = {
-    dataFile = {
-      desktopEntry {
-        name = "Alacritty";
-        exec = "alacritty";
-      };
-      desktopEntry {
-        name = "Alacritty2";
-        exec = "alacritty2";
-      };
-    };
+  xdg.dataFile = desktopEntry {
+    name = "Alacritty";
+    exec = "alacritty";
   };
+
+  # xdg = {
+  #   dataFile = {
+  #     desktopEntry {
+  #       name = "Alacritty";
+  #       exec = "alacritty";
+  #     };
+  #     desktopEntry {
+  #       name = "Alacritty2";
+  #       exec = "alacritty2";
+  #     };
+  #   };
+  # };
   
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+Return" = "exec alacritty";
 }

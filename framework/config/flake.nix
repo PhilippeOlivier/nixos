@@ -14,7 +14,6 @@
 
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
-      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries/applications";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";
@@ -69,7 +68,6 @@
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
-                  desktopEntriesDirectory
                   homeDirectory
                   keyboardDevice
                   outputDevice

@@ -7,7 +7,7 @@
 }:
 
 let
-  myFunction = import ./func.nix;
+  desktopEntry = import ./func.nix;
 in
 
 {
@@ -55,7 +55,10 @@ in
   
   xdg = {
     enable = true;
-    dataFile = myFunction { a = "hello"; };#dir = desktopEntriesDirectory; };
+    dataFile = desktopEntry {
+      name = "alacriTTY";
+      exec = "alacritty"
+    };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     #dataHome = "/home/pholi/.config/pholi-desktop-entries"; #"/home/pholi/.local/share";

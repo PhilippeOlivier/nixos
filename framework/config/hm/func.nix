@@ -1,17 +1,17 @@
 let
-  dir = "/home/pholi/.config/pholi-desktop-entries/applications";
+  desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries/applications";
 in
 
 {
-  a#,
- # dir
+  name
+, exec
 }:
 
 {
-  "${dir}/${a}.desktop".text = ''
+  "${desktopEntriesDirectory}/${name}.desktop".text = ''
 [Desktop Entry]
-Name=${a}4
 Type=Application
-Exec=${a}
+Name=${name}
+Exec=${exec}
 '';
 }

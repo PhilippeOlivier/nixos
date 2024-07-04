@@ -6,9 +6,9 @@
 , ...
 }:
 
-let
-  desktopEntry = import ./desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
-in
+# let
+#   desktopEntry = import ./desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
+# in
 
 {
   imports = [
@@ -55,10 +55,10 @@ in
   
   xdg = {
     enable = true;
-    dataFile = desktopEntry {
-      name = "alacriTTY";
-      exec = "alacritty";
-    };
+    # dataFile = desktopEntry {
+    #   name = "alacriTTY";
+    #   exec = "alacritty";
+    # };
     cacheHome = "/home/pholi/.cache";
     configHome = "/home/pholi/.config";
     #dataHome = "/home/pholi/.config/pholi-desktop-entries"; #"/home/pholi/.local/share";

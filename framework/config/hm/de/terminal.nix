@@ -1,7 +1,12 @@
 {
   config
+, desktopEntriesDirectory
 , ...
 }:
+
+let
+  desktopEntry = import ../desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
+in
 
 {
   programs.alacritty = {
@@ -14,5 +19,10 @@
     };
   };
 
+  xdg.dataFile = desktopEntry {
+    name = "Alacritty";
+    exec = "alacritty";
+  };
+  
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+Return" = "exec alacritty";
 }

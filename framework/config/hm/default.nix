@@ -20,6 +20,7 @@
     ./mpv.nix
     ./signal.nix
     ./slack.nix
+    ./transmission.nix
     ./thunar.nix
     ./xdg.nix
     ./xournalpp.nix

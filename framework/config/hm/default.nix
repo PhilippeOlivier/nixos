@@ -18,6 +18,7 @@
     ./latex.nix
     ./libreoffice.nix
     ./mpv.nix
+    ./shell.nix
     ./signal.nix
     ./slack.nix
     ./transmission.nix

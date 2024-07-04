@@ -12,6 +12,6 @@
     [Desktop Entry]
     Type=Application
     Name=${name}
-#     Exec=${exec}
-#   '';
+    Exec=${exec}
+  '';
 }

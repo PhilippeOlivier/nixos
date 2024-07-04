@@ -1,5 +1,5 @@
 let
-  desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries/applications";
+  desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries";
 in
 
 {

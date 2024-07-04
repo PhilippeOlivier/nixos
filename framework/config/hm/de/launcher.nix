@@ -1,6 +1,7 @@
 {
   config
 , pkgs
+, desktopEntriesDirectory
 , username
 , ...
 }:
@@ -8,72 +9,16 @@
 let
   
   launcherScript = pkgs.writeShellScript "sway-launcher.sh" ''
-    ozone="--enable-features=UseOzonePlatform --ozone-platform=wayland"
-    
-    entries="Alacritty Blueman Chromium Discord Emacs Firefox Inkscape Libreoffice-Calc Libreoffice-Writer Lutris Signal Slack Terminal Thunar Transmission wdisplays WPA_GUI Xournal++"
-    
-    selected=$(printf '%s\n' $entries | ${pkgs.wofi}/bin/wofi --prompt="enter application name" --width=15% --lines=10 --insensitive --show=dmenu | ${pkgs.gawk}/bin/awk '{print tolower($1)}')
-    
-    case $selected in
-
-    	alacritty|terminal)
-    		alacritty & ;;
-
-    	blueman)
-    		${pkgs.blueman}/bin/blueman-manager & ;;
-
-    	chromium)
-    		chromium "$ozone" & ;;
-
-    	discord)
-    		${pkgs.discord}/bin/discord & ;;
-
-    	emacs)
-    		emacsclient -c & ;;
-
-    	firefox)
-    		MOZ_ENABLE_WAYLAND=1 firefox & ;;
-
-    	inkscape)
-    		${pkgs.inkscape}/bin/inkscape & ;;
-
-    	libreoffice-calc)
-    		${pkgs.libreoffice}/bin/libreoffice --calc & ;;
-
-    	libreoffice-writer)
-    		${pkgs.libreoffice}/bin/libreoffice --writer & ;;
-
-    	lutris)
-    		lutris & ;;
-
-    	signal)
-    		${pkgs.signal-desktop}/bin/signal-desktop & ;;
-
-    	slack)
-    		${pkgs.slack}/bin/slack & ;;
-
-    	thunar)
-    		thunar & ;;
-
-    	transmission)
-    		transmission-gtk & ;;
-
-    	wdisplays)
-    		${pkgs.wdisplays}/bin/wdisplays & ;;
-
-    	wpa_gui)
-    		${pkgs.wpa_supplicant_gui}/bin/wpa_gui & ;;
-
-    	xournal++)
-    		${pkgs.xournalpp}/bin/xournalpp & ;;
-    esac
+    # 1. Remove `.desktop` from every file in the desktop entries directoy
+    # 2. `wofi` shows these clean entries
+    # 3. The complete path and `.desktop` extension are added to the selected entry
+    # 4. `dex` executes the associated desktop entry
+    printf '%s\n' $(basename -s .desktop $(ls ${desktopEntriesDirectory})) | ${pkgs.wofi}/bin/wofi --prompt="enter application name" --width=15% --lines=10 --insensitive --show=dmenu | ${pkgs.gawk}/bin/awk 'BEGIN{printf("${desktopEntriesDirectory}/")} {printf($0)} END{printf(".desktop")}' | xargs ${pkgs.dex}/bin/dex
   '';
   
 in
 
-{
-
-  
+{ 
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+d" = "exec ${launcherScript}";
 }
 

@@ -14,7 +14,7 @@
 
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
-      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries/applications";  # TODO: remove homedir like for screenshots?
+      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries/applications";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";

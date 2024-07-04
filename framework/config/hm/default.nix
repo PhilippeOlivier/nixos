@@ -9,6 +9,7 @@
   imports = [
     ./de
 
+    ./blueman.nix
     ./chromium.nix
     ./discord.nix
     ./emacs.nix

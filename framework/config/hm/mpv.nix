@@ -11,4 +11,10 @@
       hwdec = "auto";
     };
   };
+
+  home.persistence."/nosnap/home/${username}" = {
+    directories = [
+      ".cache/mpv"
+    ];
+  };
 }

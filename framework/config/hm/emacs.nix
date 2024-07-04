@@ -1,8 +1,13 @@
 {
   pkgs
+, desktopEntriesDirectory
 , username
 , ...
 }:
+
+let
+  desktopEntry = import ./desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
+in
 
 {
   programs.emacs.enable = true;
@@ -18,6 +23,11 @@
     };
   };
 
+  xdg.dataFile = desktopEntry {
+    name = "Emacs";
+    exec = "emacsclient -c";
+  };
+  
   home = {
     packages = with pkgs; [
       source-code-pro  # Font for Emacs

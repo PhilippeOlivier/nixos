@@ -23,7 +23,7 @@ in
     exec = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
   
-  home.persistence."/snap/home/${username}" = {
+  home.persistence."/nosnap/home/${username}" = {
     directories = [
       ".cache/chromium"
       ".config/chromium"

@@ -1,4 +1,19 @@
 {
+  desktopEntriesDirectory
+, homeDirectory
+, ...
+}:
+
+let
+  desktopEntry = import ./desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
+in
+
+{
+  xdg.dataFile = desktopEntry {
+    name = "Thunar";
+    exec = "thunar";
+  };
+  
   home = {
     # file.".config/gtk-3.0/bookmarks".text = ''
     #   file:///home/pholi/some-directory
@@ -20,7 +35,7 @@
         <property name="hidden-bookmarks" type="array">
           <value type="string" value="computer:///"/>
           <value type="string" value="network:///"/>
-          <value type="string" value="file:///home/pholi/Desktop"/>
+          <value type="string" value="file://${homeDirectory}/Desktop"/>
         </property>
         <property name="last-separator-position" type="int" value="170"/>
         <property name="misc-single-click" type="bool" value="false"/>

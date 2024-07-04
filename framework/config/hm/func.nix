@@ -1,5 +1,5 @@
 let
-  dir = "/home/pholi";
+  dir = "/home/pholi/.config/pholi-desktop-entries/applications";
 in
 
 {
@@ -10,7 +10,7 @@ in
 {
   "${dir}/${a}.desktop".text = ''
 [Desktop Entry]
-Name=${a}3
+Name=${a}4
 Type=Application
 Exec=${a}
 '';

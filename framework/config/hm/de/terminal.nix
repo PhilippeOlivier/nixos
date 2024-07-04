@@ -25,13 +25,15 @@ in
   # };
 
   xdg = {
-    dataFile = desktopEntry {
-      name = "Alacritty";
-      exec = "alacritty";
-    };
-    dataFile = desktopEntry {
-      name = "Alacritty2";
-      exec = "alacritty2";
+    dataFile = {
+      desktopEntry {
+        name = "Alacritty";
+        exec = "alacritty";
+      };
+      desktopEntry {
+        name = "Alacritty2";
+        exec = "alacritty2";
+      };
     };
   };
   

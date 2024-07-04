@@ -4,6 +4,7 @@
 }:
 
 {
+  # not finished yet
   xdg = {
     enable = true;
     cacheHome = "${homeDirectory}/.cache";

@@ -19,16 +19,9 @@ in
     };
   };
 
-  # xdg.dataFile = desktopEntry {
-  #   name = "Alacritty";
-  #   exec = "alacritty";
-  # };
-
   xdg.dataFile = desktopEntry {
-    entries = [
-      { name = "Alacritty"; exec = "alacritty"; }
-      { name = "AnotherApp"; exec = "anotherapp"; }
-    ];
+    name = "Alacritty";
+    exec = "alacritty";
   };
   
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+Return" = "exec alacritty";

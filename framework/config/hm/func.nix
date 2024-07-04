@@ -3,8 +3,8 @@ let
 in
 
 {
-  a,
-  dir
+  a#,
+ # dir
 }:
 
 {

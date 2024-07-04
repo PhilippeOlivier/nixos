@@ -16,23 +16,23 @@
 let
 
   brightnessUpScript = pkgs.writeShellScript "sway-brightness-up.sh" ''
-  ${pkgs.brightnessctl}/bin/brightnessctl set +5% && ${pkgs.procps}/bin/pkill -RTMIN+${signalBrightness} waybar
+    ${pkgs.brightnessctl}/bin/brightnessctl set +5% && ${pkgs.procps}/bin/pkill -RTMIN+${signalBrightness} waybar
   '';
 
   brightnessDownScript = pkgs.writeShellScript "sway-brightness-down.sh" ''
-  ${pkgs.brightnessctl}/bin/brightnessctl set 5%- && ${pkgs.procps}/bin/pkill -RTMIN+${signalBrightness} waybar
+    ${pkgs.brightnessctl}/bin/brightnessctl set 5%- && ${pkgs.procps}/bin/pkill -RTMIN+${signalBrightness} waybar
   '';
 
   volumeUpScript = pkgs.writeShellScript "sway-volume-up.sh" ''
-  ${pkgs.wireplumber}/bin/wpctl set-volume --limit 2.0 @DEFAULT_AUDIO_SINK@ 5%+ && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
+    ${pkgs.wireplumber}/bin/wpctl set-volume --limit 2.0 @DEFAULT_AUDIO_SINK@ 5%+ && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
   '';
 
   volumeDownScript = pkgs.writeShellScript "sway-volume-down.sh" ''
-  ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
+    ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
   '';
 
   volumeMuteScript = pkgs.writeShellScript "sway-volume-mute.sh" ''
-  ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
+    ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ${pkgs.procps}/bin/pkill -RTMIN+${signalVolume} waybar
   '';
   
 in
@@ -148,8 +148,8 @@ in
   xdg.portal = {
     enable = true;
     extraPortals = [
-     pkgs.xdg-desktop-portal-wlr
-     pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
     ];
     config.sway.default = [ "wlr" "gtk" ];
   };

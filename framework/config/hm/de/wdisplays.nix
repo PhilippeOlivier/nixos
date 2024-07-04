@@ -7,7 +7,7 @@
 let
   
   wdisplaysScript = pkgs.writeShellScript "sway-wdisplays.sh" ''
-  ${pkgs.wdisplays}/bin/wdisplays
+    ${pkgs.wdisplays}/bin/wdisplays
   '';
   
 in

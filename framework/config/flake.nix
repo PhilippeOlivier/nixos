@@ -14,7 +14,7 @@
 
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
-      desktopEntriesDirectory = "${homeDirectory}/.cache/pholi-desktop-entries";
+      desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";

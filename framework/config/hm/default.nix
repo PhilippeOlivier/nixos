@@ -7,7 +7,7 @@
 }:
 
 let
-  desktopEntry = import ./desktop-entry.nix { dir = desktopEntriesDirectory; };
+  desktopEntry = import ./desktop-entry.nix { desktopEntriesDirectory = desktopEntriesDirectory; };
 in
 
 {

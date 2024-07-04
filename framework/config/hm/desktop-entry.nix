@@ -2,7 +2,7 @@
 #   desktopEntriesDirectory = "/home/pholi/.config/pholi-desktop-entries";
 # in
 
-{dir}:
+{desktopEntriesDirectory}:
 
 {
   name
@@ -11,7 +11,7 @@
 
 {
   #"${desktopEntriesDirectory}/${name}.desktop".text = ''
-  "${dir}/${name}.desktop".text = ''
+  "${desktopEntriesDirectory}/${name}.desktop".text = ''
 [Desktop Entry]
 Type=Application
 Name=${name}

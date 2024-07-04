@@ -7,7 +7,7 @@
 }:
 
 let
-  desktopEntry = import ./func.nix;
+  desktopEntry = import ./desktop-entry.nix;
 in
 
 {

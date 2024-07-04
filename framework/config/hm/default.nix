@@ -18,9 +18,14 @@ in
     ./discord.nix
     ./emacs.nix
     ./git.nix
+    ./inkscape.nix
     ./latex.nix
+    ./libreoffice.nix
     ./mpv.nix
+    ./signal.nix
+    ./slack.nix
     ./thunar.nix
+    ./xournalpp.nix
   ];
   
   home = {

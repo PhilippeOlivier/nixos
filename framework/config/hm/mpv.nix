@@ -1,7 +1,7 @@
 {
   username
 , ...
-}
+}:
 
 {
   programs.mpv = {

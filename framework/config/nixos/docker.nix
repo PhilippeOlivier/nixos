@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     pkgs.distrobox
+    pkgs.docker-compose
   ];
   
   virtualisation.docker.enable = true;

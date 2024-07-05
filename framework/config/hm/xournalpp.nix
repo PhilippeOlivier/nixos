@@ -17,8 +17,8 @@ in
   
   home = {
     packages = with pkgs; [
+      gnome.adwaita-icon-theme  # `xournalpp` will crash without this
       xournalpp
-      gnome.adwaita-icon-theme
     ];
     
     persistence."/nosnap/home/${username}" = {

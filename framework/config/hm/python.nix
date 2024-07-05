@@ -24,10 +24,17 @@
 
     sessionVariables.PYTHONPYCACHEPREFIX="${homeDirectory}/.pycache";  # Put all the __pycache__ directories there
     
-    persistence."/nosnap/home/${username}" = {
-      directories = [
-        ".pycache"
-      ];
+    persistence = {
+      "/snap/home/${username}" = {
+        files = [
+          ".python_history"
+        ];
+      };
+      "/nosnap/home/${username}" = {
+        directories = [
+          ".pycache"
+        ];
+      };
     };
   };
 }

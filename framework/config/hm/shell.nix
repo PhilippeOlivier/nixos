@@ -36,7 +36,7 @@
       lzop
       p7zip
       rar
-      # unrar
+      unrar-free
       unzip
       xz
       zip

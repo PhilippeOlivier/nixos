@@ -5,6 +5,7 @@
 
 {
   imports = [
+    ./android.nix
     ./bluetooth.nix
     ./boot.nix
     ./docker.nix

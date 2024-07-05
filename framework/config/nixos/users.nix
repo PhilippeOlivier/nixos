@@ -20,7 +20,6 @@
     home = homeDirectory;
     shell = pkgs.bash;
     extraGroups = [
-      "adbusers"
       "wheel"
     ];
   };

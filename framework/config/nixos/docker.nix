@@ -10,7 +10,6 @@
     "docker"
   ];
 
-
   environment.persistence."/nosnap" = {
     directories = [
       "/var/lib/docker"

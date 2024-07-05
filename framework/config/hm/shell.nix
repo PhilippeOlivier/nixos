@@ -1,6 +1,5 @@
 {
   pkgs
-, homeDirectory
 , username
 , ...
 }:

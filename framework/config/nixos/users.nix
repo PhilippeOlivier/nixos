@@ -21,7 +21,6 @@
     shell = pkgs.bash;
     extraGroups = [
       "adbusers"
-      "docker"
       "wheel"
     ];
   };

@@ -7,6 +7,7 @@
   imports = [
     ./bluetooth.nix
     ./boot.nix
+    ./docker.nix
     ./fonts.nix
     #./framework.nix
     ./impermanence.nix

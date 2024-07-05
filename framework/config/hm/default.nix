@@ -13,6 +13,7 @@
     ./chromium.nix
     ./discord.nix
     ./emacs.nix
+    ./firefox.nix
     ./git.nix
     ./inkscape.nix
     ./latex.nix

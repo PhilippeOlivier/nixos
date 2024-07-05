@@ -17,7 +17,7 @@ in
   
   home = {
     packages = with pkgs; [
-      transmission-gtk
+      transmission_4-gtk
     ];
     
     file.".config/transmission/settings.json".text = ''

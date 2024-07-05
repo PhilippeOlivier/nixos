@@ -15,7 +15,7 @@
     ./emacs.nix
     ./firefox.nix
     ./git.nix
-    #./imv.nix
+    ./imv.nix
     ./inkscape.nix
     ./latex.nix
     ./libreoffice.nix

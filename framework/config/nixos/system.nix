@@ -16,17 +16,22 @@
   };
 
   # Video
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;  # Required for Steam
-    extraPackages32 = with pkgs; [  # TODO: For Steam?
+    extraPackages = with pkgs; [
       mesa
       intel-compute-runtime
       libvdpau-va-gl
       intel-media-driver
     ];
-  };
 
+    # Required for Steam
+    enable32Bit = true;
+    extraPackages32 = with pkgs [
+      mesa
+    ];
+  };
+  
   # Power management
   services.tlp = {
     enable = true;

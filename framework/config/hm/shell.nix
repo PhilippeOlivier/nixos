@@ -51,7 +51,7 @@
     ];
 
     persistence."/snap/home/${username}" = {
-      directories = [
+      files = [
         ".bash_history"
       ];
     };

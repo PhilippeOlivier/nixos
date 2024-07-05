@@ -1,5 +1,6 @@
 {
-  desktopEntriesDirectory
+  pkgs
+, desktopEntriesDirectory
 , ...
 }:
 

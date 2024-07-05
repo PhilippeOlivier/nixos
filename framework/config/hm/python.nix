@@ -19,5 +19,13 @@
         grip
       ]))
     ];
+
+    sessionVariables.PYTHONPYCACHEPREFIX="${homeDirectory}/.pycache";  # Put all the __pycache__ directories there
+    
+    persistence."/nosnap/home/${username}" = {
+      directories = [
+        ".pycache"
+      ];
+    };
   };
 }

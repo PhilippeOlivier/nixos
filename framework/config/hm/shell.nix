@@ -1,5 +1,6 @@
 {
   pkgs
+, homeDirectory
 , username
 , ...
 }:
@@ -50,6 +51,13 @@
       htop
     ];
 
+    sessionVariables = {
+      BROWSER = "${pkgs.firefox}/bin/firefox";
+      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+      EDITOR = "${pkgs.emacs}/bin/emacs";
+      VISUAL = "${pkgs.emacs}/bin/emacs";
+    };
+    
     persistence."/snap/home/${username}" = {
       files = [
         ".bash_history"

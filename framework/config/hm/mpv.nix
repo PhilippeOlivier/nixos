@@ -20,6 +20,7 @@
   home.persistence."/nosnap/home/${username}" = {
     directories = [
       ".cache/mpv"
+      ".local/state/mpv"
     ];
   };
 }

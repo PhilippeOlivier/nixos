@@ -68,6 +68,9 @@
       files = [
         ".bash_history"
       ];
+      directories = [
+        ".local/share/direnv"
+      ];
     };
   };
   

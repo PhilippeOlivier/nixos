@@ -18,6 +18,7 @@ in
   home = {
     packages = with pkgs; [
       xournalpp
+      gnome.adwaita-icon-theme
     ];
     
     persistence."/nosnap/home/${username}" = {

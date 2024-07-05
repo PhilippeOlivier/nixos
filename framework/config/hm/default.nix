@@ -26,6 +26,7 @@
     ./thunar.nix
     ./xdg.nix
     ./xournalpp.nix
+    ./zathura.nix
   ];
   
   home = {

@@ -40,6 +40,10 @@
       xz
       zip
       zstd
+
+      # PDF
+      diffpdf
+      qpdf
       
       # Utilities
       htop

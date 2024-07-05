@@ -34,11 +34,4 @@
       "tank/nosnap".autosnap = false;
     };
   };
-
-  # Required for ZFS backups (TODO: remove after scripts are done)
-  environment.systemPackages = with pkgs; [
-    cryptsetup
-    lz4
-    mbuffer
-  ];
 }

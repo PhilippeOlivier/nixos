@@ -56,6 +56,13 @@
       EDITOR = "${pkgs.emacs}/bin/emacs";
       VISUAL = "${pkgs.emacs}/bin/emacs";
     };
+
+    shellAliases = {
+      grip = ''grip --pass $(pass show github.com/token)'';  # Use my GitHub token to avoid the hourly rate limit
+      ls = "ls --color=auto";  # Colorize the `ls` command
+      # opto = "cd /home/pholi/.nixos-extra/scripts/emma/opto/ && nix-shell --command 'python opto.py'";  # Run the wife's opto script
+      reboot = "${pkgs.emacs}/bin/emacsclient -e '(save-some-buffers t)' && reboot";  # Save all Emacs buffers before rebooting
+    };
     
     persistence."/snap/home/${username}" = {
       files = [

@@ -26,6 +26,7 @@
     ./slack.nix
     ./transmission.nix
     ./thunar.nix
+    ./wpa_gui.nix
     ./xdg.nix
     ./xournalpp.nix
     ./zathura.nix

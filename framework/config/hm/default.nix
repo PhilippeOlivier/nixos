@@ -45,15 +45,27 @@
       allowOther = true;
 
       directories = [
-        "nixos"  # all main personal directories here
-      ];
-
-      files = [
-        ".bash_history"  # TODO: put somewhere else
+        "backups"
+        "books"
+        "code"
+        "documents"
+        "edu"
+        "emacs"
+        "music"
+        "nixos"
+        "pedtsr"
+        "pictures"
+        "syncthing"
       ];
     };
     "/nosnap/home/${username}" = {
       allowOther = true;
+
+      directories = [
+        "downloads"
+        "temp"
+        "torrents"
+      ];
     };
   };
 }

@@ -27,7 +27,7 @@
 
     # Required for Steam
     enable32Bit = true;
-    extraPackages32 = with pkgs [
+    extraPackages32 = with pkgs; [
       mesa
     ];
   };

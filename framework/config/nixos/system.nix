@@ -18,7 +18,6 @@
   # Video
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;  # Required for Steam
     extraPackages32 = with pkgs; [  # TODO: For Steam?
       mesa

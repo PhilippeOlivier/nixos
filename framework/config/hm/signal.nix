@@ -20,10 +20,10 @@ in
       signal-desktop
     ];
     
-    persistence."/snap/home/${username}" = {
-      directories = [
-        ".config/Signal"
-      ];
-    };
+    # persistence."/snap/home/${username}" = {
+    #   directories = [
+    #     ".config/Signal"
+    #   ];
+    # };
   };
 }

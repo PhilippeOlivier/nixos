@@ -18,8 +18,7 @@
 
   environment.systemPackages = with pkgs; [
     cryptsetup
-    gnupg
-    #openssh
+    #gnupg
     (pass.withExtensions (ext: with ext; [ pass-otp ]))
   ];
 

@@ -21,7 +21,7 @@
     gnupg
     openssh
     (pass.withExtensions (ext: with ext; [ pass-otp ]))
-    pinentry
+    #pinentry
   ];
 
   programs.gnupg.agent = {

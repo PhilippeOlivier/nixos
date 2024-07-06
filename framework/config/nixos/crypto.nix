@@ -19,6 +19,7 @@
   environment.systemPackages = with pkgs; [
     cryptsetup
     (pass.withExtensions (ext: with ext; [ pass-otp ]))
+    sops
   ];
 
   # This also includes `gnupg`

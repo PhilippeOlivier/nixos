@@ -33,11 +33,16 @@
     pinentryPackage = pkgs.pinentry-qt;
   };
 
-  environment.persistence."/snap".users.${username} = {
+  environment.persistence."/snap" = {
     directories = [
-      ".gnupg"
-      ".password-store"
-      ".ssh"
+      "/etc/ssh"
     ];
+    users.${username} = {
+      directories = [
+        ".gnupg"
+        ".password-store"
+        ".ssh"
+      ];
+    };
   };
 }

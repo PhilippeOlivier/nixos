@@ -11,7 +11,6 @@
 
     ./blueman.nix
     ./chromium.nix
-    ./crypto.nix
     ./discord.nix
     ./emacs.nix
     ./firefox.nix

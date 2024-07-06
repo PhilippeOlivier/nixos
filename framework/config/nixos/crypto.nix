@@ -30,7 +30,7 @@
       default-cache-ttl = 8640000;
       max-cache-ttl = 8640000;
     };
-    pinentryPackage = pkgs.pinentry-gtk;
+    pinentryPackage = pkgs.pinentry-gtk2;
   };
 
   environment.persistence."/snap" = {

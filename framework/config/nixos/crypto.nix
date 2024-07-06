@@ -18,10 +18,10 @@
 
   environment.systemPackages = with pkgs; [
     cryptsetup
-    #gnupg
     (pass.withExtensions (ext: with ext; [ pass-otp ]))
   ];
 
+  # This also includes `gnupg`
   programs.gnupg.agent = {
     enable = true;
     settings = {

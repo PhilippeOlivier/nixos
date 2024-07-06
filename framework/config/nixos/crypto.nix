@@ -19,9 +19,8 @@
   environment.systemPackages = with pkgs; [
     cryptsetup
     gnupg
-    openssh
+    #openssh
     (pass.withExtensions (ext: with ext; [ pass-otp ]))
-    #pinentry
   ];
 
   programs.gnupg.agent = {

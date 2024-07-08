@@ -16,6 +16,10 @@
     ./zfs.nix
   ];
 
+  sops = {
+    age.keyFile = "/home/pholi/nixos/test/extra/sops/age-key.txt";
+  };
+  
   environment.systemPackages = [
     pkgs.git
     pkgs.tree

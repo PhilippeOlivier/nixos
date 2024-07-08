@@ -5,7 +5,7 @@
 }:
 
 {
-  config.sops = {
+  sops = {
     age.keyFile = "/home/pholi/nixos/framework/extra/sops/age-key.txt";
 
     # It's also possible to use a ssh key, but only when it has no password:

@@ -32,4 +32,8 @@
   home.packages = with pkgs; [
     sops
   ];
+
+  sops = {
+
+  };
 }

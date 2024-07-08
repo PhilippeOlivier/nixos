@@ -17,11 +17,11 @@
     let
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
-      hostName = "myuser-nixos";
+      hostName = "pholi-nixos";
       localIp = "192.168.100.100";
       stateVersion = "24.05";
       system = "x86_64-linux";
-      username = "myuser";
+      username = "pholi";
       wirelessDevice = "wlp4s0";  # `ip link`
     in
       {

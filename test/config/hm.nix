@@ -34,6 +34,6 @@
   ];
 
   sops = {
-    age.keyFile = "/home/pholi/nixos/test/extra/sops/age-key.txt"
+    age.keyFile = "/home/pholi/nixos/test/extra/sops/age-key.txt";
   };
 }

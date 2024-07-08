@@ -1,5 +1,6 @@
+{pkgs}:
+
 let
-  pkgs = import <nixpkgs> {};
   myScript = pkgs.writeShellScript "test-script-1.sh" ''
     #!/bin/sh
     echo "This is the SOPS test script"

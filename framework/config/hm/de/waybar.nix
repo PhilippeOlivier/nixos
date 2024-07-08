@@ -1,5 +1,6 @@
 {
   pkgs
+    , config #TODO TEMP
 , outputHeight
 , outputWidth
 , signalBattery
@@ -127,7 +128,7 @@ let
   '';
 
   mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
-    echo ToDo
+    echo $(cat ${config.sops.secrets."mystring".path})
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

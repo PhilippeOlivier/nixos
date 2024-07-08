@@ -4,16 +4,14 @@
   inputs = {
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
     sops-nix.url = "github:Mic92/sops-nix";
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:  # temp todo: remove sops-nix? (if going for HM)
+  outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
@@ -67,7 +65,6 @@
           modules = [
             ./configuration.nix
             impermanence.nixosModule
-            sops-nix.nixosModules.sops  # temp todo: remove? (if going for HM)
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
@@ -107,7 +104,7 @@
               home-manager.users.${username}.imports = [
                 ./hm
                 (inputs.impermanence + "/home-manager.nix")
-                inputs.sops-nix.homeManagerModules.sops # temp-todo: add back if going for HM
+                inputs.sops-nix.homeManagerModules.sops
               ];
             }
           ];

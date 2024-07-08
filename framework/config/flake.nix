@@ -13,7 +13,7 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:
+  outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
@@ -67,7 +67,6 @@
           modules = [
             ./configuration.nix
             impermanence.nixosModule
-            #sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit

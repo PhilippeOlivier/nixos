@@ -31,6 +31,8 @@
     ./xdg.nix
     ./xournalpp.nix
     ./zathura.nix
+
+    <sops-nix/modules/sops>
   ];
   
   home = {

@@ -13,7 +13,7 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:
+  outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:  # temp todo: remove sops-nix? (if going for HM)
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
@@ -67,7 +67,7 @@
           modules = [
             ./configuration.nix
             impermanence.nixosModule
-            sops-nix.nixosModules.sops
+            sops-nix.nixosModules.sops  # temp todo: remove? (if going for HM)
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
@@ -107,7 +107,7 @@
               home-manager.users.${username}.imports = [
                 ./hm
                 (inputs.impermanence + "/home-manager.nix")
-                # inputs.sops-nix.homeManagerModules.sops
+                # inputs.sops-nix.homeManagerModules.sops # temp-todo: add back if going for HM
               ];
             }
           ];

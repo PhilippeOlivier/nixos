@@ -41,10 +41,8 @@
         ".gnupg"
         ".password-store"
         ".ssh"
+        ".config/sops"  # temp todo: keep this until sops.age.keyFile is fixed
       ];
     };
-  };
-  sops = {
-    age.keyFile = "/home/pholi/nixos/framework/extra/sops/age-key.txt";
   };
 }

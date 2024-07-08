@@ -1,5 +1,6 @@
 {
-  stateVersion
+  pkgs
+, stateVersion
 , homeDirectory
 , username
 , ...
@@ -27,4 +28,8 @@
       ];
     };
   };
+
+  home.packages = with pkgs; [
+    sops
+  ]
 }

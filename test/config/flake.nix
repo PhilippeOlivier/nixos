@@ -9,6 +9,7 @@
       };
     };
     impermanence.url = "github:nix-community/impermanence";
+    sops-nix.url = "github:Mic92/sops-nix";
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
@@ -55,6 +56,7 @@
               home-manager.users.${username}.imports = [
                 ./hm.nix
                 (inputs.impermanence + "/home-manager.nix")
+                inputs.sops-nix.homeManagerModules.sops
               ];
             }
           ];

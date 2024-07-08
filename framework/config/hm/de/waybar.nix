@@ -126,6 +126,10 @@ let
     done
   '';
 
+  mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
+    echo ToDo
+  '';
+
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''
     # If Transmission is running, create its output
     if ${pkgs.procps}/bin/pgrep transmission &> /dev/null; then
@@ -363,7 +367,7 @@ in
         };
 
         "custom/mail" = {
-          exec = "echo TODO";
+          exec = mailScript;
           on-click = "echo TODO";
     	    interval = "once";
           tooltip = false;

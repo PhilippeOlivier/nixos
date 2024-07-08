@@ -9,7 +9,7 @@
 
     # It's also possible to use a ssh key, but only when it has no password:
     #age.sshKeyPaths = [ "/home/user/path-to-ssh-key" ];
-    # defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = ../secrets/secrets.yaml;
     # secrets.test = {
     #   # sopsFile = ./secrets.yml.enc; # optionally define per-secret files
 

@@ -31,5 +31,5 @@
 
   home.packages = with pkgs; [
     sops
-  ]
+  ];
 }

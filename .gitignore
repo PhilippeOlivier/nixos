@@ -6,3 +6,4 @@ test/extra/
 test/install/ssid
 test/install/password
 test/notes.org
+sops/extra/

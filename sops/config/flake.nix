@@ -13,7 +13,7 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
+  outputs = inputs @ { self, home-manager, impermanence, nixpkgs, sops-nix, ... }: # TODO TEMP sops-nix
     let
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
@@ -42,6 +42,7 @@
           modules = [
             ./configuration.nix
             impermanence.nixosModule
+            sops-nix.nixosModules.sops  # TODO TEMP sops nix
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
@@ -56,7 +57,7 @@
               home-manager.users.${username}.imports = [
                 ./hm.nix
                 (inputs.impermanence + "/home-manager.nix")
-                inputs.sops-nix.homeManagerModules.sops
+                # inputs.sops-nix.homeManagerModules.sops  # TODO TEMP removed HM
               ];
             }
           ];

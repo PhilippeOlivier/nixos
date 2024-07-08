@@ -107,7 +107,7 @@
               home-manager.users.${username}.imports = [
                 ./hm
                 (inputs.impermanence + "/home-manager.nix")
-                # inputs.sops-nix.homeManagerModules.sops # temp-todo: add back if going for HM
+                inputs.sops-nix.homeManagerModules.sops # temp-todo: add back if going for HM
               ];
             }
           ];

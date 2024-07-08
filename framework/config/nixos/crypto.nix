@@ -45,6 +45,6 @@
     };
   };
   sops = {
-    age.keyFile = "/home/pholi/nixos/framework/extra/sops/age-key.txt";
+    age.keyFile = "/snap/home/pholi/nixos/framework/extra/sops/age-key.txt";
   };
 }

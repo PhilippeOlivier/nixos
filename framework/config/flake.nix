@@ -108,9 +108,6 @@
                 (inputs.impermanence + "/home-manager.nix")
                 inputs.sops-nix.homeManagerModules.sops
               ];
-              # home-manager.sharedModules = [
-              #   inputs.sops-nix.homeManagerModules.sops
-              # ];
             }
           ];
         };

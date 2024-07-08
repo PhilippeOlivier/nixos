@@ -21,8 +21,6 @@
     ./thunar.nix
     ./users.nix
     ./zfs.nix
-
-    ./temp.nix  # TODO TEMP: remove
   ];
 
   # TEMP: WiFi

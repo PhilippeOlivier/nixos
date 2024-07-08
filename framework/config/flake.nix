@@ -107,8 +107,10 @@
               home-manager.users.${username}.imports = [
                 ./hm
                 (inputs.impermanence + "/home-manager.nix")
-                #<sops-nix/modules/home-manager/sops.nix>
               ];
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];              
             }
           ];
         };

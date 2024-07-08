@@ -44,4 +44,7 @@
       ];
     };
   };
+  sops = {
+    age.keyFile = "/home/pholi/nixos/framework/extra/sops/age-key.txt";
+  };
 }

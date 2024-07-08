@@ -1,5 +1,6 @@
 {
   homeDirectory
+    , sops
 , ...
 }:
 

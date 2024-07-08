@@ -38,4 +38,9 @@ in
   # sops.secrets."wireless.env" = { };
   # networking.wireless.environmentFile = config.sops.secrets."wireless.env".path;
   # networking.wireless.networks = { "@home_uuid@" = { psk = "@home_psk@"; }; };
+
+  pkgs.writeShellScript "test-script-1.sh" ''
+    echo "This is the SOPS test script"
+    echo "asdfasdf"
+  '';
 }

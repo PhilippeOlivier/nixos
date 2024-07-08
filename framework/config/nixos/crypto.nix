@@ -41,7 +41,6 @@
         ".gnupg"
         ".password-store"
         ".ssh"
-        ".config/sops"  # temp todo: keep this until sops.age.keyFile is fixed
       ];
     };
   };

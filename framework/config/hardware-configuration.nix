@@ -2,8 +2,8 @@
   lib
 , pkgs
 , modulesPath
-# , hostId
-# , system
+, hostId
+, system
 , ...
 }:
 
@@ -19,8 +19,8 @@
     "sd_mod"
   ];
   boot.kernelModules = [ "kvm-intel" ];
-  networking.hostId = "cafe0000";  # hostId;
-  nixpkgs.hostPlatform = "x86_64-linux";  # lib.mkDefault system;
+  networking.hostId = hostId;
+  nixpkgs.hostPlatform = lib.mkDefault system;
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/CRYPTROOT";
 
   fileSystems."/" = {

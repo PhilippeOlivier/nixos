@@ -1,7 +1,6 @@
 {
   pkgs
 , screenshotDirectory
-, username
 , ...
 }:
 

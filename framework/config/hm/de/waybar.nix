@@ -1,6 +1,6 @@
 {
   pkgs
-    , config #TODO TEMP
+, config #TODO TEMP
 , outputHeight
 , outputWidth
 , signalBattery

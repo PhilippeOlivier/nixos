@@ -18,5 +18,5 @@
   sops.age.keyFile = "/snap/home/pholi/nixos/framework/extra/sops/age-key.txt";
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.secrets.mystring = { };
+  sops.secrets.mystring = {};
 }

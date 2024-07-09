@@ -95,7 +95,6 @@
                   signalMail
                   signalNetwork
                   signalVolume
-                  sopsAgeKeyFilePath
                   stateVersion
                   touchpadDevice
                   username

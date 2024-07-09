@@ -1,5 +1,6 @@
 {
-  desktopEntriesDirectory
+  config
+, desktopEntriesDirectory
 , extraDirectory
 , username
 , ...

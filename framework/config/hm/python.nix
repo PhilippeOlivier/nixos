@@ -1,5 +1,6 @@
 {
-  pkgs
+  config
+, pkgs
 , extraDirectory
 , homeDirectory
 , username

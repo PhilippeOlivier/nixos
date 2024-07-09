@@ -1,5 +1,6 @@
 {
-  sopsAgeKeyFilePath
+  pkgs
+, sopsAgeKeyFilePath
 , ...
 }:
 

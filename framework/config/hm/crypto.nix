@@ -1,13 +1,13 @@
 {
   config
 , pkgs
-, cryptoPath
+, cryptoDirectory
 , ...
 }:
 
 let
   # This must be the full path to the persisted directory (because of impermanence+sops)
-  sopsAgeKeyFilePath = "/snap${cryptoPath}/sops/age-key.txt";
+  sopsAgeKeyFilePath = "/snap${cryptoDirectory}/sops/age-key.txt";
 in
 
 {
@@ -31,8 +31,8 @@ in
     
     sessionVariables.SOPS_AGE_KEY_FILE = sopsAgeKeyFilePath;
     
-    file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "${cryptoPath}/gnupg";
-    file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "${cryptoPath}/password-store";
-    file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "${cryptoPath}/ssh";
+    file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "${cryptoDirectory}/gnupg";
+    file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "${cryptoDirectory}/password-store";
+    file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "${cryptoDirectory}/ssh";
   };
 }

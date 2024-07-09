@@ -5,9 +5,14 @@
 , ...
 }:
 
+let
+  # This must be the full path to the persisted directory (because of impermanence+sops)
+  sopsAgeKeyFilePath = "/snap${cryptoPath}/sops/age-key.txt";
+in
+
 {
   sops = {
-    age.keyFile = "/snap${cryptoPath}/sops/age-key.txt";  # This must be the full path to the persisted directory (because of impermanence+sops)
+    age.keyFile = sopsAgeKeyFilePath;
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
 

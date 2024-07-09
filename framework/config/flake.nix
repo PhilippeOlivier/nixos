@@ -11,7 +11,7 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:
+  outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
@@ -41,6 +41,7 @@
       signalMail = "16";
       signalNetwork = "15";
       signalVolume = "13";
+      sopsAgeKeyFilePath = "/snap${homeDirectory}/nixos/framework/extra/sops/age-key.txt";  # This must be the full path to the persisted directory (because of impermanence+sops)
       stateVersion = "24.05";
       system = "x86_64-linux";
       touchpadDevice = "2:7:SynPS/2_Synaptics_TouchPad";  # `swaymsg -t get_inputs`
@@ -65,7 +66,6 @@
           modules = [
             ./configuration.nix
             impermanence.nixosModule
-            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
@@ -94,6 +94,7 @@
                   signalMail
                   signalNetwork
                   signalVolume
+                  sopsAgeKeyFilePath
                   stateVersion
                   touchpadDevice
                   username
@@ -105,7 +106,7 @@
               home-manager.users.${username}.imports = [
                 ./hm
                 (inputs.impermanence + "/home-manager.nix")
-                #inputs.sops-nix.homeManagerModules.sops
+                inputs.sops-nix.homeManagerModules.sops
               ];
             }
           ];

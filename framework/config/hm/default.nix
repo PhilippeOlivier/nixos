@@ -11,7 +11,6 @@
 
     ./blueman.nix
     ./chromium.nix
-    #./crypto.nix
     ./discord.nix
     ./emacs.nix
     ./firefox.nix
@@ -25,6 +24,7 @@
     ./shell.nix
     ./signal.nix
     ./slack.nix
+    ./sops
     ./transmission.nix
     ./thunar.nix
     ./wpa_gui.nix

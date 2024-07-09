@@ -13,6 +13,7 @@
 
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
+      cryptoPath = "${homeDirectory}/nixos/framework/extra/crypto";
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
@@ -41,7 +42,6 @@
       signalMail = "16";
       signalNetwork = "15";
       signalVolume = "13";
-      sopsAgeKeyFilePath = "/snap${homeDirectory}/nixos/framework/extra/sops/age-key.txt";  # This must be the full path to the persisted directory (because of impermanence+sops)
       stateVersion = "24.05";
       system = "x86_64-linux";
       touchpadDevice = "2:7:SynPS/2_Synaptics_TouchPad";  # `swaymsg -t get_inputs`
@@ -69,6 +69,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit
+                  cryptoPath
                   desktopEntriesDirectory
                   homeDirectory
                   keyboardDevice

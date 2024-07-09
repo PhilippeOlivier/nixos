@@ -1,6 +1,5 @@
 {
   pkgs
-, username
 , ...
 }:
 
@@ -16,12 +15,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    cryptsetup
-    (pass.withExtensions (ext: with ext; [ pass-otp ]))
-    sops
-  ];
-
   # This also includes `gnupg`
   programs.gnupg.agent = {
     enable = true;
@@ -36,12 +29,5 @@
     directories = [
       "/etc/ssh"
     ];
-    users.${username} = {
-      directories = [
-        ".gnupg"
-        ".password-store"
-        ".ssh"
-      ];
-    };
   };
 }

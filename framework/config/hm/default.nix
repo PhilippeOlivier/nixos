@@ -24,7 +24,7 @@
     ./shell.nix
     ./signal.nix
     ./slack.nix
-    ./sops
+    ./sops.nix
     ./transmission.nix
     ./thunar.nix
     ./wpa_gui.nix

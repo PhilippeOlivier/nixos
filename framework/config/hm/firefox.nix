@@ -1,5 +1,6 @@
 {
   desktopEntriesDirectory
+, extraDirectory
 , username
 , ...
 }:
@@ -16,17 +17,14 @@ in
     exec = "MOZ_ENABLE_WAYLAND=1 firefox";
   };
   
-  home.persistence = {
-    "/snap/home/${username}" = {
-      directories = [
-        ".mozilla"
-      ];
-    };
-    
-    "/nosnap/home/${username}" = {
-      directories = [
-        ".cache/mozilla"
-      ];
+  home = {
+    file.".mozilla".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/mozilla";
+    persistence = {
+      "/nosnap/home/${username}" = {
+        directories = [
+          ".cache/mozilla"
+        ];
+      };
     };
   };
 }

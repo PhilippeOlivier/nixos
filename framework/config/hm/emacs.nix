@@ -1,7 +1,7 @@
 {
   pkgs
 , desktopEntriesDirectory
-, username
+, extraDirectory
 , ...
 }:
 
@@ -33,10 +33,6 @@ in
       source-code-pro  # Font for Emacs
     ];
 
-    persistence."/snap/home/${username}" = {
-      directories = [
-        ".emacs.d"
-      ];
-    };
+    file.".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/emacs";
   };
 }

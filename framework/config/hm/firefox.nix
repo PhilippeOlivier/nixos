@@ -19,7 +19,7 @@ in
   };
   
   home = {
-#    file.".mozilla".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/mozilla";
+    file.".mozilla".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/mozilla";
     persistence = {
       "/nosnap/home/${username}" = {
         directories = [

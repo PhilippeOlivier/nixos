@@ -55,6 +55,7 @@
       DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       EDITOR = "${pkgs.emacs}/bin/emacs";
       VISUAL = "${pkgs.emacs}/bin/emacs";
+      SOPS_AGE_KEY_FILE = "/snap/home/pholi/nixos/framework/extra/sops/age-key.txt";
     };
 
     shellAliases = {

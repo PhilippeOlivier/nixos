@@ -15,5 +15,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  sops.secrets.mystring = {};
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    secrets.mystring = { };
+  };
 }

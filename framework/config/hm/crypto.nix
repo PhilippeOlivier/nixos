@@ -13,7 +13,7 @@ in
 {
   sops = {
     age.keyFile = sopsAgeKeyFilePath;
-    defaultSopsFile = ../secrets/secrets.yaml;
+    #defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
 
     # Secrets will always be in that path

@@ -1,5 +1,5 @@
-# {
-#   sops.secrets = {
-#     mystring = {};
-#   };
-# }
+{
+  # sops.secrets = {
+  #   mystring = {};
+  # };
+}

@@ -1,5 +1,6 @@
 {
   pkgs
+, username
 , ...
 }:
 
@@ -25,9 +26,22 @@
     pinentryPackage = pkgs.pinentry-gtk2;
   };
 
+  sops = {
+    age.keyFile = "/snap/home/pholi/.sops/framework-age-key.txt";
+    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    secrets.mystring = { };
+  };
+  
   environment.persistence."/snap" = {
     directories = [
       "/etc/ssh"
     ];
+    
+    users.${username} = {
+      directories = [
+        ".sops"
+      ];
+    };
   };
 }

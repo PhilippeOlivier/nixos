@@ -9,6 +9,8 @@
   imports = [
     ./de
 
+    ./test.nix
+    
     ./blueman.nix
     ./chromium.nix
     ./crypto.nix

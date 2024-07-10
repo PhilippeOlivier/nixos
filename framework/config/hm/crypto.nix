@@ -31,7 +31,7 @@
       directories = [
         ".gnupg"
         ".password-store"
-        ".sops"
+        # ".sops"  # This is already persisted in `nixos/crypto.nix`
         ".ssh"
       ];
     };

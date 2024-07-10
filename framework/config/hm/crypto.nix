@@ -1,14 +1,10 @@
 {
   pkgs
 , homeDirectory
+, sopsAgeKeyFilePath
 , username
 , ...
 }:
-
-let
-  # This must be the full path to the persisted directory (because of impermanence+sops)
-  sopsAgeKeyFilePath = "/snap${homeDirectory}/.sops/framework-age-key.txt";
-in
 
 {
   sops = {

@@ -1,5 +1,6 @@
 {
   pkgs
+, sopsAgeKeyFilePath
 , username
 , ...
 }:
@@ -27,7 +28,7 @@
   };
 
   sops = {
-    age.keyFile = "/snap/home/pholi/.sops/framework-age-key.txt";
+    age.keyFile = sopsAgeKeyFilePath;
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     secrets.mystring = { };

@@ -18,5 +18,6 @@
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     secrets.mystring = { };
+    age.keyFile = "/snap/home/pholi/.sops/framework-age-key.txt";
   };
 }

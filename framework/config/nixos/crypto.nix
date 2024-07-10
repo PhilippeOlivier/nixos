@@ -38,10 +38,10 @@
       "/etc/ssh"
     ];
     
-    users.${username} = {
-      directories = [
-        ".sops"
-      ];
-    };
+    # users.${username} = {
+    #   directories = [
+    #     ".sops"
+    #   ];
+    # };
   };
 }

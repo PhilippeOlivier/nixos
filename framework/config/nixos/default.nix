@@ -15,6 +15,7 @@
     ./impermanence.nix
     ./mullvad.nix
     ./network.nix
+    ./secrets.nix
     ./sway.nix
     ./system.nix
     ./thunar.nix

@@ -1,4 +1,4 @@
-{ pkgs, config }:
+{ pkgs, config, ... }:
 
 let
   secret = config.sops.secrets.mystring.path;

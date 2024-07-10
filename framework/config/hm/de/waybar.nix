@@ -15,7 +15,7 @@
 
 let
 
-  asdf = config.sops.secrets.mystring.path;
+  #asdf = config.sops.secrets.mystring.path;
   
   gsimplecalX = builtins.toString (builtins.fromJSON outputWidth - 245);
 
@@ -130,7 +130,7 @@ let
   '';
 
   mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
-    echo $(cat ${asdf})
+    echo $(cat ${config.sops.secrets.mystring.path})
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

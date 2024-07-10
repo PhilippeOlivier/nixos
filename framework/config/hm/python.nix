@@ -29,6 +29,7 @@
         files = [
           ".python_history"
         ];
+      };
       "/nosnap/home/${username}" = {
         directories = [
           ".pycache"

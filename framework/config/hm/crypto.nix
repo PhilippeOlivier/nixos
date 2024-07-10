@@ -1,13 +1,13 @@
 {
-  config
-, pkgs
-, extraDirectory
+  pkgs
+, homeDirectory
+, username
 , ...
 }:
 
 let
   # This must be the full path to the persisted directory (because of impermanence+sops)
-  sopsAgeKeyFilePath = "/snap${extraDirectory}/sops/age-key.txt";
+  sopsAgeKeyFilePath = "/snap${homeDirectory}/.sops/framework-age-key.txt";
 in
 
 {
@@ -30,9 +30,14 @@ in
     ];
     
     sessionVariables.SOPS_AGE_KEY_FILE = sopsAgeKeyFilePath;
-    
-    file.".gnupg".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/gnupg";
-    file.".password-store".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/password-store";
-    file.".ssh".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/ssh";
+
+    persistence."/snap/home/${username}" = {
+      directories = [
+        ".gnupg"
+        ".password-store"
+        ".sops"
+        ".ssh"
+      ];
+    };
   };
 }

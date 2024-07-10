@@ -14,7 +14,6 @@
   outputs = inputs @ { self, home-manager, impermanence, nixpkgs, ... }:
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
-      extraDirectory = "${homeDirectory}/nixos/framework/extra";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";
@@ -35,7 +34,7 @@
       outputHeightRight = "1080";  # `swaymsg -t get_outputs`
       outputScaleRight = "1.0";
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
-      screenshotDirectory = "${extraDirectory}/screenshots";
+      screenshotDirectory = "${homeDirectory}/screenshots";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";
@@ -70,7 +69,6 @@
               home-manager.extraSpecialArgs = {
                 inherit
                   desktopEntriesDirectory
-                  extraDirectory
                   homeDirectory
                   keyboardDevice
                   outputDevice

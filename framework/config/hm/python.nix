@@ -1,7 +1,5 @@
 {
-  config
-, pkgs
-, extraDirectory
+  pkgs
 , homeDirectory
 , username
 , ...
@@ -25,10 +23,12 @@
     ];
 
     sessionVariables.PYTHONPYCACHEPREFIX="${homeDirectory}/.pycache";  # Put all the __pycache__ directories there
-
-    file.".python_history".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/python/python_history";
     
     persistence = {
+      "/snap/home/${username}" = {
+        files = [
+          ".python_history"
+        ];
       "/nosnap/home/${username}" = {
         directories = [
           ".pycache"

@@ -1,8 +1,6 @@
 {
-  config
-, pkgs
+  pkgs
 , desktopEntriesDirectory
-, extraDirectory
 , ...
 }:
 
@@ -34,6 +32,10 @@ in
       source-code-pro  # Font for Emacs
     ];
 
-    file.".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/emacs";
+    persistence."/snap/home/${username}" = {
+      directories = [
+        ".emacs.d"
+      ];
+    };
   };
 }

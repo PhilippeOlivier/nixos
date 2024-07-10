@@ -1,7 +1,5 @@
 {
-  config
-, pkgs
-, extraDirectory
+  pkgs
 , username
 , ...
 }:
@@ -65,10 +63,11 @@
       # opto = "cd /home/pholi/.nixos-extra/scripts/emma/opto/ && nix-shell --command 'python opto.py'";  # Run the wife's opto script
       reboot = "${pkgs.emacs}/bin/emacsclient -e '(save-some-buffers t)' && reboot";  # Save all Emacs buffers before rebooting
     };
-
-    file.".bash_history".source = config.lib.file.mkOutOfStoreSymlink "${extraDirectory}/shell/bash_history";
     
     persistence."/snap/home/${username}" = {
+      files = [
+        ".bash_history"
+      ];
       directories = [
         ".local/share/direnv"
       ];

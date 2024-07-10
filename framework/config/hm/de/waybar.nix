@@ -14,8 +14,6 @@
 }:
 
 let
-
-  #asdf = config.sops.secrets.mystring.path;
   
   gsimplecalX = builtins.toString (builtins.fromJSON outputWidth - 245);
 

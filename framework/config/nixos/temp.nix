@@ -3,7 +3,7 @@
 {
   systemd.services."test" = {
     script = ''
-      echo ASDF
+      touch /home/pholi/ASDF
     '';
   };
 }

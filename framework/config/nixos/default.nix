@@ -1,5 +1,7 @@
 {
   imports = [
+    ./temp.nix
+    
     ./android.nix
     ./bluetooth.nix
     ./boot.nix

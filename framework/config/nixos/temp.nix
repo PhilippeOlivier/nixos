@@ -5,4 +5,5 @@
     script = ''
       echo ASDF
     '';
+  };
 }

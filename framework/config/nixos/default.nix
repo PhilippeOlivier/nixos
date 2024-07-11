@@ -30,7 +30,7 @@
 
   sops.secrets."wireless" = { };
   networking.wireless.environmentFile = config.sops.secrets."wireless".path;
-  networking.wireless.networks = { "@home_uuid@" = { psk = "@home_psk@"; }; };
+  networking.wireless.networks = { "@home_ssid@" = { psk = "@home_psk@"; }; };
 
 
   # networking.wireless.environmentFile = config.sops.secrets."wireless.env".path;

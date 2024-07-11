@@ -1,10 +1,4 @@
 {
-  config
-, pkgs
-, ...
-}:
-
-{
   imports = [
     ./android.nix
     ./bluetooth.nix

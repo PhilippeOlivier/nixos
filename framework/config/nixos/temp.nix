@@ -7,6 +7,7 @@
         # touch /home/pholi/$(sudo cat /run/secrets/ntfy_topic)
   systemd.services."test" = {
     wantedBy = ["multi-user.target"];
+    path = [ pkgs.sudo ];
     script = ''
       #touch /home/pholi/$(sudo cat ${config.sops.secrets."ntfy_topic".path})
       sudo touch /home/pholi/asdf

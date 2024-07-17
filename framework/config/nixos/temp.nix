@@ -34,7 +34,7 @@
       "network-online.target"
     ];
     script = ''
-      touch /home/pholi/asdf
+      touch /snap/home/pholi/asdf
     '';
     serviceConfig = {
       Type = "oneshot";

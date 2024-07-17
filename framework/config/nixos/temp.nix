@@ -7,7 +7,7 @@
   };
 
   systemd.services."test" = {
-    wants = [
+    requires = [
       "network-online.target"
     ];
     script = ''

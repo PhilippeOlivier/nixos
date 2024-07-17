@@ -6,6 +6,25 @@
     group = config.users.users.${username}.group;
   };
 
+
+  # systemd.services."test" = {
+  #   requires = [
+  #     "network-online.target"
+  #   ];
+  #   after = [
+  #     "network-online.target"
+  #   ];
+  #   script = ''
+  #     touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     #ExecStartPre = "sleep 10";
+  #     User = username;
+  #     Group = "users";
+  #   };
+  # };
+  
   systemd.services."test" = {
     requires = [
       "network-online.target"
@@ -14,12 +33,11 @@
       "network-online.target"
     ];
     script = ''
-      touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
+      touch /home/pholi/asdf
     '';
     serviceConfig = {
       Type = "oneshot";
-      #ExecStartPre = "sleep 10";
-      User = username;
+      User = "pholi";
       Group = "users";
     };
   };

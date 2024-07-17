@@ -8,7 +8,6 @@
 
   systemd.services."test" = {
     wants = [
-      "graphical.target"
       "network-online.target"
     ];
     script = ''

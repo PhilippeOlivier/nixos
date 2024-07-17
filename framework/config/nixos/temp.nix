@@ -10,6 +10,9 @@
     requires = [
       "network-online.target"
     ];
+    after = [
+      "network-online.target"
+    ];
     script = ''
       touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
     '';

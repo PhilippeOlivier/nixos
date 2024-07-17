@@ -6,7 +6,7 @@
   systemd.services."test" = {
     script = ''
       touch /home/pholi/asdf
-    # '';
+    '';
     serviceConfig = {
       Type = "oneshot";
       # ExecStart = ''

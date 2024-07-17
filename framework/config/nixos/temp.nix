@@ -9,7 +9,7 @@
   systemd.services."test" = {
     wants = [
       "graphical.target"
-      "network-online.atrget"
+      "network-online.target"
     ];
     script = ''
       touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})

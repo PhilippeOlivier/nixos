@@ -5,8 +5,7 @@
 
   systemd.services."test" = {
     script = ''
-      #touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
-      echo ASDF
+      touch /home/pholi/$(sudo cat ${config.sops.secrets."ntfy_topic".path})
     '';
     # after = [ "sops-nix.service" ];
     serviceConfig = {

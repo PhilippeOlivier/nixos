@@ -2,10 +2,10 @@
 
 {
   sops.secrets."ntfy_topic" = {};
-  # ${config.sops.secrets."ntfy_topic".path}
+
   systemd.services."test" = {
     script = ''
-      touch /home/pholi/asdf
+      touch /home/pholi/${config.sops.secrets."ntfy_topic".path}
     '';
     serviceConfig = {
       Type = "oneshot";

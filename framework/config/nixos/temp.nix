@@ -30,9 +30,11 @@
     enable = true;
     requires = [
       "network-online.target"
+      "graphical.target"
     ];
     after = [
       "network-online.target"
+      "graphical.target"
     ];
     script = ''
       touch /snap/home/pholi/asdf

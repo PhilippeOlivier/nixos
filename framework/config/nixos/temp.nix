@@ -1,9 +1,9 @@
-{config,pkgs, ...}:
+{config,pkgs, username ...}:
 
 {
   sops.secrets."ntfy_topic" = {
-    owner = config.users.users.pholi.name;
-    group = config.users.users.pholi.group;
+    owner = config.users.users.${username}.name;
+    group = config.users.users.${username}.group;
   };
 
   systemd.services."test" = {
@@ -13,7 +13,7 @@
     '';
     serviceConfig = {
       Type = "oneshot";
-      User = "pholi";
+      User = username;
       Group = "users";
     };
   };

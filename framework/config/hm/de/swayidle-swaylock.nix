@@ -1,6 +1,7 @@
 {
   config
 , pkgs
+, username
 , ...
 }:
 
@@ -42,6 +43,19 @@ in
       indicator-caps-lock = true;
     };
   };
-  
+
+  systemd.services."swaylock-suspend" = {
+    description = "Swaylock when lid close";
+    before = [ "suspend.target" ];
+    wantedBy = [ "suspend.target" ];
+    description = "Lock screen before suspend";
+    script = "XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 ${pkgs.swaylock}/bin/swaylock";
+    serviceConfig = {
+      Type = "forking";
+      User = ${username};
+      Group = "users";
+    };
+  };
+
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+l" = "exec ${lockScreenScript}";
 }

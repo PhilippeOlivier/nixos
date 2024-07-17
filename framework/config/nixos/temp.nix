@@ -1,16 +1,17 @@
 {config,pkgs, ...}:
 
 {
-  sops.secrets."ntfy_topic" = {};
+  sops.secrets."ntfy_topic" = {
+    owner = config.users.users.pholi.name;
+    group = config.users.users.pholi.group;
+  };
 
   # 
         # touch /home/pholi/$(sudo cat /run/secrets/ntfy_topic)
   systemd.services."test" = {
     wantedBy = ["multi-user.target"];
-    path = [ pkgs.sudo ];
     script = ''
-      #touch /home/pholi/$(sudo cat ${config.sops.secrets."ntfy_topic".path})
-      sudo touch /home/pholi/asdf
+      touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
     '';
     # after = [ "sops-nix.service" ];
     serviceConfig = {

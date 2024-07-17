@@ -1,5 +1,6 @@
 {
-  username
+  pkgs
+, username
 , ...
 }:
 

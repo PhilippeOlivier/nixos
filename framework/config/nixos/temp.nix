@@ -25,7 +25,7 @@
   #   };
   # };
   
-  systemd.services."test" = {
+  systemd.user.services."test" = {
     enable = true;
     requires = [
       "network-online.target"

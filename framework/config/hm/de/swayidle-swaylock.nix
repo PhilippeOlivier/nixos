@@ -44,7 +44,7 @@ in
     };
   };
 
-  systemd.services."swaylock-suspend" = {
+  systemd.user.services."swaylock-suspend" = {
     description = "Lock screen before suspend";
     before = [ "suspend.target" ];
     wantedBy = [ "suspend.target" ];

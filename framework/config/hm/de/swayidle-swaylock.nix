@@ -51,7 +51,7 @@ in
     script = "XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 ${pkgs.swaylock}/bin/swaylock";
     serviceConfig = {
       Type = "forking";
-      User = ${username};
+      User = username;
       Group = "users";
     };
   };

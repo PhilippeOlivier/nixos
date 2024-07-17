@@ -51,8 +51,8 @@ in
     };
     Service = {
       Type = "forking";
+      ExecStart = "XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 ${pkgs.swaylock}/bin/swaylock";
     };
-    Script = "XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 ${pkgs.swaylock}/bin/swaylock";
     Install.Before = [ "suspend.target" ];
     Install.WantedBy = [ "suspend.target" ];
   };

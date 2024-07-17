@@ -7,7 +7,10 @@
   };
 
   systemd.services."test" = {
-    wantedBy = ["multi-user.target"];
+    wants = [
+      "graphical.target"
+      "network-online.atrget"
+    ];
     script = ''
       touch /home/pholi/$(cat ${config.sops.secrets."ntfy_topic".path})
     '';

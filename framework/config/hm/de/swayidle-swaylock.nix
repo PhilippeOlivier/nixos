@@ -44,18 +44,5 @@ in
     };
   };
 
-  systemd.user.services."swaylock-suspend" = {
-    Unit = {
-      Description = "Lock screen before suspend";
-      Requires = ["graphical-session.target"];
-    };
-    Service = {
-      Type = "forking";
-      Script = "XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 ${pkgs.swaylock}/bin/swaylock";
-    };
-    Install.Before = [ "suspend.target" ];
-    Install.WantedBy = [ "suspend.target" ];
-  };
-
   wayland.windowManager.sway.config.keybindings."${config.swayModifier}+l" = "exec ${lockScreenScript}";
 }

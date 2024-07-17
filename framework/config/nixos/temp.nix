@@ -5,7 +5,7 @@
 
   systemd.services."test" = {
     script = ''
-      touch /home/pholi/${config.sops.secrets."ntfy_topic".path}
+      touch /home/pholi/asdf #${config.sops.secrets."ntfy_topic".path}
     '';
   };
 }

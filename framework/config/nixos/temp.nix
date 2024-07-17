@@ -18,7 +18,7 @@
     '';
     serviceConfig = {
       Type = "oneshot";
-      ExecStartPre = "sleep 10";
+      #ExecStartPre = "sleep 10";
       User = username;
       Group = "users";
     };

@@ -27,7 +27,8 @@
 
   # restart every time network comes online: https://unix.stackexchange.com/questions/725834/systemd-unit-auto-restart-when-network-changes
 
-systemd.network.enable = true;
+  systemd.network.enable = true;
+  network.useNetworkd = true;
   
   services.networkd-dispatcher = {
     enable = true;

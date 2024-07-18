@@ -26,8 +26,9 @@
   # };
   
   # systemd.user.services."test" = {
-  systemd.services."test" = {
+  systemd.services.test = {
     enable = true;
+    wantedBy = [ "multi-user.target" ];
     # requires = [
     #   "network-online.target"
     # ];

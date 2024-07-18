@@ -30,7 +30,7 @@
   services.networkd-dispatcher = {
     enable = true;
 
-    "test" = {
+    rules."test" = {
       onState = [ "routable" ];
       script = ''
         systemctl restart test.service

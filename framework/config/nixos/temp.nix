@@ -27,7 +27,14 @@
 
   # restart every time network comes online: https://unix.stackexchange.com/questions/725834/systemd-unit-auto-restart-when-network-changes
 
-  systemd.network.enable = true;
+  systemd.network = {
+    enable = true;
+    networks."10-wlp4s0" = {
+      matchConfig.Name = "wlp4s0";
+      networkConfig.DHCP = "yes";
+      networkConfig.Address = "192.168.100.100/24"
+    };
+  };
   networking.useNetworkd = true;
   
   services.networkd-dispatcher = {

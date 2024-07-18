@@ -15,18 +15,18 @@
       userControlled.enable = true;  # Allow the use of `wpa_gui`
     };
 
-    # Network interfaces
-    interfaces = {
-      ${wirelessDevice} = {
-        useDHCP = true;
-        ipv4.addresses = [
-          {
-            address = localIp;
-            prefixLength = 24;
-          }
-        ];
-      };
-    };
+    # # Network interfaces
+    # interfaces = {
+    #   ${wirelessDevice} = {
+    #     useDHCP = true;
+    #     ipv4.addresses = [
+    #       {
+    #         address = localIp;
+    #         prefixLength = 24;
+    #       }
+    #     ];
+    #   };
+    # };
 
     # systemd-resolved
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];

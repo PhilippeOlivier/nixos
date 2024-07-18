@@ -44,8 +44,8 @@
       onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
-        echo ASDF
-        #systemctl restart test.service
+        #echo ASDF
+        systemctl restart test.service
       '';
     };
   };

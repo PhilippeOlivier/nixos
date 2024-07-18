@@ -35,7 +35,7 @@
   #     networkConfig.Address = "192.168.100.100/24";
   #   };
   # };
-  networking.useNetworkd = true;
+  # networking.useNetworkd = true;
 
   # fetch-mail.service starts after network is online at reboot, and also every time the network goes back online
   

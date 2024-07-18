@@ -39,7 +39,7 @@
       #touch /snap/home/pholi/asdf
     '';
     serviceConfig = {
-      Type = "oneshot";
+      Type = "simple";
       User = "pholi";
       Group = "users";
     };

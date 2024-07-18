@@ -28,18 +28,18 @@
   # systemd.user.services."test" = {
   systemd.services."test" = {
     enable = true;
-    requires = [
-      "network-online.target"
-    ];
-    after = [
-      "network-online.target"
-    ];
+    # requires = [
+    #   "network-online.target"
+    # ];
+    # after = [
+    #   "network-online.target"
+    # ];
     script = ''
       echo asdf
       #touch /snap/home/pholi/asdf
     '';
     serviceConfig = {
-      Type = "simple";
+      Type = "oneshot";
       User = "pholi";
       Group = "users";
     };

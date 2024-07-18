@@ -24,20 +24,27 @@
   #     Group = "users";
   #   };
   # };
+
+  # restart every time network comes online: https://unix.stackexchange.com/questions/725834/systemd-unit-auto-restart-when-network-changes
+
+  services.networkd-dispatcher = {
+    enable = true;
+
+    "test" = {
+      onState = [ "routable" ];
+      script = ''
+        systemctl restart test.service
+      '';
+    };
+  };
   
-  # systemd.user.services."test" = {
-  systemd.services.test = {
+  systemd.services."test" = {
     enable = true;
     wantedBy = [ "multi-user.target" ];
-    # requires = [
-    #   "network-online.target"
-    # ];
-    # after = [
-    #   "network-online.target"
-    # ];
+    requires = [ "network-online.target" ];
+    after = [ "network-online.target" ];
     script = ''
       echo asdf
-      #touch /snap/home/pholi/asdf
     '';
     serviceConfig = {
       Type = "oneshot";

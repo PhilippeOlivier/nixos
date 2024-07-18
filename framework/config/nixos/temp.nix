@@ -36,7 +36,8 @@
     rules."test" = {
       onState = [ "routable" ];
       script = ''
-        systemctl restart test.service
+        echo ASDF
+        #systemctl restart test.service
       '';
     };
   };

@@ -1,16 +1,19 @@
 {pkgs, ...}:
+
+
 {
   systemd.user.services."fetch-mail" = {
     Unit = {
       Description = "ASFDASDFA";
     };
 
+    Install.WantedBy = [ "default.target" ];
+
     Service = {
-      ExecStart = ''
-        #!${pkgs.runtimeShell}
-        echo asdf
-      '';
       Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScriptBin "fetch-mail" ''
+          echo asdf
+        ''}/bin/fetch-mail";
     };
   };
 

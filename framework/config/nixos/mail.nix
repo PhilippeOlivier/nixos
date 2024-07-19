@@ -19,8 +19,20 @@
       onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
-        systemctl --user=pholi restart fetch-mail.service
+        systemctl restart fetch-mail.service
       '';
+    };
+  };
+
+  systemd.services."fetch-mail" = {
+    enable = true;
+    script = ''
+      systemctl --user restart fetch-mail.service
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "pholi";
+      Group = "users";
     };
   };
   

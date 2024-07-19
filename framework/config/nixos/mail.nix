@@ -19,7 +19,7 @@
       onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
-        sudo systemctl --user restart fetch-mail.service
+        systemctl --user=pholi restart fetch-mail.service
       '';
     };
   };

@@ -1,4 +1,4 @@
-
+{pkgs, ...}:
 {
   systemd.user.services."fetch-mail" = {
     Unit = {
@@ -7,6 +7,7 @@
 
     Service = {
       ExecStart = ''
+        #!${pkgs.runtimeShell}
         echo asdf
       '';
       Type = "oneshot";

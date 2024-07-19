@@ -27,7 +27,7 @@
   systemd.services."fetch-mail" = {
     enable = true;
     script = ''
-      systemctl --user -M pholi@ restart fetch-mail.service
+      ${pkgs.sudo}/bin/sudo systemctl --user -M pholi@ restart fetch-mail.service
     '';
     serviceConfig = {
       Type = "oneshot";

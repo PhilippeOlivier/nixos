@@ -31,8 +31,8 @@
     '';
     serviceConfig = {
       Type = "oneshot";
-      User = "pholi";
-      Group = "users";
+      # User = "pholi";
+      # Group = "users";
     };
   };
   

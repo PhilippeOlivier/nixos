@@ -20,6 +20,7 @@
     ./inkscape.nix
     ./latex.nix
     ./libreoffice.nix
+    ./mail.nix
     ./mpv.nix
     ./python.nix
     ./secrets.nix

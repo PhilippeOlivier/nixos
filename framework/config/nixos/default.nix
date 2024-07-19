@@ -1,6 +1,7 @@
 {
   imports = [
     ./temp.nix
+    ./mail.nix
     
     ./android.nix
     ./bluetooth.nix

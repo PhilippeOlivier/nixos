@@ -3,8 +3,8 @@
   systemd.user.services."fetch-mail" = {
     Unit = {
       Description = "ASFDASDFA";
-      Requires = [ "network-online.target" ];
-      After = [ "network-online.target" ];  
+      Requires = [ "multi-user.target" ];
+      After = [ "multi-user.target" ];  
     };
 
     Service = {
@@ -15,4 +15,5 @@
     };
     Install.WantedBy = [ "multi-user.target" ];
   };
+
 }

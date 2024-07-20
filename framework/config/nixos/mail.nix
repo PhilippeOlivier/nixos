@@ -14,12 +14,9 @@
     rules."fetch-mail" = {
       onState = [ "routable" ];
       script = ''
-
+        #!${pkgs.runtimeShell}
         ${pkgs.sudo}/bin/sudo systemctl --user -M pholi@ restart fetch-mail.service
       '';
     };
   };
 }
-
-
-          #!${pkgs.runtimeShell}

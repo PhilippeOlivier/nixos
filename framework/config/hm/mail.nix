@@ -6,9 +6,9 @@
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail4" ''
     #!${pkgs.runtimeShell}
-    words=("word1"
-           "word2"
-           "word3")
+    # words=("word1"
+    #        "word2"
+    #        "word3")
     echo ASDF
     # for word in "''${words[@]}"; do
     #     echo $word

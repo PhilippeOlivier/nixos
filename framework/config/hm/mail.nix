@@ -9,7 +9,7 @@ let
        "word2"
        "word3")
 
-for word in "\$\{words[@]\}"; do
+for word in "''${words[@]}"; do
     echo $word
 done
   ''}/bin/fetch-mail.sh";

@@ -9,10 +9,10 @@ let
     words=("word1"
            "word2"
            "word3")
-
-    for word in "''${words[@]}"; do
-        echo $word
-    done
+    echo ASDF
+    # for word in "''${words[@]}"; do
+    #     echo $word
+    # done
   ''}/bin/fetch-mail.sh";
 in
 

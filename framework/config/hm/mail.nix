@@ -5,15 +5,8 @@
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    # aasdf #!${pkgs.runtimeShell}
-    # words=("word1"
-    #        "word2"
-    #        "word3")
     echo ASDF
-    # for word in "''${words[@]}"; do
-    #     echo $word
-    # done
-  ''}/bin/fetch-mail.sh";
+  ''}/bin/fetch-mail";
 in
 
 
@@ -34,7 +27,18 @@ in
 
 
 
-
+# let
+#   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
+#     # aasdf #!${pkgs.runtimeShell}
+#     # words=("word1"
+#     #        "word2"
+#     #        "word3")
+#     echo ASDF
+#     # for word in "''${words[@]}"; do
+#     #     echo $word
+#     # done
+#   ''}/bin/fetch-mail.sh";
+# in
 
 
 

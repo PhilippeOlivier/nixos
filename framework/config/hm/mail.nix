@@ -4,8 +4,8 @@
 }:
 
 let
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail4" ''
-    #!${pkgs.runtimeShell}
+  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
+    # aasdf #!${pkgs.runtimeShell}
     # words=("word1"
     #        "word2"
     #        "word3")

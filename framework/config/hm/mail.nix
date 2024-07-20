@@ -1,5 +1,9 @@
 {pkgs, ...}:
 
+# let
+#   mail-fetch script...
+# in
+
 
 {
   systemd.user.services."fetch-mail" = {

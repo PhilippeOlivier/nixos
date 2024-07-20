@@ -25,5 +25,18 @@
   #   };
   # };
 
-
+  # systemd.services."fetch-mail" = {
+  #   enable = true;
+  #   wantedBy = [ "multi-user.target" ];
+  #   requires = [ "network-online.target" ];
+  #   after = [ "network-online.target" ];
+  #   script = ''
+  #     echo asdf
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "pholi";
+  #     Group = "users";
+  #   };
+  # };
 }

@@ -1,23 +1,25 @@
-{config,pkgs, username, ...}:
+{
+  pkgs
+, ...
+}:
 
 {
-
-
-  # fetch-mail.service starts after network is online at reboot, and also every time the network goes back online
-  
   # Required for `networkd-dispatcher`
   networking.useNetworkd = true;
   
   services.networkd-dispatcher = {
     enable = true;
 
-    # this rule restarts the systemd "fetch-mail" system service
+    # This rule restarts the systemd user service `fetch-mail` every time the routable state is reached
     rules."fetch-mail" = {
       onState = [ "routable" ];
       script = ''
-        #!${pkgs.runtimeShell}
+
         ${pkgs.sudo}/bin/sudo systemctl --user -M pholi@ restart fetch-mail.service
       '';
     };
   };
 }
+
+
+          #!${pkgs.runtimeShell}

@@ -7,7 +7,7 @@
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/words")
+    #echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/words")
     # words=("word1"
     #        "word2"
     #        "word3")

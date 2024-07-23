@@ -3,19 +3,21 @@
 , ...
 }:
 
-# this works, but..... see below... maybe add #!${pkgs.runtimeShell}??
-let
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail12" ''
+
     # for x in "1 2"; do
     #     echo $x
-    # done
-    echo 1
+# done
+
     # words=("word1"
     #         "word2"
     #         "word3")
     # for word in "''${words[@]}"; do
     #     echo $word
     # done
+let
+  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail13" ''
+    echo 1
+    echo 2
   ''}/bin/fetch-mail";
 in
 

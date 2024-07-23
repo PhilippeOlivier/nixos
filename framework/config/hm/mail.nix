@@ -17,6 +17,7 @@
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
     echo 1
+    echo 2
   ''}/bin/fetch-mail";
 in
 

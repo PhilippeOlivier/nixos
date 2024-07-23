@@ -16,7 +16,7 @@
     # done
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    for x in 1 2; do
+    for x in "1 2"; do
         echo $x
     done
   ''}/bin/fetch-mail";

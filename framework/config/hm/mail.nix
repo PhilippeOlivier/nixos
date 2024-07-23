@@ -3,6 +3,8 @@
 , ...
 }:
 
+# why do i have to get cat from coreutils?
+
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
     words=("word1"
@@ -11,7 +13,7 @@ let
     for word in "''${words[@]}"; do
         echo $word
     done
-    echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/mystring")
+    echo $(cat "/run/user/1000/secrets/mystring")
   ''}/bin/fetch-mail";
 in
 

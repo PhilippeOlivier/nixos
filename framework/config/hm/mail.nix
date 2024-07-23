@@ -15,7 +15,7 @@
     #     echo $word
     # done
 let
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
+  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail18" ''
     for x in "1 2"; do
         echo $x
     done

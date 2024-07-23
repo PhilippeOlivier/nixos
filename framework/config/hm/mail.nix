@@ -3,9 +3,16 @@
 , ...
 }:
 
+# this works, but..... see below... maybe add #!${pkgs.runtimeShell}??
 let
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    echo ASDF
+  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail10" ''
+    #!${pkgs.runtimeShell}
+    words=("word1"
+            "word2"
+            "word3")
+    for word in "''${words[@]}"; do
+        echo $word
+    done
   ''}/bin/fetch-mail";
 in
 
@@ -26,6 +33,7 @@ in
 
 
 
+#... this doesn't work??
 
 # let
 #   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''

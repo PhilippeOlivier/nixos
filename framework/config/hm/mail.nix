@@ -7,13 +7,14 @@
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    words=("word1"
-           "word2"
-           "word3")
-    for word in "''${words[@]}"; do
-        echo $word
-    done
-    echo $(cat "/run/user/1000/secrets/mystring")
+    echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/words")
+    # words=("word1"
+    #        "word2"
+    #        "word3")
+    # for word in "''${words[@]}"; do
+    #     echo $word
+    # done
+    # echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/mystring")
   ''}/bin/fetch-mail";
 in
 
@@ -21,6 +22,7 @@ in
 {
   sops.secrets = {
     mystring = {};
+    words = {};
   };
   
   systemd.user.services."fetch-mail" = {

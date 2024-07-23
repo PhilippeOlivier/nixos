@@ -11,11 +11,16 @@ let
     for word in "''${words[@]}"; do
         echo $word
     done
+    echo $(cat "/run/user/1000/secrets/mystring")
   ''}/bin/fetch-mail";
 in
 
 
 {
+  sops.secrets = {
+    mystring = {};
+  };
+  
   systemd.user.services."fetch-mail" = {
     Unit = {
       Description = "Fetch mail for all mailboxes";

@@ -4,10 +4,10 @@
 }:
 
 
+
     # for x in "1 2"; do
     #     echo $x
 # done
-
     # words=("word1"
     #         "word2"
     #         "word3")
@@ -16,8 +16,9 @@
     # done
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    echo 1
-    echo 2
+    for x in 1 2; do
+        echo $x
+    done
   ''}/bin/fetch-mail";
 in
 

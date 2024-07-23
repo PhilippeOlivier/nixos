@@ -5,10 +5,11 @@
 
 # this works, but..... see below... maybe add #!${pkgs.runtimeShell}??
 let
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail11" ''
-    for x in "1 2"; do
-        echo $x
-    done
+  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail12" ''
+    # for x in "1 2"; do
+    #     echo $x
+    # done
+    echo 1
     # words=("word1"
     #         "word2"
     #         "word3")

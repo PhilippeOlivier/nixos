@@ -16,8 +16,11 @@
     # done
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    for x in "1 2"; do
-        echo $x
+    words=("word1"
+            "word2"
+            "word3")
+    for word in "''${words[@]}"; do
+        echo $word
     done
   ''}/bin/fetch-mail";
 in

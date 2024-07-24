@@ -22,7 +22,9 @@ in
 {
   sops.secrets = {
     mystring = {};
-    words = {}; #<-- is the array correct?
+    words = {
+      file = "/tmp/asdf";
+    }; #<-- is the array correct?
   };
   
   systemd.user.services."fetch-mail" = {

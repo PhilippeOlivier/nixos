@@ -1,26 +1,33 @@
 {
-  config,
-  pkgs
+  config
+, pkgs
 , ...
 }:
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    IFS=$'\n' words=( $(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.words.path}")") )
-    for word in "''${words[@]}"; do
-        echo $word
+    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
+
+    echo EMAILS
+    for email in "''${special_emails[@]}"; do
+        echo $email
     done
 
-   #echo "$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.mystring.path}")"
-   ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")
+    echo TERMS
+    for term in "''${special_terms[@]}"; do
+        echo $term
+    done
+
+   ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
   ''}/bin/fetch-mail";
 in
 
 {
   sops.secrets = {
+    specialEmails = {};
+    specialTerms = {};
     ntfyTopic = {};
-    mystring = {};
-    words = {};
   };
   
   systemd.user.services."fetch-mail" = {

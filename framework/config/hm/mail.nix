@@ -11,14 +11,14 @@ let
         echo $word
     done
 
-   echo "$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.mystring.path}")"
-   # echo ${config.sops.secrets.mystring.path}
-   # ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/asdf
+   #echo "$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.mystring.path}")"
+   ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")
   ''}/bin/fetch-mail";
 in
 
 {
   sops.secrets = {
+    ntfyTopic = {};
     mystring = {};
     words = {};
   };

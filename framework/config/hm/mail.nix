@@ -11,7 +11,8 @@ let
         echo $word
     done
 
-   echo ${config.sops.secrets.mystring.path}
+   echo "$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.mystring.path}")"
+   # echo ${config.sops.secrets.mystring.path}
    # ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/asdf
   ''}/bin/fetch-mail";
 in

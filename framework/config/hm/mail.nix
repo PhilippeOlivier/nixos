@@ -23,7 +23,7 @@ in
   sops.secrets = {
     mystring = {};
     words = {
-      file = "/tmp/asdf";
+      file = /tmp/asdf;
     }; #<-- is the array correct?
   };
   

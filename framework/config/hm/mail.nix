@@ -8,14 +8,9 @@
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
     IFS=$'\n' words=( $(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/words")") )
-    # IFS=' ' read -r -a words <<< "$(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/words")"
-    # words=("word1"
-    #        "word2"
-    #        "word3")
     for word in "''${words[@]}"; do
         echo $word
     done
-    # echo $(${pkgs.coreutils}/bin/cat "/run/user/1000/secrets/mystring")
   ''}/bin/fetch-mail";
 in
 

@@ -1,9 +1,8 @@
 {
+  config,
   pkgs
 , ...
 }:
-
-# why do i have to get cat from coreutils?
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
@@ -11,9 +10,11 @@ let
     for word in "''${words[@]}"; do
         echo $word
     done
+
+   echo ${config.sops.secrets.mystring.path}
+   # ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/asdf
   ''}/bin/fetch-mail";
 in
-
 
 {
   sops.secrets = {

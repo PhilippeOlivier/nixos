@@ -19,6 +19,7 @@
       hostName = "pholi-nixos";
       keyboardDevice = "1:1:AT_Translated_Set_2_keyboard";  # `swaymsg -t get_inputs`
       localIp = "192.168.100.100";
+      maildirDirectory = "${homeDirectory}/.maildirs";
       outputDevice = "eDP-1";  # `swaymsg -t get_outputs`
       outputFreq = "60.008";  # `swaymsg -t get_outputs`
       outputHeight = "1080";  # `swaymsg -t get_outputs`
@@ -34,7 +35,8 @@
       outputHeightRight = "1080";  # `swaymsg -t get_outputs`
       outputScaleRight = "1.0";
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
-      screenshotDirectory = "${homeDirectory}/screenshots";
+      screenshotDirectory = "screenshots";
+      screenshotPath = "${homeDirectory}/${screenshotDirectory}";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";
@@ -90,6 +92,7 @@
                   outputScaleRight
                   outputWidthRight
                   screenshotDirectory
+                  screenshotPath
                   signalBattery
                   signalBrightness
                   signalKeyboard

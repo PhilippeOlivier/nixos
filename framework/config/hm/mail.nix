@@ -29,15 +29,26 @@ in
     specialTerms = {};
     ntfyTopic = {};
   };
+
+  # services.mbsync = {
+  #   enable = true;
+  #   frequency = "*:0/5";  # Every 5 minutes
+  #   preExec = ''
+
+  #   '';
+  #   postExec = ''
+
+  #   '';
+  # };
   
-  systemd.user.services."fetch-mail" = {
-    Unit = {
-      Description = "Fetch mail and send ntfy notifications";
-    };
-    Install.WantedBy = [ "default.target" ];
-    Service = {
-      Type = "oneshot";
-      ExecStart = mail-fetch-script;
-    };
-  };
+  # systemd.user.services."fetch-mail" = {
+  #   Unit = {
+  #     Description = "Fetch mail and send ntfy notifications";
+  #   };
+  #   Install.WantedBy = [ "default.target" ];
+  #   Service = {
+  #     Type = "oneshot";
+  #     ExecStart = mail-fetch-script;
+  #   };
+  # };
 }

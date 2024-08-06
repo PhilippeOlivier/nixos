@@ -11,6 +11,8 @@
 
 let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
+    mkdir asdf
+
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
     IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
 

@@ -88,6 +88,18 @@ let
         done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
     done
 
+    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
+
+    for term in "''${special_terms[@]}"; do
+        echo "Checking for new unread mail with term $term"
+        while read -r thread; do
+            if thread_is_unprocessed "$thread"; then
+                ${pkgs.curl}/bin/curl -d "New mail with term: $term" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/ -E 's/^thread:([0-9a-f]+).*$/\1/')"
+                touch "/tmp/''${thread_number}"
+            fi
+        done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread body:$term)"
+    done
 
   ''}/bin/mail-fetch-script";
 in

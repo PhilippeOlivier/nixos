@@ -13,23 +13,9 @@ let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
-    #mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
-    mkdir -p ${maildirsPath}/{a,b,c}
-
-    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
-
-    echo EMAILS
-    for email in "''${special_emails[@]}"; do
-        echo $email
+    for mailbox in ${email1}; do
+      ${pkgs.isync}/bin/mbsync -V $mailbox
     done
-
-    echo TERMS
-    for term in "''${special_terms[@]}"; do
-        echo $term
-    done
-
-   ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
   ''}/bin/mail-fetch-script";
 in
 

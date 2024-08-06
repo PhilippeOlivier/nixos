@@ -14,7 +14,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-scriptx3" ''
+  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in ${email1}; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -46,7 +46,7 @@ let
         touch $status_file
 
         # If the entry for the mailbox doesn't exist, create it
-        if ! grep -q $mailbox $status_file; then
+        if ! ${pkgs.gnugrep}/bin/grep -q $mailbox $status_file; then
             echo ''${mailbox},$(date +%s),''${error} >> $status_file
 
         # Otherwise, update it
@@ -59,13 +59,8 @@ let
     done
 
     thread_is_unprocessed() {
-        # Return 0 if a thread is unprocessed.
-        #
-        # Args:
-        #   $1: Thread
-        #
-        # Usage:
-        #   thread_is_unprocessed thread
+        # Takes as input a thread, and return 0 if the thread is unprocessed, or 1 if it is
+
         local thread_number="$(echo "$thread" | sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
 
         # If the thread is empty (no thread)
@@ -79,7 +74,22 @@ let
 
         return 1
     }
-  ''}/bin/mail-fetch-scriptx3";
+
+    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+
+    for sender in "''${special_emails[@]}"; do
+        echo "Checking for new unread mail from $sender"
+        while read -r thread; do
+            if thread_is_unprocessed "$thread"; then
+                ${pkgs.curl}/bin/curl -d "New mail from: $sender" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
+                touch "/tmp/${thread_number}"
+            fi
+        done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
+    done
+
+
+  ''}/bin/mail-fetch-script";
 in
 
 {

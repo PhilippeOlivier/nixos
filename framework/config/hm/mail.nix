@@ -13,22 +13,24 @@ let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
+    mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
 
-    echo EMAILS
-    for email in "''${special_emails[@]}"; do
-        echo $email
-    done
+   #  IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+   #  IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
 
-    echo TERMS
-    for term in "''${special_terms[@]}"; do
-        echo $term
-    done
+   #  echo EMAILS
+   #  for email in "''${special_emails[@]}"; do
+   #      echo $email
+   #  done
 
-    ${pkgs.isync}/bin/mbsync -V
+   #  echo TERMS
+   #  for term in "''${special_terms[@]}"; do
+   #      echo $term
+   #  done
 
-   ${pkgs.curl}/bin/curl -d "New mail from: WOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+   #  ${pkgs.isync}/bin/mbsync -V
+
+   # ${pkgs.curl}/bin/curl -d "New mail from: WOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
   ''}/bin/fetch-mail";
 in
 

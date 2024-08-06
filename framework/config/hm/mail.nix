@@ -12,7 +12,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
+  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     mkdir -p asdf
     #mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
 
@@ -32,7 +32,7 @@ let
    #  ${pkgs.isync}/bin/mbsync -V
 
    # ${pkgs.curl}/bin/curl -d "New mail from: WOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
-  ''}/bin/fetch-mail";
+  ''}/bin/mail-fetch-script";
 in
 
 {

@@ -14,15 +14,17 @@ let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
-    for mailbox in ${email1}; do
+    mkdir asdf
+    ${pkgs.coreutils}/bin/mkdir ASDF
+    # for mailbox in ${email1}; do
 
-      mkdir -p ${maildirsPath}/${email1}/drafts
-      mkdir -p ${maildirsPath}/${email1}/inbox
-      mkdir -p ${maildirsPath}/${email1}/sent
-      mkdir -p ${maildirsPath}/${email1}/spam
+    #   mkdir -p ${maildirsPath}/$mailbox/drafts
+    #   mkdir -p ${maildirsPath}/$mailbox/inbox
+    #   mkdir -p ${maildirsPath}/$mailbox/sent
+    #   mkdir -p ${maildirsPath}/$mailbox/spam
 
-      ${pkgs.isync}/bin/mbsync -V $mailbox
-    done
+    #   ${pkgs.isync}/bin/mbsync -V $mailbox
+    # done
   ''}/bin/mail-fetch-script";
 in
 

@@ -54,8 +54,8 @@ let
             ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" $status_file
         fi
 
-        # Update the waybar mail module
-        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
+        # # Update the waybar mail module
+        # ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
     done
   ''}/bin/mail-fetch-scriptx3";
 in

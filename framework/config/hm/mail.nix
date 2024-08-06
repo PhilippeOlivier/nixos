@@ -14,7 +14,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-scriptx1" ''
+  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-scriptx2" ''
     for mailbox in ${email1}; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -42,11 +42,21 @@ let
         ${pkgs.notmuch}/bin/notmuch tag -inbox -unread +sent from:$mailbox
 
         # Update the status file
-        ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" "/tmp/mbsync-status"
+        status_file="/tmp/mbsync-status"
+        touch $status_file
 
-        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
+        # If the entry for the mailbox doesn't exist, create it
+        if ! grep -q $mailbox $status_file; then
+            echo ''${mailbox},$(date +%s),''${error} >> $status_file
+
+        # Otherwise, update it
+        else
+            ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" $status_file
+        fi
+
+
     done
-  ''}/bin/mail-fetch-scriptx1";
+  ''}/bin/mail-fetch-scriptx2";
 in
 
 {

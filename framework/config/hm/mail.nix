@@ -41,7 +41,10 @@ let
         # Add the "sent" tags
         ${pkgs.notmuch}/bin/notmuch tag -inbox -unread +sent from:$mailbox
 
-        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
+        # Update the status file
+        ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" "/tmp/mbsync-status"
+
+
     done
   ''}/bin/mail-fetch-script";
 in

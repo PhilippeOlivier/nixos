@@ -5,6 +5,7 @@
 , maildirsDirectory
 , maildirsPath
 , secretsFilePath
+, sopsAgeKeyFilePath
 , username
 , ...
 }:
@@ -34,7 +35,7 @@ in
         address = email1;
         userName = email1;
         realName = "Philippe Olivier";
-        passwordCommand = "${pkgs.sops}/bin/sops --decrypt ${secretsFilePath} | ${pkgs.gnugrep}/bin/grep ${email1} | ${pkgs.coreutils}/bin/cut -d' ' -f2";
+        passwordCommand = "SOPS_AGE_KEY_FILE=${sopsAgeKeyFilePath} ${pkgs.sops}/bin/sops --decrypt ${secretsFilePath} | ${pkgs.gnugrep}/bin/grep ${email1} | ${pkgs.coreutils}/bin/cut -d' ' -f2";
         imap = {
           host = "mail.pedtsr.ca";
           port = 143;  # Should be 993 ideally, but I can't get it to work

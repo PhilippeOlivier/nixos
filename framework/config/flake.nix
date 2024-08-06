@@ -80,6 +80,7 @@
                   email1
                   homeDirectory
                   keyboardDevice
+                  maildirsDirectory
                   outputDevice
                   outputFreq
                   outputHeight

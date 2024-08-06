@@ -44,6 +44,10 @@ in
       SyncState *
     '';
   };
+
+  programs.msmtp.enable = true;
+
+  programs.notmuch.enable = true;
   
   accounts.email = {
     maildirBasePath = maildirsDirectory;

@@ -26,7 +26,7 @@ let
         echo $term
     done
 
-    ${pkgs.mbsync}/bin/mbsync -V
+    ${pkgs.isync}/bin/mbsync -V
 
    ${pkgs.curl}/bin/curl -d "New mail from: WOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
   ''}/bin/fetch-mail";

@@ -15,9 +15,9 @@ let
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in ${email1}; do
-
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/{drafts,inbox,sent,spam}/{cur,new,tmp}
-
+      # Create any missing directories
+      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
+      
       ${pkgs.isync}/bin/mbsync -V $mailbox
 
     done

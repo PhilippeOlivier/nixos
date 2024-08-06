@@ -15,6 +15,12 @@ let
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in ${email1}; do
+
+      mkdir -p ${maildirsPath}/${email1}/drafts
+      mkdir -p ${maildirsPath}/${email1}/inbox
+      mkdir -p ${maildirsPath}/${email1}/sent
+      mkdir -p ${maildirsPath}/${email1}/spam
+
       ${pkgs.isync}/bin/mbsync -V $mailbox
     done
   ''}/bin/mail-fetch-script";

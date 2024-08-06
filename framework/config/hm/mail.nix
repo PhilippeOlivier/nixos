@@ -10,6 +10,8 @@
 }:
 
 let
+  # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
+  # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
     mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
 

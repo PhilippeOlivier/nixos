@@ -25,7 +25,17 @@ let
 in
 
 {
-  programs.mbsync.enable = true;
+  programs.mbsync = {
+    enable = true;
+    extraConfig = ''
+      # A comment
+      Sync All
+      Create Near
+      Remove None
+      Expunge None
+      SyncState *
+    '';
+  };
   
   accounts.email = {
     maildirBasePath = maildirsDirectory;
@@ -56,7 +66,7 @@ in
           expunge = "none";
           remove = "none";
           groups = {
-            "${email1}" = {
+            ${email1} = {
               channels = {
                 "inbox" = {
                   patterns = ["INBOX"];

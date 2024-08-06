@@ -14,12 +14,14 @@
   outputs = inputs @ { self, home-manager, impermanence, sops-nix, nixpkgs, ... }:
     let
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
+      email1 = "imper@pedtsr.ca";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";
       keyboardDevice = "1:1:AT_Translated_Set_2_keyboard";  # `swaymsg -t get_inputs`
       localIp = "192.168.100.100";
-      maildirDirectory = "${homeDirectory}/.maildirs";
+      maildirsDirectory = ".maildirs";
+      maildirsPath = "${homeDirectory}/${maildiresDirectory}";
       outputDevice = "eDP-1";  # `swaymsg -t get_outputs`
       outputFreq = "60.008";  # `swaymsg -t get_outputs`
       outputHeight = "1080";  # `swaymsg -t get_outputs`
@@ -37,6 +39,7 @@
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
       screenshotDirectory = "screenshots";
       screenshotPath = "${homeDirectory}/${screenshotDirectory}";
+      secretsFilePath = "${homeDirectory}/nixos/framework/secrets/secrets.yaml";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";
@@ -74,6 +77,7 @@
               home-manager.extraSpecialArgs = {
                 inherit
                   desktopEntriesDirectory
+                  email1
                   homeDirectory
                   keyboardDevice
                   outputDevice
@@ -93,6 +97,7 @@
                   outputWidthRight
                   screenshotDirectory
                   screenshotPath
+                  secretsFilePath
                   signalBattery
                   signalBrightness
                   signalKeyboard

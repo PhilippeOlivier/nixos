@@ -40,6 +40,8 @@ let
 
         # Add the "sent" tags
         ${pkgs.notmuch}/bin/notmuch tag -inbox -unread +sent from:$mailbox
+
+        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
     done
   ''}/bin/mail-fetch-script";
 in

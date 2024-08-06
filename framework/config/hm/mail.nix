@@ -19,6 +19,7 @@ let
       ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/{drafts,inbox,sent,spam}/{cur,new,tmp}
 
       ${pkgs.isync}/bin/mbsync -V $mailbox
+
     done
   ''}/bin/mail-fetch-script";
 in

@@ -21,7 +21,7 @@
       keyboardDevice = "1:1:AT_Translated_Set_2_keyboard";  # `swaymsg -t get_inputs`
       localIp = "192.168.100.100";
       maildirsDirectory = ".maildirs";
-      maildirsPath = "${homeDirectory}/${maildiresDirectory}";
+      maildirsPath = "${homeDirectory}/${maildirsDirectory}";
       outputDevice = "eDP-1";  # `swaymsg -t get_outputs`
       outputFreq = "60.008";  # `swaymsg -t get_outputs`
       outputHeight = "1080";  # `swaymsg -t get_outputs`

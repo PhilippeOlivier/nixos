@@ -81,6 +81,7 @@
                   homeDirectory
                   keyboardDevice
                   maildirsDirectory
+                  maildirsPath
                   outputDevice
                   outputFreq
                   outputHeight

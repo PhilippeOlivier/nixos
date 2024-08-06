@@ -14,7 +14,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-scriptx2" ''
+  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-scriptx3" ''
     for mailbox in ${email1}; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -54,7 +54,8 @@ let
             ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" $status_file
         fi
 
-
+        # Update the waybar mail module
+        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
     done
   ''}/bin/mail-fetch-scriptx3";
 in

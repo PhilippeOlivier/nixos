@@ -34,6 +34,12 @@ let
         else
             error=0
         fi
+
+        # Update the notmuch database
+        ${pkgs.notmuch}/bin/notmuch new --quiet &> /dev/null
+
+        # Add the "sent" tags
+        ${pkgs.notmuch}/bin/notmuch tag -inbox -unread +sent from:$mailbox
     done
   ''}/bin/mail-fetch-script";
 in

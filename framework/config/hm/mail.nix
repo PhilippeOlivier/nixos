@@ -5,6 +5,7 @@
 , maildirsDirectory
 , maildirsPath
 , secretsFilePath
+, username
 , ...
 }:
 

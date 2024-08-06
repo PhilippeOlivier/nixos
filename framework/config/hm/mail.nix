@@ -30,7 +30,7 @@ in
   accounts.email = {
     maildirBasePath = maildirsDirectory;
     accounts = {
-      "${email1}" = {
+      ${email1} = {
         folders = {
           inbox = "inbox";
           sent = "sent";

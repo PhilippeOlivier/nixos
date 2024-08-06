@@ -39,7 +39,7 @@
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
       screenshotDirectory = "screenshots";
       screenshotPath = "${homeDirectory}/${screenshotDirectory}";
-      secretsFilePath = "${homeDirectory}/nixos/framework/secrets/secrets.yaml";
+      secretsFilePath = "${homeDirectory}/nixos/framework/config/secrets/secrets.yaml";
       signalBattery = "12";
       signalBrightness = "11";
       signalKeyboard = "14";

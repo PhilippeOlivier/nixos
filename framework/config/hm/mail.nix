@@ -28,11 +28,19 @@ in
   programs.mbsync = {
     enable = true;
     extraConfig = ''
-      # A comment
+      # Propagate all changes in both directions
       Sync All
+
+      # Create any missing mailboxes locally
       Create Near
+
+      # Do not propagate mailbox deletions
       Remove None
+
+      # Do not propagate message deletions
       Expunge None
+
+      # Save the synchronization state files `.mbsyncstate` in the local mailbox
       SyncState *
     '';
   };
@@ -42,6 +50,7 @@ in
     accounts = {
       ${email1} = {
         folders = {
+          drafts = "drafts";
           inbox = "inbox";
           sent = "sent";
         };
@@ -63,8 +72,6 @@ in
         mbsync = {
           enable = true;
           create = "maildir";
-          expunge = "none";
-          remove = "none";
           groups = {
             ${email1} = {
               channels = {

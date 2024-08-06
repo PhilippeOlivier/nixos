@@ -15,20 +15,20 @@ let
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
     mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
 
-   #  IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-   #  IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
+    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
 
-   #  echo EMAILS
-   #  for email in "''${special_emails[@]}"; do
-   #      echo $email
-   #  done
+    echo EMAILS
+    for email in "''${special_emails[@]}"; do
+        echo $email
+    done
 
-   #  echo TERMS
-   #  for term in "''${special_terms[@]}"; do
-   #      echo $term
-   #  done
+    echo TERMS
+    for term in "''${special_terms[@]}"; do
+        echo $term
+    done
 
-   # ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+   ${pkgs.curl}/bin/curl -d "New mail from: WOOO" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
   ''}/bin/fetch-mail";
 in
 

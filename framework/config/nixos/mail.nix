@@ -1,5 +1,6 @@
 {
   pkgs
+, username
 , ...
 }:
 
@@ -15,7 +16,7 @@
       onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
-        ${pkgs.sudo}/bin/sudo systemctl --user -M pholi@ restart fetch-mail.service
+        ${pkgs.sudo}/bin/sudo systemctl --user -M ${username}@ restart fetch-mail.service
       '';
     };
   };

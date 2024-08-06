@@ -51,7 +51,7 @@ in
           expunge = "none";
           remove = "none";
           groups = {
-            "pedtsr" = {
+            "${email1}" = {
               channels = {
                 "inbox" = {
                   patterns = ["INBOX"];

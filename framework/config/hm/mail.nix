@@ -19,6 +19,21 @@ let
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
 
+        out_file="/tmp/''${mailbox}.out"
+        err_file="/tmp/''${mailbox}.err"
+
+        # Remove any previous files
+        rm -f "$out_file" "$err_file"
+
+        # Save the outputs of `stdout` and `stderr`
+        ${pkgs.isync}/bin/mbsync -V $mailbox 1> "$out_file" 2> "$err_file"
+
+        # If there is anything at all in the error file, there must be an error of some kind
+        if [ -s "$err_file" ]; then
+            error=1
+        else
+            error=0
+        fi
     done
   ''}/bin/mail-fetch-script";
 in

@@ -83,7 +83,7 @@ let
             if thread_is_unprocessed "$thread"; then
                 ${pkgs.curl}/bin/curl -d "New mail from: $sender" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
                 thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
-                touch "/tmp/${thread_number}"
+                touch "/tmp/''${thread_number}"
             fi
         done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
     done

@@ -13,7 +13,8 @@ let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "fetch-mail" ''
-    mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
+    #mkdir -p ${maildirsPath}/{${email1}}/{a,b,c}
+    mkdir -p ${maildirsPath}/{a,b,c}
 
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
     IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))

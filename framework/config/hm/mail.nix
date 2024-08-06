@@ -20,6 +20,8 @@ let
 in
 
 {
+  programs.mbsync.enable = true;
+  
   accounts.email = {
     maildirBasePath = maildirsDirectory;
     accounts = {

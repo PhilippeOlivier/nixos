@@ -57,6 +57,28 @@ let
         # # Update the waybar mail module
         # ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
     done
+
+    thread_is_unprocessed() {
+        # Return 0 if a thread is unprocessed.
+        #
+        # Args:
+        #   $1: Thread
+        #
+        # Usage:
+        #   thread_is_unprocessed thread
+        local thread_number="$(echo "$thread" | sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
+
+        # If the thread is empty (no thread)
+        if [ -z "$thread" ]; then
+            return 1
+
+        # If the thread has not been processed, send a notification and add the thread number to /tmp
+        elif [ ! -f "/tmp/''${thread_number}" ]; then
+            return 0
+        fi
+
+        return 1
+    }
   ''}/bin/mail-fetch-scriptx3";
 in
 

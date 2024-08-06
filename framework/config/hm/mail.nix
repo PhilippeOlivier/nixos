@@ -34,7 +34,7 @@ in
 
 {
   accounts.email = {
-    maildirBasePath = maildirsDirectory;
+    maildirBasePath = "${maildirsDirectory}";
     accounts = {
       "${email1}" = {
         folders = {
@@ -116,7 +116,7 @@ in
         allowOther = true;
 
         directories = [
-          maildirsDirectory
+          "${maildirsDirectory}"
           ".mbsync"
         ];
       };

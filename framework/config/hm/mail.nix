@@ -16,11 +16,7 @@ let
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in ${email1}; do
 
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/drafts
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/inbox
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/sent
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/spam
-      ${pkgs.coreutils}/bin/mkdir -p ASDF/{a,b,c}
+      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/$mailbox/{drafts,inbox,sent,spam}/{cur,new,tmp}
 
       ${pkgs.isync}/bin/mbsync -V $mailbox
     done

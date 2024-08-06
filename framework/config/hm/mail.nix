@@ -5,6 +5,7 @@
 , maildirsDirectory
 , maildirsPath
 , secretsFilePath
+, signalMail
 , sopsAgeKeyFilePath
 , username
 , ...
@@ -15,11 +16,35 @@ let
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in ${email1}; do
-      # Create any missing directories
-      ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
-      
-      ${pkgs.isync}/bin/mbsync -V $mailbox
+        # Create any missing directories
+        ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
 
+        out_file="/tmp/''${mailbox}.out"
+        err_file="/tmp/''${mailbox}.err"
+
+        # Remove any previous files
+        rm -f "$out_file" "$err_file"
+
+        # Save the outputs of `stdout` and `stderr`
+        ${pkgs.isync}/bin/mbsync -V $mailbox 1> "$out_file" 2> "$err_file"
+
+        # If there is anything at all in the error file, there must be an error of some kind
+        if [ -s "$err_file" ]; then
+            error=1
+        else
+            error=0
+        fi
+
+        # Update the notmuch database
+        ${pkgs.notmuch}/bin/notmuch new --quiet &> /dev/null
+
+        # Add the "sent" tags
+        ${pkgs.notmuch}/bin/notmuch tag -inbox -unread +sent from:$mailbox
+
+        # Update the status file
+        ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" "/tmp/mbsync-status"
+
+        ${pkgs.procps}/bin/pkill -RTMIN+${signalMail} waybar
     done
   ''}/bin/mail-fetch-script";
 in

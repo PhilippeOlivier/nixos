@@ -146,8 +146,8 @@ let
         local mailbox=$1
         local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | wc -l)
         local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
-        local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f2)
-        local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f3)
+        local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
+        local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
         local symbol=""
         echo $last_checked
         # Determine which symbol will be displayed

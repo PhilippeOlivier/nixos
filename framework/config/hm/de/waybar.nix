@@ -140,13 +140,15 @@ let
 
     status_file="/tmp/mbsync-status"
 
+    num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
+    echo $num_emails
+    exit
+
     mailbox_output() {
         # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter
 
         local mailbox=$1
         local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
-        echo $mailbox $num_emails
-        exit
         local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
         local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
         local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
@@ -191,7 +193,7 @@ let
         output+=" $mo"
     done
 
-    #echo "$output"
+    echo "$output"
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

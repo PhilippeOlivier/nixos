@@ -15,7 +15,7 @@ let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
   mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
-    for mailbox in ${email1}; do
+    for mailbox in "${emails}"; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
 

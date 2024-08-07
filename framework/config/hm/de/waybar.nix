@@ -149,7 +149,7 @@ let
         local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f2)
         local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f3)
         local symbol=""
-
+        echo $last_checked
         # Determine which symbol will be displayed
         local epoch_seconds=$(date +%s)
         if (( $(( ''${epoch_seconds} - ''${last_checked} )) > 30 )); then
@@ -189,7 +189,7 @@ let
         output+=" $mo"
     done
 
-    echo "$output"
+    #echo "$output"
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

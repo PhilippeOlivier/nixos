@@ -104,7 +104,7 @@ let
   ''}/bin/mail-fetch-script";
 
   woo2 = pkgs.writeShellScriptBin "woo2" ''
-    echo woo2
+     echo woo2
     touch /home/pholi/woo2
   '';
 in

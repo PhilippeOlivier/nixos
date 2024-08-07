@@ -102,6 +102,10 @@ let
     done
 
   ''}/bin/mail-fetch-script";
+
+  woo2 = ${pkgs.writeShellScriptBin "woo2" ''
+    echo woo2
+  ''};
 in
 
 {
@@ -220,7 +224,7 @@ in
   home = {
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
-      mail-fetch-script
+      woo2
       (writeShellScriptBin "woo" ''
         echo woo
       '')

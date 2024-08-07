@@ -140,17 +140,6 @@ let
 
     status_file="/tmp/mbsync-status"
 
-    mailbox=imper@pedtsr.ca
-
-    num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
-    num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
-    last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
-    echo $num_emails $num_important_emails $last_checked $error
-    exit
-
-    
-    error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
-
     mailbox_output() {
         # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter
 
@@ -160,7 +149,7 @@ let
         local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
         local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
         local symbol=""
-        echo $last_checked
+
         # Determine which symbol will be displayed
         local epoch_seconds=$(date +%s)
         if (( $(( ''${epoch_seconds} - ''${last_checked} )) > 30 )); then

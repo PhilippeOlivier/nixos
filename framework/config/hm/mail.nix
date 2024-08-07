@@ -96,16 +96,11 @@ let
         while read -r thread; do
             if thread_is_unprocessed "$thread"; then
                 ${pkgs.curl}/bin/curl -d "New mail with term: $term" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
-                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/ -E 's/^thread:([0-9a-f]+).*$/\1/')"
+                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
                 touch "/tmp/''${thread_number}"
             fi
         done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread body:$term)"
     done
-  '';
-
-  woo2 = pkgs.writeShellScriptBin "woo2" ''
-     echo woo2
-    touch /home/pholi/woo2
   '';
 in
 
@@ -206,10 +201,6 @@ in
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
       mail-fetch-script
-      woo2
-      (writeShellScriptBin "woo" ''
-        echo woo
-      '')
     ];
     file.".mailcap".text = ''
       text/html; firefox %s

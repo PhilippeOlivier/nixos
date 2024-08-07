@@ -128,7 +128,8 @@ let
   '';
 
   mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
-    echo $(cat ${config.sops.secrets.mystring.path}) $(woo2)
+    echo $(cat ${config.sops.secrets.mystring.path})
+    #$(woo2)
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

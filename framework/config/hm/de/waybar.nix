@@ -174,8 +174,21 @@ let
         echo "<span background=\"''${bg_color}\" foreground=\"''${fg_color}\">''${symbol}</span>"
     }
 
-    echo $important_expr
-    #$(woo2)
+    # Construct output
+    total_unread=$(${pkgs.notmuch}/bin/notmuch search tag:unread | wc -l)
+    if [[ ''${total_unread} -gt 0 ]]; then
+        mail="<span background=\"#FFFFFF\" foreground=\"#000000\">Mail</span>"
+    else
+        mail="Mail"
+    fi
+
+    output="''${mail}"
+    for mailbox in imper@pedtsr.ca; do
+        mo=$(mailbox_output "$mailbox")
+        output+=" $mo"
+    done
+
+    echo "$output"
   '';
 
   networkScript = pkgs.writeShellScript "waybar-network.sh" ''

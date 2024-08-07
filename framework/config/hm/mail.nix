@@ -112,7 +112,7 @@ in
     '';
   })];
 
-  environment.systemPackages = [ pkgs.helloWorld ];
+  #environment.systemPackages = [ pkgs.helloWorld ];
   
   programs.mbsync = {
     enable = true;

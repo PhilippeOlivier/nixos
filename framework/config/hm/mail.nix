@@ -105,12 +105,23 @@ let
 in
 
 {
-  nixpkgs.overlays = [(final: prev: {
-    helloWorld = pkgs.writeScriptBin "helloWorld" ''
-      #!${pkgs.stdenv.shell}
-      echo Hello World
-    '';
-  })];
+  # nixpkgs.overlays = [(final: prev: {
+  #   helloWorld = pkgs.writeScriptBin "helloWorld" ''
+  #     #!${pkgs.stdenv.shell}
+  #     echo Hello World
+  #   '';
+  # })];
+
+  # systemd.user.services."overlay" = {
+  #   Unit = {
+  #     Description = "overlay test";
+  #   };
+  #   Install.WantedBy = [ "default.target" ];
+  #   Service = {
+  #     Type = "oneshot";
+  #     ExecStart = helloWorld;
+  #   };
+  # };
 
   #environment.systemPackages = [ pkgs.helloWorld ];
   
@@ -209,7 +220,10 @@ in
   home = {
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
-      helloWorld
+      (writeShellScriptBin {
+        name = "wooo";
+        text = "echo wooo";
+      })
     ];
     file.".mailcap".text = ''
       text/html; firefox %s

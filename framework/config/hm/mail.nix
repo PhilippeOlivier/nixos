@@ -48,7 +48,7 @@ let
 
         # If the entry for the mailbox doesn't exist, create it
         if ! ${pkgs.gnugrep}/bin/grep -q $mailbox $status_file; then
-            echo ''${mailbox},$(date +%s),''${error} >> $status_file
+            echo ''${mailbox},$(${pkgs.coreutils}/bin/date +%s),''${error} >> $status_file
 
         # Otherwise, update it
         else

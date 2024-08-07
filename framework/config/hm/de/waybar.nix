@@ -142,10 +142,12 @@ let
 
     num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
     num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
-    last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
-    error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
+
     echo $num_emails $num_important_emails $last_checked $error
     exit
+
+    last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
+    error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
 
     mailbox_output() {
         # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter

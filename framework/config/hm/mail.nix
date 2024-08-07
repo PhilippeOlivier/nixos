@@ -2,6 +2,7 @@
   config
 , pkgs
 , email1
+, emails
 , maildirsDirectory
 , maildirsPath
 , secretsFilePath

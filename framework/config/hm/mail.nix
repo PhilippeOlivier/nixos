@@ -105,7 +105,7 @@ let
 in
 
 {
-  nixpkgs.overlays = [(self: super: {
+  nixpkgs.overlays = [(final: prev: {
     helloWorld = pkgs.writeScriptBin "helloWorld" ''
       #!${pkgs.stdenv.shell}
       echo Hello World
@@ -209,6 +209,7 @@ in
   home = {
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
+      helloWorld
     ];
     file.".mailcap".text = ''
       text/html; firefox %s

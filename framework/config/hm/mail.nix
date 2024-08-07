@@ -105,6 +105,15 @@ let
 in
 
 {
+  nixpkgs.overlays = [(self: super: {
+    helloWorld = pkgs.writeScriptBin "helloWorld" ''
+      #!${pkgs.stdenv.shell}
+      echo Hello World
+    '';
+  })];
+
+  environment.systemPackages = [ pkgs.helloWorld ];
+  
   programs.mbsync = {
     enable = true;
     extraConfig = ''

@@ -131,7 +131,8 @@ let
     set -e
     # Construct the expression that will be used in the `notmuch` commands for important emails
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-
+    echo asdf
+    exit
     important_expr="("
     for email in "''${special_emails[@]}"; do
         important_expr+=" from:''${email}"

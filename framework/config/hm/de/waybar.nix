@@ -1,6 +1,7 @@
 {
   pkgs
 , config
+, emails
 , outputHeight
 , outputWidth
 , signalBattery
@@ -127,8 +128,7 @@ let
     done
   '';
 
-  mailScript = pkgs.writeShellScript "waybar-mail3.sh" ''
-    set -e
+  mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
     # Construct the expression that will be used in the `notmuch` commands for important emails
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
 
@@ -144,10 +144,10 @@ let
         # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter
 
         local mailbox=$1
-        local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
+        local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | wc -l)
         local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
-        local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)
-        local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f3)
+        local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f2)
+        local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f3)
         local symbol=""
 
         # Determine which symbol will be displayed
@@ -161,7 +161,7 @@ let
         # Determine the foreground and background colors for that symbol
         local fg_color="#FFFFFF"
         local bg_color="#000000"
-        if [[ ''${error} -eq 1 ]]; then
+        if [[ $error -eq 1 ]]; then
             fg_color="#000000"
             bg_color="#FF0000"
         elif [[ $(( $num_important_emails )) -gt 0 ]]; then
@@ -177,14 +177,14 @@ let
 
     # Construct output
     total_unread=$(${pkgs.notmuch}/bin/notmuch search tag:unread | wc -l)
-    if [[ ''${total_unread} -gt 0 ]]; then
+    if [[ $total_unread -gt 0 ]]; then
         mail="<span background=\"#FFFFFF\" foreground=\"#000000\">Mail</span>"
     else
         mail="Mail"
     fi
 
     output="''${mail}"
-    for mailbox in imper@pedtsr.ca; do
+    for mailbox in "${emails}"; do
         mo=$(mailbox_output "$mailbox")
         output+=" $mo"
     done

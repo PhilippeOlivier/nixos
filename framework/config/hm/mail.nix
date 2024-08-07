@@ -52,7 +52,7 @@ let
 
         # Otherwise, update it
         else
-            ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(date +%s),''${error}/" $status_file
+            ${pkgs.gnused}/bin/sed -i "s/^''${mailbox}.*/''${mailbox},$(${pkgs.coreutils}/bin/date +%s),''${error}/" $status_file
         fi
 
         # Update the waybar mail module

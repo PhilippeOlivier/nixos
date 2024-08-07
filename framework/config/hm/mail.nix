@@ -103,9 +103,9 @@ let
 
   ''}/bin/mail-fetch-script";
 
-  woo2 = ${pkgs.writeShellScriptBin "woo2" ''
+  woo2 = pkgs.writeShellScriptBin "woo2" ''
     echo woo2
-  ''};
+  '';
 in
 
 {

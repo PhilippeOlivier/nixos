@@ -144,7 +144,7 @@ let
         # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter
 
         local mailbox=$1
-        local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | wc -l)
+        local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
         echo $num_emails
         exit
         local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)

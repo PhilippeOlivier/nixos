@@ -140,6 +140,8 @@ let
 
     status_file="/tmp/mbsync-status"
 
+    mailbox=imper@pedtsr.ca
+
     num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
     num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
 

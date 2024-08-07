@@ -16,6 +16,8 @@
       onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
+
+        # System and user services cannot depend on each other, this is why we do this
         ${pkgs.sudo}/bin/sudo systemctl --user -M ${username}@ restart fetch-mail.service
       '';
     };

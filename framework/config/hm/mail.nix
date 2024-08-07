@@ -220,10 +220,9 @@ in
   home = {
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
-      (writeShellScriptBin {
-        name = "wooo";
-        text = "echo wooo";
-      })
+      (writeShellScriptBin "woo" ''
+        echo woo
+      '')
     ];
     file.".mailcap".text = ''
       text/html; firefox %s

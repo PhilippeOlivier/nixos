@@ -205,6 +205,7 @@ in
   home = {
     packages = with pkgs; [
       mailcap  # To view HTML emails in the browser
+      mail-fetch-script
       woo2
       (writeShellScriptBin "woo" ''
         echo woo

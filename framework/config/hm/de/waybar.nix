@@ -369,7 +369,7 @@ in
 
         "custom/mail" = {
           exec = mailScript;
-          on-click = "woo2";
+          on-click = "mail-fetch-script";
     	    interval = "once";
           tooltip = false;
           signal = builtins.fromJSON signalMail;

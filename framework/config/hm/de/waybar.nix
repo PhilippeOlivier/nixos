@@ -1,6 +1,6 @@
 {
   pkgs
-, config #TODO TEMP
+, config
 , outputHeight
 , outputWidth
 , signalBattery
@@ -128,7 +128,9 @@ let
   '';
 
   mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
-    echo $(cat ${config.sops.secrets.mystring.path})
+    #echo $(cat ${config.sops.secrets.mystring.path})
+    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+    echo "''${special_emails[0]}"
     #$(woo2)
   '';
 
@@ -232,6 +234,10 @@ let
 in
 
 {
+  sops.secrets = {
+    specialEmails = {};
+  };
+  
   wayland.windowManager.sway = {
     config = {
       bars = [];

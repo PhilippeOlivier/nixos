@@ -127,7 +127,7 @@ let
     done
   '';
 
-  mailScript = pkgs.writeShellScript "waybar-mail2.sh" ''
+  mailScript = pkgs.writeShellScript "waybar-mail3.sh" ''
     set -e
     # Construct the expression that will be used in the `notmuch` commands for important emails
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
@@ -145,7 +145,7 @@ let
 
         local mailbox=$1
         local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | ${pkgs.coreutils}/bin/wc -l)
-        echo $num_emails
+        echo $mailbox $num_emails
         exit
         local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
         local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | ${pkgs.coreutils}/bin/cut -d ',' -f2)

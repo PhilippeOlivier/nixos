@@ -128,9 +128,16 @@ let
   '';
 
   mailScript = pkgs.writeShellScript "waybar-mail.sh" ''
-    #echo $(cat ${config.sops.secrets.mystring.path})
+    # Construct the expression that will be used in the `notmuch` commands for important emails
     IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-    echo "''${special_emails[0]}"
+
+    important_expr="("
+    for email in "''${special_emails[@]}"; do
+        important_expr+=" from:''${email}"
+    done
+    important_expr+=")"
+
+    echo $important_expr
     #$(woo2)
   '';
 

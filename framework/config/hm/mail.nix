@@ -15,7 +15,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = "${pkgs.writeShellScriptBin "mail-fetch-script" ''
+  mail-fetch-script = pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in "${emails}"; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -101,8 +101,7 @@ let
             fi
         done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread body:$term)"
     done
-
-  ''}/bin/mail-fetch-script";
+  '';
 
   woo2 = pkgs.writeShellScriptBin "woo2" ''
      echo woo2
@@ -111,26 +110,6 @@ let
 in
 
 {
-  # nixpkgs.overlays = [(final: prev: {
-  #   helloWorld = pkgs.writeScriptBin "helloWorld" ''
-  #     #!${pkgs.stdenv.shell}
-  #     echo Hello World
-  #   '';
-  # })];
-
-  # systemd.user.services."overlay" = {
-  #   Unit = {
-  #     Description = "overlay test";
-  #   };
-  #   Install.WantedBy = [ "default.target" ];
-  #   Service = {
-  #     Type = "oneshot";
-  #     ExecStart = helloWorld;
-  #   };
-  # };
-
-  #environment.systemPackages = [ pkgs.helloWorld ];
-  
   programs.mbsync = {
     enable = true;
     extraConfig = ''
@@ -219,7 +198,7 @@ in
     Install.WantedBy = [ "default.target" ];
     Service = {
       Type = "oneshot";
-      ExecStart = mail-fetch-script;
+      ExecStart = "${mail-fetch-script}/bin/mail-fetch-script";
     };
   };
 

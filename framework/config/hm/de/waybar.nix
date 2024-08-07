@@ -137,6 +137,43 @@ let
     done
     important_expr+=")"
 
+    status_file="/tmp/mbsync-status"
+
+    mailbox_output() {
+        # Returns the HTML-formatted symbol to be displayed for the mailbox passed as a parameter
+
+        local mailbox=$1
+        local num_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread | wc -l)
+        local num_important_emails=$(${pkgs.notmuch}/bin/notmuch search path:''${mailbox}/** tag:unread ''${important_expr} | wc -l)
+        local last_checked=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f2)
+        local error=$(${pkgs.gnugrep}/bin/grep ''${mailbox} ''${status_file} | cut -d ',' -f3)
+        local symbol=""
+
+        # Determine which symbol will be displayed
+        local epoch_seconds=$(date +%s)
+        if (( $(( ''${epoch_seconds} - ''${last_checked} )) > 30 )); then
+            symbol="-"
+        else
+            symbol=''${num_emails}
+        fi
+
+        # Determine the foreground and background colors for that symbol
+        local fg_color="#FFFFFF"
+        local bg_color="#000000"
+        if [[ ''${error} -eq 1 ]]; then
+            fg_color="#000000"
+            bg_color="#FF0000"
+        elif [[ $(( $num_important_emails )) -gt 0 ]]; then
+            fg_color="#000000"
+            bg_color="#FFFF00"
+        elif [[ $(( $num_emails )) -gt 0 ]]; then
+            fg_color="#000000"
+            bg_color="#FFFFFF"
+        fi
+
+        echo "<span background=\"''${bg_color}\" foreground=\"''${fg_color}\">''${symbol}</span>"
+    }
+
     echo $important_expr
     #$(woo2)
   '';

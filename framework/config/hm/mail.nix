@@ -198,11 +198,8 @@ in
   };
   
   systemd.user.timers."fetch-mail" = {
-    enable = true;
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*:0/5";
-    };
+    Install.WantedBy = [ "timers.target" ];
+    Timer.OnCalendar = "*:0/5";
   };
 
   home = {

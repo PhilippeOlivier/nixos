@@ -198,9 +198,10 @@ in
   };
   
   systemd.user.timers."fetch-mail" = {
+    Unit.Requires = [ "fetch-mail.service" ];
     Install.WantedBy = [ "timers.target" ];
     Timer.Unit = "fetch-mail";
-    Timer.OnCalendar = "*:00/05";
+    Timer.OnCalendar = "*:0/5";
   };
 
   home = {

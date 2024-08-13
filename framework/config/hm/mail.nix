@@ -200,8 +200,8 @@ in
   systemd.user.timers."fetch-mail" = {
     Install.WantedBy = [ "timers.target" ];
     Timer.Unit = "fetch-mail";
-    Timer.OnUnitActiveSec = "1m";
-    #Timer.OnCalendar = "*:0/5";
+    Timer.OnCalendar = "*:0/5";
+    Persistent = true;
   };
 
   home = {

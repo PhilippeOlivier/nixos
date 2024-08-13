@@ -186,24 +186,22 @@ in
     ntfyTopic = {};
   };
   
-  systemd.user = {
-    services."fetch-mail" = {
-      Unit = {
-        Description = "Fetch mail and send ntfy notifications";
-      };
-      Install.WantedBy = [ "default.target" ];
-      Service = {
-        Type = "oneshot";
-        ExecStart = "${mail-fetch-script}/bin/mail-fetch-script";
-      };
+  systemd.user.services."fetch-mail" = {
+    Unit = {
+      Description = "Fetch mail and send ntfy notifications";
     };
-    
-    timers."fetch-mail" = {
-      enable = true;
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*:0/5";
-      };
+    Install.WantedBy = [ "default.target" ];
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${mail-fetch-script}/bin/mail-fetch-script";
+    };
+  };
+  
+  systemd.user.timers."fetch-mail" = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/5";
     };
   };
 

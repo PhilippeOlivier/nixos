@@ -15,7 +15,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = pkgs.writeShellScriptBin "mail-fetch-scriptxx" ''
+  mail-fetch-script = pkgs.writeShellScriptBin "mail-fetch-script" ''
     for mailbox in "${emails}"; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -194,17 +194,17 @@ in
       Install.WantedBy = [ "default.target" ];
       Service = {
         Type = "oneshot";
-        ExecStart = "${mail-fetch-script}/bin/mail-fetch-scriptxx";
+        ExecStart = "${mail-fetch-script}/bin/mail-fetch-script";
       };
     };
     
-    # timers."fetch-mail" = {
-    #   wantedBy = [ "timers.target" ];
-    #   timerConfig = {
-    #     OnCalendar = "*:0/5";
-    #     Unit = "fetch-mail.service";
-    #   };
-    # };
+    timers."fetch-mail" = {
+      enable = true;
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*:0/5";
+      };
+    };
   };
 
   home = {

@@ -201,7 +201,7 @@ in
     Install.WantedBy = [ "timers.target" ];
     Timer.Unit = "fetch-mail";
     Timer.OnCalendar = "*:0/5";
-    Persistent = true;
+    Timer.Persistent = true;
   };
 
   home = {

@@ -199,9 +199,9 @@ in
   
   systemd.user.timers."fetch-mail" = {
     Install.WantedBy = [ "timers.target" ];
-    Timer.Unit = "fetch-mail";
+    Timer.Unit = "fetch-mail.service";
     Timer.OnCalendar = "*:0/5";
-    Timer.Persistent = true;
+    #Timer.Persistent = true;
   };
 
   home = {

@@ -47,7 +47,7 @@
       signalMail = "16";
       signalNetwork = "15";
       signalVolume = "13";
-      sopsAgeKeyFilePath = "/snap${homeDirectory}/.sops/framework-age-key.txt";  # This must be the full path to the persisted directory (because of impermanence+sops)
+      sopsAgeKeyFilePath = "/snap${homeDirectory}/.config/sops/framework-age-key.txt";  # This must be the full path to the persisted directory (because of impermanence+sops)
       stateVersion = "24.05";
       system = "x86_64-linux";
       touchpadDevice = "2:7:SynPS/2_Synaptics_TouchPad";  # `swaymsg -t get_inputs`

@@ -15,7 +15,7 @@
 let
   # This script is required instead of `services.mbsync.preExec` and `services.mbsync.postExec`
   # because we need the return code of the command `mbsync`
-  mail-fetch-script = pkgs.writeShellScriptBin "mail-fetch-script" ''
+  mail-fetch-script = pkgs.writeShellScriptBin "mail-fetch-scriptxx" ''
     for mailbox in "${emails}"; do
         # Create any missing directories
         ${pkgs.coreutils}/bin/mkdir -p ${maildirsPath}/''${mailbox}/{drafts,inbox,sent,spam}/{cur,new,tmp}
@@ -186,14 +186,24 @@ in
     ntfyTopic = {};
   };
   
-  systemd.user.services."fetch-mail" = {
-    Unit = {
-      Description = "Fetch mail and send ntfy notifications";
+  systemd.user = {
+    services."fetch-mail" = {
+      Unit = {
+        Description = "Fetch mail and send ntfy notifications";
+      };
+      Install.WantedBy = [ "default.target" ];
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${mail-fetch-script}/bin/mail-fetch-scriptxx";
+      };
     };
-    Install.WantedBy = [ "default.target" ];
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${mail-fetch-script}/bin/mail-fetch-script";
+    
+    timers."fetch-mail" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*:0/5";
+        Unit = "fetch-mail.service";
+      };
     };
   };
 

@@ -1,6 +1,7 @@
 {
   pkgs
 , sopsAgeKeyFilePath
+, sopsDirectory
 , username
 , ...
 }:
@@ -40,7 +41,7 @@
 
     users.${username} = {
       directories = [
-        ".sops"
+        sopsDirectory
       ];
     };
   };

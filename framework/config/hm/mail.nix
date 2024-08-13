@@ -198,13 +198,13 @@ in
       };
     };
     
-    timers."fetch-mail" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*:0/5";
-        Unit = "fetch-mail.service";
-      };
-    };
+    # timers."fetch-mail" = {
+    #   wantedBy = [ "timers.target" ];
+    #   timerConfig = {
+    #     OnCalendar = "*:0/5";
+    #     Unit = "fetch-mail.service";
+    #   };
+    # };
   };
 
   home = {

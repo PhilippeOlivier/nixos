@@ -62,7 +62,7 @@ let
     thread_is_unprocessed() {
         # Takes as input a thread, and return 0 if the thread is unprocessed, or 1 if it is
 
-        local thread_number="$(echo "$thread" | sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
+        local thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
 
         # If the thread is empty (no thread)
         if [ -z "$thread" ]; then

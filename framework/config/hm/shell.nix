@@ -7,15 +7,17 @@
 {
   home = {
     packages = with pkgs; [
-      # Tools
+      # Tools and utilities
       coreutils
       curl
       dos2unix
       ffmpeg
       fzf
+      htop
       imagemagick
       pdfgrep
       rsync
+      tldr
       tree
       wget
       yt-dlp
@@ -45,9 +47,6 @@
       # PDF
       diffpdf
       qpdf
-      
-      # Utilities
-      htop
     ];
 
     sessionVariables = {

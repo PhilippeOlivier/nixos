@@ -76,19 +76,19 @@ let
         return 1
     }
 
-    # IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
+    IFS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
 
-    # for sender in "''${special_emails[@]}"; do
-    #     echo "Checking for new unread mail from $sender"
-    #     while read -r thread; do
-    #         if thread_is_unprocessed "$thread"; then
-    #             ${pkgs.curl}/bin/curl -d "New mail from: $sender" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
-    #             thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
-    #             echo thread number is $thread_number
-    #             touch "/tmp/''${thread_number}"
-    #         fi
-    #     done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
-    # done
+    for sender in "''${special_emails[@]}"; do
+        echo "Checking for new unread mail from $sender"
+        while read -r thread; do
+            if thread_is_unprocessed "$thread"; then
+                # ${pkgs.curl}/bin/curl -d "New mail from: $sender" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
+                echo thread number is $thread_number
+                touch "/tmp/''${thread_number}"
+            fi
+        done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
+    done
 
     # IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
 

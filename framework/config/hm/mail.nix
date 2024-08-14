@@ -44,7 +44,7 @@ let
 
         # Update the status file
         status_file="/tmp/mbsync-status"
-        touch $status_file
+        ${pkgs.coreutils}/bin/touch $status_file
 
         # If the entry for the mailbox doesn't exist, create it
         if ! ${pkgs.gnugrep}/bin/grep -q $mailbox $status_file; then
@@ -84,24 +84,23 @@ let
             if thread_is_unprocessed "$thread"; then
                 ${pkgs.curl}/bin/curl -d "New mail from: $sender" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
                 thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
-                echo thread number is $thread_number
-                ${pkgs.coreutils}/bin/touch "/tmp/$thread_number"
+                ${pkgs.coreutils}/bin/touch "/tmp/''${thread_number}"
             fi
         done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread from:$sender)"
     done
 
-    # IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
+    IFS=$'\n' special_terms=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialTerms.path}")"))
 
-    # for term in "''${special_terms[@]}"; do
-    #     echo "Checking for new unread mail with term $term"
-    #     while read -r thread; do
-    #         if thread_is_unprocessed "$thread"; then
-    #             ${pkgs.curl}/bin/curl -d "New mail with term: $term" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
-    #             thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
-    #             touch "/tmp/''${thread_number}"
-    #         fi
-    #     done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread body:$term)"
-    # done
+    for term in "''${special_terms[@]}"; do
+        echo "Checking for new unread mail with term $term"
+        while read -r thread; do
+            if thread_is_unprocessed "$thread"; then
+                ${pkgs.curl}/bin/curl -d "New mail with term: $term" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
+                thread_number="$(echo "$thread" | ${pkgs.gnused}/bin/sed -E 's/^thread:([0-9a-f]+).*$/\1/')"
+                ${pkgs.coreutils}/bin/touch "/tmp/''${thread_number}"
+            fi
+        done <<< "$(${pkgs.notmuch}/bin/notmuch search tag:unread body:$term)"
+    done
   '';
 in
 

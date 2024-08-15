@@ -23,7 +23,6 @@
     ./mail.nix
     ./mpv.nix
     ./python.nix
-    ./secrets.nix
     ./shell.nix
     ./signal.nix
     ./slack.nix

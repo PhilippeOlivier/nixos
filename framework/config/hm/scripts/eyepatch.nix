@@ -238,14 +238,12 @@ let
     init
 
     while read line; do
-        echo line=$line
         series=$(get_series_from_line "$line")
-        echo series=$series
-        # echo "Searching for new episodes for series: $(make_title "$series")"
-        # while series_has_new_episode "$series"; do
-        #     notify "$series"
-        #     ${pkgs.coreutils}/bin/sleep 5  # Make sure not to spam TPB so as to not get the IP banned
-        # done
+        echo "Searching for new episodes for series: $(make_title "$series")"
+        while series_has_new_episode "$series"; do
+            notify "$series"
+            ${pkgs.coreutils}/bin/sleep 5  # Make sure not to spam TPB so as to not get the IP banned
+        done
     done < "$track_file"
   '';
 in

@@ -29,7 +29,18 @@ let
         echo "$results"
     }
 
-    echo $(tpb_names "only murders in the building s02e04")
+    d_to_dd() {
+        # Converts a single digit to double digit (e.g., "1" to "01").
+        # Has no effect on double digits (even, e.g., "01").
+        if [[ $1 -lt 10 ]] && [[ ''${#1} -eq 1 ]]; then
+            echo "0$1"
+        else
+            echo "$1"
+        fi
+    }
+
+    d_to_dd "1"
+
   '';
 in
 

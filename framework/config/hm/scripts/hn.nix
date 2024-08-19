@@ -30,7 +30,7 @@ let
            "mathematical program")
 
     # Make sure the files exist
-    touch {"''${MATCH_FILE}","''${OLD_SUBMISSIONS}","''${JOBS_PROCESSED}"}
+    ${pkgs.coreutils}/bin/touch {"''${MATCH_FILE}","''${OLD_SUBMISSIONS}","''${JOBS_PROCESSED}"}
 
     # Check for any whoishiring (user) submissions that are not yet too old
     wih="$(${pkgs.curl}/bin/curl -sL https://hacker-news.firebaseio.com/v0/user/whoishiring.json)"

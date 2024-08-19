@@ -88,7 +88,7 @@ let
         # If the tracking file does not exist, return an error.
         if [[ ! -e "$track_file" ]]; then
             ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script: The tracking file does not exist." ntfy.sh/pholi-homelab
-            exit 1
+            exit 0
         fi
     
         # If the tracking file does not end in a newline, add a newline.
@@ -115,7 +115,7 @@ let
         # Make sure that TPB works correctly by checking if a popular episode can be found.
         if ! episode_exists "game of thrones" "1" "1"; then
             ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script (TPB is probably down)." ntfy.sh/pholi-homelab
-            exit 1
+            exit 0
         fi
     }
 

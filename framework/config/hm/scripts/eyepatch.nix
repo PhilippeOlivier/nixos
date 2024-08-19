@@ -239,7 +239,7 @@ let
 
     while read line; do
         echo line=$line
-        local series=$(get_series_from_line "$line")
+        series=$(get_series_from_line "$line")
         echo series=$series
         # echo "Searching for new episodes for series: $(make_title "$series")"
         # while series_has_new_episode "$series"; do

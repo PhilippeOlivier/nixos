@@ -8,7 +8,7 @@
 }:
 
 let
-  hn-script = pkgs.writeShellScriptBin "hn2-script" ''
+  hn-script = pkgs.writeShellScriptBin "hn-script" ''
     # https://github.com/HackerNews/API
     # https://hacker-news.firebaseio.com/v0/maxitem.json <-- this is the latest item on HN
     # Example: https://hacker-news.firebaseio.com/v0/item/123423.json

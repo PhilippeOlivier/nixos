@@ -242,7 +242,7 @@ let
         echo "Searching for new episodes for series: $(make_title "$series")"
         while series_has_new_episode "$series"; do
             notify "$series"
-            sleep 5  # Make sure not to spam TPB so as to not get the IP banned
+            ${pkgs.coreutils}/bin/sleep 5  # Make sure not to spam TPB so as to not get the IP banned
         done
     done < "$track_file"
   '';

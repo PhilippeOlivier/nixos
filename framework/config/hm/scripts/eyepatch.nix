@@ -7,7 +7,7 @@
 }:
 
 let
-  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script6" ''
+  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script" ''
     track_file="${homeDirectory}/${eyepatchDirectory}/track"
     log_file="${homeDirectory}/${eyepatchDirectory}/log"
 

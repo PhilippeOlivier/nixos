@@ -47,7 +47,7 @@ let
         echo "$1" | ${pkgs.gnused}/bin/sed -e "s/\b\(.\)/\u\1/g"
     }
 
-    make_title "only murders in the building"
+    echo $(make_title "only murders in the building")
   '';
 in
 

@@ -149,7 +149,7 @@ let
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
             exit 0
         fi
-        local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | rev)"
+        local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.util-linux}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | ${pkgs.util-linux}/bin/rev)"
         echo "$latest_season"
     }
 
@@ -161,7 +161,7 @@ let
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
             exit 0
         fi
-        local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | rev)"
+        local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.util-linux}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | ${pkgs.util-linux}/bin/rev)"
         echo "$latest_episode"
     }
 
@@ -237,16 +237,14 @@ let
 
     init
 
-    # while read line; do
-    #     series=$(get_series_from_line "$line")
-    #     echo "Searching for new episodes for series: $(make_title "$series")"
-    #     while series_has_new_episode "$series"; do
-    #         notify "$series"
-    #         ${pkgs.coreutils}/bin/sleep 5  # Make sure not to spam TPB so as to not get the IP banned
-    #     done
-    # done < "$track_file"
-
-    echo asdf | ${pkgs.util-linux}/bin/rev
+    while read line; do
+        series=$(get_series_from_line "$line")
+        echo "Searching for new episodes for series: $(make_title "$series")"
+        while series_has_new_episode "$series"; do
+            notify "$series"
+            ${pkgs.coreutils}/bin/sleep 5  # Make sure not to spam TPB so as to not get the IP banned
+        done
+    done < "$track_file"
   '';
 in
 

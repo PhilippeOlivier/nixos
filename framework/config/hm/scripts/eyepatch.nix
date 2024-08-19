@@ -39,8 +39,15 @@ let
         fi
     }
 
-    d_to_dd "1"
+    make_title() {
+        # Converts a series name into a title ("only murders in the building" --> "Only Murders In The Building").
+        # Args:
+        #   $1: Series.
+        # Source of this one-liner: https://stackoverflow.com/a/1538818/1725856
+        echo "$1" | ${pkgs.gnused}/bin/sed -e "s/\b\(.\)/\u\1/g"
+    }
 
+    make_title "only murders in the building"
   '';
 in
 

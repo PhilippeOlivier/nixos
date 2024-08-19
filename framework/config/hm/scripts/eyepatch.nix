@@ -246,7 +246,7 @@ let
     #     done
     # done < "$track_file"
 
-    echo asdf | rev
+    echo asdf | ${pkgs.util-linux}/bin/rev
   '';
 in
 

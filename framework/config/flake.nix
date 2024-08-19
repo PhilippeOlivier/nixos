@@ -85,6 +85,7 @@
                   email1
                   emails
                   eyepatchDirectory
+                  hnDirectory
                   homeDirectory
                   keyboardDevice
                   maildirsDirectory

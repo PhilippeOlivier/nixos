@@ -26,6 +26,7 @@ let
 
     # Regex terms to seach for (case-insensitive)
     # Note: Make sure to put more important terms earlier
+    # TERMS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
     TERMS=("mathematical model"
            "mathematical program")
 
@@ -54,7 +55,7 @@ let
     done
 
     # Process each active submission
-    for active_submission in "$active_submissions[@]"; do
+    for active_submission in "''${active_submissions[@]}"; do
         # Get the item ids of all the responses to that submission
         asub_json="$(${pkgs.curl}/bin/curl -sL "https://hacker-news.firebaseio.com/v0/item/''${active_submission}.json")"
         responses="$(echo "$asub_json" | ${pkgs.jq}/bin/jq ".kids" | ${pkgs.jq}/bin/jq -r ".[]")"

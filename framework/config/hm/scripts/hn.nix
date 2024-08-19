@@ -36,7 +36,7 @@ let
     wih="$(${pkgs.curl}/bin/curl -sL https://hacker-news.firebaseio.com/v0/user/whoishiring.json)"
     wih_submissions="$(echo "$wih" | ${pkgs.jq}/bin/jq ".submitted" | ${pkgs.jq}/bin/jq -r ".[]")"
     active_submissions=()
-    for submission in ''${wih_submissions}; do
+    for submission in $wih_submissions; do
         # If the submission is not yet marked as old
         if ! ${pkgs.gnugrep}/bin/grep -qx "$submission" "$OLD_SUBMISSIONS"; then
             # Check how old it is

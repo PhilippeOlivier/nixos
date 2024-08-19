@@ -30,6 +30,7 @@ let
     }
 
     echo $(tpb_names "only murders in the building s02e04")
+    echo ASDF
   '';
 in
 

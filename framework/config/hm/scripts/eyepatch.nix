@@ -147,7 +147,7 @@ let
         #   $1: Series.
         if ! is_series_tracked "$1"; then
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
-            exit 1
+            exit 0
         fi
         local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | ${pkgs.coreutils}/bin/rev)"
         echo "$latest_season"
@@ -159,7 +159,7 @@ let
         #   $1: Series.
         if ! is_series_tracked "$1"; then
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
-            exit 1
+            exit 0
         fi
         local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | ${pkgs.coreutils}/bin/rev)"
         echo "$latest_episode"

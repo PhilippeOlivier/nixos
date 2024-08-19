@@ -7,7 +7,7 @@
 
 let
   eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script" ''
-    echo Eyepatch: error track file not found (send that to ntfy)
+    echo "Eyepatch: error track file not found (send that to ntfy)"
   '';
 in
 

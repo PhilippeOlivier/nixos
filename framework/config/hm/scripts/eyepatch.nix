@@ -6,7 +6,7 @@
 }:
 
 let
-  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script2" ''
+  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script3" ''
     tpb_names() {
         # Finds TPB torrent names associated with the search terms.
         # Args:
@@ -61,7 +61,7 @@ in
     Install.WantedBy = [ "default.target" ];
     Service = {
       Type = "oneshot";
-      ExecStart = "${eyepatch-script}/bin/eyepatch-script2";
+      ExecStart = "${eyepatch-script}/bin/eyepatch-script3";
     };
   };
   

@@ -16,6 +16,7 @@
       desktopEntriesDirectory = "${homeDirectory}/.config/pholi-desktop-entries";
       email1 = "imper@pedtsr.ca";
       emails = "${email1}";
+      eyepatchDirectory = ".config/eyepatch";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";
@@ -82,6 +83,7 @@
                   desktopEntriesDirectory
                   email1
                   emails
+                  eyepatchDirectory
                   homeDirectory
                   keyboardDevice
                   maildirsDirectory

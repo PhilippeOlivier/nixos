@@ -8,6 +8,7 @@
 {
   imports = [
     ./de
+    ./scripts
     
     ./blueman.nix
     ./chromium.nix

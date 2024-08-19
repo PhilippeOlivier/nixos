@@ -27,8 +27,6 @@ let
     # Regex terms to seach for (case-insensitive)
     # Note: Make sure to put more important terms earlier
     IFS=$'\n' TERMS=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.hnTerms.path}")"))
-    # TERMS=("mathematical model"
-    #        "mathematical program")
 
     # Make sure the files exist
     ${pkgs.coreutils}/bin/touch {"$MATCH_FILE","$OLD_SUBMISSIONS","$JOBS_PROCESSED"}
@@ -71,7 +69,7 @@ let
                     if echo "$response_text" | ${pkgs.gnugrep}/bin/grep -is "$term"; then
                         echo "Response $response has a match!"
                         url="https://news.ycombinator.com/item?id=$response"
-                        ${pkgs.curl}/bin/curl -d "[$term] $url" ntfy.sh/pholi-homelab
+                        ${pkgs.curl}/bin/curl -d "[$term] $url" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
                         echo "[$(${pkgs.coreutils}/bin/date "+%Y-%m-%d %-H:%M")] [$term] $url" >> "$MATCH_FILE"
                         break
                     fi

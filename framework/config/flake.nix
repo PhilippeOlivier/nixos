@@ -17,6 +17,7 @@
       email1 = "imper@pedtsr.ca";
       emails = "${email1}";
       eyepatchDirectory = ".config/eyepatch";
+      hnDirectory = ".config/hn";
       homeDirectory = "/home/${username}";
       hostId = "cafe0000";
       hostName = "pholi-nixos";

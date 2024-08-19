@@ -21,8 +21,6 @@ in
 
   home.persistence = {
     "/snap/home/${username}" = {
-      allowOther = true;
-
       directories = [
         screenshotDirectory
       ];

@@ -218,8 +218,6 @@ in
 
     persistence = {
       "/snap/home/${username}" = {
-        allowOther = true;
-
         directories = [
           maildirsDirectory
           ".mbsync"

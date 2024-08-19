@@ -26,9 +26,9 @@ let
 
     # Regex terms to seach for (case-insensitive)
     # Note: Make sure to put more important terms earlier
-    # TERMS=$'\n' special_emails=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.specialEmails.path}")"))
-    TERMS=("mathematical model"
-           "mathematical program")
+    IFS=$'\n' TERMS=($(${pkgs.findutils}/bin/xargs -n1 <<<"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.hnTerms.path}")"))
+    # TERMS=("mathematical model"
+    #        "mathematical program")
 
     # Make sure the files exist
     ${pkgs.coreutils}/bin/touch {"$MATCH_FILE","$OLD_SUBMISSIONS","$JOBS_PROCESSED"}
@@ -85,7 +85,10 @@ let
 in
 
 {  
-  sops.secrets.ntfyTopic = {};
+  sops.secrets = {
+    hnTerms = {};
+    ntfyTopic = {};
+  };
   
   systemd.user.services."hn" = {
     Unit = {

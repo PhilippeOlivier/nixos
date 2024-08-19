@@ -7,7 +7,7 @@
 }:
 
 let
-  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script5" ''
+  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script" ''
     track_file="${homeDirectory}/${eyepatchDirectory}/track"
     log_file="${homeDirectory}/${eyepatchDirectory}/log"
 
@@ -149,7 +149,7 @@ let
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
             exit 0
         fi
-        local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | ${pkgs.coreutils}/bin/rev)"
+        local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | rev)"
         echo "$latest_season"
     }
 
@@ -161,7 +161,7 @@ let
             echo "Error: Series \"$(make_title "$1")\" is not tracked."
             exit 0
         fi
-        local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | ${pkgs.coreutils}/bin/rev)"
+        local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | rev)"
         echo "$latest_episode"
     }
 

@@ -1,5 +1,6 @@
 {
-  pkgs
+  config
+, pkgs
 , eyepatchDirectory
 , homeDirectory
 , username
@@ -68,7 +69,7 @@ let
         if echo "$names" | ${pkgs.gnugrep}/bin/grep -q "^\"No results returned\"$"; then
             false
         elif echo "$names" | ${pkgs.gnugrep}/bin/grep -qi "cloudflare"; then
-            ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script: Cloudflare prevented search for \"$(make_title "''${series}") S''${season}E''${episode}\"." ntfy.sh/pholi-homelab
+            ${pkgs.curl}/bin/curl -d "Eyepatch error: Cloudflare prevented search for \"$(make_title "''${series}") S''${season}E''${episode}\"" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
             false
         else
             # Go through all the names and parse them to mitigate false positives.
@@ -87,7 +88,7 @@ let
 
         # If the tracking file does not exist, return an error.
         if [[ ! -e "$track_file" ]]; then
-            ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script: The tracking file does not exist." ntfy.sh/pholi-homelab
+            ${pkgs.curl}/bin/curl -d "Eyepatch error: The tracking file does not exist" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
             exit 0
         fi
 
@@ -114,7 +115,7 @@ let
 
         # Make sure that TPB works correctly by checking if a popular episode can be found.
         if ! episode_exists "game of thrones" "1" "1"; then
-            ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script (TPB is probably down)." ntfy.sh/pholi-homelab
+            ${pkgs.curl}/bin/curl -d "Eyepatch error: TPB is probably down" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
             exit 0
         fi
     }
@@ -146,7 +147,7 @@ let
         # Args:
         #   $1: Series.
         if ! is_series_tracked "$1"; then
-            echo "Error: Series \"$(make_title "$1")\" is not tracked."
+            echo "Error: Series \"$(make_title "$1")\" is not tracked"
             exit 0
         fi
         local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.util-linux}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | ${pkgs.util-linux}/bin/rev)"
@@ -158,7 +159,7 @@ let
         # Args:
         #   $1: Series.
         if ! is_series_tracked "$1"; then
-            echo "Error: Series \"$(make_title "$1")\" is not tracked."
+            echo "Error: Series \"$(make_title "$1")\" is not tracked"
             exit 0
         fi
         local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.util-linux}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | ${pkgs.util-linux}/bin/rev)"
@@ -232,7 +233,7 @@ let
         local series="$1"
         local season="$(latest_tracked_season "$series")"
         local episode="$(latest_tracked_episode "$series")"
-        ${pkgs.curl}/bin/curl -d "New episode: $(make_title "$series") S$(d_to_dd "$season")E$(d_to_dd "$episode")" ntfy.sh/pholi-homelab
+        ${pkgs.curl}/bin/curl -d "New episode: $(make_title "$series") S$(d_to_dd "$season")E$(d_to_dd "$episode")" ntfy.sh/"$(${pkgs.coreutils}/bin/cat "${config.sops.secrets.ntfyTopic.path}")"
     }
 
     init
@@ -246,6 +247,7 @@ let
         done
     done < "$track_file"
   '';
+
 in
 
 {  

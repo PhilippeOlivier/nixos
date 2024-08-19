@@ -1,15 +1,15 @@
 {
   pkgs
 , eyepatchDirectory
+, homeDirectory
 , username
 , ...
 }:
 
 let
-  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script3" ''
-
-    #TEMP
-    track_file="/home/pholi/.config/eyepatch/track"
+  eyepatch-script = pkgs.writeShellScriptBin "eyepatch-script" ''
+    track_file="${homeDirectory}/${eyepatchDirectory}/track"
+    log_file="${homeDirectory}/${eyepatchDirectory}/log"
 
     tpb_names() {
         # Finds TPB torrent names associated with the search terms.
@@ -84,17 +84,17 @@ let
 
     init() {
         echo "Script initialization"
-    
+
         # If the tracking file does not exist, return an error.
         if [[ ! -e "$track_file" ]]; then
             ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script: The tracking file does not exist." ntfy.sh/pholi-homelab
             exit 0
         fi
-    
+
         # If the tracking file does not end in a newline, add a newline.
         # Source of this one-liner: https://unix.stackexchange.com/a/31955
         ${pkgs.gnused}/bin/sed -i -e '$a\' "$track_file"
-    
+
         # Check the validity of the format of the entries in the tracking file.
         # Format (season and episode must be 1 or 2 digits each, and not start with 0):
         #   series season episode
@@ -106,12 +106,12 @@ let
                 ${pkgs.gnused}/bin/sed -i "s/$line/$line 0 0/" "$track_file"
             fi
         done < "$track_file"
-    
+
         # Remove apostrophes (torrent names typically don't have apostrophes).
         while read line; do
             ${pkgs.gnused}/bin/sed -i "s/$line/$(echo "$line" | ${pkgs.coreutils}/bin/tr -d "'")/g" "$track_file"
         done < "$track_file"
-        
+
         # Make sure that TPB works correctly by checking if a popular episode can be found.
         if ! episode_exists "game of thrones" "1" "1"; then
             ${pkgs.curl}/bin/curl -d "Error with the \"eyepatch.sh\" script (TPB is probably down)." ntfy.sh/pholi-homelab
@@ -119,7 +119,132 @@ let
         fi
     }
 
+    is_series_tracked() {
+        # Checks if a series is tracked by this script (i.e., does not have a "0 0" season-episode pair).
+        # Args:
+        #   $1: Series.
+        # Returns:
+        #   True if the series is tracked, false otherwise.
+        if ${pkgs.gnugrep}/bin/grep -qiE "^$1 [1-9][0-9]? [1-9][0-9]?$" "$track_file"; then
+            true
+        else
+            false
+        fi
+    }
+
+    series_exists() {
+        # Checks if a series actually exists.
+        # Args:
+        #   $1: Series.
+        # Returns:
+        #   True if the series exists, false otherwise.
+        episode_exists "$1" "1" "1"
+    }
+
+    latest_tracked_season() {
+        # Returns the latest season of a series that has been actively tracked.
+        # Args:
+        #   $1: Series.
+        if ! is_series_tracked "$1"; then
+            echo "Error: Series \"$(make_title "$1")\" is not tracked."
+            exit 1
+        fi
+        local latest_season="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f2 | ${pkgs.coreutils}/bin/rev)"
+        echo "$latest_season"
+    }
+
+    latest_tracked_episode() {
+        # Returns the latest episode of a series that has been actively tracked.
+        # Args:
+        #   $1: Series.
+        if ! is_series_tracked "$1"; then
+            echo "Error: Series \"$(make_title "$1")\" is not tracked."
+            exit 1
+        fi
+        local latest_episode="$(${pkgs.gnugrep}/bin/grep -iE "^$1 [1-9][0-9]? [1-9][0-9]?$" $track_file | ${pkgs.coreutils}/bin/rev | ${pkgs.coreutils}/bin/cut -d ' ' -f1 | ${pkgs.coreutils}/bin/rev)"
+        echo "$latest_episode"
+    }
+
+    get_series_from_line() {
+        # Extract the series name from a line of `track_file`.
+        # Args:
+        #   $1: One whole line of `track_file`.
+        echo "$1" | ${pkgs.gnused}/bin/sed -E 's/^([[:print:]]*) ([1-9][0-9]? [1-9][0-9]?|0 0)$/\1/'
+    }
+
+    update_series_status() {
+        # Update a series status.
+        # Args:
+        #   $1: Series.
+        #   $2: Season.
+        #   $3: Episode.
+        # The result will be to replace the series line in `track_file` with $1 $2 $3.
+        ${pkgs.gnused}/bin/sed -Ei "s/^$1 ([0-9][0-9]? [0-9][0-9]?|0 0)$/$1 $2 $3/" "$track_file"
+        # Log all changes.
+        echo "[$(${pkgs.coreutils}/bin/date +%Y-%m-%d)] $(make_title "$1") S$(d_to_dd "$2")E$(d_to_dd "$3")" >> "$log_file"
+    }
+
+    series_has_new_episode() {
+        # Checks for one next new episode of the series, and updates the tracking file accordingly.
+        # Args:
+        #   $1: Series.
+        # Return:
+        #   True if a new episode has been found, false otherwise.
+    
+        local series="$1"
+
+        # If the series is untracked, check if the first episode exists. If yes, start actively tracking
+        # the series starting at S01E01. If the series is already tracked, check for new episodes.
+        if ! series_exists "$series"; then
+            echo "Series not found"
+            false
+        elif ! is_series_tracked "$series"; then
+            # If the first episode of the series exists, start tracking the episodes.
+            if episode_exists "$series" "1" "1"; then
+                echo "New episode: S01E01"
+                update_series_status "$series" "1" "1"
+                true
+            fi
+        else
+            local season="$(latest_tracked_season "$series")"
+            local episode="$(latest_tracked_episode "$series")"
+            # Check for a new episode in the current season. If it fails, check for episode 1 of the
+            # next season.
+            if episode_exists "$series" "$season" "$(( episode + 1 ))"; then
+                echo "New episode: S$(d_to_dd "$season")E$(d_to_dd "$(( episode + 1 ))")"
+                update_series_status "$series" "$season" "$(( episode + 1 ))"
+                true
+            elif episode_exists "$series" "$(( season + 1 ))" "1"; then
+                echo "New episode: S$(d_to_dd "$(( season + 1 ))")E01"
+                update_series_status "$series" "$(( season + 1 ))" "1"
+                true
+            else
+                echo "No new episodes"
+                false
+            fi
+        fi
+    }
+
+    notify() {
+        # Sends a notification for series tracking status in `track_file`.
+        # Args:
+        #   $1: Series.
+        local series="$1"
+        local season="$(latest_tracked_season "$series")"
+        local episode="$(latest_tracked_episode "$series")"
+        ${pkgs.curl}/bin/curl -d "New episode: $(make_title "$series") S$(d_to_dd "$season")E$(d_to_dd "$episode")" ntfy.sh/pholi-homelab
+    }
+
     init
+
+    while read line; do
+        local series=$(get_series_from_line "$line")
+        echo "Searching for new episodes for series: $(make_title "$series")"
+        while series_has_new_episode "$series"; do
+            notify "$series"
+            sleep 5  # Make sure not to spam TPB so as to not get the IP banned
+        done
+    done < "$track_file"
   '';
 in
 
@@ -133,7 +258,7 @@ in
     Install.WantedBy = [ "default.target" ];
     Service = {
       Type = "oneshot";
-      ExecStart = "${eyepatch-script}/bin/eyepatch-script3";
+      ExecStart = "${eyepatch-script}/bin/eyepatch-script";
     };
   };
   

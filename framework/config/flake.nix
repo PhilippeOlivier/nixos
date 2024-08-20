@@ -40,6 +40,7 @@
       outputHeightRight = "1080";  # `swaymsg -t get_outputs`
       outputScaleRight = "1.0";
       outputWidthRight = "1920";  # `swaymsg -t get_outputs`
+      pholiScriptDirectory = ".config/pholi-script";
       screenshotDirectory = "screenshots";
       screenshotPath = "${homeDirectory}/${screenshotDirectory}";
       secretsFilePath = "${homeDirectory}/nixos/framework/config/secrets/secrets.yaml";
@@ -105,6 +106,7 @@
                   outputHeightRight
                   outputScaleRight
                   outputWidthRight
+                  pholiScriptDirectory
                   screenshotDirectory
                   screenshotPath
                   secretsFilePath

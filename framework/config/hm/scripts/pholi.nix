@@ -2,12 +2,13 @@
   config
 , pkgs
 , homeDirectory
+, pholiScriptDirectory
 , username
 , ...
 }:
 
 let
-  pholi-script = pkgs.writeShellScriptBin "pholi-script" ''
+  pholi-script = pkgs.writeShellScriptBin "pholi" ''
     echo TODO $1
     # try to include another script in here
   '';
@@ -27,7 +28,7 @@ in
     persistence = {
       "/snap/home/${username}" = {
         directories = [
-          #hnDirectory
+          pholiScriptDirectory
         ];
       };
     };

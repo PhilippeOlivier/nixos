@@ -10,7 +10,15 @@
 let
   pholi-script = pkgs.writeShellScriptBin "pholi" ''
     echo TODO $1
-    # try to include another script in here
+    case $1 in
+        backup)
+          echo BAKCUP
+          # try to include another script in here
+          ;;
+        *)
+          echo NO CMD
+          ;;
+    esac
   '';
 
 in

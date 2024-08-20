@@ -24,7 +24,7 @@ let
 
   pholi-backup = pkgs.writeShellScriptBin "pholi-backup" ''
     echo separate script
-  ''/bin/pholi-backup;
+  '';
 
 in
 

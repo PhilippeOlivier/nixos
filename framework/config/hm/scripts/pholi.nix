@@ -13,7 +13,7 @@ let
     case $1 in
         backup)
           echo BAKCUP
-          ${pholi-backup}/bin/pholi-backup
+          ${pholi-backup}
           # try to include another script in here
           ;;
         *)
@@ -24,7 +24,7 @@ let
 
   pholi-backup = pkgs.writeShellScriptBin "pholi-backup" ''
     echo separate script
-  '';
+  ''/bin/pholi-backup;
 
 in
 

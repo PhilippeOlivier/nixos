@@ -2,6 +2,6 @@
   imports = [
     ./eyepatch.nix
     ./hn.nix
-    ./pholi
+    ./pholi.nix
   ];
 }

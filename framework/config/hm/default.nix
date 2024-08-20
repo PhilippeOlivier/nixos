@@ -9,6 +9,7 @@
   imports = [
     ./de
     ./scripts
+    ./temp.nix
     
     ./blueman.nix
     ./chromium.nix

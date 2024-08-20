@@ -27,7 +27,7 @@ in
     persistence = {
       "/snap/home/${username}" = {
         directories = [
-          hnDirectory
+          #hnDirectory
         ];
       };
     };

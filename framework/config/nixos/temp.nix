@@ -1,6 +1,7 @@
 {config,pkgs, username, ...}:
 
 {
+  # This below can be deleted I think
   sops.secrets."ntfy_topic" = {
     owner = config.users.users.${username}.name;
     group = config.users.users.${username}.group;

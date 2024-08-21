@@ -63,83 +63,83 @@ sudo mount -t zfs ${POOL}/home /mnt/home
 # Generate basic configuration, including `hardware-configuration.nix`
 sudo nixos-generate-config --root /mnt
 
-# Add `networking.hostId` for ZFS (note: change this value for other machines)
-sudo sed -i '/.*boot.extraModulePackages.*/a networking.hostId = "00001111";' /mnt/etc/nixos/hardware-configuration.nix
+# # Add `networking.hostId` for ZFS (note: change this value for other machines)
+# sudo sed -i '/.*boot.extraModulePackages.*/a networking.hostId = "00001111";' /mnt/etc/nixos/hardware-configuration.nix
 
-# Replace the default `configuration.nix` with my shim
-cat > configuration.nix <<EOF
-{ config, pkgs, ... }:
+# # Replace the default `configuration.nix` with my shim
+# cat > configuration.nix <<EOF
+# { config, pkgs, ... }:
 
-{
-  imports = [
-    ./hardware-configuration.nix
-  ];
+# {
+#   imports = [
+#     ./hardware-configuration.nix
+#   ];
 
-  # Boot
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-    };
-    efi.canTouchEfiVariables = true;
-  };
+#   # Boot
+#   boot.loader = {
+#     systemd-boot = {
+#       enable = true;
+#     };
+#     efi.canTouchEfiVariables = true;
+#   };
 
-  # Networking
-  networking = {
-    hostName = "homelab-nixos";
-    useDHCP = false;
-    interfaces = {
-      eno1 = {
-        useDHCP = true;
-        ipv4.addresses = [
-          {
-            address = "192.168.0.82";
-            prefixLength = 24;
-          }
-        ];
-      };
-    };
-  };
+#   # Networking
+#   networking = {
+#     hostName = "steamlink";
+#     useDHCP = false;
+#     interfaces = {
+#       eno1 = {
+#         useDHCP = true;
+#         ipv4.addresses = [
+#           {
+#             address = "192.168.100.83";
+#             prefixLength = 24;
+#           }
+#         ];
+#       };
+#     };
+#   };
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      KbdInteractiveAuthentication = true;
-    };
-  };
+#   services.openssh = {
+#     enable = true;
+#     settings = {
+#       PasswordAuthentication = true;
+#       KbdInteractiveAuthentication = true;
+#     };
+#   };
 
-  # Users
-  users.mutableUsers = false;
+#   # Users
+#   users.mutableUsers = false;
 
-  users.users.root = {
-    isSystemUser = true;
-    password = "asdf";
-  };
+#   users.users.root = {
+#     isSystemUser = true;
+#     password = "asdf";
+#   };
   
-  users.users.homelab = {
-    isNormalUser = true;
-    password = "asdf";
-    description = "homelab";
-    home = "/home/homelab";
-    extraGroups = [
-      "wheel"
-    ];
-  };
+#   users.users.steamlink = {
+#     isNormalUser = true;
+#     password = "asdf";
+#     description = "steamlink";
+#     home = "/home/steamlink";
+#     extraGroups = [
+#       "wheel"
+#     ];
+#   };
 
-  # ZFS
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+#   # ZFS
+#   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
-  # Misc
-  system.stateVersion = "24.05";
-  environment.systemPackages = [
-    pkgs.git
-  ];
-}
-EOF
+#   # Misc
+#   system.stateVersion = "24.05";
+#   environment.systemPackages = [
+#     pkgs.git
+#   ];
+# }
+# EOF
 
-sudo mv configuration.nix /mnt/etc/nixos/configuration.nix
+# sudo mv configuration.nix /mnt/etc/nixos/configuration.nix
 
-# Install NixOS
-sudo nixos-install --root /mnt --no-root-password
+# # Install NixOS
+# sudo nixos-install --root /mnt --no-root-password
 
-echo "Complete. Reboot and follow the last README instructions."
+# echo "Complete. Reboot and follow the last README instructions."
